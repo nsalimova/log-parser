@@ -246,3 +246,4 @@ echo ${H_BAR} >> ${LOG_ANALYSIS_RESULT}
 
 
 CLEAN_UP
+#test
