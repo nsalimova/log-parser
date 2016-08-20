@@ -47,36 +47,41 @@ CLEAN_UP ()
 	}
 
 
+USAGE_RETURN="
+Usage: LogAnalysis.sh <options> <log file>. \n \n
 
-# Get Options.
-# h or ? = usage
-# s = Parse logs from this line
-# e = Log Parse ends here. If not specified, the end of file is assumed. 
-# t = exclude keywords. Separated by space. Like this "word1 word2 word3"
+Options: \n
+ -h = Usage \n
+ -s = Parse logs starting from this line \n
+ -e = End parsing at this line. If not specified, the end of file is assumed. \n
+ -t <keyword> = Exclude keywords. Space delimiter for multiple."
 
 OPTIND=1       # Reset to 1 just in case.
+OPTIONS='hs:e:t:'
 
-while getopts "h?s:e:t:" OPTIONS; do
-	case ${OPTIONS} in
-		h|"?")
-			echo -e " Usage: script.sh <options> <log file>. \n -s = begining of line. -e = end of line. \n -t = Exclude specified keywrods"
+#while getopts "h?s:e:t:" OPTIONS; do
+while getopts $OPTIONS option; do
+	case ${option} in
+		h)
+			#echo -e " Usage: LogAnalysis.sh <options> <log file>. \n -s = begining of line. \n -e = end of line. \n -t = Exclude specified keywrods"
+			echo -e $USAGE_RETURN 
 			exit 0
 		;;
 
 		s)
-			BEGIN_LINE=${OPTARG}
+			BEGIN_LINE=${option}
 			MODE="LINE_PARSE"
 			echo "Parsing from line # ${BEGIN_LINE}"
 		;;
 
 		e)
-			END_LINE=${OPTARG}
+			END_LINE=${option}
 			MODE="LINE_PARSE"
 			echo "Parsing to line # ${END_LINE}"
 		;;
 
 		t)
-			EXCLUDE_KEYWORDS=${OPTARG}
+			EXCLUDE_KEYWORDS=${option}
 			echo "Excluding the following keywords: ${EXCLUDE_KEYWORDS}"
 			# for KEYWORD in ${EXCLUDE_KEYWORDS}; do
 			# 	echo "Excluded word ${KEYWORD}"
@@ -85,7 +90,7 @@ while getopts "h?s:e:t:" OPTIONS; do
 		;;
 
 		*)
-			echo "Invalid otion -${OPTARG}} was used"
+			echo "Invalid otion -${option} was used"
 			echo -e " Usage: script.sh <log file> <options>. \n- s = begining of line. -e = end of line"
 			exit 1
 		;;
