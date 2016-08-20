@@ -57,31 +57,30 @@ Options: \n
  -t <keyword> = Exclude keywords. Space delimiter for multiple."
 
 OPTIND=1       # Reset to 1 just in case.
-OPTIONS='hs:e:t:'
+OPTIONS=':hs:e:t:'
 
 #while getopts "h?s:e:t:" OPTIONS; do
 while getopts $OPTIONS option; do
 	case ${option} in
 		h)
-			#echo -e " Usage: LogAnalysis.sh <options> <log file>. \n -s = begining of line. \n -e = end of line. \n -t = Exclude specified keywrods"
 			echo -e $USAGE_RETURN 
 			exit 0
 		;;
 
 		s)
-			BEGIN_LINE=${option}
+			BEGIN_LINE=$OPTARG
 			MODE="LINE_PARSE"
-			echo "Parsing from line # ${BEGIN_LINE}"
+			echo "Parsing from line # ${BEGIN_LINE}"  ## need validation check; returns regardless
 		;;
 
 		e)
-			END_LINE=${option}
+			END_LINE=$OPTARG
 			MODE="LINE_PARSE"
 			echo "Parsing to line # ${END_LINE}"
 		;;
 
 		t)
-			EXCLUDE_KEYWORDS=${option}
+			EXCLUDE_KEYWORDS=$OPTARG
 			echo "Excluding the following keywords: ${EXCLUDE_KEYWORDS}"
 			# for KEYWORD in ${EXCLUDE_KEYWORDS}; do
 			# 	echo "Excluded word ${KEYWORD}"
@@ -90,8 +89,8 @@ while getopts $OPTIONS option; do
 		;;
 
 		*)
-			echo "Invalid otion -${option} was used"
-			echo -e " Usage: script.sh <log file> <options>. \n- s = begining of line. -e = end of line"
+			echo "Invalid option -$OPTARG was used"
+			echo -e $USAGE_RETURN 
 			exit 1
 		;;
 	esac
