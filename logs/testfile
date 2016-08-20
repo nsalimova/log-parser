@@ -15,3 +15,14 @@ blue3
 blue4
 test line with data5
 data6 in this other line
+symbols[test]: -> === null value data7
+Apr 15 00:43:34 gbs01137 adclient[3523]: [ID 702911 auth.debug] DEBUG <fd:24 CAPIPing > daemon.ipcclient2 doCAPIPing appMajorVersion=1 appMinorVersion=9
+Apr 15 00:43:34 gbs01137 adclient[3523]: [ID 702911 auth.debug] DEBUG <fd:24 CAPIPing > daemon.ipcclient2 request 'CAPIPing' complete
+Apr 15 00:43:34 gbs01137 adclient[3523]: [ID 702911 auth.debug] DEBUG <fd:24 CAPIValidateUserGroup > daemon.ipcclient2 executing request 'CAPIValidateUserGroup' in thread 18
+Apr 15 00:43:34 gbs01137 adclient[3523]: [ID 702911 auth.debug] DEBUG <fd:24 CAPIValidateUserGroup > daemon.ipcclient2 doCAPIValidateUserGroup: user=CN=GBW06546,OU=Member Server,OU=GB,OU=Windows 2008,OU=Servers,DC=HBEU,DC=ADROOT,DC=DEMO groups=HBEU.ADROOT.DEMO/Management/GB/Security Groups/GB-Direct Audit Collectors-AuditStore-HBEU-GB-NORTH-S-G 
+Apr 15 00:43:34 gbs01137 adclient[3523]: [ID 702911 auth.debug] DEBUG <fd:24 CAPIValidateUserGroup > base.adagent Find GUID: f741577c41044634a0660d0dc17a674b (7)
+Apr 15 00:43:34 gbs01137 adclient[3523]: [ID 702911 auth.debug] DEBUG <fd:24 CAPIValidateUserGroup > base.objecthelper age 300, expire age 3600, cutoff time 0, refresh 5, negative=true, cacheOps 7
+Apr 15 00:43:34 gbs01137 adclient[3523]: [ID 702911 auth.debug] DEBUG <fd:24 CAPIValidateUserGroup > base.adagent findObject ADNames: CN=GBW06546,OU=Member Server,OU=GB,OU=Windows 2008,OU=Servers,DC=HBEU,DC=ADROOT,DC=DEMO
+Apr 15 00:43:34 gbs01137 name: CN=GBW06546,OU=Member Server,OU=GB,OU=Windows 2008,OU=Servers,DC=HBEU,DC=ADROOT,DC=DEMO type=FQDN domain=HBEU.ADROOT.DEMO
+Apr 15 00:43:34 gbs01137 adclient[3523]: [ID 702911 auth.debug] DEBUG <fd:24 CAPIValidateUserGroup > base.adagent Find DN: CN=GBW06546,OU=Member Server,OU=GB,OU=Windows 2008,OU=Servers,DC=HBEU,DC=ADROOT,DC=DEMO (7)
+Apr 15 00:43:34 gbs01137 adclient[3523]: [ID 702911 auth.debug] DEBUG <fd:24 CAPIValidateUserGroup > base.objecthelper age 2370, expire age 3600, cutoff time 0, refresh 5, negative=false, cacheOps 7

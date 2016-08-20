@@ -2,19 +2,25 @@
 import re, argparse, sys #re for regex, argparse for options, sys for argv
 #import operator  #may not need. holding as a reference though
 
-def usage():
-    print("USAGE RESULT PLACEHOLDER")
 
 # options designation (replaced getopt). 'log_file' is required positional
-parser = argparse.ArgumentParser(description='Log parser - INTERNAL ONLY')
-parser.add_argument("log_file",type=argparse.FileType('r'),default=sys.stdin,help='Log file for parsing')
-parser.add_argument('-s','--start',help='Line to begin parsing',required=False)
+parser = argparse.ArgumentParser(description='Log parser - For internal testing purposes only (for now)')
+parser.add_argument("log_file",metavar="<log_file>",type=argparse.FileType('r'),default=sys.stdin,help='Log file for parsing')
+parser.add_argument('-s','--start',metavar="#",help='Line to begin parsing (integer) - NOT IMPLEMENTED',required=False)
+#parser.add_argument('-e','--end',metavar="#",help='Line to stop parsing; if not EOF (integer)',required=False)
+#parser.add_argument('-t','--keys',help='Keywords to exclude. _____ delimiter - NOT IMPLEMENTED',required=False)
 args = parser.parse_args()
 
+''' not implemented
 
-# -s (need to address --start=x if warranted)
-if args.start:
-    print("start specified!!\n")
+start_line = 1
+#end_line =
+
+if args.start: print("Begin parsing at line: %s " % args.start)
+else: print("Begin parsing at line: 1")
+if args.end: print("End parsing at line: %s " % args.end)
+else: print("End parsing at EOF")
+'''
 
 
 
@@ -24,7 +30,7 @@ def main(argv):
         expr = '.*data.*'
         expr_comp = re.compile('(.*data.*)')
         
-        for m in re.finditer(expr, line.rstrip("\n"), re.S):
+        for m in re.finditer(expr, str(line.rstrip("\n")), re.S):
             print (m.group())
        #     return {m.group()}
 
@@ -37,10 +43,14 @@ def main(argv):
        #     if m:
        #         print (m.group())
 
+def start():
+    pass
 
-def parse(line2):
-    fmt = ('^date?')
-    m = re.search(fmt, line2)
+def end():
+    pass
+
+def call_count():
+    pass
 
 
 if __name__ == "__main__":
