@@ -39,34 +39,34 @@ else: print("End parsing at EOF")
 '''
 
 ## Globals declaraion ##
-nss_count = 0
-expr = '.*data.*'
-expr_comp = re.compile(r"(.*data.*)", re.MULTILINE)
-expr_pam = re.compile(r"(.*red.*)", re.MULTILINE)
-expr_nl = re.compile(r"\W+")
-expr_strings = ['.*data.*', 
+expr = '.*data.*' ## not used I don't think? really need to vet all these and cleanup the vars. Just been adding them willy nilly
+expr_comp = re.compile(r"(.*data.*)", re.M)
+expr_pam = re.compile(r"(.*red.*)", re.M)
+expr_nl = re.compile(r"\W+")  ## not used right now - testing
+expr_strings = ['.*data.*',   ## this is where all the "primary" regex patterns will be defined
                 '.*red.*',
                 '.*NSSGet.*']
-expr_counts = ['.*data.*']
-log = args.log_file
-canlog = args.log_file.name
-prov_log = 2#open(args.log_file, 'r')
-logtxt = 2#prov_log.read()
-has_run = False
-pam = 1
-nss = 2
+expr_counts = ['.*data.*']  ## uhhh
+log = args.log_file ## TextIOWrapper - primary file fed in as passed file
+canlog = args.log_file.name  ## cannonical name for passed file (technically an attribute of args.log_file
+prov_log = 2#open(args.log_file, 'r') ## testing
+logtxt = 2#prov_log.read() ## testing
+has_run = False ## used for early call_count() iteration (see commented code under main() 
+pam = 1 ## indicator for pam/nss count in main()
+nss = 2 ## ""
 #line = args.log_file.readline()
 ########################
 
 
 ## Primary logic / parser ##
 def main(argv):
+    ## pam/nss count - not actually pulling nss/pam counts. Those are effectively placeholder terms
     if args.start:          ## need to add clause for case where -s and -e are both specified
-        call_count(pam)
+        call_count(pam) # passes 1 to call_count()
     elif args.end:
-        call_count(nss)
+        call_count(nss) # passes 2 to call_count
  
-    with open(canlog) as f:
+    with open(canlog) as f: # opening our log file and assigning it the value 'f' in memory
        # line = args.log_file.readline() 
 #        global has_run 
 #        nss_count = re.match(expr_comp, line)
@@ -79,15 +79,15 @@ def main(argv):
 #            has_run = True
                 #break
         
-        for l in f:
-            for pat_list in expr_strings:
-                finditer = (re.findall(pat_list, l, re.S))
+        for l in f: # for line in provided file
+            for pat_list in expr_strings: # for regex pattern in expr_strings(defined above)
+                finditer = (re.findall(pat_list, l, re.S)) # effectively matches the patterns in expr_strings to each line in file, one-by-one
 
-                for i, m in enumerate(finditer):
-                    m = m.rstrip("\n")
-                    if re.match(expr_comp, m):
-                        m1 = []
-                        m1 += m
+                for i, m in enumerate(finditer): # i = index, m = match. enumerate returns two values (though i just returns 0. Something we need to look at)
+                    m = m.rstrip("\n") # strips \n to the right (readline() tags on a \n) 
+                    if re.match(expr_comp, m): # if expr_comp matches value returned as m
+                        m1 = [] # testing - blank array
+                        m1 += m # testing - add to array
                         print(m)
          #               print(''.join(m1))
                     if re.match(expr_pam, m):
@@ -98,7 +98,7 @@ def main(argv):
 
         
 
-def parse(argv): #testing - not called
+def parse(argv): #testing alternate primary logic for main() - not curretnly in use or called anywhere
     with open(canlog) as f:
         for line in f:
             for match in expr_comp.findall(f.readline()):
@@ -112,7 +112,7 @@ def parse(argv): #testing - not called
 #    prov_log.close()
 
 
-def test():
+def test(): # misc testing - not curretnly in use or called anywhere
     with open(args.log_file.name) as f:
         #for i in range(4):
         #    f.next()
@@ -130,18 +130,18 @@ def end():
 
 ## Count function for NSS/PAM calls ##
 def call_count(count):
-    with open(canlog) as f:
-        expr_pam2 = re.compile(r"(.*)", re.M)
-        expr_nss = re.compile(r"(.*data.*)", re.M)
-        l = log.readline() 
+    with open(canlog) as f: # open file and assign to 'f'
+        expr_pam2 = re.compile(r"(.*)", re.M) # essentailly assigning that pattern to the var.
+        expr_nss = re.compile(r"(.*data.*)", re.M) 
+        l = log.readline() # bane of existence. This needs to go into a for loop at some point. Reads line of file.
         pam_count = expr_pam2.match(l)       #not evaluating; why? ##because we are only seeing the first line!
-        nss_count = expr_nss.match(l)
-        print(pam_count)
-        print(nss_count)
-    if count == 1:
+        nss_count = expr_nss.match(l)  # basically assigning a match of expr_nss to l to a variable
+        print(pam_count) #debug
+        print(nss_count) #""
+    if count == 1: 
         if pam_count:  ## -s pam
             with open(canlog) as f:
-                num_lines = len(f.readline())
+                num_lines = len(f.readline()) # length (aka, how many lines) returned. HOWEVER, currently counting characters of first line I think. Return is odd. Need to pull this into a separate script/def and play with it. fuck readline
                 print ("PAM calls: %s \n" % num_lines)
     elif count == 2:   ## -e nss
         if nss_count:
