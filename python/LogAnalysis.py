@@ -61,12 +61,18 @@ nss = 2 ## ""
 ## Primary logic / parser ##
 def main(argv):
     ## pam/nss count - not actually pulling nss/pam counts. Those are effectively placeholder terms
-    if args.start:          ## need to add clause for case where -s and -e are both specified
-        call_count(pam) # passes 1 to call_count()
-    elif args.end:
-        call_count(nss) # passes 2 to call_count
+    if args.start and args.end:
+        call_count(nss)
+        call_count(pam)
+    else:
+        if args.start:          ## need to add clause for case where -s and -e are both specified
+            call_count(pam) # passes 1 to call_count()
+        if args.end:
+            call_count(nss) # passes 2 to call_count
  
     with open(colog) as f: # opening our log file and assigning it the value 'f' in memory
+        m_count = 0
+        m2_count = 0
        # line = args.log_file.readline() 
 #        global has_run 
 #        nss_count = re.match(expr_comp, line)
@@ -88,12 +94,18 @@ def main(argv):
                     #print("NUMTEST: %s" % len(m))
                     m = m.rstrip("\n") # strips \n to the right (readline() tags on a \n) 
                     if re.match(expr_comp, m): # if expr_comp matches value returned as m
+                        m_count += 1
                         m1 = [] # testing - blank array
                         m1 += m # testing - add to array
-                        print(m)
-         #               print(''.join(m1))
+                        m1 = ''.join(m1)
+                        m1 = len(m1)
+                        #print(counter)
+                        #print(''.join(m1))
                     if re.match(expr_pam, m):
-                        print(m)
+                        m2_count += 1
+                        #print(m)
+        print("There are '%s' instances of 'data' in the file: %s" % (m_count, colog))
+        print("There are '%s' instances of 'red' in the file: %s" % (m2_count, colog))
  
        # if not line: break #break for EOF
 
@@ -138,27 +150,21 @@ def call_count(count):
         l = log.readline() # bane of existence. This needs to go into a for loop at some point. Reads line of file.
         pam_count = expr_pam2.match(l)       #not evaluating; why? ##because we are only seeing the first line!
         nss_count = expr_nss.match(l)  # basically assigning a match of expr_nss to l to a variable
-        print(pam_count) #debug
-        print(nss_count) #""
+       # print(pam_count) #debug
+       # print(nss_count) #""
     if count == 1: 
         if pam_count:  ## -s pam
-            with open(colog) as f:
-                num_lines = len(f.readline()) # length (aka, how many lines) returned. HOWEVER, currently counting characters of first line I think. Return is odd. Need to pull this into a separate script/def and play with it. fuck readline
-                print ("PAM calls: %s \n" % num_lines)
+            num_lines = open(colog, 'r').read()
+            num_lines = len(num_lines.splitlines())
+            print ("PAM calls: %s \n" % num_lines) ## IT WORKS! - now to get it to apply for expr match :)
+            print("real count: %s" % p_count)
     elif count == 2:   ## -e nss
         if nss_count:
-            l = 0
-            with open(colog) as f:
-                for line in f:
-                    l += 1
-                    num_lines = len(f.readline())
-                    print ("NSS calls: %s \n" % l)
+            num_lines = open(colog, 'r').read()
+            num_lines = len(num_lines.splitlines())
+            print ("NSS calls: %s \n" % num_lines) ## IT WORKS! - now to get it to apply for expr match :)
     else:
         print("NADA!")
-    data = open(colog, 'r').read()
-    print("TEST: %s " % len(data.splitlines()))     ## IT WORKS! - now to get it to apply for expr match :)
- #   print("nss: %s \n" % nss_count)
- #   print("pam: %s \n" % pam_count)
     
 def adinfo_support():
         #if "adinfo_support" in str(args.log_file):
