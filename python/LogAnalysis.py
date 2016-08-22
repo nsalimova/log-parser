@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-import re, argparse, sys #re for regex, argparse for options, sys for argv
+import re, argparse, sys, string #re for regex, argparse for options, sys for argv
 #import operator, fileinput  
 
 # options designation (replaced getopt). 'log_file' is required positional
@@ -48,7 +48,7 @@ expr_strings = ['.*data.*',   ## this is where all the "primary" regex patterns 
                 '.*NSSGet.*']
 expr_counts = ['.*data.*']  ## uhhh
 log = args.log_file ## TextIOWrapper - primary file fed in as passed file
-canlog = args.log_file.name  ## cannonical name for passed file (technically an attribute of args.log_file
+colog = args.log_file.name  ## colloquial name for passed file (technically an attribute of args.log_file
 prov_log = 2#open(args.log_file, 'r') ## testing
 logtxt = 2#prov_log.read() ## testing
 has_run = False ## used for early call_count() iteration (see commented code under main() 
@@ -66,7 +66,7 @@ def main(argv):
     elif args.end:
         call_count(nss) # passes 2 to call_count
  
-    with open(canlog) as f: # opening our log file and assigning it the value 'f' in memory
+    with open(colog) as f: # opening our log file and assigning it the value 'f' in memory
        # line = args.log_file.readline() 
 #        global has_run 
 #        nss_count = re.match(expr_comp, line)
@@ -84,6 +84,8 @@ def main(argv):
                 finditer = (re.findall(pat_list, l, re.S)) # effectively matches the patterns in expr_strings to each line in file, one-by-one
 
                 for i, m in enumerate(finditer): # i = index, m = match. enumerate returns two values (though i just returns 0. Something we need to look at)
+                    num_lines = len(f.readline())
+                    #print("NUMTEST: %s" % len(m))
                     m = m.rstrip("\n") # strips \n to the right (readline() tags on a \n) 
                     if re.match(expr_comp, m): # if expr_comp matches value returned as m
                         m1 = [] # testing - blank array
@@ -99,7 +101,7 @@ def main(argv):
         
 
 def parse(argv): #testing alternate primary logic for main() - not curretnly in use or called anywhere
-    with open(canlog) as f:
+    with open(colog) as f:
         for line in f:
             for match in expr_comp.findall(f.readline()):
                 print(match)        #only matching starting at data3, why?
@@ -130,7 +132,7 @@ def end():
 
 ## Count function for NSS/PAM calls ##
 def call_count(count):
-    with open(canlog) as f: # open file and assign to 'f'
+    with open(colog) as f: # open file and assign to 'f'
         expr_pam2 = re.compile(r"(.*)", re.M) # essentailly assigning that pattern to the var.
         expr_nss = re.compile(r"(.*data.*)", re.M) 
         l = log.readline() # bane of existence. This needs to go into a for loop at some point. Reads line of file.
@@ -140,16 +142,21 @@ def call_count(count):
         print(nss_count) #""
     if count == 1: 
         if pam_count:  ## -s pam
-            with open(canlog) as f:
+            with open(colog) as f:
                 num_lines = len(f.readline()) # length (aka, how many lines) returned. HOWEVER, currently counting characters of first line I think. Return is odd. Need to pull this into a separate script/def and play with it. fuck readline
                 print ("PAM calls: %s \n" % num_lines)
     elif count == 2:   ## -e nss
         if nss_count:
-            with open(canlog) as f:
-                num_lines = len(f.readline())
-                print ("NSS calls: %s \n" % num_lines)
+            l = 0
+            with open(colog) as f:
+                for line in f:
+                    l += 1
+                    num_lines = len(f.readline())
+                    print ("NSS calls: %s \n" % l)
     else:
         print("NADA!")
+    data = open(colog, 'r').read()
+    print("TEST: %s " % len(data.splitlines()))     ## IT WORKS! - now to get it to apply for expr match :)
  #   print("nss: %s \n" % nss_count)
  #   print("pam: %s \n" % pam_count)
     
