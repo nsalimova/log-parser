@@ -12,6 +12,12 @@ parser.add_argument("log_file",
                         type=argparse.FileType('r'),
                         default=sys.stdin,
                         help='Log file for parsing')
+parser.add_argument('-o',
+                        '--out',
+                        metavar='<file>',
+                        #type=argparse.FileType('w'),
+                        #default=sys.stdout,
+                        help='Output results to <file>')
 parser.add_argument('-s',
                         '--start',
                         metavar="NUM",
@@ -20,7 +26,7 @@ parser.add_argument('-s',
 parser.add_argument('-e',
                         '--end',
                         metavar="NUM",
-                        help='Line to stop parsing; if not EOF (integer)',
+                        help='Line to stop parsing; if not EOF (integer) - NOT IMPLEMENTED',
                         required=False)
 parser.add_argument('-t',
                         '--keys',
@@ -56,33 +62,38 @@ def main(argv):
     global m2_count
     m_count = 0
     m2_count = 0
-    pam = 1 ## returns on -s invocation
+    l_count = 0
+    pam = 1 ## returns on -s invocation (just for testing the returns. s/e will be re-implemented later)
     nss = 2 ## returns on -e invocation
 
+    ## -o ##
+    if args.out is not None:
+        outtofile(args.out)
+        
+
  
-    with open(colog) as f: # opening our log file and assigning it the value 'f' in memory
-        for l in f: # for line in provided file
+    with open(colog) as f: 
+        for l in f: 
             for pat_list in expr_strings: 
                 finditer = (re.findall(pat_list, l, re.S))
                 for i, m in enumerate(finditer): 
-                    m = m.rstrip("\n") 
+                    m = m.rstrip("\n")
+                    l_count += 1
                     if re.match(expr_comp, m): 
                         m_count += 1
-#                        print(m)
+                        print(l_count, m)
                     if re.match(expr_pam, m):
                         m2_count += 1
-#                        print(m)
-        print("There are '%s' instances of 'data' in the file: %s" % (m_count, colog))
-        print("There are '%s' instances of 'red' in the file: %s" % (m2_count, colog))
-
-        ## invoke call_count() for NSS/PAM calls depending on arguments passed (-s/-e are placeholders)
-        if args.start and args.end: ## -s and -e
-            call_count(nss)
-            call_count(pam)
-        elif args.start: # -s
-                call_count(pam)
-        elif args.end:   # -e
-                call_count(nss)
+                        print(l_count, m)
+        call_count()
+        ## old logic for call_count(). Preserving for further testing (-s/-e are placeholders)
+    #    if args.start and args.end: ## -s and -e
+    #        call_count(nss)
+    #        call_count(pam)
+    #    elif args.start: # -s
+    #            call_count(pam)
+    #    elif args.end:   # -e
+    #            call_count(nss)
  
 ####################################
 
@@ -93,23 +104,30 @@ def main(argv):
 ####################################
 
 
-
-def start():
-    pass
-
-def end():
-    pass
+## Output to file designated with -o/--out ##
+def outtofile(f):
+    sys.stdout = open(f, "w")
 
 
 ## Count function for NSS/PAM calls ##
-def call_count(count):
-    if count == 1: 
-        print ("PAM calls: %s (value derived from pattern: %s" % (m_count, expr_comp))
-    elif count == 2:   ## -e nss
-        print ("NSS calls: %s (value derived from pattern: %s" % (m2_count, expr_pam)) 
-    else:
-        print("NADA!")
+def call_count():
+    print("NSS calls: '%s' in the file: %s" % (m_count, colog))
+    print("PAM calls: '%s' in the file: %s" % (m2_count, colog))
 
+        ## matches old logic in main(). Preserving for further testing
+    #if count == 1: 
+     #   print ("PAM calls: %s (value derived from pattern: %s" % (m_count, expr_comp))
+    #elif count == 2:   ## -e nss
+     #   print ("NSS calls: %s (value derived from pattern: %s" % (m2_count, expr_pam)) 
+    #else:
+    #    print("NADA!")
+
+
+
+################# in development
+
+
+#def call_count(count):
 # alt call_count - preserving until QA just to be safe
     #with open(colog) as f: # open file and assign to 'f'
         #expr_pam2 = re.compile(r"(.*)", re.M)
@@ -122,6 +140,13 @@ def call_count(count):
        # print(nss_count) #""
      #   pass
     
+def start():
+    pass
+
+def end():
+    pass
+
+
 def adinfo_support(): # still testing - not invoked
     if "adinfo_support" in str(args.log_file):
          print (args.log_file)
