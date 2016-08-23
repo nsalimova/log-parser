@@ -3,7 +3,7 @@ import re, argparse, sys, string #re for regex, argparse for options, sys for ar
 #import operator, fileinput  
 
 ####################################
-### Argument/other configuration ###
+#-- Argument/other configuration --#
 ####################################
 parser = argparse.ArgumentParser(description='Log parser - For internal testing purposes only (for now)')
 
@@ -36,8 +36,10 @@ parser.add_argument('-t',
 args = parser.parse_args()
 
 
+
+
 ####################################
-######## Globals declaraion ########
+#------- Globals declaraion -------#
 ####################################
 expr_comp = re.compile(r"(.*data.*)", re.M)
 expr_pam = re.compile(r"(.*red.*)", re.M)
@@ -48,59 +50,52 @@ colog = args.log_file.name  ## colloquial name for passed file (attribute of arg
 # All "relevant logs" should match a pattern in this array
 expr_strings = ['.*data.*', 
                 '.*red.*',
+                '.*CAPIValidate.*adagent.*',
                 '.*example.*']
-####################################
 
 
 
 
 ####################################
-###### Primary logic / parser ######
+#----- Primary logic / parser -----#
 ####################################
 def main(argv):
-    global m_count
-    global m2_count
-    m_count = 0
-    m2_count = 0
-    l_count = 0
+    global m_count, m2_count
+    m_count, m2_count, l_count = (0, 0, 0)
     pam = 1 ## returns on -s invocation (just for testing the returns. s/e will be re-implemented later)
     nss = 2 ## returns on -e invocation
 
     ## -o ##
     if args.out is not None:
         outtofile(args.out)
-        
+    ########
 
- 
+    ## Core parsing logic ##
     with open(colog) as f: 
         for l in f: 
             for pat_list in expr_strings: 
                 finditer = (re.findall(pat_list, l, re.S))
+
+            ## Print lines matching patterns provided in expr_strings[] ##
                 for i, m in enumerate(finditer): 
                     m = m.rstrip("\n")
                     l_count += 1
+                    print(l_count, m) 
+
+            ## Fringe-case pattern matching - Currently demo for NSS/PAM count logic ##
                     if re.match(expr_comp, m): 
                         m_count += 1
-                        print(l_count, m)
+                   #     print(l_count, m)
                     if re.match(expr_pam, m):
                         m2_count += 1
-                        print(l_count, m)
+                   #     print(l_count, m)
         call_count()
-        ## old logic for call_count(). Preserving for further testing (-s/-e are placeholders)
-    #    if args.start and args.end: ## -s and -e
-    #        call_count(nss)
-    #        call_count(pam)
-    #    elif args.start: # -s
-    #            call_count(pam)
-    #    elif args.end:   # -e
-    #            call_count(nss)
  
-####################################
 
 
         
 ####################################
-###### Supplemental functions ######
+#----- Supplemental functions -----#
 ####################################
 
 
@@ -114,17 +109,22 @@ def call_count():
     print("NSS calls: '%s' in the file: %s" % (m_count, colog))
     print("PAM calls: '%s' in the file: %s" % (m2_count, colog))
 
-        ## matches old logic in main(). Preserving for further testing
-    #if count == 1: 
-     #   print ("PAM calls: %s (value derived from pattern: %s" % (m_count, expr_comp))
-    #elif count == 2:   ## -e nss
-     #   print ("NSS calls: %s (value derived from pattern: %s" % (m2_count, expr_pam)) 
-    #else:
-    #    print("NADA!")
 
 
 
-################# in development
+
+
+
+
+######################### in development
+
+def string_match(sm, lc):
+    for i, m in enumerate(sm): 
+        m = m.rstrip("\n")
+        lc += 1
+        print(lc, m)
+    
+    
 
 
 #def call_count(count):
