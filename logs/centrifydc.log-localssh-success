@@ -1,0 +1,533 @@
+Aug 24 11:48:14 rhel65 adclient[3543]: DEBUG <fd:16 ping > daemon.ipclient1 executing request 'ping' in thread 140309188671232
+Aug 24 11:48:14 rhel65 adclient[3543]: DEBUG <fd:16 ping > daemon.ipclient1 Responding ping request now.
+Aug 24 11:48:14 rhel65 adclient[3543]: DEBUG <main> daemon.ipcserver lrpc client disconnected normally <fd:16>
+Aug 24 11:48:19 rhel65 sshd[4248]: debug3: fd 5 is not O_NONBLOCK
+Aug 24 11:48:19 rhel65 sshd[4248]: debug1: Forked child 4710.
+Aug 24 11:48:19 rhel65 sshd[4248]: debug3: send_rexec_state: entering fd = 8 config len 449
+Aug 24 11:48:19 rhel65 sshd[4248]: debug3: ssh_msg_send: type 0
+Aug 24 11:48:19 rhel65 sshd[4248]: debug3: send_rexec_state: done
+Aug 24 11:48:19 rhel65 sshd[4710]: debug3: oom_adjust_restore
+Aug 24 11:48:19 rhel65 sshd[4710]: debug1: Set /proc/self/oom_score_adj to 0
+Aug 24 11:48:19 rhel65 sshd[4710]: debug1: rexec start in 5 out 5 newsock 5 pipe 7 sock 8
+Aug 24 11:48:19 rhel65 sshd[4710]: debug1: inetd sockets after dupping: 3, 3
+Aug 24 11:48:19 rhel65 sshd[4710]: Connection from 10.0.0.15 port 36013 on 10.0.0.16 port 22
+Aug 24 11:48:19 rhel65 sshd[4710]: debug1: Client protocol version 2.0; client software version OpenSSH_6.6.1
+Aug 24 11:48:19 rhel65 sshd[4710]: debug1: match: OpenSSH_6.6.1 pat OpenSSH_6.6.1* compat 0x04000000
+Aug 24 11:48:19 rhel65 sshd[4710]: debug1: Enabling compatibility mode for protocol 2.0
+Aug 24 11:48:19 rhel65 sshd[4710]: debug1: Local version string SSH-2.0-OpenSSH_7.1
+Aug 24 11:48:19 rhel65 sshd[4710]: debug2: fd 3 setting O_NONBLOCK
+Aug 24 11:48:19 rhel65 sshd[4710]: debug3: ssh_sandbox_init: preparing rlimit sandbox
+Aug 24 11:48:19 rhel65 sshd[4710]: debug2: Network child is on pid 4711
+Aug 24 11:48:19 rhel65 sshd[4710]: debug3: preauth child monitor started
+Aug 24 11:48:19 rhel65 sshd[4710]: debug3: privsep user:group 74:74 [preauth]
+Aug 24 11:48:19 rhel65 sshd[4710]: debug1: permanently_set_uid: 74/74 [preauth]
+Aug 24 11:48:19 rhel65 sshd[4710]: debug3: list_hostkey_types: ssh-dss key not permitted by HostkeyAlgorithms [preauth]
+Aug 24 11:48:19 rhel65 sshd[4710]: debug1: list_hostkey_types: ssh-rsa,ecdsa-sha2-nistp256,ssh-ed25519 [preauth]
+Aug 24 11:48:19 rhel65 sshd[4710]: debug3: mm_request_send entering: type 42 [MONITOR_REQ_GSSSETUP] [preauth]
+Aug 24 11:48:19 rhel65 sshd[4710]: debug3: mm_request_receive entering
+Aug 24 11:48:19 rhel65 sshd[4710]: debug3: monitor_read: checking request 42 [MONITOR_REQ_GSSSETUP]
+Aug 24 11:48:19 rhel65 sshd[4710]: debug3: mm_request_send entering: type 43 [MONITOR_ANS_GSSSETUP]
+Aug 24 11:48:19 rhel65 sshd[4710]: debug3: mm_request_receive_expect entering: type 43 [MONITOR_ANS_GSSSETUP] [preauth]
+Aug 24 11:48:19 rhel65 sshd[4710]: debug3: mm_request_receive entering [preauth]
+Aug 24 11:48:19 rhel65 sshd[4710]: debug1: SSH2_MSG_KEXINIT sent [preauth]
+Aug 24 11:48:19 rhel65 sshd[4710]: debug1: SSH2_MSG_KEXINIT received [preauth]
+Aug 24 11:48:19 rhel65 sshd[4710]: debug2: kex_parse_kexinit: gss-gex-sha1-toWM5Slw5Ew8Mqkay+al2g==,gss-group1-sha1-toWM5Slw5Ew8Mqkay+al2g==,gss-group14-sha1-toWM5Slw5Ew8Mqkay+al2g==,curve25519-sha256@libssh.org,ecdh-sha2-nistp256,ecdh-sha2-nistp384,ecdh-sha2-nistp521,diffie-hellman-group-exchange-sha256,diffie-hellman-group14-sha1 [preauth]
+Aug 24 11:48:19 rhel65 sshd[4710]: debug2: kex_parse_kexinit: ssh-rsa,ecdsa-sha2-nistp256,ssh-ed25519 [preauth]
+Aug 24 11:48:19 rhel65 sshd[4710]: debug2: kex_parse_kexinit: chacha20-poly1305@openssh.com,aes128-ctr,aes192-ctr,aes256-ctr [preauth]
+Aug 24 11:48:19 rhel65 sshd[4710]: debug2: kex_parse_kexinit: chacha20-poly1305@openssh.com,aes128-ctr,aes192-ctr,aes256-ctr [preauth]
+Aug 24 11:48:19 rhel65 sshd[4710]: debug2: kex_parse_kexinit: umac-64-etm@openssh.com,umac-128-etm@openssh.com,hmac-sha2-256-etm@openssh.com,hmac-sha2-512-etm@openssh.com,hmac-sha1-etm@openssh.com,umac-64@openssh.com,umac-128@openssh.com,hmac-sha2-256,hmac-sha2-512,hmac-sha1 [preauth]
+Aug 24 11:48:19 rhel65 sshd[4710]: debug2: kex_parse_kexinit: umac-64-etm@openssh.com,umac-128-etm@openssh.com,hmac-sha2-256-etm@openssh.com,hmac-sha2-512-etm@openssh.com,hmac-sha1-etm@openssh.com,umac-64@openssh.com,umac-128@openssh.com,hmac-sha2-256,hmac-sha2-512,hmac-sha1 [preauth]
+Aug 24 11:48:19 rhel65 sshd[4710]: debug2: kex_parse_kexinit: none,zlib@openssh.com [preauth]
+Aug 24 11:48:19 rhel65 sshd[4710]: debug2: kex_parse_kexinit: none,zlib@openssh.com [preauth]
+Aug 24 11:48:19 rhel65 sshd[4710]: debug2: kex_parse_kexinit:  [preauth]
+Aug 24 11:48:19 rhel65 sshd[4710]: debug2: kex_parse_kexinit:  [preauth]
+Aug 24 11:48:19 rhel65 sshd[4710]: debug2: kex_parse_kexinit: first_kex_follows 0  [preauth]
+Aug 24 11:48:19 rhel65 sshd[4710]: debug2: kex_parse_kexinit: reserved 0  [preauth]
+Aug 24 11:48:19 rhel65 sshd[4710]: debug2: kex_parse_kexinit: curve25519-sha256@libssh.org,ecdh-sha2-nistp256,ecdh-sha2-nistp384,ecdh-sha2-nistp521,diffie-hellman-group-exchange-sha256,diffie-hellman-group-exchange-sha1,diffie-hellman-group14-sha1,diffie-hellman-group1-sha1 [preauth]
+Aug 24 11:48:19 rhel65 sshd[4710]: debug2: kex_parse_kexinit: ecdsa-sha2-nistp256-cert-v01@openssh.com,ecdsa-sha2-nistp384-cert-v01@openssh.com,ecdsa-sha2-nistp521-cert-v01@openssh.com,ssh-ed25519-cert-v01@openssh.com,ssh-rsa-cert-v01@openssh.com,ssh-dss-cert-v01@openssh.com,ssh-rsa-cert-v00@openssh.com,ssh-dss-cert-v00@openssh.com,ecdsa-sha2-nistp256,ecdsa-sha2-nistp384,ecdsa-sha2-nistp521,ssh-ed25519,ssh-rsa,ssh-dss [preauth]
+Aug 24 11:48:19 rhel65 sshd[4710]: debug2: kex_parse_kexinit: aes128-ctr,aes192-ctr,aes256-ctr,arcfour256,arcfour128,aes128-gcm@openssh.com,aes256-gcm@openssh.com,chacha20-poly1305@openssh.com,aes128-cbc,3des-cbc,blowfish-cbc,cast128-cbc,aes192-cbc,aes256-cbc,arcfour,rijndael-cbc@lysator.liu.se [preauth]
+Aug 24 11:48:19 rhel65 sshd[4710]: debug2: kex_parse_kexinit: aes128-ctr,aes192-ctr,aes256-ctr,arcfour256,arcfour128,aes128-gcm@openssh.com,aes256-gcm@openssh.com,chacha20-poly1305@openssh.com,aes128-cbc,3des-cbc,blowfish-cbc,cast128-cbc,aes192-cbc,aes256-cbc,arcfour,rijndael-cbc@lysator.liu.se [preauth]
+Aug 24 11:48:19 rhel65 sshd[4710]: debug2: kex_parse_kexinit: hmac-md5-etm@openssh.com,hmac-sha1-etm@openssh.com,umac-64-etm@openssh.com,umac-128-etm@openssh.com,hmac-sha2-256-etm@openssh.com,hmac-sha2-512-etm@openssh.com,hmac-ripemd160-etm@openssh.com,hmac-sha1-96-etm@openssh.com,hmac-md5-96-etm@openssh.com,hmac-md5,hmac-sha1,umac-64@openssh.com,umac-128@openssh.com,hmac-sha2-256,hmac-sha2-512,hmac-ripemd160,hmac-ripemd160@openssh.com,hmac-sha1-96,hmac-md5-96 [preauth]
+Aug 24 11:48:19 rhel65 sshd[4710]: debug2: kex_parse_kexinit: hmac-md5-etm@openssh.com,hmac-sha1-etm@openssh.com,umac-64-etm@openssh.com,umac-128-etm@openssh.com,hmac-sha2-256-etm@openssh.com,hmac-sha2-512-etm@openssh.com,hmac-ripemd160-etm@openssh.com,hmac-sha1-96-etm@openssh.com,hmac-md5-96-etm@openssh.com,hmac-md5,hmac-sha1,umac-64@openssh.com,umac-128@openssh.com,hmac-sha2-256,hmac-sha2-512,hmac-ripemd160,hmac-ripemd160@openssh.com,hmac-sha1-96,hmac-md5-96 [preauth]
+Aug 24 11:48:19 rhel65 sshd[4710]: debug2: kex_parse_kexinit: none,zlib@openssh.com,zlib [preauth]
+Aug 24 11:48:19 rhel65 sshd[4710]: debug2: kex_parse_kexinit: none,zlib@openssh.com,zlib [preauth]
+Aug 24 11:48:19 rhel65 sshd[4710]: debug2: kex_parse_kexinit:  [preauth]
+Aug 24 11:48:19 rhel65 sshd[4710]: debug2: kex_parse_kexinit:  [preauth]
+Aug 24 11:48:19 rhel65 sshd[4710]: debug2: kex_parse_kexinit: first_kex_follows 0  [preauth]
+Aug 24 11:48:19 rhel65 sshd[4710]: debug2: kex_parse_kexinit: reserved 0  [preauth]
+Aug 24 11:48:19 rhel65 sshd[4710]: debug1: kex: client->server aes128-ctr hmac-sha1-etm@openssh.com none [preauth]
+Aug 24 11:48:19 rhel65 sshd[4710]: debug1: kex: server->client aes128-ctr hmac-sha1-etm@openssh.com none [preauth]
+Aug 24 11:48:19 rhel65 sshd[4710]: debug1: expecting SSH2_MSG_KEX_ECDH_INIT [preauth]
+Aug 24 11:48:19 rhel65 sshd[4710]: debug3: mm_key_sign entering [preauth]
+Aug 24 11:48:19 rhel65 sshd[4710]: debug3: mm_request_send entering: type 6 [MONITOR_REQ_SIGN] [preauth]
+Aug 24 11:48:19 rhel65 sshd[4710]: debug3: mm_request_receive entering
+Aug 24 11:48:19 rhel65 sshd[4710]: debug3: monitor_read: checking request 6 [MONITOR_REQ_SIGN]
+Aug 24 11:48:19 rhel65 sshd[4710]: debug3: mm_answer_sign
+Aug 24 11:48:19 rhel65 sshd[4710]: debug3: mm_answer_sign: hostkey proof signature 0x7fd075f5a9b0(100)
+Aug 24 11:48:19 rhel65 sshd[4710]: debug3: mm_request_send entering: type 7 [MONITOR_ANS_SIGN]
+Aug 24 11:48:19 rhel65 sshd[4710]: debug2: monitor_read: 6 used once, disabling now
+Aug 24 11:48:19 rhel65 sshd[4710]: debug3: mm_key_sign: waiting for MONITOR_ANS_SIGN [preauth]
+Aug 24 11:48:19 rhel65 sshd[4710]: debug3: mm_request_receive_expect entering: type 7 [MONITOR_ANS_SIGN] [preauth]
+Aug 24 11:48:19 rhel65 sshd[4710]: debug3: mm_request_receive entering [preauth]
+Aug 24 11:48:19 rhel65 sshd[4710]: debug2: set_newkeys: mode 1 [preauth]
+Aug 24 11:48:19 rhel65 sshd[4710]: debug1: SSH2_MSG_NEWKEYS sent [preauth]
+Aug 24 11:48:19 rhel65 sshd[4710]: debug1: expecting SSH2_MSG_NEWKEYS [preauth]
+Aug 24 11:48:20 rhel65 sshd[4710]: debug2: set_newkeys: mode 0 [preauth]
+Aug 24 11:48:20 rhel65 sshd[4710]: debug1: SSH2_MSG_NEWKEYS received [preauth]
+Aug 24 11:48:20 rhel65 sshd[4710]: debug1: KEX done [preauth]
+Aug 24 11:48:20 rhel65 sshd[4710]: debug1: userauth-request for user testuser service ssh-connection method none [preauth]
+Aug 24 11:48:20 rhel65 sshd[4710]: debug1: attempt 0 failures 0 [preauth]
+Aug 24 11:48:20 rhel65 sshd[4710]: debug3: mm_getpwnamallow entering [preauth]
+Aug 24 11:48:20 rhel65 sshd[4710]: debug3: mm_request_send entering: type 8 [MONITOR_REQ_PWNAM] [preauth]
+Aug 24 11:48:20 rhel65 sshd[4710]: debug3: mm_getpwnamallow: waiting for MONITOR_ANS_PWNAM [preauth]
+Aug 24 11:48:20 rhel65 sshd[4710]: debug3: mm_request_receive_expect entering: type 9 [MONITOR_ANS_PWNAM] [preauth]
+Aug 24 11:48:20 rhel65 sshd[4710]: debug3: mm_request_receive entering [preauth]
+Aug 24 11:48:20 rhel65 sshd[4710]: debug3: mm_request_receive entering
+Aug 24 11:48:20 rhel65 sshd[4710]: debug3: monitor_read: checking request 8 [MONITOR_REQ_PWNAM]
+Aug 24 11:48:20 rhel65 sshd[4710]: debug3: mm_answer_pwnamallow
+Aug 24 11:48:20 rhel65 sshd[4710]: debug2: parse_server_config: config reprocess config len 449
+Aug 24 11:48:20 rhel65 sshd[4710]: debug3: mm_answer_pwnamallow: sending MONITOR_ANS_PWNAM: 1
+Aug 24 11:48:20 rhel65 sshd[4710]: debug3: mm_request_send entering: type 9 [MONITOR_ANS_PWNAM]
+Aug 24 11:48:20 rhel65 sshd[4710]: debug2: monitor_read: 8 used once, disabling now
+Aug 24 11:48:20 rhel65 sshd[4710]: debug2: input_userauth_request: setting up authctxt for testuser [preauth]
+Aug 24 11:48:20 rhel65 sshd[4710]: debug3: mm_start_pam entering [preauth]
+Aug 24 11:48:20 rhel65 sshd[4710]: debug3: mm_request_send entering: type 100 [MONITOR_REQ_PAM_START] [preauth]
+Aug 24 11:48:20 rhel65 sshd[4710]: debug3: mm_inform_authserv entering [preauth]
+Aug 24 11:48:20 rhel65 sshd[4710]: debug3: mm_request_send entering: type 4 [MONITOR_REQ_AUTHSERV] [preauth]
+Aug 24 11:48:20 rhel65 sshd[4710]: debug3: mm_inform_authrole entering [preauth]
+Aug 24 11:48:20 rhel65 sshd[4710]: debug3: mm_request_send entering: type 80 [MONITOR_REQ_AUTHROLE] [preauth]
+Aug 24 11:48:20 rhel65 sshd[4710]: debug3: mm_auth2_read_banner entering [preauth]
+Aug 24 11:48:20 rhel65 sshd[4710]: debug3: mm_request_send entering: type 10 [MONITOR_REQ_AUTH2_READ_BANNER] [preauth]
+Aug 24 11:48:20 rhel65 sshd[4710]: debug3: mm_request_receive_expect entering: type 11 [MONITOR_ANS_AUTH2_READ_BANNER] [preauth]
+Aug 24 11:48:20 rhel65 sshd[4710]: debug3: mm_request_receive entering [preauth]
+Aug 24 11:48:20 rhel65 sshd[4710]: debug3: mm_request_receive entering
+Aug 24 11:48:20 rhel65 sshd[4710]: debug3: monitor_read: checking request 100 [MONITOR_REQ_PAM_START]
+Aug 24 11:48:20 rhel65 sshd[4710]: debug1: PAM: initializing for "testuser"
+Aug 24 11:48:20 rhel65 sshd[4710]: debug1: PAM: setting PAM_RHOST to "10.0.0.15"
+Aug 24 11:48:20 rhel65 sshd[4710]: debug1: PAM: setting PAM_TTY to "ssh"
+Aug 24 11:48:20 rhel65 sshd[4710]: debug2: monitor_read: 100 used once, disabling now
+Aug 24 11:48:20 rhel65 sshd[4710]: debug3: mm_request_receive entering
+Aug 24 11:48:20 rhel65 sshd[4710]: debug3: monitor_read: checking request 4 [MONITOR_REQ_AUTHSERV]
+Aug 24 11:48:20 rhel65 sshd[4710]: debug3: mm_answer_authserv: service=ssh-connection, style=
+Aug 24 11:48:20 rhel65 sshd[4710]: debug2: monitor_read: 4 used once, disabling now
+Aug 24 11:48:20 rhel65 sshd[4710]: debug3: mm_request_receive entering
+Aug 24 11:48:20 rhel65 sshd[4710]: debug3: monitor_read: checking request 80 [MONITOR_REQ_AUTHROLE]
+Aug 24 11:48:20 rhel65 sshd[4710]: debug3: mm_answer_authrole: role=
+Aug 24 11:48:20 rhel65 sshd[4710]: debug2: monitor_read: 80 used once, disabling now
+Aug 24 11:48:20 rhel65 sshd[4710]: debug3: mm_request_receive entering
+Aug 24 11:48:20 rhel65 sshd[4710]: debug3: monitor_read: checking request 10 [MONITOR_REQ_AUTH2_READ_BANNER]
+Aug 24 11:48:20 rhel65 sshd[4710]: debug3: mm_request_send entering: type 11 [MONITOR_ANS_AUTH2_READ_BANNER]
+Aug 24 11:48:20 rhel65 sshd[4710]: debug2: monitor_read: 10 used once, disabling now
+Aug 24 11:48:20 rhel65 sshd[4710]: debug1: userauth_send_banner: sent [preauth]
+Aug 24 11:48:20 rhel65 sshd[4710]: debug2: input_userauth_request: try method none [preauth]
+Aug 24 11:48:20 rhel65 sshd[4710]: debug3: userauth_finish: failure partial=0 next methods="publickey,gssapi-keyex,gssapi-with-mic,password,keyboard-interactive" [preauth]
+Aug 24 11:48:20 rhel65 sshd[4710]: debug1: userauth-request for user testuser service ssh-connection method publickey [preauth]
+Aug 24 11:48:20 rhel65 sshd[4710]: debug1: attempt 1 failures 0 [preauth]
+Aug 24 11:48:20 rhel65 sshd[4710]: debug2: input_userauth_request: try method publickey [preauth]
+Aug 24 11:48:20 rhel65 sshd[4710]: userauth_pubkey: key type ssh-dss not in PubkeyAcceptedKeyTypes [preauth]
+Aug 24 11:48:20 rhel65 sshd[4710]: debug2: userauth_pubkey: authenticated 0 pkalg ssh-dss [preauth]
+Aug 24 11:48:20 rhel65 sshd[4710]: debug3: userauth_finish: failure partial=0 next methods="publickey,gssapi-keyex,gssapi-with-mic,password,keyboard-interactive" [preauth]
+Aug 24 11:48:20 rhel65 sshd[4710]: debug1: userauth-request for user testuser service ssh-connection method keyboard-interactive [preauth]
+Aug 24 11:48:20 rhel65 sshd[4710]: debug1: attempt 2 failures 1 [preauth]
+Aug 24 11:48:20 rhel65 sshd[4710]: debug2: input_userauth_request: try method keyboard-interactive [preauth]
+Aug 24 11:48:20 rhel65 sshd[4710]: debug1: keyboard-interactive devs  [preauth]
+Aug 24 11:48:20 rhel65 sshd[4710]: debug1: auth2_challenge: user=testuser devs= [preauth]
+Aug 24 11:48:20 rhel65 sshd[4710]: debug1: kbdint_alloc: devices 'pam' [preauth]
+Aug 24 11:48:20 rhel65 sshd[4710]: debug2: auth2_challenge_start: devices pam [preauth]
+Aug 24 11:48:20 rhel65 sshd[4710]: debug2: kbdint_next_device: devices <empty> [preauth]
+Aug 24 11:48:20 rhel65 sshd[4710]: debug1: auth2_challenge_start: trying authentication method 'pam' [preauth]
+Aug 24 11:48:20 rhel65 sshd[4710]: debug3: mm_sshpam_init_ctx [preauth]
+Aug 24 11:48:20 rhel65 sshd[4710]: debug3: mm_request_send entering: type 104 [MONITOR_REQ_PAM_INIT_CTX] [preauth]
+Aug 24 11:48:20 rhel65 sshd[4710]: debug3: mm_sshpam_init_ctx: waiting for MONITOR_ANS_PAM_INIT_CTX [preauth]
+Aug 24 11:48:20 rhel65 sshd[4710]: debug3: mm_request_receive_expect entering: type 105 [MONITOR_ANS_PAM_INIT_CTX] [preauth]
+Aug 24 11:48:20 rhel65 sshd[4710]: debug3: mm_request_receive entering [preauth]
+Aug 24 11:48:20 rhel65 sshd[4710]: debug3: mm_request_receive entering
+Aug 24 11:48:20 rhel65 sshd[4710]: debug3: monitor_read: checking request 104 [MONITOR_REQ_PAM_INIT_CTX]
+Aug 24 11:48:20 rhel65 sshd[4710]: debug3: mm_answer_pam_init_ctx
+Aug 24 11:48:20 rhel65 sshd[4710]: debug3: PAM: sshpam_init_ctx entering
+Aug 24 11:48:20 rhel65 sshd[4710]: debug3: mm_request_send entering: type 105 [MONITOR_ANS_PAM_INIT_CTX]
+Aug 24 11:48:20 rhel65 sshd[4710]: debug3: mm_sshpam_query [preauth]
+Aug 24 11:48:20 rhel65 sshd[4710]: debug3: mm_request_send entering: type 106 [MONITOR_REQ_PAM_QUERY] [preauth]
+Aug 24 11:48:20 rhel65 sshd[4710]: debug3: mm_sshpam_query: waiting for MONITOR_ANS_PAM_QUERY [preauth]
+Aug 24 11:48:20 rhel65 sshd[4710]: debug3: mm_request_receive_expect entering: type 107 [MONITOR_ANS_PAM_QUERY] [preauth]
+Aug 24 11:48:20 rhel65 sshd[4710]: debug3: mm_request_receive entering [preauth]
+Aug 24 11:48:20 rhel65 sshd[4710]: debug3: mm_request_receive entering
+Aug 24 11:48:20 rhel65 sshd[4710]: debug3: monitor_read: checking request 106 [MONITOR_REQ_PAM_QUERY]
+Aug 24 11:48:20 rhel65 sshd[4710]: debug3: mm_answer_pam_query
+Aug 24 11:48:20 rhel65 sshd[4710]: debug3: PAM: sshpam_query entering
+Aug 24 11:48:20 rhel65 sshd[4710]: debug3: ssh_msg_recv entering
+Aug 24 11:48:20 rhel65 adclient[3543]: DEBUG <main> daemon.ipcserver Accepted new lrpc2 client on <fd:16> with flags 0x00000802
+Aug 24 11:48:20 rhel65 adclient[3543]: DEBUG <fd:16 sshd(4712)> -> pam_sm_authenticate
+Aug 24 11:48:20 rhel65 adclient[3543]: DEBUG <fd:16 sshd(4712)> PAM Options: (none)
+Aug 24 11:48:20 rhel65 adclient[3543]: DEBUG <fd:16 sshd(4712)> PAM Flags: DISALLOW_NULL_AUTHTOK
+Aug 24 11:48:20 rhel65 adclient[3543]: DEBUG <fd:16 sshd(4712)> check_smartcard_user [0]
+Aug 24 11:48:20 rhel65 adclient[3543]: DEBUG <fd:16 sshd(4712)> smartcard.allow.noeku is set to 0.
+Aug 24 11:48:20 rhel65 adclient[3543]: DEBUG <fd:16 sshd(4712)> invoke_pkinit() : 0
+Aug 24 11:48:20 rhel65 adclient[3543]: DEBUG <fd:16 sshd(4712)> pam_sm_common() failed 25
+Aug 24 11:48:20 rhel65 adclient[3543]: DEBUG <fd:16 sshd(4712)> <- pam_sm_authenticate, result=PAM_IGNORE(25)
+Aug 24 11:48:20 rhel65 adclient[3543]: DEBUG <main> daemon.ipcserver lrpc client disconnected normally <fd:16>
+Aug 24 11:48:20 rhel65 adclient[3543]: DEBUG <main> daemon.ipcserver Accepted new lrpc2 client on <fd:16> with flags 0x00000802
+Aug 24 11:48:20 rhel65 adclient[3543]: DEBUG <fd:16 sshd(4712)> -> pam_sm_authenticate
+Aug 24 11:48:20 rhel65 adclient[3543]: DEBUG <fd:16 sshd(4712)> PAM Options: deny
+Aug 24 11:48:20 rhel65 adclient[3543]: DEBUG <fd:16 sshd(4712)> PAM Flags: DISALLOW_NULL_AUTHTOK
+Aug 24 11:48:20 rhel65 adclient[3543]: DEBUG <fd:16 sshd(4712)> check_smartcard_user [0]
+Aug 24 11:48:20 rhel65 adclient[3543]: DEBUG <fd:16 sshd(4712)> smartcard.allow.noeku is set to 0.
+Aug 24 11:48:20 rhel65 adclient[3543]: DEBUG <fd:16 sshd(4712)> invoke_pkinit() : 0
+Aug 24 11:48:20 rhel65 adclient[3543]: DEBUG <fd:16 sshd(4712)> pam_sm_common() failed 25
+Aug 24 11:48:20 rhel65 adclient[3543]: DEBUG <fd:16 sshd(4712)> <- pam_sm_authenticate, result=PAM_IGNORE(25)
+Aug 24 11:48:20 rhel65 adclient[3543]: DEBUG <main> daemon.ipcserver lrpc client disconnected normally <fd:16>
+Aug 24 11:48:20 rhel65 sshd[4712]: debug3: PAM: sshpam_thread_conv entering, 1 messages
+Aug 24 11:48:20 rhel65 sshd[4712]: debug3: ssh_msg_send: type 1
+Aug 24 11:48:20 rhel65 sshd[4710]: debug3: mm_request_send entering: type 107 [MONITOR_ANS_PAM_QUERY]
+Aug 24 11:48:20 rhel65 sshd[4710]: debug3: mm_sshpam_query: pam_query returned 0 [preauth]
+Aug 24 11:48:20 rhel65 sshd[4710]: Postponed keyboard-interactive for testuser from 10.0.0.15 port 36013 ssh2 [preauth]
+Aug 24 11:48:20 rhel65 sshd[4712]: debug3: ssh_msg_recv entering
+Aug 24 11:48:22 rhel65 adclient[3543]: DEBUG <gpworker> daemon.main gp running = Wed Aug 24 11:48:22 2016, 
+Aug 24 11:48:22 rhel65 adclient[3543]: DEBUG <gpworker> gp.processor Check monitored user policyset: [rook]
+Aug 24 11:48:22 rhel65 adclient[3543]: DEBUG <gpworker> gp.processor Check monitored machine policyset
+Aug 24 11:48:22 rhel65 sshd[4710]: debug3: mm_sshpam_respond [preauth]
+Aug 24 11:48:22 rhel65 sshd[4710]: debug3: mm_request_send entering: type 108 [MONITOR_REQ_PAM_RESPOND] [preauth]
+Aug 24 11:48:22 rhel65 sshd[4710]: debug3: mm_sshpam_respond: waiting for MONITOR_ANS_PAM_RESPOND [preauth]
+Aug 24 11:48:22 rhel65 sshd[4710]: debug3: mm_request_receive_expect entering: type 109 [MONITOR_ANS_PAM_RESPOND] [preauth]
+Aug 24 11:48:22 rhel65 sshd[4710]: debug3: mm_request_receive entering [preauth]
+Aug 24 11:48:22 rhel65 sshd[4710]: debug3: mm_request_receive entering
+Aug 24 11:48:22 rhel65 sshd[4710]: debug3: monitor_read: checking request 108 [MONITOR_REQ_PAM_RESPOND]
+Aug 24 11:48:22 rhel65 sshd[4710]: debug3: mm_answer_pam_respond
+Aug 24 11:48:22 rhel65 sshd[4710]: debug2: PAM: sshpam_respond entering, 1 responses
+Aug 24 11:48:22 rhel65 sshd[4710]: debug3: ssh_msg_send: type 6
+Aug 24 11:48:22 rhel65 sshd[4710]: debug3: mm_request_send entering: type 109 [MONITOR_ANS_PAM_RESPOND]
+Aug 24 11:48:22 rhel65 sshd[4710]: debug3: mm_sshpam_respond: pam_respond returned 1 [preauth]
+Aug 24 11:48:22 rhel65 sshd[4710]: debug3: mm_sshpam_query [preauth]
+Aug 24 11:48:22 rhel65 sshd[4710]: debug3: mm_request_send entering: type 106 [MONITOR_REQ_PAM_QUERY] [preauth]
+Aug 24 11:48:22 rhel65 sshd[4710]: debug3: mm_sshpam_query: waiting for MONITOR_ANS_PAM_QUERY [preauth]
+Aug 24 11:48:22 rhel65 sshd[4710]: debug3: mm_request_receive_expect entering: type 107 [MONITOR_ANS_PAM_QUERY] [preauth]
+Aug 24 11:48:22 rhel65 sshd[4710]: debug3: mm_request_receive entering [preauth]
+Aug 24 11:48:22 rhel65 sshd[4710]: debug3: mm_request_receive entering
+Aug 24 11:48:22 rhel65 sshd[4710]: debug3: monitor_read: checking request 106 [MONITOR_REQ_PAM_QUERY]
+Aug 24 11:48:22 rhel65 sshd[4710]: debug3: mm_answer_pam_query
+Aug 24 11:48:22 rhel65 sshd[4710]: debug3: PAM: sshpam_query entering
+Aug 24 11:48:22 rhel65 sshd[4710]: debug3: ssh_msg_recv entering
+Aug 24 11:48:22 rhel65 sshd[4712]: debug1: do_pam_account: called
+Aug 24 11:48:22 rhel65 adclient[3543]: DEBUG <main> daemon.ipcserver Accepted new lrpc2 client on <fd:16> with flags 0x00000802
+Aug 24 11:48:22 rhel65 adclient[3543]: DEBUG <fd:16 sshd(4712)> -> pam_sm_acct_mgmt
+Aug 24 11:48:22 rhel65 adclient[3543]: DEBUG <fd:16 sshd(4712)> PAM Options: (none)
+Aug 24 11:48:22 rhel65 adclient[3543]: DEBUG <fd:16 sshd(4712)> PAM Flags: (none)
+Aug 24 11:48:22 rhel65 adclient[3543]: DEBUG <fd:16 sshd(4712)> <- pam_sm_acct_mgmt, result=PAM_IGNORE(25)
+Aug 24 11:48:22 rhel65 adclient[3543]: DEBUG <main> daemon.ipcserver Accepted new lrpc2 client on <fd:25> with flags 0x00000802
+Aug 24 11:48:22 rhel65 adclient[3543]: DEBUG <main> daemon.ipcserver lrpc client disconnected normally <fd:16>
+Aug 24 11:48:22 rhel65 adclient[3543]: DEBUG <fd:25 sshd(4712)> -> pam_sm_acct_mgmt
+Aug 24 11:48:22 rhel65 adclient[3543]: DEBUG <fd:25 sshd(4712)> PAM Options: deny
+Aug 24 11:48:22 rhel65 adclient[3543]: DEBUG <fd:25 sshd(4712)> PAM Flags: (none)
+Aug 24 11:48:22 rhel65 adclient[3543]: DEBUG <fd:25 sshd(4712)> <- pam_sm_acct_mgmt, result=PAM_IGNORE(25)
+Aug 24 11:48:22 rhel65 adclient[3543]: DEBUG <main> daemon.ipcserver lrpc client disconnected normally <fd:25>
+Aug 24 11:48:22 rhel65 sshd[4712]: debug3: PAM: do_pam_account pam_acct_mgmt = 0 (Success)
+Aug 24 11:48:22 rhel65 sshd[4712]: debug3: ssh_msg_send: type 0
+Aug 24 11:48:22 rhel65 sshd[4710]: debug3: PAM: import_environments entering
+Aug 24 11:48:22 rhel65 sshd[4710]: debug3: sshpam_password_change_required 0
+Aug 24 11:48:22 rhel65 sshd[4710]: debug3: PAM: num env strings 0
+Aug 24 11:48:22 rhel65 sshd[4710]: debug1: PAM: num PAM env strings 0
+Aug 24 11:48:22 rhel65 sshd[4710]: debug3: mm_request_send entering: type 107 [MONITOR_ANS_PAM_QUERY]
+Aug 24 11:48:22 rhel65 sshd[4710]: debug3: mm_sshpam_query: pam_query returned 0 [preauth]
+Aug 24 11:48:22 rhel65 sshd[4710]: Postponed keyboard-interactive/pam for testuser from 10.0.0.15 port 36013 ssh2 [preauth]
+Aug 24 11:48:22 rhel65 sshd[4710]: debug3: mm_sshpam_respond [preauth]
+Aug 24 11:48:22 rhel65 sshd[4710]: debug3: mm_request_send entering: type 108 [MONITOR_REQ_PAM_RESPOND] [preauth]
+Aug 24 11:48:22 rhel65 sshd[4710]: debug3: mm_sshpam_respond: waiting for MONITOR_ANS_PAM_RESPOND [preauth]
+Aug 24 11:48:22 rhel65 sshd[4710]: debug3: mm_request_receive_expect entering: type 109 [MONITOR_ANS_PAM_RESPOND] [preauth]
+Aug 24 11:48:22 rhel65 sshd[4710]: debug3: mm_request_receive entering [preauth]
+Aug 24 11:48:22 rhel65 sshd[4710]: debug3: mm_request_receive entering
+Aug 24 11:48:22 rhel65 sshd[4710]: debug3: monitor_read: checking request 108 [MONITOR_REQ_PAM_RESPOND]
+Aug 24 11:48:22 rhel65 sshd[4710]: debug3: mm_answer_pam_respond
+Aug 24 11:48:22 rhel65 sshd[4710]: debug2: PAM: sshpam_respond entering, 0 responses
+Aug 24 11:48:22 rhel65 sshd[4710]: debug3: mm_request_send entering: type 109 [MONITOR_ANS_PAM_RESPOND]
+Aug 24 11:48:22 rhel65 sshd[4710]: debug3: mm_sshpam_respond: pam_respond returned 0 [preauth]
+Aug 24 11:48:22 rhel65 sshd[4710]: debug3: mm_sshpam_free_ctx [preauth]
+Aug 24 11:48:22 rhel65 sshd[4710]: debug3: mm_request_send entering: type 110 [MONITOR_REQ_PAM_FREE_CTX] [preauth]
+Aug 24 11:48:22 rhel65 sshd[4710]: debug3: mm_sshpam_free_ctx: waiting for MONITOR_ANS_PAM_FREE_CTX [preauth]
+Aug 24 11:48:22 rhel65 sshd[4710]: debug3: mm_request_receive_expect entering: type 111 [MONITOR_ANS_PAM_FREE_CTX] [preauth]
+Aug 24 11:48:22 rhel65 sshd[4710]: debug3: mm_request_receive entering [preauth]
+Aug 24 11:48:22 rhel65 sshd[4710]: debug3: mm_request_receive entering
+Aug 24 11:48:22 rhel65 sshd[4710]: debug3: monitor_read: checking request 110 [MONITOR_REQ_PAM_FREE_CTX]
+Aug 24 11:48:22 rhel65 sshd[4710]: debug3: mm_answer_pam_free_ctx
+Aug 24 11:48:22 rhel65 sshd[4710]: debug3: PAM: sshpam_free_ctx entering
+Aug 24 11:48:22 rhel65 sshd[4710]: debug3: PAM: sshpam_thread_cleanup entering
+Aug 24 11:48:22 rhel65 sshd[4710]: debug3: mm_request_send entering: type 111 [MONITOR_ANS_PAM_FREE_CTX]
+Aug 24 11:48:22 rhel65 sshd[4710]: debug2: monitor_read: 110 used once, disabling now
+Aug 24 11:48:22 rhel65 sshd[4710]: debug3: mm_request_receive_expect entering: type 102 [MONITOR_REQ_PAM_ACCOUNT]
+Aug 24 11:48:22 rhel65 sshd[4710]: debug3: mm_request_receive entering
+Aug 24 11:48:22 rhel65 sshd[4710]: debug1: do_pam_account: called
+Aug 24 11:48:22 rhel65 sshd[4710]: debug3: mm_request_send entering: type 103 [MONITOR_ANS_PAM_ACCOUNT]
+Aug 24 11:48:22 rhel65 sshd[4710]: Accepted keyboard-interactive/pam for testuser from 10.0.0.15 port 36013 ssh2
+Aug 24 11:48:22 rhel65 sshd[4710]: debug1: monitor_child_preauth: testuser has been authenticated by privileged process
+Aug 24 11:48:22 rhel65 sshd[4710]: debug3: mm_get_keystate: Waiting for new keys
+Aug 24 11:48:22 rhel65 sshd[4710]: debug3: mm_request_receive_expect entering: type 26 [MONITOR_REQ_KEYEXPORT]
+Aug 24 11:48:22 rhel65 sshd[4710]: debug3: mm_request_receive entering
+Aug 24 11:48:22 rhel65 sshd[4710]: debug3: mm_get_keystate: GOT new keys
+Aug 24 11:48:22 rhel65 sshd[4710]: debug3: mm_do_pam_account entering [preauth]
+Aug 24 11:48:22 rhel65 sshd[4710]: debug3: mm_request_send entering: type 102 [MONITOR_REQ_PAM_ACCOUNT] [preauth]
+Aug 24 11:48:22 rhel65 sshd[4710]: debug3: mm_request_receive_expect entering: type 103 [MONITOR_ANS_PAM_ACCOUNT] [preauth]
+Aug 24 11:48:22 rhel65 sshd[4710]: debug3: mm_request_receive entering [preauth]
+Aug 24 11:48:22 rhel65 sshd[4710]: debug3: mm_do_pam_account returning 1 [preauth]
+Aug 24 11:48:22 rhel65 sshd[4710]: debug3: mm_request_send entering: type 26 [MONITOR_REQ_KEYEXPORT] [preauth]
+Aug 24 11:48:22 rhel65 sshd[4710]: debug3: mm_send_keystate: Finished sending state [preauth]
+Aug 24 11:48:22 rhel65 sshd[4710]: debug1: monitor_read_log: child log fd closed
+Aug 24 11:48:22 rhel65 sshd[4710]: debug3: mm_share_sync: Share sync
+Aug 24 11:48:22 rhel65 sshd[4710]: debug3: mm_share_sync: Share sync end
+Aug 24 11:48:22 rhel65 sshd[4710]: debug3: ssh_sandbox_parent_finish: finished
+Aug 24 11:48:22 rhel65 sshd[4710]: debug3: temporarily_use_uid getpwnam(testuser)
+Aug 24 11:48:22 rhel65 sshd[4710]: debug3: getpwnam returned 520, uid = 518
+Aug 24 11:48:22 rhel65 sshd[4710]: debug1: temporarily_use_uid: 518/520 (e=0/0)
+Aug 24 11:48:22 rhel65 sshd[4710]: debug1: ssh_gssapi_storecreds: Not a GSSAPI mechanism
+Aug 24 11:48:22 rhel65 sshd[4710]: debug1: restore_uid: 0/0
+Aug 24 11:48:22 rhel65 sshd[4710]: debug1: Success to get SELinux API function pointers. Continue.
+Aug 24 11:48:22 rhel65 sshd[4710]: debug1: SELinux support enabled
+Aug 24 11:48:22 rhel65 sshd[4710]: debug3: ssh_selinux_setup_variables: setting execution context
+Aug 24 11:48:22 rhel65 sshd[4710]: debug1: PAM: establishing credentials
+Aug 24 11:48:22 rhel65 adclient[3543]: DEBUG <main> daemon.ipcserver Accepted new lrpc2 client on <fd:16> with flags 0x00000802
+Aug 24 11:48:22 rhel65 adclient[3543]: DEBUG <fd:16 sshd(4710)> -> pam_sm_setcred
+Aug 24 11:48:22 rhel65 adclient[3543]: DEBUG <fd:16 sshd(4710)> PAM Options: (none)
+Aug 24 11:48:22 rhel65 adclient[3543]: DEBUG <fd:16 sshd(4710)> PAM Flags: ESTABLISH_CRED
+Aug 24 11:48:22 rhel65 adclient[3543]: DEBUG <fd:16 sshd(4710)> <- pam_sm_setcred, result=PAM_IGNORE(25)
+Aug 24 11:48:22 rhel65 adclient[3543]: DEBUG <main> daemon.ipcserver lrpc client disconnected normally <fd:16>
+Aug 24 11:48:22 rhel65 adclient[3543]: DEBUG <main> daemon.ipcserver Accepted new lrpc2 client on <fd:16> with flags 0x00000802
+Aug 24 11:48:22 rhel65 adclient[3543]: DEBUG <fd:16 sshd(4710)> -> pam_sm_setcred
+Aug 24 11:48:22 rhel65 adclient[3543]: DEBUG <fd:16 sshd(4710)> PAM Options: deny
+Aug 24 11:48:22 rhel65 adclient[3543]: DEBUG <fd:16 sshd(4710)> PAM Flags: ESTABLISH_CRED
+Aug 24 11:48:22 rhel65 adclient[3543]: DEBUG <fd:16 sshd(4710)> <- pam_sm_setcred, result=PAM_IGNORE(25)
+Aug 24 11:48:22 rhel65 adclient[3543]: DEBUG <main> daemon.ipcserver lrpc client disconnected normally <fd:16>
+Aug 24 11:48:22 rhel65 sshd[4710]: debug3: PAM: opening session
+Aug 24 11:48:22 rhel65 adclient[3543]: DEBUG <main> daemon.ipcserver Accepted new lrpc2 client on <fd:16> with flags 0x00000802
+Aug 24 11:48:22 rhel65 adclient[3543]: DEBUG <fd:16 sshd(4710)> -> pam_sm_open_session
+Aug 24 11:48:22 rhel65 adclient[3543]: DEBUG <fd:16 sshd(4710)> PAM Options: (none)
+Aug 24 11:48:22 rhel65 adclient[3543]: DEBUG <fd:16 sshd(4710)> PAM Flags: (none)
+Aug 24 11:48:22 rhel65 adclient[3543]: DEBUG <fd:16 sshd(4710)> <- pam_sm_open_session, result=PAM_IGNORE(25)
+Aug 24 11:48:22 rhel65 adclient[3543]: DEBUG <main> daemon.ipcserver lrpc client disconnected normally <fd:16>
+Aug 24 11:48:22 rhel65 sshd[4710]: User child is on pid 4715
+Aug 24 11:48:22 rhel65 sshd[4715]: debug1: PAM: establishing credentials
+Aug 24 11:48:22 rhel65 adclient[3543]: DEBUG <main> daemon.ipcserver Accepted new lrpc2 client on <fd:16> with flags 0x00000802
+Aug 24 11:48:22 rhel65 adclient[3543]: DEBUG <fd:16 sshd(4715)> -> pam_sm_setcred
+Aug 24 11:48:22 rhel65 adclient[3543]: DEBUG <fd:16 sshd(4715)> PAM Options: (none)
+Aug 24 11:48:22 rhel65 adclient[3543]: DEBUG <fd:16 sshd(4715)> PAM Flags: ESTABLISH_CRED
+Aug 24 11:48:22 rhel65 adclient[3543]: DEBUG <fd:16 sshd(4715)> <- pam_sm_setcred, result=PAM_IGNORE(25)
+Aug 24 11:48:22 rhel65 adclient[3543]: DEBUG <main> daemon.ipcserver Accepted new lrpc2 client on <fd:25> with flags 0x00000802
+Aug 24 11:48:22 rhel65 adclient[3543]: DEBUG <main> daemon.ipcserver lrpc client disconnected normally <fd:16>
+Aug 24 11:48:22 rhel65 adclient[3543]: DEBUG <fd:25 sshd(4715)> -> pam_sm_setcred
+Aug 24 11:48:22 rhel65 adclient[3543]: DEBUG <fd:25 sshd(4715)> PAM Options: deny
+Aug 24 11:48:22 rhel65 adclient[3543]: DEBUG <fd:25 sshd(4715)> PAM Flags: ESTABLISH_CRED
+Aug 24 11:48:22 rhel65 adclient[3543]: DEBUG <fd:25 sshd(4715)> <- pam_sm_setcred, result=PAM_IGNORE(25)
+Aug 24 11:48:22 rhel65 sshd[4715]: debug1: Success to get SELinux API function pointers. Continue.
+Aug 24 11:48:22 rhel65 sshd[4715]: debug1: SELinux support enabled
+Aug 24 11:48:22 rhel65 sshd[4715]: debug3: ssh_selinux_setup_variables: setting execution context
+Aug 24 11:48:22 rhel65 sshd[4715]: debug3: permantently_set_uid getpwnam(testuser)
+Aug 24 11:48:22 rhel65 sshd[4715]: debug3: getpwnam returned 520, uid = 518 
+Aug 24 11:48:22 rhel65 sshd[4715]: debug1: permanently_set_uid: 518/520
+Aug 24 11:48:22 rhel65 sshd[4715]: debug3: monitor_apply_keystate: packet_set_state
+Aug 24 11:48:22 rhel65 sshd[4715]: debug2: set_newkeys: mode 0
+Aug 24 11:48:22 rhel65 sshd[4715]: debug2: set_newkeys: mode 1
+Aug 24 11:48:22 rhel65 sshd[4715]: debug1: ssh_packet_set_postauth: called
+Aug 24 11:48:22 rhel65 sshd[4715]: debug3: ssh_packet_set_state: done
+Aug 24 11:48:22 rhel65 sshd[4715]: debug3: notify_hostkeys: key 0: ssh-rsa SHA256:ma/cWYwiqQ+GToxC2dLeQI7zlVdKOSgbKcZbNrtcXWM
+Aug 24 11:48:22 rhel65 sshd[4715]: debug3: notify_hostkeys: key 1: ssh-dss SHA256:zA0XwYB1DNvA3clYmnzAogZ/xDSlDmp5izhv+lqHVR4
+Aug 24 11:48:22 rhel65 sshd[4715]: debug3: notify_hostkeys: key 2: ecdsa-sha2-nistp256 SHA256:0KVToUcZOBmhBCDs3ufLPUYJuXZcc9dCp9/ewsBX1kw
+Aug 24 11:48:22 rhel65 sshd[4715]: debug3: notify_hostkeys: key 3: ssh-ed25519 SHA256:2FLDIso06wGBn4vYM1XObJxVdyqW3B7lor/YMn/K9zI
+Aug 24 11:48:22 rhel65 sshd[4715]: debug3: notify_hostkeys: sent 4 hostkeys
+Aug 24 11:48:22 rhel65 sshd[4715]: debug1: Entering interactive session for SSH2.
+Aug 24 11:48:22 rhel65 sshd[4715]: debug2: fd 4 setting O_NONBLOCK
+Aug 24 11:48:22 rhel65 sshd[4715]: debug2: fd 6 setting O_NONBLOCK
+Aug 24 11:48:22 rhel65 sshd[4715]: debug1: server_init_dispatch_20
+Aug 24 11:48:22 rhel65 sshd[4715]: debug1: server_input_channel_open: ctype session rchan 0 win 1048576 max 16384
+Aug 24 11:48:22 rhel65 adclient[3543]: DEBUG <main> daemon.ipcserver lrpc client disconnected normally <fd:25>
+Aug 24 11:48:22 rhel65 sshd[4715]: debug1: input_session_request
+Aug 24 11:48:22 rhel65 sshd[4715]: debug1: channel 0: new [server-session]
+Aug 24 11:48:22 rhel65 sshd[4715]: debug2: session_new: allocate (allocated 0 max 10)
+Aug 24 11:48:22 rhel65 sshd[4715]: debug3: session_unused: session id 0 unused
+Aug 24 11:48:22 rhel65 sshd[4715]: debug1: session_new: session 0
+Aug 24 11:48:22 rhel65 sshd[4715]: debug1: session_open: channel 0
+Aug 24 11:48:22 rhel65 sshd[4715]: debug1: session_open: session 0: link with channel 0
+Aug 24 11:48:22 rhel65 sshd[4715]: debug1: server_input_channel_open: confirm session
+Aug 24 11:48:22 rhel65 sshd[4715]: debug1: server_input_global_request: rtype no-more-sessions@openssh.com want_reply 0
+Aug 24 11:48:22 rhel65 sshd[4715]: debug1: server_input_channel_req: channel 0 request pty-req reply 1
+Aug 24 11:48:22 rhel65 sshd[4715]: debug1: session_by_channel: session 0 channel 0
+Aug 24 11:48:22 rhel65 sshd[4715]: debug1: session_input_channel_req: session 0 req pty-req
+Aug 24 11:48:22 rhel65 sshd[4715]: debug1: Allocating pty.
+Aug 24 11:48:22 rhel65 sshd[4715]: debug3: mm_request_send entering: type 28 [MONITOR_REQ_PTY]
+Aug 24 11:48:22 rhel65 sshd[4710]: debug3: mm_request_receive entering
+Aug 24 11:48:22 rhel65 sshd[4710]: debug3: monitor_read: checking request 28 [MONITOR_REQ_PTY]
+Aug 24 11:48:22 rhel65 sshd[4710]: debug3: mm_answer_pty entering
+Aug 24 11:48:22 rhel65 sshd[4710]: debug2: session_new: allocate (allocated 0 max 10)
+Aug 24 11:48:22 rhel65 sshd[4710]: debug3: session_unused: session id 0 unused
+Aug 24 11:48:22 rhel65 sshd[4710]: debug1: session_new: session 0
+Aug 24 11:48:22 rhel65 sshd[4710]: debug1: Success to get SELinux API function pointers. Continue.
+Aug 24 11:48:22 rhel65 sshd[4710]: debug1: SELinux support enabled
+Aug 24 11:48:22 rhel65 sshd[4710]: debug3: ssh_selinux_setup_pty: setting TTY context on /dev/pts/1
+Aug 24 11:48:22 rhel65 sshd[4710]: debug3: ssh_selinux_setup_pty: done
+Aug 24 11:48:22 rhel65 sshd[4715]: debug3: mm_pty_allocate: waiting for MONITOR_ANS_PTY
+Aug 24 11:48:22 rhel65 sshd[4715]: debug3: mm_request_receive_expect entering: type 29 [MONITOR_ANS_PTY]
+Aug 24 11:48:22 rhel65 sshd[4715]: debug3: mm_request_receive entering
+Aug 24 11:48:22 rhel65 sshd[4710]: debug1: audit session open euid 0 user testuser tty name /dev/pts/1
+Aug 24 11:48:22 rhel65 sshd[4710]: debug3: mm_request_send entering: type 29 [MONITOR_ANS_PTY]
+Aug 24 11:48:22 rhel65 sshd[4715]: debug1: session_pty_req: session 0 alloc /dev/pts/1
+Aug 24 11:48:22 rhel65 sshd[4715]: debug1: server_input_channel_req: channel 0 request env reply 0
+Aug 24 11:48:22 rhel65 sshd[4715]: debug1: session_by_channel: session 0 channel 0
+Aug 24 11:48:22 rhel65 sshd[4715]: debug1: session_input_channel_req: session 0 req env
+Aug 24 11:48:22 rhel65 sshd[4715]: debug2: Ignoring env request LANG: disallowed name
+Aug 24 11:48:22 rhel65 sshd[4715]: debug1: server_input_channel_req: channel 0 request shell reply 1
+Aug 24 11:48:22 rhel65 sshd[4715]: debug1: session_by_channel: session 0 channel 0
+Aug 24 11:48:22 rhel65 sshd[4715]: debug1: session_input_channel_req: session 0 req shell
+Aug 24 11:48:22 rhel65 sshd[4715]: debug3: do_service_auth is disabled, user(testuser) service(dzssh-shell)
+Aug 24 11:48:22 rhel65 sshd[4715]: debug1: do_service_auth user(testuser) service(dzssh-shell) rc(0)
+Aug 24 11:48:22 rhel65 sshd[4715]: Starting session: shell on pts/1 for testuser from 10.0.0.15 port 36013
+Aug 24 11:48:22 rhel65 sshd[4715]: debug3: mm_audit_run_command entering command shell@(none)
+Aug 24 11:48:22 rhel65 sshd[4715]: debug3: mm_request_send entering: type 114 [MONITOR_REQ_AUDIT_COMMAND]
+Aug 24 11:48:22 rhel65 sshd[4715]: debug2: fd 3 setting TCP_NODELAY
+Aug 24 11:48:22 rhel65 sshd[4715]: debug3: ssh_packet_set_tos: set IP_TOS 0x10
+Aug 24 11:48:22 rhel65 sshd[4715]: debug2: channel 0: rfd 9 isatty
+Aug 24 11:48:22 rhel65 sshd[4715]: debug2: fd 9 setting O_NONBLOCK
+Aug 24 11:48:22 rhel65 sshd[4715]: debug3: fd 7 is O_NONBLOCK
+Aug 24 11:48:22 rhel65 sshd[4710]: debug3: mm_answer_pty: tty /dev/pts/1 ptyfd 4
+Aug 24 11:48:22 rhel65 sshd[4710]: debug3: mm_request_receive entering
+Aug 24 11:48:22 rhel65 sshd[4710]: debug3: monitor_read: checking request 114 [MONITOR_REQ_AUDIT_COMMAND]
+Aug 24 11:48:22 rhel65 sshd[4710]: debug3: mm_answer_audit_command entering
+Aug 24 11:48:22 rhel65 adclient[3543]: DEBUG <main> daemon.ipcserver Accepted new lrpc2 client on <fd:16> with flags 0x00000802
+Aug 24 11:48:22 rhel65 adclient[3543]: DEBUG <main> daemon.ipcserver Accepted new lrpc2 client on <fd:25> with flags 0x00000802
+Aug 24 11:48:22 rhel65 adclient[3543]: DEBUG <fd:25 sshd(4710)> -> SendATProxySetAuditTrailEventVAList
+Aug 24 11:48:22 rhel65 adclient[3543]: DEBUG <fd:25 sshd(4710)> No processID provided, getting process ID.
+Aug 24 11:48:22 rhel65 adclient[3543]: DEBUG <fd:25 sshd(4710)> AuditTrailEvent: Centrify Suite Centrify sshd 100 0.0 (null) testuser <userSid> (null) 4710
+Aug 24 11:48:22 rhel65 adclient[3543]: DEBUG <fd:25 sshd(4710)> UTF8STRING: ssh-connection
+Aug 24 11:48:22 rhel65 adclient[3543]: DEBUG <fd:25 sshd(4710)> UTF8STRING: /dev/pts/1
+Aug 24 11:48:22 rhel65 adclient[3543]: DEBUG <fd:25 sshd(4710)> UTF8STRING: keyboard-interactive
+Aug 24 11:48:22 rhel65 adclient[3543]: DEBUG <fd:25 sshd(4710)> UTF8STRING: 10.0.0.15
+Aug 24 11:48:22 rhel65 adclient[3543]: DEBUG <fd:25 sshd(4710)> UTF8STRING: shell
+Aug 24 11:48:22 rhel65 adclient[3543]: DEBUG <fd:25 sshd(4710)> UTF8STRING: (none)
+Aug 24 11:48:22 rhel65 adclient[3543]: DEBUG <fd:16 ATProxySetAuditTrailEvent > daemon.ipcclient2 executing request 'ATProxySetAuditTrailEvent' in thread 140309167691520
+Aug 24 11:48:22 rhel65 adclient[3543]: DEBUG <fd:16 ATProxySetAuditTrailEvent > daemon.ipcclient2 AuditTrailEvent from proxy: Centrify Suite Centrify sshd 100 0.0  testuser <userSid> DA_SESSION_ID: [] 4710
+Aug 24 11:48:22 rhel65 adclient[3543]: DEBUG <fd:16 ATProxySetAuditTrailEvent > daemon.ipcclient2 UTF8STRING: ssh-connection
+Aug 24 11:48:22 rhel65 adclient[3543]: DEBUG <fd:16 ATProxySetAuditTrailEvent > daemon.ipcclient2 UTF8STRING: /dev/pts/1
+Aug 24 11:48:22 rhel65 adclient[3543]: DEBUG <fd:16 ATProxySetAuditTrailEvent > daemon.ipcclient2 UTF8STRING: keyboard-interactive
+Aug 24 11:48:22 rhel65 adclient[3543]: DEBUG <fd:16 ATProxySetAuditTrailEvent > daemon.ipcclient2 UTF8STRING: 10.0.0.15
+Aug 24 11:48:22 rhel65 adclient[3543]: DEBUG <fd:16 ATProxySetAuditTrailEvent > daemon.ipcclient2 UTF8STRING: shell
+Aug 24 11:48:22 rhel65 adclient[3543]: DEBUG <fd:16 ATProxySetAuditTrailEvent > daemon.ipcclient2 UTF8STRING: (none)
+Aug 24 11:48:22 rhel65 adclient[3543]: DEBUG <fd:16 ATProxySetAuditTrailEvent > adclient.pam.util Creating CimsContext
+Aug 24 11:48:22 rhel65 adclient[3543]: DEBUG <fd:16 ATProxySetAuditTrailEvent > adclient.pam.util username testuser, presented: , effective: , unix: unknown
+Aug 24 11:48:22 rhel65 adclient[3543]: DEBUG <fd:16 ATProxySetAuditTrailEvent > base.schema ExtSchema: NSS ignoring user 'testuser'
+Aug 24 11:48:22 rhel65 adclient[3543]: DEBUG <fd:16 ATProxySetAuditTrailEvent > base.adagent findObject ADNames: testuser#012name: testuser type=SAM domain=ALERA.ATH#012
+Aug 24 11:48:22 rhel65 adclient[3543]: DEBUG <fd:16 ATProxySetAuditTrailEvent > base.objecthelper age 27, expire age 3600, cutoff time 0, refresh 5, negative=false, cacheOps 7
+Aug 24 11:48:22 rhel65 adclient[3543]: DEBUG <fd:16 ATProxySetAuditTrailEvent > base.bind.cache Skipping testuser from cache since the object is not enabled in the current zone
+Aug 24 11:48:22 rhel65 adclient[3543]: DEBUG <fd:16 ATProxySetAuditTrailEvent > base.bind.cache ADCB::search base , filter (&(objectClass=User)(|(objectCategory=Person)(objectCategory=Computer))(sAMAccountName=testuser)), attrs 1e (cacheOps=7, GC=1)
+Aug 24 11:48:22 rhel65 adclient[3543]: DEBUG <fd:16 ATProxySetAuditTrailEvent > base.objecthelper age 27, expire age 3600, cutoff time 0, refresh 5, negative=false, cacheOps 7
+Aug 24 11:48:22 rhel65 adclient[3543]: DEBUG <fd:16 ATProxySetAuditTrailEvent > base.adagent Find DN: CN=test user,CN=Users,DC=alera,DC=ath (7)
+Aug 24 11:48:22 rhel65 adclient[3543]: DEBUG <fd:16 ATProxySetAuditTrailEvent > base.bind.cache fetch CN=test user,CN=Users,DC=alera,DC=ath attrs = 2 (cacheOps=7, GC=0)
+Aug 24 11:48:22 rhel65 adclient[3543]: DEBUG <fd:16 ATProxySetAuditTrailEvent > base.bind.cache fetch CN=test user,CN=Users,DC=alera,DC=ath attrs = 2 (cacheOps=7, GC=0)
+Aug 24 11:48:22 rhel65 adclient[3543]: DEBUG <fd:16 ATProxySetAuditTrailEvent > base.objecthelper age 27, expire age 3600, cutoff time 0, refresh 5, negative=false, cacheOps 7
+Aug 24 11:48:22 rhel65 adclient[3543]: DEBUG <fd:16 ATProxySetAuditTrailEvent > base.bind.cache Skipping testuser since the object is not enabled in the current zone
+Aug 24 11:48:22 rhel65 adclient[3543]: DEBUG <fd:16 ATProxySetAuditTrailEvent > base.adagent findByAttr: Not Found:testuser category:user attr=sAMAccountName
+Aug 24 11:48:22 rhel65 adclient[3543]: DEBUG <fd:16 ATProxySetAuditTrailEvent > base.bind.cache ADCB::search base , filter (&(objectClass=User)(|(objectCategory=Person)(objectCategory=Computer))(displayName=testuser)), attrs 2 (cacheOps=7, GC=0)
+Aug 24 11:48:22 rhel65 adclient[3543]: DEBUG <fd:16 ATProxySetAuditTrailEvent > base.objecthelper age 27, expire age 1800, cutoff time 0, refresh 5, negative=false, cacheOps 7
+Aug 24 11:48:22 rhel65 adclient[3543]: DEBUG <fd:16 ATProxySetAuditTrailEvent > base.bind.cache Skipping testuser since the object is not enabled in the current zone
+Aug 24 11:48:22 rhel65 adclient[3543]: DEBUG <fd:16 ATProxySetAuditTrailEvent > base.bind.cache ADCB::search base , filter (&(objectClass=User)(|(objectCategory=Person)(objectCategory=Computer))(displayName=testuser)), attrs 1e (cacheOps=7, GC=1)
+Aug 24 11:48:22 rhel65 adclient[3543]: DEBUG <fd:16 ATProxySetAuditTrailEvent > base.objecthelper age 27, expire age 3600, cutoff time 0, refresh 5, negative=false, cacheOps 7
+Aug 24 11:48:22 rhel65 adclient[3543]: DEBUG <fd:16 ATProxySetAuditTrailEvent > base.adagent Find DN: CN=test user,CN=Users,DC=alera,DC=ath (7)
+Aug 24 11:48:22 rhel65 adclient[3543]: DEBUG <fd:16 ATProxySetAuditTrailEvent > base.bind.cache fetch CN=test user,CN=Users,DC=alera,DC=ath attrs = 2 (cacheOps=7, GC=0)
+Aug 24 11:48:22 rhel65 adclient[3543]: DEBUG <fd:16 ATProxySetAuditTrailEvent > base.bind.cache fetch CN=test user,CN=Users,DC=alera,DC=ath attrs = 2 (cacheOps=7, GC=0)
+Aug 24 11:48:22 rhel65 adclient[3543]: DEBUG <fd:16 ATProxySetAuditTrailEvent > base.objecthelper age 27, expire age 3600, cutoff time 0, refresh 5, negative=false, cacheOps 7
+Aug 24 11:48:22 rhel65 adclient[3543]: DEBUG <fd:16 ATProxySetAuditTrailEvent > base.bind.cache Skipping testuser since the object is not enabled in the current zone
+Aug 24 11:48:22 rhel65 adclient[3543]: DEBUG <fd:16 ATProxySetAuditTrailEvent > base.adagent findByAttr: Not Found:testuser category:user attr=displayName
+Aug 24 11:48:22 rhel65 adclient[3543]: DEBUG <fd:16 ATProxySetAuditTrailEvent > base.bind.cache ADCB::search base , filter (&(objectClass=User)(|(objectCategory=Person)(objectCategory=Computer))(cn=testuser)), attrs 2 (cacheOps=7, GC=0)
+Aug 24 11:48:22 rhel65 adclient[3543]: DEBUG <fd:16 ATProxySetAuditTrailEvent > base.objecthelper age 27, expire age 1800, cutoff time 0, refresh 5, negative=true, cacheOps 7
+Aug 24 11:48:22 rhel65 adclient[3543]: DEBUG <fd:16 ATProxySetAuditTrailEvent > base.bind.cache ADCB::search base , filter (&(objectClass=User)(|(objectCategory=Person)(objectCategory=Computer))(cn=testuser)), attrs 1e (cacheOps=7, GC=1)
+Aug 24 11:48:22 rhel65 adclient[3543]: DEBUG <fd:16 ATProxySetAuditTrailEvent > base.objecthelper age 27, expire age 3600, cutoff time 0, refresh 5, negative=true, cacheOps 7
+Aug 24 11:48:22 rhel65 adclient[3543]: DEBUG <fd:16 ATProxySetAuditTrailEvent > base.adagent findByAttr: Not Found:testuser category:user attr=cn
+Aug 24 11:48:22 rhel65 adclient[3543]: DEBUG <fd:16 ATProxySetAuditTrailEvent > base.adagent findObject: NotFound:testuser Category:user
+Aug 24 11:48:22 rhel65 adclient[3543]: DEBUG <fd:16 ATProxySetAuditTrailEvent > base.objecthelper 'testuser' is not a canonical name
+Aug 24 11:48:22 rhel65 adclient[3543]: DEBUG <fd:16 ATProxySetAuditTrailEvent > audittrail.plugin DA audit trail library is unavailable
+Aug 24 11:48:22 rhel65 adclient[3543]: DEBUG <fd:16 ATProxySetAuditTrailEvent > audittrail.internal The targets setting of Centrify Suite/Centrify sshd is -1, don't known what value to override, so will inherit global targets setting
+Aug 24 11:48:22 rhel65 adclient[3543]: DEBUG <fd:16 ATProxySetAuditTrailEvent > audittrail.internal The final targets setting of Centrify Suite/Centrify sshd is 2.
+Aug 24 11:48:22 rhel65 adclient[3543]: DEBUG <fd:16 ATProxySetAuditTrailEvent > audittrail.internal No machine provided, use long local hostname rhel65.
+Aug 24 11:48:22 rhel65 adclient[3543]: DEBUG <fd:16 ATProxySetAuditTrailEvent > audittrail.internal No eventTime provided, use now time 1472064502.918330.
+Aug 24 11:48:22 rhel65 adclient[3543]: DEBUG <fd:16 ATProxySetAuditTrailEvent > audittrail.plugin Escape the audit trail event to [ssh-connection]
+Aug 24 11:48:22 rhel65 adclient[3543]: DEBUG <fd:16 ATProxySetAuditTrailEvent > audittrail.plugin Escape the audit trail event to [/dev/pts/1]
+Aug 24 11:48:22 rhel65 adclient[3543]: DEBUG <fd:16 ATProxySetAuditTrailEvent > audittrail.plugin Escape the audit trail event to [keyboard-interactive]
+Aug 24 11:48:22 rhel65 adclient[3543]: DEBUG <fd:16 ATProxySetAuditTrailEvent > audittrail.plugin Escape the audit trail event to [10.0.0.15]
+Aug 24 11:48:22 rhel65 adclient[3543]: DEBUG <fd:16 ATProxySetAuditTrailEvent > audittrail.plugin Escape the audit trail event to [shell]
+Aug 24 11:48:22 rhel65 adclient[3543]: DEBUG <fd:16 ATProxySetAuditTrailEvent > audittrail.plugin Escape the audit trail event to [(none)]
+Aug 24 11:48:22 rhel65 adclient[3543]: INFO  AUDIT_TRAIL|Centrify Suite|Centrify sshd|1.0|100|SSHD granted|5|user=testuser pid=4710 utc=1472064502918 centrifyEventID=27100 status=GRANTED service=ssh-connection tty=/dev/pts/1 authMechanism=keyboard-interactive client=10.0.0.15 sshRights=shell command=(none)
+Aug 24 11:48:22 rhel65 adclient[3543]: DEBUG <fd:16 ATProxySetAuditTrailEvent > daemon.ipcclient2 request 'ATProxySetAuditTrailEvent' complete
+Aug 24 11:48:22 rhel65 adclient[3543]: DEBUG <fd:25 sshd(4710)> <- SendATProxySetAuditTrailEventVAList, result=(1)
+Aug 24 11:48:22 rhel65 adclient[3543]: DEBUG <main> daemon.ipcserver lrpc client disconnected normally <fd:16>
+Aug 24 11:48:22 rhel65 adclient[3543]: DEBUG <main> daemon.ipcserver lrpc client disconnected normally <fd:25>
+Aug 24 11:48:22 rhel65 sshd[4716]: debug1: Setting controlling tty using TIOCSCTTY.
+Aug 24 11:48:22 rhel65 sshd[4716]: debug3: Copy environment: SELINUX_ROLE_REQUESTED=
+Aug 24 11:48:22 rhel65 sshd[4716]: debug3: Copy environment: SELINUX_LEVEL_REQUESTED=
+Aug 24 11:48:22 rhel65 sshd[4716]: debug3: Copy environment: SELINUX_USE_CURRENT_RANGE=
+Aug 24 11:48:22 rhel65 adclient[3543]: DEBUG <main> daemon.ipcserver Accepted new lrpc2 client on <fd:16> with flags 0x00000802
+Aug 24 11:48:22 rhel65 adclient[3543]: DEBUG <fd:16 id(4722)> -> getgrgid_centrifydc_r  GID=520
+Aug 24 11:48:22 rhel65 adclient[3543]: DEBUG <main> daemon.ipcserver Accepted new lrpc2 client on <fd:25> with flags 0x00000802
+Aug 24 11:48:22 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetGroupDataByGID > daemon.ipcclient2 executing request 'NSSGetGroupDataByGID' in thread 140309157201664
+Aug 24 11:48:22 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetGroupDataByGID > daemon.ipcclient2 Getting group data for 520, including members
+Aug 24 11:48:22 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetGroupDataByGID > base.adagent Find GUID: 68aab4c2dbc847818b5f8239efc20633 (7)
+Aug 24 11:48:22 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetGroupDataByGID > base.objecthelper age 54, expire age 1800, cutoff time 0, refresh 5, negative=true, cacheOps 7
+Aug 24 11:48:22 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetGroupDataByGID > util.except (NotFound) : No such unix group with gid 520 (reference ipcclient2.cpp:971 rc: 0)
+Aug 24 11:48:22 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetGroupDataByGID > daemon.ipcclient2 No group data: No such unix group with gid 520
+Aug 24 11:48:22 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetGroupDataByGID > daemon.ipcclient2 request 'NSSGetGroupDataByGID' complete
+Aug 24 11:48:22 rhel65 adclient[3543]: DEBUG <fd:16 id(4722)> <- getgrgid_centrifydc_r, result=NSS_NOTFOUND(0)
+Aug 24 11:48:22 rhel65 adclient[3543]: DEBUG <main> daemon.ipcserver lrpc client disconnected normally <fd:25>
+Aug 24 11:48:22 rhel65 adclient[3543]: DEBUG <main> daemon.ipcserver lrpc client disconnected normally <fd:16>
+Aug 24 11:48:24 rhel65 adclient[3543]: DEBUG <background> daemon.main now = Wed Aug 24 11:48:24 2016, nextPasswordChange: Wed Sep 21 16:04:22 2016, lastKrb5Renew: Wed Aug 24 11:09:54 2016, lastCacheCleanup: Wed Aug 24 11:41:24 2016, lastPrevalidate: Wed Aug 24 11:09:54 2016, lastChkDatadir: Wed Aug 24 11:42:54 2016, lastDZRefresh: Wed Aug 24 11:39:24 2016, lastDnsRefresh: Wed Aug 24 11:09:15 2016
+Aug 24 11:48:24 rhel65 adclient[3543]: DEBUG <bg:netstate> network.state CacheAccess purge
+Aug 24 11:48:24 rhel65 adclient[3543]: DEBUG <bg:chkDatadirFreespace> daemon.main Free space left in adclient data dir /var/centrifydc/ is 13062144 Kbytes
+Aug 24 11:48:24 rhel65 adclient[3543]: DEBUG <bg:ageBindings> base.adagent Starting ageBindings...
+Aug 24 11:48:24 rhel65 adclient[3543]: DEBUG <bg:ageBindings> base.adagent Finished ageBindings
+Aug 24 11:48:24 rhel65 adclient[3543]: DEBUG <bg:adntlmlist> daemon.ipcclient Starting ageADNtlm...
+Aug 24 11:48:24 rhel65 adclient[3543]: DEBUG <bg:adntlmlist> daemon.ipcclient current timestamp: 1472064504 timeout value: 30
+Aug 24 11:48:24 rhel65 adclient[3543]: DEBUG <bg:adntlmlist> daemon.ipcclient ADNtlmList size after refresh: 0
+Aug 24 11:48:24 rhel65 adclient[3543]: DEBUG <bg:adntlmlist> daemon.ipcclient Finished ageADNtlm.
+Aug 24 11:48:25 rhel65 sshd[4715]: debug2: channel 0: read<=0 rfd 9 len -1
+Aug 24 11:48:25 rhel65 sshd[4715]: debug2: channel 0: read failed
+Aug 24 11:48:25 rhel65 sshd[4715]: debug2: channel 0: close_read
+Aug 24 11:48:25 rhel65 sshd[4715]: debug2: channel 0: input open -> drain
+Aug 24 11:48:25 rhel65 sshd[4715]: debug2: channel 0: ibuf empty
+Aug 24 11:48:25 rhel65 sshd[4715]: debug2: channel 0: send eof
+Aug 24 11:48:25 rhel65 sshd[4715]: debug2: channel 0: input drain -> closed
+Aug 24 11:48:25 rhel65 sshd[4715]: debug2: notify_done: reading
+Aug 24 11:48:25 rhel65 sshd[4715]: debug1: Received SIGCHLD.
+Aug 24 11:48:25 rhel65 sshd[4715]: debug1: session_by_pid: pid 4716
+Aug 24 11:48:25 rhel65 sshd[4715]: debug1: session_exit_message: session 0 channel 0 pid 4716
+Aug 24 11:48:25 rhel65 sshd[4715]: debug2: channel 0: request exit-status confirm 0
+Aug 24 11:48:25 rhel65 sshd[4715]: debug1: session_exit_message: release channel 0
+Aug 24 11:48:25 rhel65 sshd[4715]: debug2: channel 0: write failed
+Aug 24 11:48:25 rhel65 sshd[4715]: debug2: channel 0: close_write
+Aug 24 11:48:25 rhel65 sshd[4715]: debug2: channel 0: send eow
+Aug 24 11:48:25 rhel65 sshd[4715]: debug2: channel 0: output open -> closed
+Aug 24 11:48:25 rhel65 sshd[4715]: debug3: mm_request_send entering: type 30 [MONITOR_REQ_PTYCLEANUP]
+Aug 24 11:48:25 rhel65 sshd[4710]: debug3: mm_request_receive entering
+Aug 24 11:48:25 rhel65 sshd[4710]: debug3: monitor_read: checking request 30 [MONITOR_REQ_PTYCLEANUP]
+Aug 24 11:48:25 rhel65 sshd[4710]: debug3: mm_answer_pty_cleanup entering
+Aug 24 11:48:25 rhel65 sshd[4710]: debug1: session_by_tty: session 0 tty /dev/pts/1
+Aug 24 11:48:25 rhel65 sshd[4710]: debug3: mm_session_close: session 0 pid 4715
+Aug 24 11:48:25 rhel65 sshd[4710]: debug3: mm_session_close: tty /dev/pts/1 ptyfd 4
+Aug 24 11:48:25 rhel65 sshd[4710]: debug1: session_pty_cleanup: session 0 release /dev/pts/1
+Aug 24 11:48:25 rhel65 sshd[4710]: debug1: audit session close euid 0 user testuser tty name /dev/pts/1
+Aug 24 11:48:25 rhel65 sshd[4710]: debug3: session_unused: session id 0 unused
+Aug 24 11:48:25 rhel65 sshd[4715]: debug2: channel 0: send close
+Aug 24 11:48:25 rhel65 sshd[4715]: debug3: channel 0: will not send data after close
+Aug 24 11:48:25 rhel65 sshd[4715]: debug2: channel 0: rcvd close
+Aug 24 11:48:25 rhel65 sshd[4715]: Received disconnect from 10.0.0.15: 11: disconnected by user
+Aug 24 11:48:25 rhel65 sshd[4715]: Disconnected from 10.0.0.15
+Aug 24 11:48:25 rhel65 sshd[4715]: debug1: do_cleanup
+Aug 24 11:48:25 rhel65 sshd[4715]: debug3: PAM: sshpam_thread_cleanup entering
+Aug 24 11:48:25 rhel65 sshd[4710]: debug3: mm_request_receive entering
+Aug 24 11:48:25 rhel65 sshd[4710]: debug1: do_cleanup
+Aug 24 11:48:25 rhel65 sshd[4710]: debug1: PAM: cleanup
+Aug 24 11:48:25 rhel65 sshd[4710]: debug1: PAM: closing session
+Aug 24 11:48:25 rhel65 adclient[3543]: DEBUG <main> daemon.ipcserver Accepted new lrpc2 client on <fd:16> with flags 0x00000802
+Aug 24 11:48:25 rhel65 adclient[3543]: DEBUG <fd:16 sshd(4710)> -> pam_sm_close_session
+Aug 24 11:48:25 rhel65 adclient[3543]: DEBUG <fd:16 sshd(4710)> PAM Options: (none)
+Aug 24 11:48:25 rhel65 adclient[3543]: DEBUG <fd:16 sshd(4710)> PAM Flags: SILENT
+Aug 24 11:48:25 rhel65 adclient[3543]: DEBUG <main> util.threadpool Pool size 3/4, busy size 1/30
+Aug 24 11:48:25 rhel65 adclient[3543]: DEBUG <fd:16 sshd(4710)> <- pam_sm_close_session, result=PAM_IGNORE(25)
+Aug 24 11:48:25 rhel65 sshd[4710]: debug1: PAM: deleting credentials
+Aug 24 11:48:25 rhel65 sshd[4710]: debug3: PAM: sshpam_thread_cleanup entering
+Aug 24 11:48:25 rhel65 sshd[4710]: debug1: audit_event: unhandled event 12
+Aug 24 11:48:25 rhel65 adclient[3543]: DEBUG <main> daemon.ipcserver lrpc client disconnected normally <fd:16>
+Aug 24 11:48:34 rhel65 adclient[3543]: DEBUG <fd:16 ping > daemon.ipclient1 executing request 'ping' in thread 140309157201664
+Aug 24 11:48:34 rhel65 adclient[3543]: DEBUG <fd:16 ping > daemon.ipclient1 Responding ping request now.
+Aug 24 11:48:34 rhel65 adclient[3543]: DEBUG <main> daemon.ipcserver lrpc client disconnected normally <fd:16>

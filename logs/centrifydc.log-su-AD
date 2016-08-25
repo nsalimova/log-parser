@@ -1,0 +1,1024 @@
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <main> daemon.ipcserver Accepted new lrpc2 client on <fd:16> with flags 0x00000802
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:16 su(4527)> -> getpwnam_centrifydc_r  user="rook"
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:16 su(4527)> User="rook" str2ent=(nil) result=0x7f580fb85d60, buffer=0x7f5810d7e030
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:16 su(4527)> User 'rook' is not an override user
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <main> daemon.ipcserver Accepted new lrpc2 client on <fd:25> with flags 0x00000802
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > daemon.ipcclient2 executing request 'NSSGetPasswdDataByName' in thread 140309178181376
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > daemon.ipcclient2 Getting passwd data for 'rook'
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.adagent Find GUID: 878563520e8926489c59c323df48c785 (7)
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.objecthelper age 88, expire age 3600, cutoff time 0, refresh 5, negative=false, cacheOps 7
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > daemon.ipcclient2 Returning user info: 'rook:(hidden):1166017722:4:Rook:/home/rook:/bin/bash'
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > daemon.ipcclient2 request 'NSSGetPasswdDataByName' complete
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:16 su(4527)> -> getUserLoginShellByAudit
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 DAIReplacePasswdWithNoLoginShellByAudit > daemon.ipcclient2 executing request 'DAIReplacePasswdWithNoLoginShellByAudit' in thread 140309157201664
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 DAIReplacePasswdWithNoLoginShellByAudit > daemon.ipcclient2 Checking if we need to replace with an no-login shell for user 'rook' by audit
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 DAIReplacePasswdWithNoLoginShellByAudit > adclient.pam.util Creating CimsContext
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 DAIReplacePasswdWithNoLoginShellByAudit > adclient.pam.util username rook, presented: , effective: , unix: unknown
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 DAIReplacePasswdWithNoLoginShellByAudit > base.adagent Find GUID: 878563520e8926489c59c323df48c785 (7)
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 DAIReplacePasswdWithNoLoginShellByAudit > base.objecthelper age 88, expire age 3600, cutoff time 0, refresh 5, negative=false, cacheOps 7
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 DAIReplacePasswdWithNoLoginShellByAudit > adclient.pam.util Creating CimsContext
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 DAIReplacePasswdWithNoLoginShellByAudit > adclient.pam.util username rook, presented: , effective: , unix: unknown
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 DAIReplacePasswdWithNoLoginShellByAudit > base.adagent Find GUID: 878563520e8926489c59c323df48c785 (7)
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 DAIReplacePasswdWithNoLoginShellByAudit > base.objecthelper age 88, expire age 3600, cutoff time 0, refresh 5, negative=false, cacheOps 7
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 DAIReplacePasswdWithNoLoginShellByAudit > daemon.ipcclient2 Audit level of user 'rook' is AuditIfPossible
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 DAIReplacePasswdWithNoLoginShellByAudit > daemon.ipcclient2 Do not need to replace with an no-login shell for user 'rook' by audit. DA is not installed
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 DAIReplacePasswdWithNoLoginShellByAudit > daemon.ipcclient2 request 'DAIReplacePasswdWithNoLoginShellByAudit' complete
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:16 su(4527)> Result: account='rook' password=(hidden) UID='1166017722' GID='4' gecos='Rook' homedir='/home/rook' shell='/bin/bash' (returnlen=33)
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:16 su(4527)> <- getpwnam_centrifydc_r, result=NSS_SUCCESS(1)
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <main> daemon.ipcserver lrpc client disconnected normally <fd:25>
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <main> daemon.ipcserver lrpc client disconnected normally <fd:16>
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <main> daemon.ipcserver Accepted new lrpc2 client on <fd:16> with flags 0x00000802
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:16 su(4527)> -> getpwnam_centrifydc_r  user="rook"
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:16 su(4527)> User="rook" str2ent=(nil) result=0x7f5810d92770, buffer=0x7f5810d927a0
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:16 su(4527)> User 'rook' is not an override user
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <main> daemon.ipcserver Accepted new lrpc2 client on <fd:25> with flags 0x00000802
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > daemon.ipcclient2 executing request 'NSSGetPasswdDataByName' in thread 140309157201664
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > daemon.ipcclient2 Getting passwd data for 'rook'
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.adagent Find GUID: 878563520e8926489c59c323df48c785 (7)
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.objecthelper age 88, expire age 3600, cutoff time 0, refresh 5, negative=false, cacheOps 7
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > daemon.ipcclient2 Returning user info: 'rook:(hidden):1166017722:4:Rook:/home/rook:/bin/bash'
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > daemon.ipcclient2 request 'NSSGetPasswdDataByName' complete
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:16 su(4527)> -> getUserLoginShellByAudit
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 DAIReplacePasswdWithNoLoginShellByAudit > daemon.ipcclient2 executing request 'DAIReplacePasswdWithNoLoginShellByAudit' in thread 140309178181376
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 DAIReplacePasswdWithNoLoginShellByAudit > daemon.ipcclient2 Checking if we need to replace with an no-login shell for user 'rook' by audit
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 DAIReplacePasswdWithNoLoginShellByAudit > adclient.pam.util Creating CimsContext
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 DAIReplacePasswdWithNoLoginShellByAudit > adclient.pam.util username rook, presented: , effective: , unix: unknown
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 DAIReplacePasswdWithNoLoginShellByAudit > base.adagent Find GUID: 878563520e8926489c59c323df48c785 (7)
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 DAIReplacePasswdWithNoLoginShellByAudit > base.objecthelper age 88, expire age 3600, cutoff time 0, refresh 5, negative=false, cacheOps 7
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 DAIReplacePasswdWithNoLoginShellByAudit > adclient.pam.util Creating CimsContext
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 DAIReplacePasswdWithNoLoginShellByAudit > adclient.pam.util username rook, presented: , effective: , unix: unknown
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 DAIReplacePasswdWithNoLoginShellByAudit > base.adagent Find GUID: 878563520e8926489c59c323df48c785 (7)
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 DAIReplacePasswdWithNoLoginShellByAudit > base.objecthelper age 88, expire age 3600, cutoff time 0, refresh 5, negative=false, cacheOps 7
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 DAIReplacePasswdWithNoLoginShellByAudit > daemon.ipcclient2 Audit level of user 'rook' is AuditIfPossible
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 DAIReplacePasswdWithNoLoginShellByAudit > daemon.ipcclient2 Do not need to replace with an no-login shell for user 'rook' by audit. DA is not installed
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 DAIReplacePasswdWithNoLoginShellByAudit > daemon.ipcclient2 request 'DAIReplacePasswdWithNoLoginShellByAudit' complete
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:16 su(4527)> Result: account='rook' password=(hidden) UID='1166017722' GID='4' gecos='Rook' homedir='/home/rook' shell='/bin/bash' (returnlen=33)
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:16 su(4527)> <- getpwnam_centrifydc_r, result=NSS_SUCCESS(1)
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <main> daemon.ipcserver lrpc client disconnected normally <fd:25>
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <main> daemon.ipcserver lrpc client disconnected normally <fd:16>
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <main> daemon.ipcserver Accepted new lrpc2 client on <fd:16> with flags 0x00000802
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:16 su(4527)> -> pam_sm_open_session
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:16 su(4527)> PAM Options: (none)
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:16 su(4527)> PAM Flags: (none)
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <main> daemon.ipcserver Accepted new lrpc2 client on <fd:25> with flags 0x00000802
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > daemon.ipcclient2 executing request 'PAMUserIsOurResponsibility' in thread 140309178181376
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > daemon.ipcclient2 Checking to see if 'rook' is our responsibility.
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > adclient.pam.util Creating CimsContext
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > adclient.pam.util username rook, presented: , effective: , unix: unknown
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.adagent Find GUID: 878563520e8926489c59c323df48c785 (f)
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.objecthelper age 88, expire age 3600, cutoff time 0, refresh 5, negative=false, cacheOps f
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.objecthelper.ad Cache expired 878563520e8926489c59c323df48c785, CN=Rook,OU=Second,OU=Legion,DC=alera,DC=ath
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.bind.cache fetch <GUID=878563520e8926489c59c323df48c785> attrs = 0 (cacheOps=f, GC=0)
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.bind.cache fetch <GUID=878563520e8926489c59c323df48c785> attrs = 0 (cacheOps=f, GC=0)
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.objecthelper age 88, expire age 3600, cutoff time 0, refresh 5, negative=false, cacheOps f
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.objecthelper.ad Cache expired 878563520e8926489c59c323df48c785, CN=Rook,OU=Second,OU=Legion,DC=alera,DC=ath
+Aug 24 11:47:10 rhel65 adclient[3543]: DIAG  <fd:25 PAMUserIsOurResponsibility > base.bind.ldap 10.0.0.51:389 fetch dn="<GUID=878563520e8926489c59c323df48c785>" filter="(objectclass=*)" timeout=7
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > lrpc.adobject new object: <GUID=878563520e8926489c59c323df48c785>;<SID=010500000000000515000000a09fc63116f9353f233f488eba040000>;CN=Rook,OU=Second,OU=Legion,DC=alera,DC=ath
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.objecthelper.user prepare CN=Rook,OU=Second,OU=Legion,DC=alera,DC=ath, cacheOps f, new usn , old usn 
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.zonehier fetchAndExtend: rook
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.zonehier fetchAndExtend zone level 0
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.bind.cache ADCB::search base CN=Users,CN=rhel65.alera.ath:zone,CN=Computers,CN=Legion,CN=Alera,CN=Zones,OU=Centrify,DC=alera,DC=ath, filter (&(objectCategory=ServiceConnectionPoint)(keywords=parentLink:S-1-5-21-835100576-1060501782-2387099427-1210)), attrs 1c (cacheOps=f, GC=0)
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.objecthelper age 88, expire age 1800, cutoff time 0, refresh 5, negative=true, cacheOps f
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.objecthelper.ad Cache expired bbf0ae0f69ec42999756f817907c2b5f, CN=SearchMark,CN=CENTRIFY MARKER,DC=ALERA,DC=ATH
+Aug 24 11:47:10 rhel65 adclient[3543]: DIAG  <fd:25 PAMUserIsOurResponsibility > base.bind.ldap 10.0.0.51:389 search base="CN=Users,CN=rhel65.alera.ath:zone,CN=Computers,CN=Legion,CN=Alera,CN=Zones,OU=Centrify,DC=alera,DC=ath" filter="(&(objectCategory=ServiceConnectionPoint)(keywords=parentLink:S-1-5-21-835100576-1060501782-2387099427-1210))"
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.bind.cache ADCB::search: refresh list returns 0 objects
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.cache Cache store <GUID=bbf0ae0f69ec42999756f817907c2b5f>;CN=SearchMark,CN=CENTRIFY MARKER,DC=ALERA,DC=ATH : update indexes Yes
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.zonehier fetchAndExtend zone level 1
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.bind.cache fetch <GUID=bf4b35874481a04f96cc7474dd7c770d> attrs = 1c (cacheOps=f, GC=0)
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.bind.cache fetch <GUID=bf4b35874481a04f96cc7474dd7c770d> attrs = 1c (cacheOps=f, GC=0)
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.objecthelper age 88, expire age 3600, cutoff time 0, refresh 5, negative=false, cacheOps f
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.objecthelper.ad Cache expired bf4b35874481a04f96cc7474dd7c770d, CN=rook@alera.ath,CN=Users,CN=Legion,CN=Alera,CN=Zones,OU=Centrify,DC=alera,DC=ath
+Aug 24 11:47:10 rhel65 adclient[3543]: DIAG  <fd:25 PAMUserIsOurResponsibility > base.bind.ldap 10.0.0.51:389 fetch dn="<GUID=bf4b35874481a04f96cc7474dd7c770d>" filter="(!(uSNChanged=62310))" timeout=7
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.bind.cache usn unchanged, update <GUID=bf4b35874481a04f96cc7474dd7c770d>
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.objecthelper.ad CN=rook@alera.ath,CN=Users,CN=Legion,CN=Alera,CN=Zones,OU=Centrify,DC=alera,DC=ath merged with cached version
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.cache Cache store <GUID=bf4b35874481a04f96cc7474dd7c770d>;CN=rook@alera.ath,CN=Users,CN=Legion,CN=Alera,CN=Zones,OU=Centrify,DC=alera,DC=ath : update indexes Yes
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.zonehier fetchAndExtend found extension : 1
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.schema.cdc get ext type 1 for CN=rook@alera.ath,CN=Users,CN=Legion,CN=Alera,CN=Zones,OU=Centrify,DC=alera,DC=ath
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.zonehier fetchAndExtend zone level 2
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.bind.cache ADCB::search base CN=Users,CN=Alera,CN=Zones,OU=Centrify,DC=alera,DC=ath, filter (&(objectCategory=ServiceConnectionPoint)(keywords=parentLink:S-1-5-21-835100576-1060501782-2387099427-1210)), attrs 1c (cacheOps=f, GC=0)
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.objecthelper age 88, expire age 1800, cutoff time 0, refresh 5, negative=true, cacheOps f
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.objecthelper.ad Cache expired 2f13e1cf2a8b4bef9583f319d293cedf, CN=SearchMark,CN=CENTRIFY MARKER,DC=ALERA,DC=ATH
+Aug 24 11:47:10 rhel65 adclient[3543]: DIAG  <fd:25 PAMUserIsOurResponsibility > base.bind.ldap 10.0.0.51:389 search base="CN=Users,CN=Alera,CN=Zones,OU=Centrify,DC=alera,DC=ath" filter="(&(objectCategory=ServiceConnectionPoint)(keywords=parentLink:S-1-5-21-835100576-1060501782-2387099427-1210))"
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.bind.cache ADCB::search: refresh list returns 0 objects
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.cache Cache store <GUID=2f13e1cf2a8b4bef9583f319d293cedf>;CN=SearchMark,CN=CENTRIFY MARKER,DC=ALERA,DC=ATH : update indexes Yes
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.bind.cache ADCB::search base CN=Users,CN=rhel65.alera.ath:zone,CN=Computers,CN=Legion,CN=Alera,CN=Zones,OU=Centrify,DC=alera,DC=ath, filter (|(&(uidNumber=1166017722)(displayName=$CimsUserVersion*))(&(uid=rook)(displayName=$CimsUserVersion*))), attrs 1c (cacheOps=f, GC=0)
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.objecthelper age 88, expire age 1800, cutoff time 0, refresh 5, negative=true, cacheOps f
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.objecthelper.ad Cache expired c1cdddadf4f946f68cc8caa1adef014a, CN=SearchMark,CN=CENTRIFY MARKER,DC=ALERA,DC=ATH
+Aug 24 11:47:10 rhel65 adclient[3543]: DIAG  <fd:25 PAMUserIsOurResponsibility > base.bind.ldap 10.0.0.51:389 search base="CN=Users,CN=rhel65.alera.ath:zone,CN=Computers,CN=Legion,CN=Alera,CN=Zones,OU=Centrify,DC=alera,DC=ath" filter="(|(&(uidNumber=1166017722)(displayName=$CimsUserVersion*))(&(uid=rook)(displayName=$CimsUserVersion*)))"
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.bind.cache ADCB::search: refresh list returns 0 objects
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.cache Cache store <GUID=c1cdddadf4f946f68cc8caa1adef014a>;CN=SearchMark,CN=CENTRIFY MARKER,DC=ALERA,DC=ATH : update indexes Yes
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.bind.cache fetch <GUID=c8bdc6fbf31e664fbeb610fb3a588930> attrs = 3 (cacheOps=7, GC=0)
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.bind.cache fetch <GUID=c8bdc6fbf31e664fbeb610fb3a588930> attrs = 3 (cacheOps=7, GC=0)
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.objecthelper age 148, expire age 1800, cutoff time 0, refresh 5, negative=false, cacheOps 7
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.schema.cdc get ext type 35 for CN=rhel65.alera.ath:zone,CN=Computers,CN=Legion,CN=Alera,CN=Zones,OU=Centrify,DC=alera,DC=ath
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.bind.cache fetch <GUID=301ef1431ef37a44b65b19ed772b3446> attrs = 3 (cacheOps=7, GC=0)
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.bind.cache fetch <GUID=301ef1431ef37a44b65b19ed772b3446> attrs = 3 (cacheOps=7, GC=0)
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.objecthelper age 148, expire age 1800, cutoff time 0, refresh 5, negative=false, cacheOps 7
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.schema.cdc get ext type 34 for CN=Legion,CN=Alera,CN=Zones,OU=Centrify,DC=alera,DC=ath
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.bind.cache fetch <GUID=0ab23f0e65a4c84896777d7452a80bd2> attrs = 3 (cacheOps=7, GC=0)
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.bind.cache fetch <GUID=0ab23f0e65a4c84896777d7452a80bd2> attrs = 3 (cacheOps=7, GC=0)
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.objecthelper age 148, expire age 1800, cutoff time 0, refresh 5, negative=false, cacheOps 7
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.schema.cdc get ext type 34 for CN=Alera,CN=Zones,OU=Centrify,DC=alera,DC=ath
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.bind.cache fetch <GUID=c8bdc6fbf31e664fbeb610fb3a588930> attrs = 3 (cacheOps=7, GC=0)
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.bind.cache fetch <GUID=c8bdc6fbf31e664fbeb610fb3a588930> attrs = 3 (cacheOps=7, GC=0)
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.objecthelper age 148, expire age 1800, cutoff time 0, refresh 5, negative=false, cacheOps 7
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.schema.cdc get ext type 35 for CN=rhel65.alera.ath:zone,CN=Computers,CN=Legion,CN=Alera,CN=Zones,OU=Centrify,DC=alera,DC=ath
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.bind.cache fetch <GUID=301ef1431ef37a44b65b19ed772b3446> attrs = 3 (cacheOps=7, GC=0)
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.bind.cache fetch <GUID=301ef1431ef37a44b65b19ed772b3446> attrs = 3 (cacheOps=7, GC=0)
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.objecthelper age 148, expire age 1800, cutoff time 0, refresh 5, negative=false, cacheOps 7
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.schema.cdc get ext type 34 for CN=Legion,CN=Alera,CN=Zones,OU=Centrify,DC=alera,DC=ath
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.bind.cache fetch <GUID=0ab23f0e65a4c84896777d7452a80bd2> attrs = 3 (cacheOps=7, GC=0)
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.bind.cache fetch <GUID=0ab23f0e65a4c84896777d7452a80bd2> attrs = 3 (cacheOps=7, GC=0)
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.objecthelper age 148, expire age 1800, cutoff time 0, refresh 5, negative=false, cacheOps 7
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.schema.cdc get ext type 34 for CN=Alera,CN=Zones,OU=Centrify,DC=alera,DC=ath
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.bind.cache fetch <GUID=c8bdc6fbf31e664fbeb610fb3a588930> attrs = 3 (cacheOps=7, GC=0)
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.bind.cache fetch <GUID=c8bdc6fbf31e664fbeb610fb3a588930> attrs = 3 (cacheOps=7, GC=0)
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.objecthelper age 148, expire age 1800, cutoff time 0, refresh 5, negative=false, cacheOps 7
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.schema.cdc get ext type 35 for CN=rhel65.alera.ath:zone,CN=Computers,CN=Legion,CN=Alera,CN=Zones,OU=Centrify,DC=alera,DC=ath
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.bind.cache fetch <GUID=301ef1431ef37a44b65b19ed772b3446> attrs = 3 (cacheOps=7, GC=0)
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.bind.cache fetch <GUID=301ef1431ef37a44b65b19ed772b3446> attrs = 3 (cacheOps=7, GC=0)
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.objecthelper age 148, expire age 1800, cutoff time 0, refresh 5, negative=false, cacheOps 7
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.schema.cdc get ext type 34 for CN=Legion,CN=Alera,CN=Zones,OU=Centrify,DC=alera,DC=ath
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.bind.cache fetch <GUID=0ab23f0e65a4c84896777d7452a80bd2> attrs = 3 (cacheOps=7, GC=0)
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.bind.cache fetch <GUID=0ab23f0e65a4c84896777d7452a80bd2> attrs = 3 (cacheOps=7, GC=0)
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.objecthelper age 148, expire age 1800, cutoff time 0, refresh 5, negative=false, cacheOps 7
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.schema.cdc get ext type 34 for CN=Alera,CN=Zones,OU=Centrify,DC=alera,DC=ath
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > util.properties Config file [/etc/centrifydc/passwd.ovr] does not exist.
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > dz.interface Checking DirectAuthorize Enabled status
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > dz.interface /etc/group is newer than dz.cache, need to read from LAH
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.lah No need to reload local accounts into memory: m_localUserMap.size():42, m_localGroupMap.size():69
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.zonehier isUserAllowedLogin rook 395(visible:1)
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.objecthelper.user Membership Update: Groups not present: CN=Rook,OU=Second,OU=Legion,DC=alera,DC=ath
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.aduser getKerberosName: name=, uobj.isEmpty: false
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.aduser User  (origUPN: rook@alera.ath) new UPN: rook@ALERA.ATH
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.bind.cache fetch <GUID=301ef1431ef37a44b65b19ed772b3446> attrs = 3 (cacheOps=7, GC=0)
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.bind.cache fetch <GUID=301ef1431ef37a44b65b19ed772b3446> attrs = 3 (cacheOps=7, GC=0)
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.objecthelper age 148, expire age 1800, cutoff time 0, refresh 5, negative=false, cacheOps 7
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.schema.cdc get ext type 34 for CN=Legion,CN=Alera,CN=Zones,OU=Centrify,DC=alera,DC=ath
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.objecthelper.user Membership Update: Up-to-date: CN=Rook,OU=Second,OU=Legion,DC=alera,DC=ath (21 groups)
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.aduser min password age set to gp because we don't have other information
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > dz.interface Checking DirectAuthorize Enabled status
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.objecthelper.user checking whether user rook (shell: /bin/bash) is forced into restricted environment via DirectAuthorize
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > dz.interface Checking DirectAuthorize Enabled status
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.objecthelper.user user rook is not forced into restricted environment
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > dz.interface Checking DirectAuthorize Enabled status
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.cache Cache store <GUID=878563520e8926489c59c323df48c785>;<SID=010500000000000515000000a09fc63116f9353f233f488eba040000>;CN=Rook,OU=Second,OU=Legion,DC=alera,DC=ath : update indexes Yes
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > adclient.pam.util User is ours.
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > daemon.ipcclient2 request 'PAMUserIsOurResponsibility' complete
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <main> util.threadpool Pool size 3/4, busy size 1/30
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMGetUnixName > daemon.ipcclient2 executing request 'PAMGetUnixName' in thread 140309188671232
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMGetUnixName > daemon.ipcclient2 Getting unix name of 'rook'
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMGetUnixName > adclient.pam.util Creating CimsContext
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMGetUnixName > adclient.pam.util username rook, presented: , effective: , unix: unknown
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMGetUnixName > base.adagent Find GUID: 878563520e8926489c59c323df48c785 (7)
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMGetUnixName > base.objecthelper age 0, expire age 3600, cutoff time 0, refresh 5, negative=false, cacheOps 7
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMGetUnixName > daemon.ipcclient2 Unix name for 'rook' is 'rook'
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMGetUnixName > daemon.ipcclient2 request 'PAMGetUnixName' complete
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <main> util.threadpool Pool size 3/4, busy size 1/30
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:16 su(4527)> Open session for user 'rook'
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <main> util.threadpool Pool size 3/4, busy size 1/30
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:16 su(4527)> Credential cache required to open session for user 'rook'. Creating...
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <main> util.threadpool Pool size 3/4, busy size 1/30
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:16 su(4527)> Setting credentials for user 'rook'
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <main> util.threadpool Pool size 3/4, busy size 1/30
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:16 su(4527)> No pam_getenv(KRB5CCNAME) 
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <main> util.threadpool Pool size 3/4, busy size 1/30
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:16 su(4527)> No getenv(KRB5CCNAME) 
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <main> util.threadpool Pool size 3/4, busy size 1/30
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:16 su(4527)> Creating credentials for user 'rook'
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <main> util.threadpool Pool size 3/4, busy size 1/30
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMCreateKrb5Creds > daemon.ipcclient2 executing request 'PAMCreateKrb5Creds' in thread 140309157201664
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMCreateKrb5Creds > daemon.ipcclient2 Creating krb5 credentials cache for user 'rook'
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMCreateKrb5Creds > adclient.pam.util Creating CimsContext
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMCreateKrb5Creds > adclient.pam.util username rook, presented: , effective: , unix: unknown
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMCreateKrb5Creds > base.adagent Find GUID: 878563520e8926489c59c323df48c785 (7)
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMCreateKrb5Creds > base.objecthelper age 0, expire age 3600, cutoff time 0, refresh 5, negative=false, cacheOps 7
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMCreateKrb5Creds > base.aduser getKerberosName: name=rook, uobj.isEmpty: false
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMCreateKrb5Creds > base.aduser Checking if ccache 'FILE:/tmp/krb5cc_1166017722' has any credential in it .....
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMCreateKrb5Creds > base.kerberos.krb5cacheops Generated unique FILE based ccache name: 'FILE:/tmp/krb5cc_cdc1166017722_lxDeKv'
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMCreateKrb5Creds > base.aduser Storing credentials for rook@ALERA.ATH in FILE:/tmp/krb5cc_cdc1166017722_lxDeKv
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMCreateKrb5Creds > util.selinux Success to change the file[/tmp/krb5cc_cdc1166017722_lxDeKv] security context from unconfined_u:object_r:initrc_tmp_t:s0 to unconfined_u:object_r:tmp_t:s0. 
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <main> util.threadpool Pool size 2/4, busy size 2/30
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:16 su(4527)> Open session for user 'rook': Credentials file created in 'FILE:/tmp/krb5cc_cdc1166017722_lxDeKv'
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <main> util.threadpool Pool size 2/4, busy size 2/30
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:16 su(4527)> Open session: Set environment variable "KRB5CCNAME=FILE:/tmp/krb5cc_cdc1166017722_lxDeKv" via pam_putenv
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <main> util.threadpool Pool size 2/4, busy size 2/30
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:16 su(4527)> Credential cache created successfully for user 'rook'
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMCreateKrb5Creds > daemon.ipcclient2 request 'PAMCreateKrb5Creds' complete
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <main> util.threadpool Pool size 3/4, busy size 1/30
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMGetSessionEnv > daemon.ipcclient2 executing request 'PAMGetSessionEnv' in thread 140309188671232
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMGetSessionEnv > daemon.ipcclient2 Getting environment variables for user 'rook'
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMGetSessionEnv > daemon.ipcclient2 Generate GUID for PAM: 6a2b3daa-9834-1340-af37-3eda735c1ff3
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMGetSessionEnv > network.state Got favorite dc:dc03.alera.ath from kset for serviceType:LDAP
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMGetSessionEnv > base.adagent Find GUID: 878563520e8926489c59c323df48c785 (7)
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMGetSessionEnv > base.objecthelper age 0, expire age 3600, cutoff time 0, refresh 5, negative=false, cacheOps 7
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMGetSessionEnv > base.aduser Windows Kerberos name for CN=Rook,OU=Second,OU=Legion,DC=alera,DC=ath: rook@ALERA.ATH
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMGetSessionEnv > daemon.ipcclient2 Completed request for environment variables for user 'rook'
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMGetSessionEnv > daemon.ipcclient2 CDC_JOINED_ZONE = 'CN=Legion,CN=Alera,CN=Zones,OU=Centrify,DC=alera,DC=ath'
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMGetSessionEnv > daemon.ipcclient2 CDC_LOCALHOST = 'rhel65.alera.ath'
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMGetSessionEnv > daemon.ipcclient2 CDC_PREW2KHOST = 'rhel65'
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMGetSessionEnv > daemon.ipcclient2 CDC_JOINED_SITE = 'Default-First-Site-Name'
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMGetSessionEnv > daemon.ipcclient2 CDC_JOINED_DOMAIN = 'alera.ath'
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMGetSessionEnv > daemon.ipcclient2 CDC_JOINED_DC = 'dc03.alera.ath'
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMGetSessionEnv > daemon.ipcclient2 USER_PRINCIPAL_NAME = 'rook@ALERA.ATH'
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMGetSessionEnv > daemon.ipcclient2 DA_SESSION_ID_AUTH = '6a2b3daa-9834-1340-af37-3eda735c1ff3'
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMGetSessionEnv > daemon.ipcclient2 request 'PAMGetSessionEnv' complete
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <main> util.threadpool Pool size 3/4, busy size 1/30
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:16 su(4527)> Open session: Set environment variable "CDC_JOINED_ZONE=CN=Legion,CN=Alera,CN=Zones,OU=Centrify,DC=alera,DC=ath" via pam_putenv
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <main> util.threadpool Pool size 3/4, busy size 1/30
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:16 su(4527)> Open session: Set environment variable "CDC_LOCALHOST=rhel65.alera.ath" via pam_putenv
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <main> util.threadpool Pool size 3/4, busy size 1/30
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:16 su(4527)> Open session: Set environment variable "CDC_PREW2KHOST=rhel65" via pam_putenv
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <main> util.threadpool Pool size 3/4, busy size 1/30
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:16 su(4527)> Open session: Set environment variable "CDC_JOINED_SITE=Default-First-Site-Name" via pam_putenv
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <main> util.threadpool Pool size 3/4, busy size 1/30
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:16 su(4527)> Open session: Set environment variable "CDC_JOINED_DOMAIN=alera.ath" via pam_putenv
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <main> util.threadpool Pool size 2/4, busy size 2/30
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:16 su(4527)> Open session: Set environment variable "CDC_JOINED_DC=dc03.alera.ath" via pam_putenv
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <main> util.threadpool Pool size 2/4, busy size 2/30
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:16 su(4527)> Open session: Set environment variable "USER_PRINCIPAL_NAME=rook@ALERA.ATH" via pam_putenv
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <main> util.threadpool Pool size 2/4, busy size 2/30
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:16 su(4527)> Get DA_SESSION_ID_AUTH "6a2b3daa-9834-1340-af37-3eda735c1ff3" from adclient.
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <main> util.threadpool Pool size 2/4, busy size 2/30
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:16 su(4527)> Use this "6a2b3daa-9834-1340-af37-3eda735c1ff3" as new environment variable.
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <main> util.threadpool Pool size 2/4, busy size 2/30
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:16 su(4527)> status of setting com.centrify.da.session.id.auth in PAM context: 0
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <main> util.threadpool Pool size 2/4, busy size 2/30
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:16 su(4527)> Open session: Set environment variable "DA_SESSION_ID_AUTH=6a2b3daa-9834-1340-af37-3eda735c1ff3" via pam_putenv
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <main> util.threadpool Pool size 2/4, busy size 2/30
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMCreateHomeDirectory > daemon.ipcclient2 executing request 'PAMCreateHomeDirectory' in thread 140309188671232
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMCreateHomeDirectory > daemon.ipcclient2 Creating home directory for user 'rook'
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMCreateHomeDirectory > adclient.pam.util Creating CimsContext
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMCreateHomeDirectory > adclient.pam.util username rook, presented: , effective: , unix: unknown
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMCreateHomeDirectory > base.adagent Find GUID: 878563520e8926489c59c323df48c785 (7)
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMCreateHomeDirectory > base.objecthelper age 0, expire age 3600, cutoff time 0, refresh 5, negative=false, cacheOps 7
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMCreateHomeDirectory > base.aduser Windows Kerberos name for CN=Rook,OU=Second,OU=Legion,DC=alera,DC=ath: rook@ALERA.ATH
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMCreateHomeDirectory > pam.util Directory /home/rook for user rook: already exists.
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMCreateHomeDirectory > pam.util /home/rook/.k5login already exists. Skip creating.
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMCreateHomeDirectory > daemon.ipcclient2 request 'PAMCreateHomeDirectory' complete
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <main> util.threadpool Pool size 2/4, busy size 2/30
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:16 su(4527)> Open session for user 'rook': directory already exists. 
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <main> util.threadpool Pool size 2/4, busy size 2/30
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:16 su(4527)> Poll for machine policy status...
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <main> util.threadpool Pool size 2/4, busy size 2/30
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMIsMachinePolicyReady > daemon.ipcclient2 executing request 'PAMIsMachinePolicyReady' in thread 140309167691520
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMIsMachinePolicyReady > daemon.ipcclient2 doPAMIsMachinePolicyReady
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMIsMachinePolicyReady > daemon.ipcclient2 request 'PAMIsMachinePolicyReady' complete
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <main> util.threadpool Pool size 2/4, busy size 2/30
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:16 su(4527)> Machine policy is ready
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <main> util.threadpool Pool size 2/4, busy size 2/30
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > daemon.ipcclient2 executing request 'PAMUserLoggedIn' in thread 140309167691520
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > daemon.ipcclient2 User 'rook' has logged in
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.adagent Find GUID: 878563520e8926489c59c323df48c785 (7)
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.objecthelper age 0, expire age 3600, cutoff time 0, refresh 5, negative=false, cacheOps 7
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > daemon.ipcclient adding user rook's policy.
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.adagent Find GUID: 878563520e8926489c59c323df48c785 (7)
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.objecthelper age 0, expire age 3600, cutoff time 0, refresh 5, negative=false, cacheOps 7
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.osutil Module=Kerberos : Scanning Credentials Cache: No credentials cache found (reference base/include/kerb_wrap.h:320 rc: -1765328189)
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.kerberos.krb5cache invalidTgt for /tmp/krb5cc_cdc1166017722_atwexv: Scanning Credentials Cache: No credentials cache found
+Aug 24 11:47:10 rhel65 adclient[3543]: DIAG  <fd:25 PAMUserLoggedIn > base.kerberos.krb5cache Finding user(uid=1166017722) ccache for ccache type FILE.
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.kerberos.krb5cache getUserCCache: cachename=FILE:/tmp/krb5cc_cdc1166017722_lxDeKv
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > gp.processor cachename for rook is FILE:/tmp/krb5cc_cdc1166017722_lxDeKv
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > gp.processor updating policy for rook
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > network.state Got favorite dc:dc03.alera.ath from kset for serviceType:SMB
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > network.state NST: SniffList: postfailsort=dc03.alera.ath
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.bind.udp UDPBinding::search :(&(NtVer=\06\00\00\00))
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.bind.udp UDPBinding::connectToServer - 10.0.0.51
+Aug 24 11:47:10 rhel65 adclient[3543]: DIAG  <fd:25 PAMUserLoggedIn > base.bind.ldap 10.0.0.51:389 search base="" filter="(&(NtVer=\06\00\00\00))"
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > lrpc.adobject new object: 
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > dns.siteinfo forest = alera.ath
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > dns.siteinfo domain = alera.ath
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > dns.siteinfo hostName = DC03.alera.ath
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > dns.siteinfo siteName1 = Default-First-Site-Name
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > dns.siteinfo siteName2 = Default-First-Site-Name
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > dns.siteinfo isWritable = true
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > dns.siteinfo isClosestSite = true
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > dns.siteinfo isTimeServer = true
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > dns.siteinfo isKDC = true
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > dns.siteinfo isDSRV = true
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > dns.siteinfo isLDAP = true
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > dns.siteinfo isGC = true
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > dns.siteinfo isPDC = true
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > network.state DC dc03.alera.ath(10.0.0.51) answered in 0.006357 secs: Success
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > util.io.connectutil Connected to 10.0.0.51:389 in 0.001832 seconds
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > util.io.connectutil Connected to 10.0.0.51:3268 in 0.001832 seconds
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > util.io.connectutil Connected to 10.0.0.51:88 in 0.001832 seconds
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > util.io.connectutil Connected to 10.0.0.51:464 in 0.001832 seconds
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > util.io.connectutil Connected to 10.0.0.51:445 in 0.002160 seconds
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > util.io.connectutil Complete port check in 0.002479 seconds
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > util.io.connectutil Connected to 10.0.0.51:445 in 0.000153 seconds
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > network.state ProbePorts complete for dc03.alera.ath. Elapsed time 0.003558 secs
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > network.state SaveDC: domain=alera.ath, server=dc03.alera.ath serviceType:SMB
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > gp.processor loadPolicy: fetching machine object <GUID=135829bce1031d4fb755c3e29cfdb5ee> in loopback mode
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.bind.cache fetch <GUID=135829bce1031d4fb755c3e29cfdb5ee> attrs = 0 (cacheOps=0, GC=0)
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.bind.cache fetch <GUID=135829bce1031d4fb755c3e29cfdb5ee> attrs = 0 (cacheOps=0, GC=0)
+Aug 24 11:47:10 rhel65 adclient[3543]: DIAG  <fd:25 PAMUserLoggedIn > base.bind.ldap 10.0.0.51:389 fetch dn="<GUID=135829bce1031d4fb755c3e29cfdb5ee>" filter="(objectclass=*)" timeout=7
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > lrpc.adobject new object: <GUID=135829bce1031d4fb755c3e29cfdb5ee>;<SID=010500000000000515000000a09fc63116f9353f233f488e340c0000>;CN=rhel65,CN=Computers,DC=alera,DC=ath
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.zonehier fetchAndExtend: rhel65$
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.zonehier fetchAndExtend zone level 1
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.bind.cache fetch <GUID=4d569e43c1573a4e9286256f18042867> attrs = 1c (cacheOps=0, GC=0)
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.bind.cache fetch <GUID=4d569e43c1573a4e9286256f18042867> attrs = 1c (cacheOps=0, GC=0)
+Aug 24 11:47:10 rhel65 adclient[3543]: DIAG  <fd:25 PAMUserLoggedIn > base.bind.ldap 10.0.0.51:389 fetch dn="<GUID=4d569e43c1573a4e9286256f18042867>" filter="(objectclass=*)" timeout=7
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > lrpc.adobject new object: <GUID=4d569e43c1573a4e9286256f18042867>;CN=rhel65.alera.ath,CN=Computers,CN=Legion,CN=Alera,CN=Zones,OU=Centrify,DC=alera,DC=ath
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.schema.cdc get ext type 2 for CN=rhel65.alera.ath,CN=Computers,CN=Legion,CN=Alera,CN=Zones,OU=Centrify,DC=alera,DC=ath
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.zonehier fetchAndExtend found extension : 1
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.schema.cdc get ext type 2 for CN=rhel65.alera.ath,CN=Computers,CN=Legion,CN=Alera,CN=Zones,OU=Centrify,DC=alera,DC=ath
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.objecthelper.user prepare CN=rhel65,CN=Computers,DC=alera,DC=ath, cacheOps 0, new usn 593462, old usn none
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.zonehier fetchAndExtend: rhel65$
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.zonehier fetchAndExtend zone level 1
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.bind.cache ADCB::search base CN=Computers,CN=Legion,CN=Alera,CN=Zones,OU=Centrify,DC=alera,DC=ath, filter (&(objectCategory=ServiceConnectionPoint)(|(managedBy=CN=rhel65,CN=Computers,DC=alera,DC=ath)(keywords=parentLink:S-1-5-21-835100576-1060501782-2387099427-3124))), attrs 1c (cacheOps=0, GC=0)
+Aug 24 11:47:10 rhel65 adclient[3543]: DIAG  <fd:25 PAMUserLoggedIn > base.bind.ldap 10.0.0.51:389 search base="CN=Computers,CN=Legion,CN=Alera,CN=Zones,OU=Centrify,DC=alera,DC=ath" filter="(&(objectCategory=ServiceConnectionPoint)(|(managedBy=CN=rhel65,CN=Computers,DC=alera,DC=ath)(keywords=parentLink:S-1-5-21-835100576-1060501782-2387099427-3124)))"
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > lrpc.adobject new object: <GUID=4d569e43c1573a4e9286256f18042867>;CN=rhel65.alera.ath,CN=Computers,CN=Legion,CN=Alera,CN=Zones,OU=Centrify,DC=alera,DC=ath
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.bind.cache ADCB::search: refresh list returns 1 objects
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.objecthelper.ad CN=rhel65.alera.ath,CN=Computers,CN=Legion,CN=Alera,CN=Zones,OU=Centrify,DC=alera,DC=ath merged with cached version
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.schema.cdc get ext type 2 for CN=rhel65.alera.ath,CN=Computers,CN=Legion,CN=Alera,CN=Zones,OU=Centrify,DC=alera,DC=ath
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.zonehier Missing extension object for CN=rhel65,CN=Computers,DC=alera,DC=ath
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.aduser getKerberosName: name=, uobj.isEmpty: false
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.aduser User  (origUPN: ) new UPN: rhel65$@ALERA.ATH
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.bind.cache fetch <GUID=301ef1431ef37a44b65b19ed772b3446> attrs = 3 (cacheOps=7, GC=0)
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.bind.cache fetch <GUID=301ef1431ef37a44b65b19ed772b3446> attrs = 3 (cacheOps=7, GC=0)
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.objecthelper age 148, expire age 1800, cutoff time 0, refresh 5, negative=false, cacheOps 7
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.schema.cdc get ext type 34 for CN=Legion,CN=Alera,CN=Zones,OU=Centrify,DC=alera,DC=ath
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.objecthelper.user Get AD_PWCHG_MAX from AD directly: 9223372036854775807
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.aduser min password age set to gp because we don't have other information
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > gp.processor finding GPOs for ADObject dn=CN=rhel65,CN=Computers,DC=alera,DC=ath
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > gp.processor No gplinks found for ADObject dn=CN=rhel65,CN=Computers,DC=alera,DC=ath
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > gp.processor obj.dn=cn=rhel65,cn=computers,dc=alera,dc=ath ; bind.dn=dc=alera,dc=ath
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.bind.cache fetch CN=Computers,DC=alera,DC=ath attrs = cb634968 (cacheOps=0, GC=0)
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.bind.cache fetch CN=Computers,DC=alera,DC=ath attrs = cb634968 (cacheOps=0, GC=0)
+Aug 24 11:47:10 rhel65 adclient[3543]: DIAG  <fd:25 PAMUserLoggedIn > base.bind.ldap 10.0.0.51:389 fetch dn="CN=Computers,DC=alera,DC=ath" filter="(objectclass=*)" timeout=7
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > lrpc.adobject new object: <GUID=9986d37894965f4fa52ce1b410847d98>;CN=Computers,DC=alera,DC=ath
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > gp.processor finding GPOs for ADObject dn=CN=Computers,DC=alera,DC=ath
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > gp.processor No gplinks found for ADObject dn=CN=Computers,DC=alera,DC=ath
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > gp.processor obj.dn=cn=computers,dc=alera,dc=ath ; bind.dn=dc=alera,dc=ath
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.bind.cache fetch DC=alera,DC=ath attrs = cb634968 (cacheOps=0, GC=0)
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.bind.cache fetch DC=alera,DC=ath attrs = cb634968 (cacheOps=0, GC=0)
+Aug 24 11:47:10 rhel65 adclient[3543]: DIAG  <fd:25 PAMUserLoggedIn > base.bind.ldap 10.0.0.51:389 fetch dn="DC=alera,DC=ath" filter="(objectclass=*)" timeout=7
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > lrpc.adobject new object: <GUID=3c26d5c738c61143b488e094145fb105>;<SID=010400000000000515000000a09fc63116f9353f233f488e>;DC=alera,DC=ath
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > gp.processor finding GPOs for ADObject dn=DC=alera,DC=ath
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > gp.processor gPLink is LDAP://cn={921EE422-7C23-42C1-B829-1E1202C70486},cn=policies,cn=system,DC=alera,DC=ath;0
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > gp.processor Flags field is 0
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > gp.processor disabled false, enforced false
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.bind.cache fetch cn={921EE422-7C23-42C1-B829-1E1202C70486},cn=policies,cn=system,DC=alera,DC=ath attrs = cb634968 (cacheOps=0, GC=0)
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.bind.cache fetch cn={921EE422-7C23-42C1-B829-1E1202C70486},cn=policies,cn=system,DC=alera,DC=ath attrs = cb634968 (cacheOps=0, GC=0)
+Aug 24 11:47:10 rhel65 adclient[3543]: DIAG  <fd:25 PAMUserLoggedIn > base.bind.ldap 10.0.0.51:389 fetch dn="cn={921EE422-7C23-42C1-B829-1E1202C70486},cn=policies,cn=system,DC=alera,DC=ath" filter="(objectclass=*)" timeout=7
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > lrpc.adobject new object: <GUID=435bf5bbbc423240bcf21864d8eb680b>;CN={921EE422-7C23-42C1-B829-1E1202C70486},CN=Policies,CN=System,DC=alera,DC=ath
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > gp.processor found GPO "EMPTY GPO2"
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > gp.processor user disabled false, machine disabled false
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.bind.cache fetch CN={921EE422-7C23-42C1-B829-1E1202C70486},CN=Policies,CN=System,DC=alera,DC=ath attrs = 3e79a2f5 (cacheOps=0, GC=0)
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.bind.cache fetch CN={921EE422-7C23-42C1-B829-1E1202C70486},CN=Policies,CN=System,DC=alera,DC=ath attrs = 3e79a2f5 (cacheOps=0, GC=0)
+Aug 24 11:47:10 rhel65 adclient[3543]: DIAG  <fd:25 PAMUserLoggedIn > base.bind.ldap 10.0.0.51:389 fetch dn="CN={921EE422-7C23-42C1-B829-1E1202C70486},CN=Policies,CN=System,DC=alera,DC=ath" filter="(objectclass=*)" timeout=7
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > lrpc.adobject new object: <GUID=435bf5bbbc423240bcf21864d8eb680b>;CN={921EE422-7C23-42C1-B829-1E1202C70486},CN=Policies,CN=System,DC=alera,DC=ath
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.adagent Find GUID: 878563520e8926489c59c323df48c785 (7)
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.objecthelper age 0, expire age 3600, cutoff time 0, refresh 5, negative=false, cacheOps 7
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > gp.processor Processing GP ACL on user object: CN=Rook,OU=Second,OU=Legion,DC=alera,DC=ath
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.objecthelper.user Membership Update: Up-to-date: CN=Rook,OU=Second,OU=Legion,DC=alera,DC=ath (21 groups)
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > gp.processor gPLink is LDAP://CN={31B2F340-016D-11D2-945F-00C04FB984F9},CN=Policies,CN=System,DC=alera,DC=ath;0
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > gp.processor Flags field is 0
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > gp.processor disabled false, enforced false
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.bind.cache fetch CN={31B2F340-016D-11D2-945F-00C04FB984F9},CN=Policies,CN=System,DC=alera,DC=ath attrs = cb634968 (cacheOps=0, GC=0)
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.bind.cache fetch CN={31B2F340-016D-11D2-945F-00C04FB984F9},CN=Policies,CN=System,DC=alera,DC=ath attrs = cb634968 (cacheOps=0, GC=0)
+Aug 24 11:47:10 rhel65 adclient[3543]: DIAG  <fd:25 PAMUserLoggedIn > base.bind.ldap 10.0.0.51:389 fetch dn="CN={31B2F340-016D-11D2-945F-00C04FB984F9},CN=Policies,CN=System,DC=alera,DC=ath" filter="(objectclass=*)" timeout=7
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > lrpc.adobject new object: <GUID=39c9e6da7f591742b5d343e62c5f1b08>;CN={31B2F340-016D-11D2-945F-00C04FB984F9},CN=Policies,CN=System,DC=alera,DC=ath
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > gp.processor found GPO "Def Pol"
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > gp.processor user disabled false, machine disabled false
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.bind.cache fetch CN={31B2F340-016D-11D2-945F-00C04FB984F9},CN=Policies,CN=System,DC=alera,DC=ath attrs = 3e79a2f5 (cacheOps=0, GC=0)
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.bind.cache fetch CN={31B2F340-016D-11D2-945F-00C04FB984F9},CN=Policies,CN=System,DC=alera,DC=ath attrs = 3e79a2f5 (cacheOps=0, GC=0)
+Aug 24 11:47:10 rhel65 adclient[3543]: DIAG  <fd:25 PAMUserLoggedIn > base.bind.ldap 10.0.0.51:389 fetch dn="CN={31B2F340-016D-11D2-945F-00C04FB984F9},CN=Policies,CN=System,DC=alera,DC=ath" filter="(objectclass=*)" timeout=7
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > lrpc.adobject new object: <GUID=39c9e6da7f591742b5d343e62c5f1b08>;CN={31B2F340-016D-11D2-945F-00C04FB984F9},CN=Policies,CN=System,DC=alera,DC=ath
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.adagent Find GUID: 878563520e8926489c59c323df48c785 (7)
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.objecthelper age 0, expire age 3600, cutoff time 0, refresh 5, negative=false, cacheOps 7
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > gp.processor Processing GP ACL on user object: CN=Rook,OU=Second,OU=Legion,DC=alera,DC=ath
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.objecthelper.user Membership Update: Up-to-date: CN=Rook,OU=Second,OU=Legion,DC=alera,DC=ath (21 groups)
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > gp.processor loadStack()::Processing policy name = Def Pol
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > gp.processor SMB get alera.ath/Policies/{31B2F340-016D-11D2-945F-00C04FB984F9}/USER/Registry.pol from dc03.alera.ath to /var/centrify/tmp/gpp.SqqfCn
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > com.centrify.smb.smbfile SMB smbGetFile - credCacheName=FILE:/tmp/krb5cc_cdc1166017722_lxDeKv realm=ALERA.ATH server=dc03.alera.ath share=sysvol remoteFile=alera.ath\Policies\{31B2F340-016D-11D2-945F-00C04FB984F9}\USER\Registry.pol localFd=27
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > util.io.connectutil Connected to 10.0.0.51:445 in 0.000466 seconds
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > com.centrify.smb.smbserver SMB Connect to server dc03.alera.ath
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > util.except (cims::SMBClient) : Message is a SMB2 Protocol (reference ../smb/client/smbpacket.cpp:445 rc: 11)
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > com.centrify.smb.smbserver Server response with SMB2 response, reprocess.
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.adagent Domain Level for 'ALERA.ATH' is not PreW2K8
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > dns.findkdc KDC locator for ALERA.ATH
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > network.state Got favorite dc:dc03.alera.ath from kset for serviceType:KDC
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > network.state NST: SniffList: postfailsort=dc03.alera.ath
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > network.state SaveDC: domain=alera.ath, server=dc03.alera.ath serviceType:KDC
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > dns.findkdc KDC locator for ALERA.ATH
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > network.state Got favorite dc:dc03.alera.ath from kset for serviceType:KDC
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > network.state NST: SniffList: postfailsort=dc03.alera.ath
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > network.state SaveDC: domain=alera.ath, server=dc03.alera.ath serviceType:KDC
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > smb.util.kerberos Confidentiality=disabled; Integrity checking=disabled
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > com.centrify.smb.smb2packet Session flags received: 0
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.adagent Domain Level for 'ALERA.ATH' is not PreW2K8
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > audittrail.plugin DA audit trail library is unavailable
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > audittrail.internal The targets setting of Centrify Suite/Trusted Path is -1, don't known what value to override, so will inherit global targets setting
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > audittrail.internal The final targets setting of Centrify Suite/Trusted Path is 2.
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > audittrail.internal No session ID provided. Read a string suppose to be session ID from environment variable, but it is not a valid GUID. Using NULL as the ID.
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > audittrail.internal AuditTrailEvent: Centrify Suite Trusted Path 2700 0.0 (null) rook@ALERA.ATH <userSid> (null) 3543
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > audittrail.internal UTF8STRING: cifs/dc03.alera.ath@ALERA.ATH
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > audittrail.internal The targets setting of Centrify Suite/Trusted Path is -1, don't known what value to override, so will inherit global targets setting
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > audittrail.internal The final targets setting of Centrify Suite/Trusted Path is 2.
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > audittrail.internal No machine provided, use long local hostname rhel65.
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > audittrail.internal No eventTime provided, use now time 1472064430.327633.
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > audittrail.plugin Escape the audit trail event to [cifs/dc03.alera.ath@ALERA.ATH]
+Aug 24 11:47:10 rhel65 adclient[3543]: INFO  AUDIT_TRAIL|Centrify Suite|Trusted Path|1.0|2700|Trusted path granted|5|user=rook@ALERA.ATH pid=3543 utc=1472064430327 centrifyEventID=23700 status=GRANTED server=cifs/dc03.alera.ath@ALERA.ATH
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > smb.util.kerberos Confidentiality=disabled; Integrity checking=disabled
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > com.centrify.smb.smbtree SMB treeConnect to \\dc03.alera.ath\sysvol using service ?????.
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > com.centrify.smb.smbclient SMB getRemoteFile - remoteFile=alera.ath\Policies\{31B2F340-016D-11D2-945F-00C04FB984F9}\USER\Registry.pol fhDst=0x8806b0 convertCRLF=0
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > com.centrify.smb.smbtree SMB treeDisconnect from tree \\dc03.alera.ath\sysvol using service ?????.
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > com.centrify.smb.smbserver SMB disconnect from server dc03.alera.ath
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > gp.processor loadStack()::Processing policy name = EMPTY GPO2
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > gp.processor SMB get alera.ath/Policies/{921EE422-7C23-42C1-B829-1E1202C70486}/USER/Registry.pol from dc03.alera.ath to /var/centrify/tmp/gpp.gHFDvf
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > com.centrify.smb.smbfile SMB smbGetFile - credCacheName=FILE:/tmp/krb5cc_cdc1166017722_lxDeKv realm=ALERA.ATH server=dc03.alera.ath share=SysVol remoteFile=alera.ath\Policies\{921EE422-7C23-42C1-B829-1E1202C70486}\USER\Registry.pol localFd=27
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > util.io.connectutil Connected to 10.0.0.51:445 in 0.000124 seconds
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > com.centrify.smb.smbserver SMB Connect to server dc03.alera.ath
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > util.except (cims::SMBClient) : Message is a SMB2 Protocol (reference ../smb/client/smbpacket.cpp:445 rc: 11)
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > com.centrify.smb.smbserver Server response with SMB2 response, reprocess.
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.adagent Domain Level for 'ALERA.ATH' is not PreW2K8
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > smb.util.kerberos Confidentiality=disabled; Integrity checking=disabled
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > com.centrify.smb.smb2packet Session flags received: 0
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.adagent Domain Level for 'ALERA.ATH' is not PreW2K8
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > audittrail.internal The targets setting of Centrify Suite/Trusted Path is -1, don't known what value to override, so will inherit global targets setting
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > audittrail.internal The final targets setting of Centrify Suite/Trusted Path is 2.
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > audittrail.internal No session ID provided. Read a string suppose to be session ID from environment variable, but it is not a valid GUID. Using NULL as the ID.
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > audittrail.internal AuditTrailEvent: Centrify Suite Trusted Path 2700 0.0 (null) rook@ALERA.ATH <userSid> (null) 3543
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > audittrail.internal UTF8STRING: cifs/dc03.alera.ath@ALERA.ATH
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > audittrail.internal The targets setting of Centrify Suite/Trusted Path is -1, don't known what value to override, so will inherit global targets setting
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > audittrail.internal The final targets setting of Centrify Suite/Trusted Path is 2.
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > audittrail.internal No machine provided, use long local hostname rhel65.
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > audittrail.internal No eventTime provided, use now time 1472064430.331781.
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > audittrail.plugin Escape the audit trail event to [cifs/dc03.alera.ath@ALERA.ATH]
+Aug 24 11:47:10 rhel65 adclient[3543]: INFO  AUDIT_TRAIL|Centrify Suite|Trusted Path|1.0|2700|Trusted path granted|5|user=rook@ALERA.ATH pid=3543 utc=1472064430331 centrifyEventID=23700 status=GRANTED server=cifs/dc03.alera.ath@ALERA.ATH
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > smb.util.kerberos Confidentiality=disabled; Integrity checking=disabled
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > com.centrify.smb.smbtree SMB treeConnect to \\dc03.alera.ath\SysVol using service ?????.
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > com.centrify.smb.smbclient SMB getRemoteFile - remoteFile=alera.ath\Policies\{921EE422-7C23-42C1-B829-1E1202C70486}\USER\Registry.pol fhDst=0x8806b0 convertCRLF=0
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > com.centrify.smb.smb2packet Size of SMB2_Error packet is 9
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > util.except (cims::SMB) : Cannot find the specified file. (reference ../smb/client/smb2packet.cpp:252 rc: -1073741772)
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > com.centrify.smb.smbtree SMB treeDisconnect from tree \\dc03.alera.ath\SysVol using service ?????.
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > com.centrify.smb.smbserver SMB disconnect from server dc03.alera.ath
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > gp.processor unlinked file:/var/centrify/tmp/gpp.gHFDvf - SMBException:Cannot find the specified file.
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > gp.processor caught smb exception: Cannot find the specified file.
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > gp.processor obj.dn=dc=alera,dc=ath ; bind.dn=dc=alera,dc=ath
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.bind.cache fetch  attrs = 26 (cacheOps=0, GC=0)
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.bind.cache fetch  attrs = 26 (cacheOps=0, GC=0)
+Aug 24 11:47:10 rhel65 adclient[3543]: DIAG  <fd:25 PAMUserLoggedIn > base.bind.ldap 10.0.0.51:389 fetch dn="" filter="(objectclass=*)" timeout=7
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > lrpc.adobject new object: 
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > gp.processor siteFilter = CN=Default-First-Site-Name,CN=Sites,CN=Configuration,DC=alera,DC=ath
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.bind.cache fetch CN=Default-First-Site-Name,CN=Sites,CN=Configuration,DC=alera,DC=ath attrs = cb634968 (cacheOps=0, GC=0)
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.bind.cache fetch CN=Default-First-Site-Name,CN=Sites,CN=Configuration,DC=alera,DC=ath attrs = cb634968 (cacheOps=0, GC=0)
+Aug 24 11:47:10 rhel65 adclient[3543]: DIAG  <fd:25 PAMUserLoggedIn > base.bind.ldap 10.0.0.51:389 fetch dn="CN=Default-First-Site-Name,CN=Sites,CN=Configuration,DC=alera,DC=ath" filter="(objectclass=*)" timeout=7
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > lrpc.adobject new object: <GUID=a532a555fe35d0499a355b761261678b>;CN=Default-First-Site-Name,CN=Sites,CN=Configuration,DC=alera,DC=ath
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > gp.processor finding GPOs for ADObject dn=CN=Default-First-Site-Name,CN=Sites,CN=Configuration,DC=alera,DC=ath
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > gp.processor No gplinks found for ADObject dn=CN=Default-First-Site-Name,CN=Sites,CN=Configuration,DC=alera,DC=ath
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > gp.processor loadPolicy: fetching object <GUID=878563520e8926489c59c323df48c785>
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.bind.cache fetch <GUID=878563520e8926489c59c323df48c785> attrs = 0 (cacheOps=0, GC=0)
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.bind.cache fetch <GUID=878563520e8926489c59c323df48c785> attrs = 0 (cacheOps=0, GC=0)
+Aug 24 11:47:10 rhel65 adclient[3543]: DIAG  <fd:25 PAMUserLoggedIn > base.bind.ldap 10.0.0.51:389 fetch dn="<GUID=878563520e8926489c59c323df48c785>" filter="(objectclass=*)" timeout=7
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > lrpc.adobject new object: <GUID=878563520e8926489c59c323df48c785>;<SID=010500000000000515000000a09fc63116f9353f233f488eba040000>;CN=Rook,OU=Second,OU=Legion,DC=alera,DC=ath
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.objecthelper.user prepare CN=Rook,OU=Second,OU=Legion,DC=alera,DC=ath, cacheOps 0, new usn , old usn none
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.zonehier fetchAndExtend: rook
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.zonehier fetchAndExtend zone level 0
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.bind.cache ADCB::search base CN=Users,CN=rhel65.alera.ath:zone,CN=Computers,CN=Legion,CN=Alera,CN=Zones,OU=Centrify,DC=alera,DC=ath, filter (&(objectCategory=ServiceConnectionPoint)(keywords=parentLink:S-1-5-21-835100576-1060501782-2387099427-1210)), attrs 1c (cacheOps=0, GC=0)
+Aug 24 11:47:10 rhel65 adclient[3543]: DIAG  <fd:25 PAMUserLoggedIn > base.bind.ldap 10.0.0.51:389 search base="CN=Users,CN=rhel65.alera.ath:zone,CN=Computers,CN=Legion,CN=Alera,CN=Zones,OU=Centrify,DC=alera,DC=ath" filter="(&(objectCategory=ServiceConnectionPoint)(keywords=parentLink:S-1-5-21-835100576-1060501782-2387099427-1210))"
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.bind.cache ADCB::search: refresh list returns 0 objects
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.zonehier fetchAndExtend zone level 1
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.bind.cache fetch <GUID=bf4b35874481a04f96cc7474dd7c770d> attrs = 1c (cacheOps=0, GC=0)
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.bind.cache fetch <GUID=bf4b35874481a04f96cc7474dd7c770d> attrs = 1c (cacheOps=0, GC=0)
+Aug 24 11:47:10 rhel65 adclient[3543]: DIAG  <fd:25 PAMUserLoggedIn > base.bind.ldap 10.0.0.51:389 fetch dn="<GUID=bf4b35874481a04f96cc7474dd7c770d>" filter="(objectclass=*)" timeout=7
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > lrpc.adobject new object: <GUID=bf4b35874481a04f96cc7474dd7c770d>;CN=rook@alera.ath,CN=Users,CN=Legion,CN=Alera,CN=Zones,OU=Centrify,DC=alera,DC=ath
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.schema.cdc get ext type 1 for CN=rook@alera.ath,CN=Users,CN=Legion,CN=Alera,CN=Zones,OU=Centrify,DC=alera,DC=ath
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.zonehier fetchAndExtend found extension : 1
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.schema.cdc get ext type 1 for CN=rook@alera.ath,CN=Users,CN=Legion,CN=Alera,CN=Zones,OU=Centrify,DC=alera,DC=ath
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.zonehier fetchAndExtend zone level 2
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.bind.cache ADCB::search base CN=Users,CN=Alera,CN=Zones,OU=Centrify,DC=alera,DC=ath, filter (&(objectCategory=ServiceConnectionPoint)(keywords=parentLink:S-1-5-21-835100576-1060501782-2387099427-1210)), attrs 1c (cacheOps=0, GC=0)
+Aug 24 11:47:10 rhel65 adclient[3543]: DIAG  <fd:25 PAMUserLoggedIn > base.bind.ldap 10.0.0.51:389 search base="CN=Users,CN=Alera,CN=Zones,OU=Centrify,DC=alera,DC=ath" filter="(&(objectCategory=ServiceConnectionPoint)(keywords=parentLink:S-1-5-21-835100576-1060501782-2387099427-1210))"
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.bind.cache ADCB::search: refresh list returns 0 objects
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.bind.cache ADCB::search base CN=Users,CN=rhel65.alera.ath:zone,CN=Computers,CN=Legion,CN=Alera,CN=Zones,OU=Centrify,DC=alera,DC=ath, filter (|(&(uidNumber=1166017722)(displayName=$CimsUserVersion*))(&(uid=rook)(displayName=$CimsUserVersion*))), attrs 1c (cacheOps=0, GC=0)
+Aug 24 11:47:10 rhel65 adclient[3543]: DIAG  <fd:25 PAMUserLoggedIn > base.bind.ldap 10.0.0.51:389 search base="CN=Users,CN=rhel65.alera.ath:zone,CN=Computers,CN=Legion,CN=Alera,CN=Zones,OU=Centrify,DC=alera,DC=ath" filter="(|(&(uidNumber=1166017722)(displayName=$CimsUserVersion*))(&(uid=rook)(displayName=$CimsUserVersion*)))"
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.bind.cache ADCB::search: refresh list returns 0 objects
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.bind.cache fetch <GUID=c8bdc6fbf31e664fbeb610fb3a588930> attrs = 3 (cacheOps=7, GC=0)
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.bind.cache fetch <GUID=c8bdc6fbf31e664fbeb610fb3a588930> attrs = 3 (cacheOps=7, GC=0)
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.objecthelper age 148, expire age 1800, cutoff time 0, refresh 5, negative=false, cacheOps 7
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.schema.cdc get ext type 35 for CN=rhel65.alera.ath:zone,CN=Computers,CN=Legion,CN=Alera,CN=Zones,OU=Centrify,DC=alera,DC=ath
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.bind.cache fetch <GUID=301ef1431ef37a44b65b19ed772b3446> attrs = 3 (cacheOps=7, GC=0)
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.bind.cache fetch <GUID=301ef1431ef37a44b65b19ed772b3446> attrs = 3 (cacheOps=7, GC=0)
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.objecthelper age 148, expire age 1800, cutoff time 0, refresh 5, negative=false, cacheOps 7
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.schema.cdc get ext type 34 for CN=Legion,CN=Alera,CN=Zones,OU=Centrify,DC=alera,DC=ath
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.bind.cache fetch <GUID=0ab23f0e65a4c84896777d7452a80bd2> attrs = 3 (cacheOps=7, GC=0)
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.bind.cache fetch <GUID=0ab23f0e65a4c84896777d7452a80bd2> attrs = 3 (cacheOps=7, GC=0)
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.objecthelper age 148, expire age 1800, cutoff time 0, refresh 5, negative=false, cacheOps 7
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.schema.cdc get ext type 34 for CN=Alera,CN=Zones,OU=Centrify,DC=alera,DC=ath
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.bind.cache fetch <GUID=c8bdc6fbf31e664fbeb610fb3a588930> attrs = 3 (cacheOps=7, GC=0)
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.bind.cache fetch <GUID=c8bdc6fbf31e664fbeb610fb3a588930> attrs = 3 (cacheOps=7, GC=0)
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.objecthelper age 148, expire age 1800, cutoff time 0, refresh 5, negative=false, cacheOps 7
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.schema.cdc get ext type 35 for CN=rhel65.alera.ath:zone,CN=Computers,CN=Legion,CN=Alera,CN=Zones,OU=Centrify,DC=alera,DC=ath
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.bind.cache fetch <GUID=301ef1431ef37a44b65b19ed772b3446> attrs = 3 (cacheOps=7, GC=0)
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.bind.cache fetch <GUID=301ef1431ef37a44b65b19ed772b3446> attrs = 3 (cacheOps=7, GC=0)
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.objecthelper age 148, expire age 1800, cutoff time 0, refresh 5, negative=false, cacheOps 7
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.schema.cdc get ext type 34 for CN=Legion,CN=Alera,CN=Zones,OU=Centrify,DC=alera,DC=ath
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.bind.cache fetch <GUID=0ab23f0e65a4c84896777d7452a80bd2> attrs = 3 (cacheOps=7, GC=0)
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.bind.cache fetch <GUID=0ab23f0e65a4c84896777d7452a80bd2> attrs = 3 (cacheOps=7, GC=0)
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.objecthelper age 148, expire age 1800, cutoff time 0, refresh 5, negative=false, cacheOps 7
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.schema.cdc get ext type 34 for CN=Alera,CN=Zones,OU=Centrify,DC=alera,DC=ath
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.bind.cache fetch <GUID=c8bdc6fbf31e664fbeb610fb3a588930> attrs = 3 (cacheOps=7, GC=0)
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.bind.cache fetch <GUID=c8bdc6fbf31e664fbeb610fb3a588930> attrs = 3 (cacheOps=7, GC=0)
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.objecthelper age 148, expire age 1800, cutoff time 0, refresh 5, negative=false, cacheOps 7
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.schema.cdc get ext type 35 for CN=rhel65.alera.ath:zone,CN=Computers,CN=Legion,CN=Alera,CN=Zones,OU=Centrify,DC=alera,DC=ath
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.bind.cache fetch <GUID=301ef1431ef37a44b65b19ed772b3446> attrs = 3 (cacheOps=7, GC=0)
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.bind.cache fetch <GUID=301ef1431ef37a44b65b19ed772b3446> attrs = 3 (cacheOps=7, GC=0)
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.objecthelper age 148, expire age 1800, cutoff time 0, refresh 5, negative=false, cacheOps 7
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.schema.cdc get ext type 34 for CN=Legion,CN=Alera,CN=Zones,OU=Centrify,DC=alera,DC=ath
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.bind.cache fetch <GUID=0ab23f0e65a4c84896777d7452a80bd2> attrs = 3 (cacheOps=7, GC=0)
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.bind.cache fetch <GUID=0ab23f0e65a4c84896777d7452a80bd2> attrs = 3 (cacheOps=7, GC=0)
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.objecthelper age 148, expire age 1800, cutoff time 0, refresh 5, negative=false, cacheOps 7
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.schema.cdc get ext type 34 for CN=Alera,CN=Zones,OU=Centrify,DC=alera,DC=ath
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > dz.interface Checking DirectAuthorize Enabled status
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > dz.interface /etc/group is newer than dz.cache, need to read from LAH
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.lah No need to reload local accounts into memory: m_localUserMap.size():42, m_localGroupMap.size():69
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.zonehier isUserAllowedLogin rook 395(visible:1)
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.objecthelper.user Membership Update: Groups not present: CN=Rook,OU=Second,OU=Legion,DC=alera,DC=ath
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.aduser getKerberosName: name=, uobj.isEmpty: false
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.aduser User  (origUPN: rook@alera.ath) new UPN: rook@ALERA.ATH
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.bind.cache fetch <GUID=301ef1431ef37a44b65b19ed772b3446> attrs = 3 (cacheOps=7, GC=0)
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.bind.cache fetch <GUID=301ef1431ef37a44b65b19ed772b3446> attrs = 3 (cacheOps=7, GC=0)
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.objecthelper age 148, expire age 1800, cutoff time 0, refresh 5, negative=false, cacheOps 7
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.schema.cdc get ext type 34 for CN=Legion,CN=Alera,CN=Zones,OU=Centrify,DC=alera,DC=ath
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.aduser min password age set to gp because we don't have other information
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > dz.interface Checking DirectAuthorize Enabled status
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.objecthelper.user checking whether user rook (shell: /bin/bash) is forced into restricted environment via DirectAuthorize
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > dz.interface Checking DirectAuthorize Enabled status
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.objecthelper.user user rook is not forced into restricted environment
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > dz.interface Checking DirectAuthorize Enabled status
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > gp.processor finding GPOs for ADObject dn=CN=Rook,OU=Second,OU=Legion,DC=alera,DC=ath
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > gp.processor No gplinks found for ADObject dn=CN=Rook,OU=Second,OU=Legion,DC=alera,DC=ath
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > gp.processor obj.dn=cn=rook,ou=second,ou=legion,dc=alera,dc=ath ; bind.dn=dc=alera,dc=ath
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.bind.cache fetch OU=Second,OU=Legion,DC=alera,DC=ath attrs = cb634968 (cacheOps=0, GC=0)
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.bind.cache fetch OU=Second,OU=Legion,DC=alera,DC=ath attrs = cb634968 (cacheOps=0, GC=0)
+Aug 24 11:47:10 rhel65 adclient[3543]: DIAG  <fd:25 PAMUserLoggedIn > base.bind.ldap 10.0.0.51:389 fetch dn="OU=Second,OU=Legion,DC=alera,DC=ath" filter="(objectclass=*)" timeout=7
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > lrpc.adobject new object: <GUID=6df5b964f1449e4cb729291bb755729d>;OU=Second,OU=Legion,DC=alera,DC=ath
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > gp.processor finding GPOs for ADObject dn=OU=Second,OU=Legion,DC=alera,DC=ath
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > gp.processor No gplinks found for ADObject dn=OU=Second,OU=Legion,DC=alera,DC=ath
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > gp.processor obj.dn=ou=second,ou=legion,dc=alera,dc=ath ; bind.dn=dc=alera,dc=ath
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.bind.cache fetch OU=Legion,DC=alera,DC=ath attrs = cb634968 (cacheOps=0, GC=0)
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.bind.cache fetch OU=Legion,DC=alera,DC=ath attrs = cb634968 (cacheOps=0, GC=0)
+Aug 24 11:47:10 rhel65 adclient[3543]: DIAG  <fd:25 PAMUserLoggedIn > base.bind.ldap 10.0.0.51:389 fetch dn="OU=Legion,DC=alera,DC=ath" filter="(objectclass=*)" timeout=7
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > lrpc.adobject new object: <GUID=299766c11001564f94ba340b69b9c143>;OU=Legion,DC=alera,DC=ath
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > gp.processor finding GPOs for ADObject dn=OU=Legion,DC=alera,DC=ath
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > gp.processor No gplinks found for ADObject dn=OU=Legion,DC=alera,DC=ath
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > gp.processor obj.dn=ou=legion,dc=alera,dc=ath ; bind.dn=dc=alera,dc=ath
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.bind.cache fetch DC=alera,DC=ath attrs = cb634968 (cacheOps=0, GC=0)
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.bind.cache fetch DC=alera,DC=ath attrs = cb634968 (cacheOps=0, GC=0)
+Aug 24 11:47:10 rhel65 adclient[3543]: DIAG  <fd:25 PAMUserLoggedIn > base.bind.ldap 10.0.0.51:389 fetch dn="DC=alera,DC=ath" filter="(objectclass=*)" timeout=7
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > lrpc.adobject new object: <GUID=3c26d5c738c61143b488e094145fb105>;<SID=010400000000000515000000a09fc63116f9353f233f488e>;DC=alera,DC=ath
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > gp.processor finding GPOs for ADObject dn=DC=alera,DC=ath
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > gp.processor gPLink is LDAP://cn={921EE422-7C23-42C1-B829-1E1202C70486},cn=policies,cn=system,DC=alera,DC=ath;0
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > gp.processor Flags field is 0
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > gp.processor disabled false, enforced false
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.bind.cache fetch cn={921EE422-7C23-42C1-B829-1E1202C70486},cn=policies,cn=system,DC=alera,DC=ath attrs = cb634968 (cacheOps=0, GC=0)
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.bind.cache fetch cn={921EE422-7C23-42C1-B829-1E1202C70486},cn=policies,cn=system,DC=alera,DC=ath attrs = cb634968 (cacheOps=0, GC=0)
+Aug 24 11:47:10 rhel65 adclient[3543]: DIAG  <fd:25 PAMUserLoggedIn > base.bind.ldap 10.0.0.51:389 fetch dn="cn={921EE422-7C23-42C1-B829-1E1202C70486},cn=policies,cn=system,DC=alera,DC=ath" filter="(objectclass=*)" timeout=7
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > lrpc.adobject new object: <GUID=435bf5bbbc423240bcf21864d8eb680b>;CN={921EE422-7C23-42C1-B829-1E1202C70486},CN=Policies,CN=System,DC=alera,DC=ath
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > gp.processor found GPO "EMPTY GPO2"
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > gp.processor user disabled false, machine disabled false
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.bind.cache fetch CN={921EE422-7C23-42C1-B829-1E1202C70486},CN=Policies,CN=System,DC=alera,DC=ath attrs = 3e79a2f5 (cacheOps=0, GC=0)
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.bind.cache fetch CN={921EE422-7C23-42C1-B829-1E1202C70486},CN=Policies,CN=System,DC=alera,DC=ath attrs = 3e79a2f5 (cacheOps=0, GC=0)
+Aug 24 11:47:10 rhel65 adclient[3543]: DIAG  <fd:25 PAMUserLoggedIn > base.bind.ldap 10.0.0.51:389 fetch dn="CN={921EE422-7C23-42C1-B829-1E1202C70486},CN=Policies,CN=System,DC=alera,DC=ath" filter="(objectclass=*)" timeout=7
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > lrpc.adobject new object: <GUID=435bf5bbbc423240bcf21864d8eb680b>;CN={921EE422-7C23-42C1-B829-1E1202C70486},CN=Policies,CN=System,DC=alera,DC=ath
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.adagent Find GUID: 878563520e8926489c59c323df48c785 (7)
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.objecthelper age 0, expire age 3600, cutoff time 0, refresh 5, negative=false, cacheOps 7
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > gp.processor Processing GP ACL on user object: CN=Rook,OU=Second,OU=Legion,DC=alera,DC=ath
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.objecthelper.user Membership Update: Up-to-date: CN=Rook,OU=Second,OU=Legion,DC=alera,DC=ath (21 groups)
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > gp.processor gPLink is LDAP://CN={31B2F340-016D-11D2-945F-00C04FB984F9},CN=Policies,CN=System,DC=alera,DC=ath;0
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > gp.processor Flags field is 0
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > gp.processor disabled false, enforced false
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.bind.cache fetch CN={31B2F340-016D-11D2-945F-00C04FB984F9},CN=Policies,CN=System,DC=alera,DC=ath attrs = cb634968 (cacheOps=0, GC=0)
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.bind.cache fetch CN={31B2F340-016D-11D2-945F-00C04FB984F9},CN=Policies,CN=System,DC=alera,DC=ath attrs = cb634968 (cacheOps=0, GC=0)
+Aug 24 11:47:10 rhel65 adclient[3543]: DIAG  <fd:25 PAMUserLoggedIn > base.bind.ldap 10.0.0.51:389 fetch dn="CN={31B2F340-016D-11D2-945F-00C04FB984F9},CN=Policies,CN=System,DC=alera,DC=ath" filter="(objectclass=*)" timeout=7
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > lrpc.adobject new object: <GUID=39c9e6da7f591742b5d343e62c5f1b08>;CN={31B2F340-016D-11D2-945F-00C04FB984F9},CN=Policies,CN=System,DC=alera,DC=ath
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > gp.processor found GPO "Def Pol"
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > gp.processor user disabled false, machine disabled false
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.bind.cache fetch CN={31B2F340-016D-11D2-945F-00C04FB984F9},CN=Policies,CN=System,DC=alera,DC=ath attrs = 3e79a2f5 (cacheOps=0, GC=0)
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.bind.cache fetch CN={31B2F340-016D-11D2-945F-00C04FB984F9},CN=Policies,CN=System,DC=alera,DC=ath attrs = 3e79a2f5 (cacheOps=0, GC=0)
+Aug 24 11:47:10 rhel65 adclient[3543]: DIAG  <fd:25 PAMUserLoggedIn > base.bind.ldap 10.0.0.51:389 fetch dn="CN={31B2F340-016D-11D2-945F-00C04FB984F9},CN=Policies,CN=System,DC=alera,DC=ath" filter="(objectclass=*)" timeout=7
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > lrpc.adobject new object: <GUID=39c9e6da7f591742b5d343e62c5f1b08>;CN={31B2F340-016D-11D2-945F-00C04FB984F9},CN=Policies,CN=System,DC=alera,DC=ath
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.adagent Find GUID: 878563520e8926489c59c323df48c785 (7)
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.objecthelper age 0, expire age 3600, cutoff time 0, refresh 5, negative=false, cacheOps 7
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > gp.processor Processing GP ACL on user object: CN=Rook,OU=Second,OU=Legion,DC=alera,DC=ath
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.objecthelper.user Membership Update: Up-to-date: CN=Rook,OU=Second,OU=Legion,DC=alera,DC=ath (21 groups)
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > gp.processor loadStack()::Processing policy name = Def Pol
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > gp.processor SMB get alera.ath/Policies/{31B2F340-016D-11D2-945F-00C04FB984F9}/USER/Registry.pol from dc03.alera.ath to /var/centrify/tmp/gpp.alb8r7
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > com.centrify.smb.smbfile SMB smbGetFile - credCacheName=FILE:/tmp/krb5cc_cdc1166017722_lxDeKv realm=ALERA.ATH server=dc03.alera.ath share=sysvol remoteFile=alera.ath\Policies\{31B2F340-016D-11D2-945F-00C04FB984F9}\USER\Registry.pol localFd=27
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > util.io.connectutil Connected to 10.0.0.51:445 in 0.000156 seconds
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > com.centrify.smb.smbserver SMB Connect to server dc03.alera.ath
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > util.except (cims::SMBClient) : Message is a SMB2 Protocol (reference ../smb/client/smbpacket.cpp:445 rc: 11)
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > com.centrify.smb.smbserver Server response with SMB2 response, reprocess.
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.adagent Domain Level for 'ALERA.ATH' is not PreW2K8
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > smb.util.kerberos Confidentiality=disabled; Integrity checking=disabled
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > com.centrify.smb.smb2packet Session flags received: 0
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.adagent Domain Level for 'ALERA.ATH' is not PreW2K8
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > audittrail.internal The targets setting of Centrify Suite/Trusted Path is -1, don't known what value to override, so will inherit global targets setting
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > audittrail.internal The final targets setting of Centrify Suite/Trusted Path is 2.
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > audittrail.internal No session ID provided. Read a string suppose to be session ID from environment variable, but it is not a valid GUID. Using NULL as the ID.
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > audittrail.internal AuditTrailEvent: Centrify Suite Trusted Path 2700 0.0 (null) rook@ALERA.ATH <userSid> (null) 3543
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > audittrail.internal UTF8STRING: cifs/dc03.alera.ath@ALERA.ATH
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > audittrail.internal The targets setting of Centrify Suite/Trusted Path is -1, don't known what value to override, so will inherit global targets setting
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > audittrail.internal The final targets setting of Centrify Suite/Trusted Path is 2.
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > audittrail.internal No machine provided, use long local hostname rhel65.
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > audittrail.internal No eventTime provided, use now time 1472064430.349163.
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > audittrail.plugin Escape the audit trail event to [cifs/dc03.alera.ath@ALERA.ATH]
+Aug 24 11:47:10 rhel65 adclient[3543]: INFO  AUDIT_TRAIL|Centrify Suite|Trusted Path|1.0|2700|Trusted path granted|5|user=rook@ALERA.ATH pid=3543 utc=1472064430349 centrifyEventID=23700 status=GRANTED server=cifs/dc03.alera.ath@ALERA.ATH
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > smb.util.kerberos Confidentiality=disabled; Integrity checking=disabled
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > com.centrify.smb.smbtree SMB treeConnect to \\dc03.alera.ath\sysvol using service ?????.
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > com.centrify.smb.smbclient SMB getRemoteFile - remoteFile=alera.ath\Policies\{31B2F340-016D-11D2-945F-00C04FB984F9}\USER\Registry.pol fhDst=0x8806b0 convertCRLF=0
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > com.centrify.smb.smbtree SMB treeDisconnect from tree \\dc03.alera.ath\sysvol using service ?????.
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > com.centrify.smb.smbserver SMB disconnect from server dc03.alera.ath
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > gp.processor loadStack()::Processing policy name = EMPTY GPO2
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > gp.processor SMB get alera.ath/Policies/{921EE422-7C23-42C1-B829-1E1202C70486}/USER/Registry.pol from dc03.alera.ath to /var/centrify/tmp/gpp.JwNvpZ
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > com.centrify.smb.smbfile SMB smbGetFile - credCacheName=FILE:/tmp/krb5cc_cdc1166017722_lxDeKv realm=ALERA.ATH server=dc03.alera.ath share=SysVol remoteFile=alera.ath\Policies\{921EE422-7C23-42C1-B829-1E1202C70486}\USER\Registry.pol localFd=27
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > util.io.connectutil Connected to 10.0.0.51:445 in 0.000253 seconds
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > com.centrify.smb.smbserver SMB Connect to server dc03.alera.ath
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > util.except (cims::SMBClient) : Message is a SMB2 Protocol (reference ../smb/client/smbpacket.cpp:445 rc: 11)
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > com.centrify.smb.smbserver Server response with SMB2 response, reprocess.
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.adagent Domain Level for 'ALERA.ATH' is not PreW2K8
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > smb.util.kerberos Confidentiality=disabled; Integrity checking=disabled
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > com.centrify.smb.smb2packet Session flags received: 0
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.adagent Domain Level for 'ALERA.ATH' is not PreW2K8
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > audittrail.internal The targets setting of Centrify Suite/Trusted Path is -1, don't known what value to override, so will inherit global targets setting
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > audittrail.internal The final targets setting of Centrify Suite/Trusted Path is 2.
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > audittrail.internal No session ID provided. Read a string suppose to be session ID from environment variable, but it is not a valid GUID. Using NULL as the ID.
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > audittrail.internal AuditTrailEvent: Centrify Suite Trusted Path 2700 0.0 (null) rook@ALERA.ATH <userSid> (null) 3543
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > audittrail.internal UTF8STRING: cifs/dc03.alera.ath@ALERA.ATH
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > audittrail.internal The targets setting of Centrify Suite/Trusted Path is -1, don't known what value to override, so will inherit global targets setting
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > audittrail.internal The final targets setting of Centrify Suite/Trusted Path is 2.
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > audittrail.internal No machine provided, use long local hostname rhel65.
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > audittrail.internal No eventTime provided, use now time 1472064430.355339.
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > audittrail.plugin Escape the audit trail event to [cifs/dc03.alera.ath@ALERA.ATH]
+Aug 24 11:47:10 rhel65 adclient[3543]: INFO  AUDIT_TRAIL|Centrify Suite|Trusted Path|1.0|2700|Trusted path granted|5|user=rook@ALERA.ATH pid=3543 utc=1472064430355 centrifyEventID=23700 status=GRANTED server=cifs/dc03.alera.ath@ALERA.ATH
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > smb.util.kerberos Confidentiality=disabled; Integrity checking=disabled
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > com.centrify.smb.smbtree SMB treeConnect to \\dc03.alera.ath\SysVol using service ?????.
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > com.centrify.smb.smbclient SMB getRemoteFile - remoteFile=alera.ath\Policies\{921EE422-7C23-42C1-B829-1E1202C70486}\USER\Registry.pol fhDst=0x8806b0 convertCRLF=0
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > com.centrify.smb.smb2packet Size of SMB2_Error packet is 9
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > util.except (cims::SMB) : Cannot find the specified file. (reference ../smb/client/smb2packet.cpp:252 rc: -1073741772)
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > com.centrify.smb.smbtree SMB treeDisconnect from tree \\dc03.alera.ath\SysVol using service ?????.
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > com.centrify.smb.smbserver SMB disconnect from server dc03.alera.ath
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > gp.processor unlinked file:/var/centrify/tmp/gpp.JwNvpZ - SMBException:Cannot find the specified file.
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > gp.processor caught smb exception: Cannot find the specified file.
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > gp.processor obj.dn=dc=alera,dc=ath ; bind.dn=dc=alera,dc=ath
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.bind.cache fetch  attrs = 26 (cacheOps=0, GC=0)
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.bind.cache fetch  attrs = 26 (cacheOps=0, GC=0)
+Aug 24 11:47:10 rhel65 adclient[3543]: DIAG  <fd:25 PAMUserLoggedIn > base.bind.ldap 10.0.0.51:389 fetch dn="" filter="(objectclass=*)" timeout=7
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > lrpc.adobject new object: 
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > gp.processor siteFilter = CN=Default-First-Site-Name,CN=Sites,CN=Configuration,DC=alera,DC=ath
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.bind.cache fetch CN=Default-First-Site-Name,CN=Sites,CN=Configuration,DC=alera,DC=ath attrs = cb634968 (cacheOps=0, GC=0)
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.bind.cache fetch CN=Default-First-Site-Name,CN=Sites,CN=Configuration,DC=alera,DC=ath attrs = cb634968 (cacheOps=0, GC=0)
+Aug 24 11:47:10 rhel65 adclient[3543]: DIAG  <fd:25 PAMUserLoggedIn > base.bind.ldap 10.0.0.51:389 fetch dn="CN=Default-First-Site-Name,CN=Sites,CN=Configuration,DC=alera,DC=ath" filter="(objectclass=*)" timeout=7
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > lrpc.adobject new object: <GUID=a532a555fe35d0499a355b761261678b>;CN=Default-First-Site-Name,CN=Sites,CN=Configuration,DC=alera,DC=ath
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > gp.processor finding GPOs for ADObject dn=CN=Default-First-Site-Name,CN=Sites,CN=Configuration,DC=alera,DC=ath
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > gp.processor No gplinks found for ADObject dn=CN=Default-First-Site-Name,CN=Sites,CN=Configuration,DC=alera,DC=ath
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > gp.processor GPO stack:  USER  rook  loopback [Y]  size [2]
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > gp.processor 1   enforced [ ]  GPO [Def Pol]
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > gp.processor 2   enforced [ ]  GPO [Def Pol]
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > gp.processor fileStack: USER rook 1/2 policyName[Def Pol] loopback[1] credsCache[FILE:/tmp/krb5cc_cdc1166017722_lxDeKv] policyPath[/var/centrify/tmp/gpp.alb8r7]
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > gp.policy parsing Registry.pol for policy "Def Pol" -- /var/centrify/tmp/gpp.alb8r7
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > gp.policyvalue special value found: **delvals. : Software/Policies/Centrify/UnixSettings/RunCommand
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > gp.policyvalue Category: runcommand
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > gp.policyvalue Def Pol inserting: Software/Policies/Centrify/UnixSettings/RunCommand/Command1=su - max -c 'id' > /tmp/testid
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > gp.processor unlinked file:/var/centrify/tmp/gpp.alb8r7
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > gp.processor fileStack: USER rook 2/2 policyName[Def Pol] loopback[1] credsCache[FILE:/tmp/krb5cc_cdc1166017722_lxDeKv] policyPath[/var/centrify/tmp/gpp.SqqfCn]
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > gp.policy parsing Registry.pol for policy "Def Pol" -- /var/centrify/tmp/gpp.SqqfCn
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > gp.policyvalue special value found: **delvals. : Software/Policies/Centrify/UnixSettings/RunCommand
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > gp.policyvalue Def Pol clearing: Software/Policies/Centrify/UnixSettings/RunCommand/**delvals.
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > gp.policyvalue Category: runcommand
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > gp.policyvalue Def Pol adding: Software/Policies/Centrify/UnixSettings/RunCommand/Command1=su - max -c 'id' > /tmp/testid
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > gp.processor unlinked file:/var/centrify/tmp/gpp.SqqfCn
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > gp.processor Successfully loaded policy rook from DC. Will write and execute policy.
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > gp.policyvalue writePolicy /var/centrifydc/reg/users/rook/software/policies/centrify/unixsettings/runcommand/Registry.pol
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > gp.monitored GP controlled values for user rook: refreshRate: 90 refreshOffset: 30 denyRsop: 0
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > gp.monitored Executing /usr/share/centrifydc/mappers/runmappers user map rook login
+Aug 24 11:47:10 rhel65 runmappers[4528]: Run runmappers - class:user | action:map | user:rook | mode:login
+Aug 24 11:47:10 rhel65 runmappers[4528]: Hostname: rhel65.alera.ath
+Aug 24 11:47:10 rhel65 runmappers[4528]: run command: [uname -s]
+Aug 24 11:47:10 rhel65 runmappers[4528]: run command: [uname -m]
+Aug 24 11:47:10 rhel65 runmappers[4528]: OS family: [linux] OS: [rhel] Version: [6.5] Edition: [server] Architecture: [x86_64]
+Aug 24 11:47:10 rhel65 runmappers[4528]: Valid user: rook
+Aug 24 11:47:10 rhel65 runmappers[4528]: run command: [uname -s]
+Aug 24 11:47:10 rhel65 runmappers[4528]: run command: [uname -m]
+Aug 24 11:47:10 rhel65 runmappers[4528]: OS family: [linux] OS: [rhel] Version: [6.5] Edition: [server] Architecture: [x86_64]
+Aug 24 11:47:10 rhel65 runmappers[4528]: /usr/share/centrifydc/mappers/user/CrontabEntries.pl run with pid[4545]
+Aug 24 11:47:10 rhel65 runmappers[4528]: /usr/share/centrifydc/mappers/user/CrontabEntries.pl map rook login: Exit status 0
+Aug 24 11:47:10 rhel65 runmappers[4528]: /usr/share/centrifydc/mappers/user/EnforceScreenLocking.pl run with pid[4553]
+Aug 24 11:47:10 rhel65 runmappers[4528]: /usr/share/centrifydc/mappers/user/EnforceScreenLocking.pl map rook login: Exit status 0
+Aug 24 11:47:10 rhel65 runmappers[4528]: /usr/share/centrifydc/mappers/user/Gnome.pl run with pid[4560]
+Aug 24 11:47:10 rhel65 Gnome.pl[4560]: Process Management Key: user [rook] key [EnableGnomeSettings]
+Aug 24 11:47:10 rhel65 Gnome.pl[4560]: Current Management Key setting: current/previous [/]
+Aug 24 11:47:10 rhel65 Gnome.pl[4560]: Gnome GPs were disabled.
+Aug 24 11:47:10 rhel65 runmappers[4528]: /usr/share/centrifydc/mappers/user/Gnome.pl map rook login: Exit status 0
+Aug 24 11:47:10 rhel65 runmappers[4528]: /usr/share/centrifydc/mappers/user/Gnome3.pl run with pid[4569]
+Aug 24 11:47:10 rhel65 Gnome3.pl[4569]: /usr/bin/gnome-terminal doesn't exist or is not executable.
+Aug 24 11:47:10 rhel65 Gnome3.pl[4569]: This mapper is for Gnome 3. Skip.
+Aug 24 11:47:10 rhel65 runmappers[4528]: /usr/share/centrifydc/mappers/user/Gnome3.pl map rook login: Exit status 0
+Aug 24 11:47:10 rhel65 runmappers[4528]: /usr/share/centrifydc/mappers/user/rhel_certimport.pl run with pid[4577]
+Aug 24 11:47:10 rhel65 runmappers[4528]: /usr/share/centrifydc/mappers/user/rhel_certimport.pl map rook login: Exit status 0
+Aug 24 11:47:10 rhel65 runmappers[4528]: /usr/share/centrifydc/mappers/user/rhel_importcoolkey.pl run with pid[4583]
+Aug 24 11:47:10 rhel65 rhel_importcoolkey.pl[4583]: Smart card for RHEL was not enabled, not installing coolkey libraries
+Aug 24 11:47:10 rhel65 runmappers[4528]: /usr/share/centrifydc/mappers/user/rhel_importcoolkey.pl map rook login: Exit status 0
+Aug 24 11:47:10 rhel65 runmappers[4528]: /usr/share/centrifydc/mappers/user/rhel_mapper_screenlock.pl run with pid[4593]
+Aug 24 11:47:10 rhel65 runmappers[4528]: /usr/share/centrifydc/mappers/user/rhel_mapper_screenlock.pl map rook login: Exit status 0
+Aug 24 11:47:10 rhel65 runmappers[4528]: /usr/share/centrifydc/mappers/user/RunCommand.pl run with pid[4601]
+Aug 24 11:47:10 rhel65 RunCommand.pl[4601]: Run command: [su - max -c 'id' > /tmp/testid]
+Aug 24 11:47:10 rhel65 RunCommand.pl[4601]: run command: [su - max -c 'id' > /tmp/testid]
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <main> daemon.ipcserver Accepted new lrpc2 client on <fd:30> with flags 0x00000802
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <main> util.threadpool Pool size 3/4, busy size 1/30
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:30 su(4609)> -> getpwnam_centrifydc_r  user="max"
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:30 su(4609)> User="max" str2ent=(nil) result=0x7fe526594d60, buffer=0x7fe526de0030
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:30 su(4609)> User 'max' is not an override user
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <main> daemon.ipcserver Accepted new lrpc2 client on <fd:31> with flags 0x00000802
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <main> util.threadpool Pool size 3/4, busy size 1/30
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:31 NSSGetPasswdDataByName > daemon.ipcclient2 executing request 'NSSGetPasswdDataByName' in thread 140309178181376
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:31 NSSGetPasswdDataByName > daemon.ipcclient2 Getting passwd data for 'max'
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:31 NSSGetPasswdDataByName > base.adagent Find GUID: 1674f17492064b2bab97c39ef2cb323e (7)
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:31 NSSGetPasswdDataByName > base.objecthelper age 128, expire age 3600, cutoff time 0, refresh 5, negative=true, cacheOps 7
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:31 NSSGetPasswdDataByName > base.adagent findObject ADNames: max#012name: max type=SAM domain=ALERA.ATH#012
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:31 NSSGetPasswdDataByName > base.objecthelper age 128, expire age 3600, cutoff time 0, refresh 5, negative=false, cacheOps 7
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:31 NSSGetPasswdDataByName > base.bind.cache Skipping max from cache since the object is not enabled in the current zone
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:31 NSSGetPasswdDataByName > base.bind.cache ADCB::search base , filter (&(objectClass=User)(|(objectCategory=Person)(objectCategory=Computer))(sAMAccountName=max)), attrs 1e (cacheOps=7, GC=1)
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:31 NSSGetPasswdDataByName > base.objecthelper age 128, expire age 3600, cutoff time 0, refresh 5, negative=false, cacheOps 7
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:31 NSSGetPasswdDataByName > base.adagent Find DN: CN=Antillar Maximus,OU=Second,OU=Legion,DC=alera,DC=ath (7)
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:31 NSSGetPasswdDataByName > base.bind.cache fetch CN=Antillar Maximus,OU=Second,OU=Legion,DC=alera,DC=ath attrs = 2 (cacheOps=7, GC=0)
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:31 NSSGetPasswdDataByName > base.bind.cache fetch CN=Antillar Maximus,OU=Second,OU=Legion,DC=alera,DC=ath attrs = 2 (cacheOps=7, GC=0)
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:31 NSSGetPasswdDataByName > base.objecthelper age 128, expire age 3600, cutoff time 0, refresh 5, negative=false, cacheOps 7
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:31 NSSGetPasswdDataByName > base.bind.cache Skipping max since the object is not enabled in the current zone
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:31 NSSGetPasswdDataByName > base.adagent findByAttr: Not Found:max category:user attr=sAMAccountName
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:31 NSSGetPasswdDataByName > base.bind.cache ADCB::search base , filter (&(objectClass=User)(|(objectCategory=Person)(objectCategory=Computer))(displayName=max)), attrs 2 (cacheOps=7, GC=0)
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:31 NSSGetPasswdDataByName > base.objecthelper age 128, expire age 1800, cutoff time 0, refresh 5, negative=true, cacheOps 7
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:31 NSSGetPasswdDataByName > base.bind.cache ADCB::search base , filter (&(objectClass=User)(|(objectCategory=Person)(objectCategory=Computer))(displayName=max)), attrs 1e (cacheOps=7, GC=1)
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:31 NSSGetPasswdDataByName > base.objecthelper age 128, expire age 3600, cutoff time 0, refresh 5, negative=true, cacheOps 7
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:31 NSSGetPasswdDataByName > base.adagent findByAttr: Not Found:max category:user attr=displayName
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:31 NSSGetPasswdDataByName > base.bind.cache ADCB::search base , filter (&(objectClass=User)(|(objectCategory=Person)(objectCategory=Computer))(cn=max)), attrs 2 (cacheOps=7, GC=0)
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:31 NSSGetPasswdDataByName > base.objecthelper age 128, expire age 1800, cutoff time 0, refresh 5, negative=true, cacheOps 7
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:31 NSSGetPasswdDataByName > base.bind.cache ADCB::search base , filter (&(objectClass=User)(|(objectCategory=Person)(objectCategory=Computer))(cn=max)), attrs 1e (cacheOps=7, GC=1)
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:31 NSSGetPasswdDataByName > base.objecthelper age 128, expire age 3600, cutoff time 0, refresh 5, negative=true, cacheOps 7
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:31 NSSGetPasswdDataByName > base.adagent findByAttr: Not Found:max category:user attr=cn
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:31 NSSGetPasswdDataByName > base.adagent findObject: NotFound:max Category:user
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:31 NSSGetPasswdDataByName > base.objecthelper 'max' is not a canonical name
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:31 NSSGetPasswdDataByName > util.except (NotFound) : No such unix user 'max' (reference ipcclient2.cpp:931 rc: 0)
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:31 NSSGetPasswdDataByName > daemon.ipcclient2 No user data: No such unix user 'max'
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:31 NSSGetPasswdDataByName > daemon.ipcclient2 request 'NSSGetPasswdDataByName' complete
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <main> util.threadpool Pool size 3/4, busy size 1/30
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <fd:30 su(4609)> <- getpwnam_centrifydc_r, result=NSS_NOTFOUND(0)
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <main> daemon.ipcserver lrpc client disconnected normally <fd:31>
+Aug 24 11:47:10 rhel65 adclient[3543]: DEBUG <main> daemon.ipcserver lrpc client disconnected normally <fd:30>
+Aug 24 11:47:10 rhel65 RunCommand.pl[4601]: Return     : [125]
+Aug 24 11:47:10 rhel65 runmappers[4528]: /usr/share/centrifydc/mappers/user/RunCommand.pl map rook login: Exit status 0
+Aug 24 11:47:10 rhel65 runmappers[4528]: /usr/share/centrifydc/mappers/user/sudoers.pl run with pid[4612]
+Aug 24 11:47:10 rhel65 sudoers.pl[4612]: No sudoers registry setting. No need to update sudoers file.
+Aug 24 11:47:10 rhel65 runmappers[4528]: /usr/share/centrifydc/mappers/user/sudoers.pl map rook login: Exit status 0
+Aug 24 11:47:10 rhel65 runmappers[4528]: /usr/share/centrifydc/mappers/user/zzreload.pl run with pid[4623]
+Aug 24 11:47:10 rhel65 runmappers[4528]: /usr/share/centrifydc/mappers/user/zzreload.pl map rook login: Exit status 0
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.adagent Find GUID: 878563520e8926489c59c323df48c785 (7)
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > base.objecthelper age 1, expire age 3600, cutoff time 0, refresh 5, negative=false, cacheOps 7
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > gp.monitored backofftime for rook = 0
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > gp.monitored Next GP Update for rook: 90 + 19 minutes (6540 seconds)
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > daemon.ipcclient2 request 'PAMUserLoggedIn' complete
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:16 su(4527)> Sending PAM audit trail event with DA_SESSION_ID_AUTH: <6a2b3daa-9834-1340-af37-3eda735c1ff3>
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:16 su(4527)> -> SendATProxySetAuditTrailEvent
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:16 su(4527)> AuditTrailEvent: Centrify Suite PAM 500 0.0 (null) rook <userSid> 6a2b3daa-9834-1340-af37-3eda735c1ff3 4527
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:16 su(4527)> UTF8STRING: su-l
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:16 su(4527)> UTF8STRING: pts/0
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:16 su(4527)> UTF8STRING: (none)
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <main> util.threadpool Pool size 3/4, busy size 1/30
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:25 ATProxySetAuditTrailEvent > daemon.ipcclient2 executing request 'ATProxySetAuditTrailEvent' in thread 140309157201664
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:25 ATProxySetAuditTrailEvent > daemon.ipcclient2 AuditTrailEvent from proxy: Centrify Suite PAM 500 0.0  rook <userSid> DA_SESSION_ID: [6a2b3daa-9834-1340-af37-3eda735c1ff3] 4527
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:25 ATProxySetAuditTrailEvent > daemon.ipcclient2 UTF8STRING: su-l
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:25 ATProxySetAuditTrailEvent > daemon.ipcclient2 UTF8STRING: pts/0
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:25 ATProxySetAuditTrailEvent > daemon.ipcclient2 UTF8STRING: (none)
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:25 ATProxySetAuditTrailEvent > adclient.pam.util Creating CimsContext
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:25 ATProxySetAuditTrailEvent > adclient.pam.util username rook, presented: , effective: , unix: unknown
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:25 ATProxySetAuditTrailEvent > base.adagent Find GUID: 878563520e8926489c59c323df48c785 (7)
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:25 ATProxySetAuditTrailEvent > base.objecthelper age 1, expire age 3600, cutoff time 0, refresh 5, negative=false, cacheOps 7
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:25 ATProxySetAuditTrailEvent > audittrail.internal The targets setting of Centrify Suite/PAM is -1, don't known what value to override, so will inherit global targets setting
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:25 ATProxySetAuditTrailEvent > audittrail.internal The final targets setting of Centrify Suite/PAM is 2.
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:25 ATProxySetAuditTrailEvent > audittrail.internal No machine provided, use long local hostname rhel65.
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:25 ATProxySetAuditTrailEvent > audittrail.internal No eventTime provided, use now time 1472064431.364874.
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:25 ATProxySetAuditTrailEvent > audittrail.plugin Escape the audit trail event to [su-l]
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:25 ATProxySetAuditTrailEvent > audittrail.plugin Escape the audit trail event to [pts/0]
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:25 ATProxySetAuditTrailEvent > audittrail.plugin Escape the audit trail event to [(none)]
+Aug 24 11:47:11 rhel65 adclient[3543]: INFO  AUDIT_TRAIL|Centrify Suite|PAM|1.0|500|PAM open session granted|5|user=rook(type:ad,rook@ALERA.ATH) pid=4527 utc=1472064431364 centrifyEventID=24500 status=GRANTED service=su-l tty=pts/0 client=(none)
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:25 ATProxySetAuditTrailEvent > daemon.ipcclient2 request 'ATProxySetAuditTrailEvent' complete
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:16 su(4527)> <- SendATProxySetAuditTrailEvent, result=(1)
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:16 su(4527)> <- pam_sm_open_session, result=PAM_SUCCESS(0)
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <main> daemon.ipcserver Accepted new lrpc2 client on <fd:27> with flags 0x00000802
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <main> daemon.ipcserver lrpc client disconnected normally <fd:25>
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <main> daemon.ipcserver lrpc client disconnected normally <fd:16>
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:27 su(4527)> -> getpwnam_centrifydc_r  user="rook"
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:27 su(4527)> User="rook" str2ent=(nil) result=0x7f5810d93050, buffer=0x7f5810d93080
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:27 su(4527)> User 'rook' is not an override user
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <main> daemon.ipcserver Accepted new lrpc2 client on <fd:16> with flags 0x00000802
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:16 NSSGetPasswdDataByName > daemon.ipcclient2 executing request 'NSSGetPasswdDataByName' in thread 140309157201664
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:16 NSSGetPasswdDataByName > daemon.ipcclient2 Getting passwd data for 'rook'
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:16 NSSGetPasswdDataByName > base.adagent Find GUID: 878563520e8926489c59c323df48c785 (7)
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:16 NSSGetPasswdDataByName > base.objecthelper age 1, expire age 3600, cutoff time 0, refresh 5, negative=false, cacheOps 7
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:16 NSSGetPasswdDataByName > daemon.ipcclient2 Returning user info: 'rook:(hidden):1166017722:4:Rook:/home/rook:/bin/bash'
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:16 NSSGetPasswdDataByName > daemon.ipcclient2 request 'NSSGetPasswdDataByName' complete
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:27 su(4527)> -> getUserLoginShellByAudit
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:16 DAIReplacePasswdWithNoLoginShellByAudit > daemon.ipcclient2 executing request 'DAIReplacePasswdWithNoLoginShellByAudit' in thread 140309188671232
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:16 DAIReplacePasswdWithNoLoginShellByAudit > daemon.ipcclient2 Checking if we need to replace with an no-login shell for user 'rook' by audit
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:16 DAIReplacePasswdWithNoLoginShellByAudit > adclient.pam.util Creating CimsContext
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:16 DAIReplacePasswdWithNoLoginShellByAudit > adclient.pam.util username rook, presented: , effective: , unix: unknown
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:16 DAIReplacePasswdWithNoLoginShellByAudit > base.adagent Find GUID: 878563520e8926489c59c323df48c785 (7)
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:16 DAIReplacePasswdWithNoLoginShellByAudit > base.objecthelper age 1, expire age 3600, cutoff time 0, refresh 5, negative=false, cacheOps 7
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:16 DAIReplacePasswdWithNoLoginShellByAudit > adclient.pam.util Creating CimsContext
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:16 DAIReplacePasswdWithNoLoginShellByAudit > adclient.pam.util username rook, presented: , effective: , unix: unknown
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:16 DAIReplacePasswdWithNoLoginShellByAudit > base.adagent Find GUID: 878563520e8926489c59c323df48c785 (7)
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:16 DAIReplacePasswdWithNoLoginShellByAudit > base.objecthelper age 1, expire age 3600, cutoff time 0, refresh 5, negative=false, cacheOps 7
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:16 DAIReplacePasswdWithNoLoginShellByAudit > daemon.ipcclient2 Audit level of user 'rook' is AuditIfPossible
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:16 DAIReplacePasswdWithNoLoginShellByAudit > daemon.ipcclient2 Do not need to replace with an no-login shell for user 'rook' by audit. DA is not installed
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:16 DAIReplacePasswdWithNoLoginShellByAudit > daemon.ipcclient2 request 'DAIReplacePasswdWithNoLoginShellByAudit' complete
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:27 su(4527)> Result: account='rook' password=(hidden) UID='1166017722' GID='4' gecos='Rook' homedir='/home/rook' shell='/bin/bash' (returnlen=33)
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:27 su(4527)> <- getpwnam_centrifydc_r, result=NSS_SUCCESS(1)
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <main> daemon.ipcserver lrpc client disconnected normally <fd:27>
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <main> daemon.ipcserver lrpc client disconnected normally <fd:16>
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <main> daemon.ipcserver Accepted new lrpc2 client on <fd:16> with flags 0x00000802
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:16 su(4629)> -> getgroups_centrifydc_r  user=rook
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:16 su(4629)>   exclude group: 4
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:16 su(4629)>   GID array limit: 65536
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:16 su(4629)>   GID array count: 1   capacity: 64   GIDs: 4
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:16 su(4629)> User 'rook' is not an override user
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <main> daemon.ipcserver Accepted new lrpc2 client on <fd:25> with flags 0x00000802
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetUserGroupIDs > daemon.ipcclient2 executing request 'NSSGetUserGroupIDs' in thread 140309188671232
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetUserGroupIDs > daemon.ipcclient2 Getting group ID's for user 'rook' maxIDs=65537
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetUserGroupIDs > base.adagent Find GUID: 878563520e8926489c59c323df48c785 (7)
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetUserGroupIDs > base.objecthelper age 1, expire age 3600, cutoff time 0, refresh 5, negative=false, cacheOps 7
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetUserGroupIDs > base.objecthelper.user Membership Update: Up-to-date: CN=Rook,OU=Second,OU=Legion,DC=alera,DC=ath (21 groups)
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetUserGroupIDs > daemon.ipcclient O:getUnixGroups for rook
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetUserGroupIDs > daemon.ipcclient2 Failed to open: /home/rook/.setgrpsrc errno = 2
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetUserGroupIDs > daemon.ipcclient2 Found group 8 IDs for user 'rook' (ID's are not logged)
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetUserGroupIDs > daemon.ipcclient2 request 'NSSGetUserGroupIDs' complete
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:16 su(4629)>   GID array count: 8   capacity: 64   GIDs: 4,1166017784,1166017785,1166017786,1166017025,1166017729,1166017713,1166017730
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:16 su(4629)> <- getgroups_centrifydc_r, result=NSS_SUCCESS(1)
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <main> daemon.ipcserver lrpc client disconnected normally <fd:25>
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <main> daemon.ipcserver lrpc client disconnected normally <fd:16>
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <main> daemon.ipcserver Accepted new lrpc2 client on <fd:16> with flags 0x00000802
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:16 bash(4629)> -> getpwuid_centrifydc_r  UID=1166017722
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <main> daemon.ipcserver Accepted new lrpc2 client on <fd:25> with flags 0x00000802
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByUID > daemon.ipcclient2 executing request 'NSSGetPasswdDataByUID' in thread 140309188671232
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByUID > daemon.ipcclient2 Getting passwd data for uid 1166017722
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByUID > base.adagent Find GUID: 878563520e8926489c59c323df48c785 (7)
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByUID > base.objecthelper age 1, expire age 3600, cutoff time 0, refresh 5, negative=false, cacheOps 7
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByUID > daemon.ipcclient2 Returning user info: 'rook:(hidden):1166017722:4:Rook:/home/rook:/bin/bash'
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByUID > daemon.ipcclient2 request 'NSSGetPasswdDataByUID' complete
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:16 bash(4629)> -> getUserLoginShellByAudit
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:25 DAIReplacePasswdWithNoLoginShellByAudit > daemon.ipcclient2 executing request 'DAIReplacePasswdWithNoLoginShellByAudit' in thread 140309157201664
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:25 DAIReplacePasswdWithNoLoginShellByAudit > daemon.ipcclient2 Checking if we need to replace with an no-login shell for user 'rook' by audit
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:25 DAIReplacePasswdWithNoLoginShellByAudit > adclient.pam.util Creating CimsContext
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:25 DAIReplacePasswdWithNoLoginShellByAudit > adclient.pam.util username rook, presented: , effective: , unix: unknown
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:25 DAIReplacePasswdWithNoLoginShellByAudit > base.adagent Find GUID: 878563520e8926489c59c323df48c785 (7)
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:25 DAIReplacePasswdWithNoLoginShellByAudit > base.objecthelper age 1, expire age 3600, cutoff time 0, refresh 5, negative=false, cacheOps 7
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:25 DAIReplacePasswdWithNoLoginShellByAudit > adclient.pam.util Creating CimsContext
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:25 DAIReplacePasswdWithNoLoginShellByAudit > adclient.pam.util username rook, presented: , effective: , unix: unknown
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:25 DAIReplacePasswdWithNoLoginShellByAudit > base.adagent Find GUID: 878563520e8926489c59c323df48c785 (7)
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:25 DAIReplacePasswdWithNoLoginShellByAudit > base.objecthelper age 1, expire age 3600, cutoff time 0, refresh 5, negative=false, cacheOps 7
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:25 DAIReplacePasswdWithNoLoginShellByAudit > daemon.ipcclient2 Audit level of user 'rook' is AuditIfPossible
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:25 DAIReplacePasswdWithNoLoginShellByAudit > daemon.ipcclient2 Do not need to replace with an no-login shell for user 'rook' by audit. DA is not installed
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:25 DAIReplacePasswdWithNoLoginShellByAudit > daemon.ipcclient2 request 'DAIReplacePasswdWithNoLoginShellByAudit' complete
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:16 bash(4629)> Result: account='rook' password=(hidden) UID='1166017722' GID='4' gecos='Rook' homedir='/home/rook' shell='/bin/bash' (returnlen=33)
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:16 bash(4629)> <- getpwuid_centrifydc_r, result=NSS_SUCCESS(1)
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <main> daemon.ipcserver lrpc client disconnected normally <fd:25>
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <main> daemon.ipcserver lrpc client disconnected normally <fd:16>
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <main> daemon.ipcserver Accepted new lrpc2 client on <fd:16> with flags 0x00000802
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:16 id(4631)> -> getpwuid_centrifydc_r  UID=1166017722
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <main> daemon.ipcserver Accepted new lrpc2 client on <fd:25> with flags 0x00000802
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByUID > daemon.ipcclient2 executing request 'NSSGetPasswdDataByUID' in thread 140309157201664
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByUID > daemon.ipcclient2 Getting passwd data for uid 1166017722
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByUID > base.adagent Find GUID: 878563520e8926489c59c323df48c785 (7)
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByUID > base.objecthelper age 1, expire age 3600, cutoff time 0, refresh 5, negative=false, cacheOps 7
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByUID > daemon.ipcclient2 Returning user info: 'rook:(hidden):1166017722:4:Rook:/home/rook:/bin/bash'
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByUID > daemon.ipcclient2 request 'NSSGetPasswdDataByUID' complete
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:16 id(4631)> -> getUserLoginShellByAudit
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:25 DAIReplacePasswdWithNoLoginShellByAudit > daemon.ipcclient2 executing request 'DAIReplacePasswdWithNoLoginShellByAudit' in thread 140309188671232
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:25 DAIReplacePasswdWithNoLoginShellByAudit > daemon.ipcclient2 Checking if we need to replace with an no-login shell for user 'rook' by audit
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:25 DAIReplacePasswdWithNoLoginShellByAudit > adclient.pam.util Creating CimsContext
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:25 DAIReplacePasswdWithNoLoginShellByAudit > adclient.pam.util username rook, presented: , effective: , unix: unknown
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:25 DAIReplacePasswdWithNoLoginShellByAudit > base.adagent Find GUID: 878563520e8926489c59c323df48c785 (7)
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:25 DAIReplacePasswdWithNoLoginShellByAudit > base.objecthelper age 1, expire age 3600, cutoff time 0, refresh 5, negative=false, cacheOps 7
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:25 DAIReplacePasswdWithNoLoginShellByAudit > adclient.pam.util Creating CimsContext
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:25 DAIReplacePasswdWithNoLoginShellByAudit > adclient.pam.util username rook, presented: , effective: , unix: unknown
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:25 DAIReplacePasswdWithNoLoginShellByAudit > base.adagent Find GUID: 878563520e8926489c59c323df48c785 (7)
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:25 DAIReplacePasswdWithNoLoginShellByAudit > base.objecthelper age 1, expire age 3600, cutoff time 0, refresh 5, negative=false, cacheOps 7
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:25 DAIReplacePasswdWithNoLoginShellByAudit > daemon.ipcclient2 Audit level of user 'rook' is AuditIfPossible
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:25 DAIReplacePasswdWithNoLoginShellByAudit > daemon.ipcclient2 Do not need to replace with an no-login shell for user 'rook' by audit. DA is not installed
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:25 DAIReplacePasswdWithNoLoginShellByAudit > daemon.ipcclient2 request 'DAIReplacePasswdWithNoLoginShellByAudit' complete
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:16 id(4631)> Result: account='rook' password=(hidden) UID='1166017722' GID='4' gecos='Rook' homedir='/home/rook' shell='/bin/bash' (returnlen=33)
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:16 id(4631)> <- getpwuid_centrifydc_r, result=NSS_SUCCESS(1)
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <main> daemon.ipcserver lrpc client disconnected normally <fd:25>
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <main> daemon.ipcserver lrpc client disconnected normally <fd:16>
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <main> daemon.ipcserver Accepted new lrpc2 client on <fd:16> with flags 0x00000802
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:16 id(4637)> -> getpwuid_centrifydc_r  UID=1166017722
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <main> daemon.ipcserver Accepted new lrpc2 client on <fd:25> with flags 0x00000802
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByUID > daemon.ipcclient2 executing request 'NSSGetPasswdDataByUID' in thread 140309188671232
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByUID > daemon.ipcclient2 Getting passwd data for uid 1166017722
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByUID > base.adagent Find GUID: 878563520e8926489c59c323df48c785 (7)
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByUID > base.objecthelper age 1, expire age 3600, cutoff time 0, refresh 5, negative=false, cacheOps 7
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByUID > daemon.ipcclient2 Returning user info: 'rook:(hidden):1166017722:4:Rook:/home/rook:/bin/bash'
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByUID > daemon.ipcclient2 request 'NSSGetPasswdDataByUID' complete
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:16 id(4637)> -> getUserLoginShellByAudit
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:25 DAIReplacePasswdWithNoLoginShellByAudit > daemon.ipcclient2 executing request 'DAIReplacePasswdWithNoLoginShellByAudit' in thread 140309157201664
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:25 DAIReplacePasswdWithNoLoginShellByAudit > daemon.ipcclient2 Checking if we need to replace with an no-login shell for user 'rook' by audit
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:25 DAIReplacePasswdWithNoLoginShellByAudit > adclient.pam.util Creating CimsContext
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:25 DAIReplacePasswdWithNoLoginShellByAudit > adclient.pam.util username rook, presented: , effective: , unix: unknown
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:25 DAIReplacePasswdWithNoLoginShellByAudit > base.adagent Find GUID: 878563520e8926489c59c323df48c785 (7)
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:25 DAIReplacePasswdWithNoLoginShellByAudit > base.objecthelper age 1, expire age 3600, cutoff time 0, refresh 5, negative=false, cacheOps 7
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:25 DAIReplacePasswdWithNoLoginShellByAudit > adclient.pam.util Creating CimsContext
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:25 DAIReplacePasswdWithNoLoginShellByAudit > adclient.pam.util username rook, presented: , effective: , unix: unknown
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:25 DAIReplacePasswdWithNoLoginShellByAudit > base.adagent Find GUID: 878563520e8926489c59c323df48c785 (7)
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:25 DAIReplacePasswdWithNoLoginShellByAudit > base.objecthelper age 1, expire age 3600, cutoff time 0, refresh 5, negative=false, cacheOps 7
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:25 DAIReplacePasswdWithNoLoginShellByAudit > daemon.ipcclient2 Audit level of user 'rook' is AuditIfPossible
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:25 DAIReplacePasswdWithNoLoginShellByAudit > daemon.ipcclient2 Do not need to replace with an no-login shell for user 'rook' by audit. DA is not installed
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:25 DAIReplacePasswdWithNoLoginShellByAudit > daemon.ipcclient2 request 'DAIReplacePasswdWithNoLoginShellByAudit' complete
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:16 id(4637)> Result: account='rook' password=(hidden) UID='1166017722' GID='4' gecos='Rook' homedir='/home/rook' shell='/bin/bash' (returnlen=33)
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:16 id(4637)> <- getpwuid_centrifydc_r, result=NSS_SUCCESS(1)
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <main> daemon.ipcserver lrpc client disconnected normally <fd:25>
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <main> daemon.ipcserver lrpc client disconnected normally <fd:16>
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <main> daemon.ipcserver Accepted new lrpc2 client on <fd:16> with flags 0x00000802
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:16 id(4659)> -> getpwuid_centrifydc_r  UID=1166017722
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <main> daemon.ipcserver Accepted new lrpc2 client on <fd:25> with flags 0x00000802
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByUID > daemon.ipcclient2 executing request 'NSSGetPasswdDataByUID' in thread 140309157201664
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByUID > daemon.ipcclient2 Getting passwd data for uid 1166017722
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByUID > base.adagent Find GUID: 878563520e8926489c59c323df48c785 (7)
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByUID > base.objecthelper age 1, expire age 3600, cutoff time 0, refresh 5, negative=false, cacheOps 7
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByUID > daemon.ipcclient2 Returning user info: 'rook:(hidden):1166017722:4:Rook:/home/rook:/bin/bash'
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByUID > daemon.ipcclient2 request 'NSSGetPasswdDataByUID' complete
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:16 id(4659)> -> getUserLoginShellByAudit
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:25 DAIReplacePasswdWithNoLoginShellByAudit > daemon.ipcclient2 executing request 'DAIReplacePasswdWithNoLoginShellByAudit' in thread 140309188671232
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:25 DAIReplacePasswdWithNoLoginShellByAudit > daemon.ipcclient2 Checking if we need to replace with an no-login shell for user 'rook' by audit
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:25 DAIReplacePasswdWithNoLoginShellByAudit > adclient.pam.util Creating CimsContext
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:25 DAIReplacePasswdWithNoLoginShellByAudit > adclient.pam.util username rook, presented: , effective: , unix: unknown
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:25 DAIReplacePasswdWithNoLoginShellByAudit > base.adagent Find GUID: 878563520e8926489c59c323df48c785 (7)
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:25 DAIReplacePasswdWithNoLoginShellByAudit > base.objecthelper age 1, expire age 3600, cutoff time 0, refresh 5, negative=false, cacheOps 7
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:25 DAIReplacePasswdWithNoLoginShellByAudit > adclient.pam.util Creating CimsContext
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:25 DAIReplacePasswdWithNoLoginShellByAudit > adclient.pam.util username rook, presented: , effective: , unix: unknown
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:25 DAIReplacePasswdWithNoLoginShellByAudit > base.adagent Find GUID: 878563520e8926489c59c323df48c785 (7)
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:25 DAIReplacePasswdWithNoLoginShellByAudit > base.objecthelper age 1, expire age 3600, cutoff time 0, refresh 5, negative=false, cacheOps 7
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:25 DAIReplacePasswdWithNoLoginShellByAudit > daemon.ipcclient2 Audit level of user 'rook' is AuditIfPossible
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:25 DAIReplacePasswdWithNoLoginShellByAudit > daemon.ipcclient2 Do not need to replace with an no-login shell for user 'rook' by audit. DA is not installed
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:25 DAIReplacePasswdWithNoLoginShellByAudit > daemon.ipcclient2 request 'DAIReplacePasswdWithNoLoginShellByAudit' complete
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:16 id(4659)> Result: account='rook' password=(hidden) UID='1166017722' GID='4' gecos='Rook' homedir='/home/rook' shell='/bin/bash' (returnlen=33)
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <fd:16 id(4659)> <- getpwuid_centrifydc_r, result=NSS_SUCCESS(1)
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <main> daemon.ipcserver lrpc client disconnected normally <fd:25>
+Aug 24 11:47:11 rhel65 adclient[3543]: DEBUG <main> daemon.ipcserver lrpc client disconnected normally <fd:16>
+Aug 24 11:47:14 rhel65 adclient[3543]: DEBUG <fd:16 ping > daemon.ipclient1 executing request 'ping' in thread 140309167691520
+Aug 24 11:47:14 rhel65 adclient[3543]: DEBUG <fd:16 ping > daemon.ipclient1 Responding ping request now.
+Aug 24 11:47:14 rhel65 adclient[3543]: DEBUG <main> daemon.ipcserver lrpc client disconnected normally <fd:16>
+Aug 24 11:47:17 rhel65 adclient[3543]: DEBUG <main> daemon.ipcserver Accepted new lrpc2 client on <fd:16> with flags 0x00000802
+Aug 24 11:47:17 rhel65 adclient[3543]: DEBUG <fd:16 su(4527)> -> pam_sm_close_session
+Aug 24 11:47:17 rhel65 adclient[3543]: DEBUG <fd:16 su(4527)> PAM Options: (none)
+Aug 24 11:47:17 rhel65 adclient[3543]: DEBUG <fd:16 su(4527)> PAM Flags: (none)
+Aug 24 11:47:17 rhel65 adclient[3543]: DEBUG <main> daemon.ipcserver Accepted new lrpc2 client on <fd:25> with flags 0x00000802
+Aug 24 11:47:17 rhel65 adclient[3543]: DEBUG <fd:25 PAMGetUnixName > daemon.ipcclient2 executing request 'PAMGetUnixName' in thread 140309178181376
+Aug 24 11:47:17 rhel65 adclient[3543]: DEBUG <fd:25 PAMGetUnixName > daemon.ipcclient2 Getting unix name of 'rook'
+Aug 24 11:47:17 rhel65 adclient[3543]: DEBUG <fd:25 PAMGetUnixName > adclient.pam.util Creating CimsContext
+Aug 24 11:47:17 rhel65 adclient[3543]: DEBUG <fd:25 PAMGetUnixName > adclient.pam.util username rook, presented: , effective: , unix: unknown
+Aug 24 11:47:17 rhel65 adclient[3543]: DEBUG <fd:25 PAMGetUnixName > base.adagent Find GUID: 878563520e8926489c59c323df48c785 (7)
+Aug 24 11:47:17 rhel65 adclient[3543]: DEBUG <fd:25 PAMGetUnixName > base.objecthelper age 7, expire age 3600, cutoff time 0, refresh 5, negative=false, cacheOps 7
+Aug 24 11:47:17 rhel65 adclient[3543]: DEBUG <fd:25 PAMGetUnixName > daemon.ipcclient2 Unix name for 'rook' is 'rook'
+Aug 24 11:47:17 rhel65 adclient[3543]: DEBUG <fd:25 PAMGetUnixName > daemon.ipcclient2 request 'PAMGetUnixName' complete
+Aug 24 11:47:17 rhel65 adclient[3543]: DEBUG <fd:16 su(4527)> Close session for user 'rook'
+Aug 24 11:47:17 rhel65 adclient[3543]: DEBUG <fd:16 su(4527)> Close session for user 'rook': KRB5CCNAME(FILE:/tmp/krb5cc_cdc1166017722_lxDeKv)
+Aug 24 11:47:17 rhel65 adclient[3543]: DEBUG <fd:16 su(4527)> Close session for user 'rook': AppName(su-l)
+Aug 24 11:47:17 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedOut2 > daemon.ipcclient2 executing request 'PAMUserLoggedOut2' in thread 140309178181376
+Aug 24 11:47:17 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedOut2 > base.adagent Find GUID: 878563520e8926489c59c323df48c785 (7)
+Aug 24 11:47:17 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedOut2 > base.objecthelper age 7, expire age 3600, cutoff time 0, refresh 5, negative=false, cacheOps 7
+Aug 24 11:47:17 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedOut2 > daemon.ipcclient user rook just logged out.
+Aug 24 11:47:17 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedOut2 > base.kerberos.krb5cacheops removed credentials cache /tmp/krb5cc_cdc1166017722_lxDeKv for user rook
+Aug 24 11:47:17 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedOut2 > daemon.ipcclient2 request 'PAMUserLoggedOut2' complete
+Aug 24 11:47:17 rhel65 adclient[3543]: DEBUG <fd:16 su(4527)> Sending PAM audit trail event with DA_SESSION_ID_AUTH: <6a2b3daa-9834-1340-af37-3eda735c1ff3>
+Aug 24 11:47:17 rhel65 adclient[3543]: DEBUG <fd:16 su(4527)> -> SendATProxySetAuditTrailEvent
+Aug 24 11:47:17 rhel65 adclient[3543]: DEBUG <fd:16 su(4527)> AuditTrailEvent: Centrify Suite PAM 600 0.0 (null) rook <userSid> 6a2b3daa-9834-1340-af37-3eda735c1ff3 4527
+Aug 24 11:47:17 rhel65 adclient[3543]: DEBUG <fd:16 su(4527)> UTF8STRING: su-l
+Aug 24 11:47:17 rhel65 adclient[3543]: DEBUG <fd:16 su(4527)> UTF8STRING: pts/0
+Aug 24 11:47:17 rhel65 adclient[3543]: DEBUG <fd:16 su(4527)> UTF8STRING: (none)
+Aug 24 11:47:17 rhel65 adclient[3543]: DEBUG <main> util.threadpool Pool size 3/4, busy size 1/30
+Aug 24 11:47:17 rhel65 adclient[3543]: DEBUG <fd:25 ATProxySetAuditTrailEvent > daemon.ipcclient2 executing request 'ATProxySetAuditTrailEvent' in thread 140309188671232
+Aug 24 11:47:17 rhel65 adclient[3543]: DEBUG <fd:25 ATProxySetAuditTrailEvent > daemon.ipcclient2 AuditTrailEvent from proxy: Centrify Suite PAM 600 0.0  rook <userSid> DA_SESSION_ID: [6a2b3daa-9834-1340-af37-3eda735c1ff3] 4527
+Aug 24 11:47:17 rhel65 adclient[3543]: DEBUG <fd:25 ATProxySetAuditTrailEvent > daemon.ipcclient2 UTF8STRING: su-l
+Aug 24 11:47:17 rhel65 adclient[3543]: DEBUG <fd:25 ATProxySetAuditTrailEvent > daemon.ipcclient2 UTF8STRING: pts/0
+Aug 24 11:47:17 rhel65 adclient[3543]: DEBUG <fd:25 ATProxySetAuditTrailEvent > daemon.ipcclient2 UTF8STRING: (none)
+Aug 24 11:47:17 rhel65 adclient[3543]: DEBUG <fd:25 ATProxySetAuditTrailEvent > adclient.pam.util Creating CimsContext
+Aug 24 11:47:17 rhel65 adclient[3543]: DEBUG <fd:25 ATProxySetAuditTrailEvent > adclient.pam.util username rook, presented: , effective: , unix: unknown
+Aug 24 11:47:17 rhel65 adclient[3543]: DEBUG <fd:25 ATProxySetAuditTrailEvent > base.adagent Find GUID: 878563520e8926489c59c323df48c785 (7)
+Aug 24 11:47:17 rhel65 adclient[3543]: DEBUG <fd:25 ATProxySetAuditTrailEvent > base.objecthelper age 7, expire age 3600, cutoff time 0, refresh 5, negative=false, cacheOps 7
+Aug 24 11:47:17 rhel65 adclient[3543]: DEBUG <fd:25 ATProxySetAuditTrailEvent > audittrail.internal The targets setting of Centrify Suite/PAM is -1, don't known what value to override, so will inherit global targets setting
+Aug 24 11:47:17 rhel65 adclient[3543]: DEBUG <fd:25 ATProxySetAuditTrailEvent > audittrail.internal The final targets setting of Centrify Suite/PAM is 2.
+Aug 24 11:47:17 rhel65 adclient[3543]: DEBUG <fd:25 ATProxySetAuditTrailEvent > audittrail.internal No machine provided, use long local hostname rhel65.
+Aug 24 11:47:17 rhel65 adclient[3543]: DEBUG <fd:25 ATProxySetAuditTrailEvent > audittrail.internal No eventTime provided, use now time 1472064437.226611.
+Aug 24 11:47:17 rhel65 adclient[3543]: DEBUG <fd:25 ATProxySetAuditTrailEvent > audittrail.plugin Escape the audit trail event to [su-l]
+Aug 24 11:47:17 rhel65 adclient[3543]: DEBUG <fd:25 ATProxySetAuditTrailEvent > audittrail.plugin Escape the audit trail event to [pts/0]
+Aug 24 11:47:17 rhel65 adclient[3543]: DEBUG <fd:25 ATProxySetAuditTrailEvent > audittrail.plugin Escape the audit trail event to [(none)]
+Aug 24 11:47:17 rhel65 adclient[3543]: INFO  AUDIT_TRAIL|Centrify Suite|PAM|1.0|600|PAM close session granted|5|user=rook(type:ad,rook@ALERA.ATH) pid=4527 utc=1472064437226 centrifyEventID=24600 status=GRANTED service=su-l tty=pts/0 client=(none)
+Aug 24 11:47:17 rhel65 adclient[3543]: DEBUG <fd:25 ATProxySetAuditTrailEvent > daemon.ipcclient2 request 'ATProxySetAuditTrailEvent' complete
+Aug 24 11:47:17 rhel65 adclient[3543]: DEBUG <fd:16 su(4527)> <- SendATProxySetAuditTrailEvent, result=(1)
+Aug 24 11:47:17 rhel65 adclient[3543]: DEBUG <fd:16 su(4527)> <- pam_sm_close_session, result=PAM_SUCCESS(0)
+Aug 24 11:47:17 rhel65 adclient[3543]: DEBUG <main> daemon.ipcserver lrpc client disconnected normally <fd:25>
+Aug 24 11:47:17 rhel65 adclient[3543]: DEBUG <main> daemon.ipcserver lrpc client disconnected normally <fd:16>
+Aug 24 11:47:22 rhel65 adclient[3543]: DEBUG <gpworker> daemon.main gp running = Wed Aug 24 11:47:22 2016, 
+Aug 24 11:47:22 rhel65 adclient[3543]: DEBUG <gpworker> gp.processor Check monitored user policyset: [rook]
+Aug 24 11:47:22 rhel65 adclient[3543]: DEBUG <gpworker> gp.processor Check monitored machine policyset

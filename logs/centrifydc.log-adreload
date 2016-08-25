@@ -1,0 +1,105 @@
+Aug 24 11:46:52 rhel65 adclient[3543]: DEBUG <gpworker> daemon.main gp running = Wed Aug 24 11:46:52 2016, 
+Aug 24 11:46:52 rhel65 adclient[3543]: DEBUG <gpworker> gp.processor Check monitored user policyset: [rook]
+Aug 24 11:46:52 rhel65 adclient[3543]: DEBUG <gpworker> gp.processor Check monitored machine policyset
+Aug 24 11:46:52 rhel65 adreload[4519]: DEBUG lrpc.session New socket 3 (36881)
+Aug 24 11:46:52 rhel65 adclient[3543]: DEBUG <fd:16 flush cache > daemon.ipclient1 executing request 'flush cache' in thread 140309157201664
+Aug 24 11:46:52 rhel65 adclient[3543]: DEBUG <fd:16 flush cache > daemon.ipclient1 Flushing Cache 
+Aug 24 11:46:52 rhel65 adclient[3543]: DEBUG <fd:16 flush cache > dns.resolver DNS cache flushed
+Aug 24 11:46:52 rhel65 adclient[3543]: DEBUG <fd:16 flush cache > dns.resolver Favorite DNS server is 10.0.0.51
+Aug 24 11:46:52 rhel65 adclient[3543]: DEBUG <fd:16 flush cache > util.io.connectutil Connected to 10.0.0.51:53 in 0.004818 seconds
+Aug 24 11:46:52 rhel65 adreload[4519]: DEBUG util.configfiles Running /usr/share/centrifydc/bin/nscdrestart.sh: arg: flush, wait 1
+Aug 24 11:46:52 rhel65 adreload[4519]: DEBUG util.configfiles RunConfigScript: Running /usr/share/centrifydc/bin/nscdrestart.sh: arg: flush, wait 1, configWaitTimeout 300
+Aug 24 11:46:52 rhel65 adclient[3543]: DEBUG <fd:16 flush cache > dns.resolver DNS server 10.0.0.51 responded in 0.005637 sec
+Aug 24 11:46:52 rhel65 adclient[3543]: DEBUG <fd:16 flush cache > dns.resolver DNS is alive
+Aug 24 11:46:52 rhel65 adclient[3543]: DEBUG <fd:16 flush cache > dns.resolver DNS cache flushed
+Aug 24 11:46:52 rhel65 adclient[3543]: DEBUG <fd:16 flush cache > dns.resolver selected 10.0.0.51
+Aug 24 11:46:52 rhel65 adclient[3543]: DEBUG <fd:16 flush cache > network.state NetworkState::flush
+Aug 24 11:46:52 rhel65 adclient[3543]: DEBUG <fd:16 flush cache > network.state CacheAccess flush
+Aug 24 11:46:52 rhel65 adclient[3543]: DEBUG <fd:16 flush cache > dns.resolver DNS cache flushed
+Aug 24 11:46:52 rhel65 adclient[3543]: DEBUG <main> daemon.ipcserver Accepted new lrpc2 client on <fd:25> with flags 0x00000802
+Aug 24 11:46:52 rhel65 adclient[3543]: DEBUG <main> daemon.ipcserver lrpc client disconnected normally <fd:16>
+Aug 24 11:46:52 rhel65 adclient[3543]: DEBUG <fd:25 ControlReloadProps > daemon.ipcclient2 executing request 'ControlReloadProps' in thread 140309167691520
+Aug 24 11:46:52 rhel65 adclient[3543]: DEBUG <fd:25 ControlReloadProps > daemon.ipcclient2 Processing request to reload properties
+Aug 24 11:46:52 rhel65 adclient[3543]: DEBUG <fd:25 ControlReloadProps > util.properties property: adclient.cache.expires=1800
+Aug 24 11:46:52 rhel65 adclient[3543]: DEBUG <fd:25 ControlReloadProps > util.properties property: adclient.cache.expires.user=3600
+Aug 24 11:46:52 rhel65 adclient[3543]: DEBUG <fd:25 ControlReloadProps > util.properties property: adclient.clients.socket=/var/centrifydc/daemon
+Aug 24 11:46:52 rhel65 adclient[3543]: DEBUG <fd:25 ControlReloadProps > util.properties property: adclient.clients.socket2=/var/centrifydc/daemon2
+Aug 24 11:46:52 rhel65 adclient[3543]: DEBUG <fd:25 ControlReloadProps > util.properties property: adclient.custom.attributes.user=unixUserPassword msSFU30Password
+Aug 24 11:46:52 rhel65 adclient[3543]: DEBUG <fd:25 ControlReloadProps > util.properties property: gp.disable.user=false
+Aug 24 11:46:52 rhel65 adclient[3543]: DEBUG <fd:25 ControlReloadProps > util.properties property: log=DEBUG
+Aug 24 11:46:52 rhel65 adclient[3543]: DEBUG <fd:25 ControlReloadProps > util.properties property: nss.nobody.gid=99
+Aug 24 11:46:52 rhel65 adclient[3543]: DEBUG <fd:25 ControlReloadProps > util.properties property: nss.nobody.group=nobody
+Aug 24 11:46:52 rhel65 adclient[3543]: DEBUG <fd:25 ControlReloadProps > util.properties property: nss.nobody.uid=99
+Aug 24 11:46:52 rhel65 adclient[3543]: DEBUG <fd:25 ControlReloadProps > util.properties property: nss.nobody.user=nobody
+Aug 24 11:46:52 rhel65 adclient[3543]: DEBUG <fd:25 ControlReloadProps > util.properties property: nss.program.ignore=useradd,adduser,groupadd,addgroup,userdel,groupdel,usermod,groupmod,chfn,chsh,chpasswd,gpasswd,pwconv,pwunconv,grpconv,grpunconv,redhat-config-users,unix_chkpwd
+Aug 24 11:46:52 rhel65 adclient[3543]: DEBUG <fd:25 ControlReloadProps > util.properties property: nss.runtime.defaultvalue.var.domain=alera.ath
+Aug 24 11:46:52 rhel65 adclient[3543]: DEBUG <fd:25 ControlReloadProps > util.properties property: nss.runtime.defaultvalue.var.home=/home
+Aug 24 11:46:52 rhel65 adclient[3543]: DEBUG <fd:25 ControlReloadProps > util.properties property: nss.runtime.defaultvalue.var.host=rhel65.alera.ath
+Aug 24 11:46:52 rhel65 adclient[3543]: DEBUG <fd:25 ControlReloadProps > util.properties property: nss.runtime.defaultvalue.var.shell=/bin/bash
+Aug 24 11:46:52 rhel65 adclient[3543]: DEBUG <fd:25 ControlReloadProps > util.properties property: nss.runtime.defaultvalue.var.site=Default-First-Site-Name
+Aug 24 11:46:52 rhel65 adclient[3543]: DEBUG <fd:25 ControlReloadProps > util.properties property: nss.runtime.defaultvalue.var.zone=Legion
+Aug 24 11:46:52 rhel65 adclient[3543]: DEBUG <fd:25 ControlReloadProps > util.properties property: nss.shell.nologin=/sbin/nologin
+Aug 24 11:46:52 rhel65 adclient[3543]: DEBUG <fd:25 ControlReloadProps > util.properties property: pam.allow.override=root
+Aug 24 11:46:52 rhel65 adclient[3543]: DEBUG <fd:25 ControlReloadProps > util.properties property: pam.password.change.mesg=PLEASE ALTER YOUR AUTHENTICATION STRING
+Aug 24 11:46:52 rhel65 adclient[3543]: DEBUG <fd:25 ControlReloadProps > util.properties property: secedit.system.access.lockoutbadcount=0
+Aug 24 11:46:52 rhel65 adclient[3543]: DEBUG <fd:25 ControlReloadProps > util.properties property: secedit.system.access.maximumpasswordage=42
+Aug 24 11:46:52 rhel65 adclient[3543]: DEBUG <fd:25 ControlReloadProps > util.properties property: secedit.system.access.minimumpasswordage=1
+Aug 24 11:46:52 rhel65 adclient[3543]: DEBUG <fd:25 ControlReloadProps > daemon.nss_utils Checking if id ignorelist need to be updated..
+Aug 24 11:46:52 rhel65 adclient[3543]: DEBUG <fd:25 ControlReloadProps > daemon.nss_utils Do id ignore list update/generation: false
+Aug 24 11:46:52 rhel65 adclient[3543]: DEBUG <fd:25 ControlReloadProps > daemon.nss_utils Checking if id ignorelist need to be updated..
+Aug 24 11:46:52 rhel65 adclient[3543]: DEBUG <fd:25 ControlReloadProps > daemon.nss_utils Do id ignore list update/generation: false
+Aug 24 11:46:52 rhel65 adclient[3543]: DEBUG <fd:25 ControlReloadProps > daemon.ipcclient2 Properties reloaded
+Aug 24 11:46:52 rhel65 adclient[3543]: DEBUG <fd:25 ControlReloadProps > base.kerberos.keytab can't find /var/centrifydc/renewal/ directory
+Aug 24 11:46:52 rhel65 adclient[3543]: DEBUG <fd:25 ControlReloadProps > daemon.ipcclient2 request 'ControlReloadProps' complete
+Aug 24 11:46:52 rhel65 adclient[3543]: DEBUG <bg:krb5ConfUpdate> kcm.util Default Kerberos ccache type (krb5.cache.type: FILE) setting is not changed, no need to update Kerberos configuration file.
+Aug 24 11:46:52 rhel65 adclient[3543]: DEBUG <main> daemon.ipcserver lrpc client disconnected normally <fd:25>
+Aug 24 11:46:52 rhel65 adreload[4519]: DEBUG lrpc.session New socket 3 (36893)
+Aug 24 11:46:52 rhel65 adclient[3543]: DEBUG <fd:16 auth request > daemon.ipclient1 executing request 'auth request' in thread 140309178181376
+Aug 24 11:46:52 rhel65 adclient[3543]: DEBUG <fd:16 auth request > daemon.ipclient1 Client authenticated as UID 0, GID 0
+Aug 24 11:46:52 rhel65 adclient[3543]: DEBUG <fd:16 get object > daemon.ipclient1 executing request 'get object' in thread 140309188671232
+Aug 24 11:46:52 rhel65 adclient[3543]: DEBUG <fd:16 get object > daemon.ipclient1 Get object: Person, by string, sys = unix, cache, no group membership
+Aug 24 11:46:52 rhel65 adclient[3543]: DEBUG <fd:16 get object > daemon.ipclient1 Get object: name = root
+Aug 24 11:46:52 rhel65 adclient[3543]: DEBUG <fd:16 get object > base.schema ExtSchema: NSS ignoring user 'root'
+Aug 24 11:46:52 rhel65 adclient[3543]: DEBUG <fd:16 get object > base.adagent findObject ADNames: root#012name: root type=SAM domain=ALERA.ATH#012
+Aug 24 11:46:52 rhel65 adclient[3543]: DEBUG <fd:16 get object > base.bind.cache ADCB::search base , filter (&(objectClass=User)(|(objectCategory=Person)(objectCategory=Computer))(sAMAccountName=root)), attrs 2 (cacheOps=7, GC=0)
+Aug 24 11:46:52 rhel65 adclient[3543]: DEBUG <fd:16 get object > base.objecthelper age 129, expire age 1800, cutoff time 0, refresh 5, negative=true, cacheOps 7
+Aug 24 11:46:52 rhel65 adclient[3543]: DEBUG <fd:16 get object > base.bind.cache ADCB::search base , filter (&(objectClass=User)(|(objectCategory=Person)(objectCategory=Computer))(sAMAccountName=root)), attrs 1e (cacheOps=7, GC=1)
+Aug 24 11:46:52 rhel65 adclient[3543]: DEBUG <fd:16 get object > base.objecthelper age 129, expire age 3600, cutoff time 0, refresh 5, negative=true, cacheOps 7
+Aug 24 11:46:52 rhel65 adclient[3543]: DEBUG <fd:16 get object > base.adagent findByAttr: Not Found:root category:user attr=sAMAccountName
+Aug 24 11:46:52 rhel65 adclient[3543]: DEBUG <fd:16 get object > base.bind.cache ADCB::search base , filter (&(objectClass=User)(|(objectCategory=Person)(objectCategory=Computer))(displayName=root)), attrs 2 (cacheOps=7, GC=0)
+Aug 24 11:46:52 rhel65 adclient[3543]: DEBUG <fd:16 get object > base.objecthelper age 129, expire age 1800, cutoff time 0, refresh 5, negative=true, cacheOps 7
+Aug 24 11:46:52 rhel65 adclient[3543]: DEBUG <fd:16 get object > base.bind.cache ADCB::search base , filter (&(objectClass=User)(|(objectCategory=Person)(objectCategory=Computer))(displayName=root)), attrs 1e (cacheOps=7, GC=1)
+Aug 24 11:46:52 rhel65 adclient[3543]: DEBUG <fd:16 get object > base.objecthelper age 129, expire age 3600, cutoff time 0, refresh 5, negative=true, cacheOps 7
+Aug 24 11:46:52 rhel65 adclient[3543]: DEBUG <fd:16 get object > base.adagent findByAttr: Not Found:root category:user attr=displayName
+Aug 24 11:46:52 rhel65 adclient[3543]: DEBUG <fd:16 get object > base.bind.cache ADCB::search base , filter (&(objectClass=User)(|(objectCategory=Person)(objectCategory=Computer))(cn=root)), attrs 2 (cacheOps=7, GC=0)
+Aug 24 11:46:52 rhel65 adclient[3543]: DEBUG <fd:16 get object > base.objecthelper age 129, expire age 1800, cutoff time 0, refresh 5, negative=true, cacheOps 7
+Aug 24 11:46:52 rhel65 adclient[3543]: DEBUG <fd:16 get object > base.bind.cache ADCB::search base , filter (&(objectClass=User)(|(objectCategory=Person)(objectCategory=Computer))(cn=root)), attrs 1e (cacheOps=7, GC=1)
+Aug 24 11:46:52 rhel65 adclient[3543]: DEBUG <fd:16 get object > base.objecthelper age 129, expire age 3600, cutoff time 0, refresh 5, negative=true, cacheOps 7
+Aug 24 11:46:52 rhel65 adclient[3543]: DEBUG <fd:16 get object > base.adagent findByAttr: Not Found:root category:user attr=cn
+Aug 24 11:46:52 rhel65 adclient[3543]: DEBUG <fd:16 get object > base.adagent findObject: NotFound:root Category:user
+Aug 24 11:46:52 rhel65 adclient[3543]: DEBUG <fd:16 get object > base.objecthelper 'root' is not a canonical name
+Aug 24 11:46:52 rhel65 adclient[3543]: DEBUG <main> daemon.ipcserver lrpc client disconnected normally <fd:16>
+Aug 24 11:46:52 rhel65 adreload[4519]: DEBUG audittrail.daloader Unable to locate DA audit trail library /usr/share/centrifydc/lib64/libatda.so (errno=2). Please make sure you have DirectAudit install or the installed DA does support AuditTrail event logging. Skip logging AuditTrail event to DA.
+Aug 24 11:46:52 rhel65 adreload[4519]: DEBUG audittrail.plugin DA audit trail library is unavailable
+Aug 24 11:46:52 rhel65 adreload[4519]: DEBUG audittrail.internal The targets setting of Centrify Suite/Centrify Commands is -1, don't known what value to override, so will inherit global targets setting
+Aug 24 11:46:52 rhel65 adreload[4519]: DEBUG audittrail.internal The final targets setting of Centrify Suite/Centrify Commands is 2.
+Aug 24 11:46:52 rhel65 adreload[4519]: DEBUG audittrail.internal No session ID provided. Read a string suppose to be session ID from environment variable, but it is not a valid GUID. Using NULL as the ID.
+Aug 24 11:46:52 rhel65 adreload[4519]: DEBUG audittrail.internal AuditTrailEvent: Centrify Suite Centrify Commands 2500 0.0 (null) root <userSid> (null) 4519
+Aug 24 11:46:52 rhel65 adreload[4519]: DEBUG audittrail.internal UTF8STRING: (none)
+Aug 24 11:46:52 rhel65 adreload[4519]: DEBUG audittrail.internal The targets setting of Centrify Suite/Centrify Commands is -1, don't known what value to override, so will inherit global targets setting
+Aug 24 11:46:52 rhel65 adreload[4519]: DEBUG audittrail.internal The final targets setting of Centrify Suite/Centrify Commands is 2.
+Aug 24 11:46:52 rhel65 adreload[4519]: DEBUG audittrail.internal No machine provided, use long local hostname rhel65.
+Aug 24 11:46:52 rhel65 adreload[4519]: DEBUG audittrail.internal No eventTime provided, use now time 1472064412.578301.
+Aug 24 11:46:52 rhel65 adreload[4519]: DEBUG audittrail.plugin Escape the audit trail event to [(none)]
+Aug 24 11:46:52 rhel65 adreload[4519]: INFO  AUDIT_TRAIL|Centrify Suite|Centrify Commands|1.0|2500|Configuration settings (centrifydc.conf) reloaded|5|user=root pid=4519 utc=1472064412578 centrifyEventID=20500 status=SUCCESS service=adreload parameters=(none)
+Aug 24 11:46:54 rhel65 adclient[3543]: DEBUG <background> daemon.main now = Wed Aug 24 11:46:54 2016, nextPasswordChange: Wed Sep 21 16:04:22 2016, lastKrb5Renew: Wed Aug 24 11:09:54 2016, lastCacheCleanup: Wed Aug 24 11:41:24 2016, lastPrevalidate: Wed Aug 24 11:09:54 2016, lastChkDatadir: Wed Aug 24 11:42:54 2016, lastDZRefresh: Wed Aug 24 11:39:24 2016, lastDnsRefresh: Wed Aug 24 11:09:15 2016
+Aug 24 11:46:54 rhel65 adclient[3543]: DEBUG <bg:netstate> network.state CacheAccess purge
+Aug 24 11:46:54 rhel65 adclient[3543]: DEBUG <bg:ageBindings> base.adagent Starting ageBindings...
+Aug 24 11:46:54 rhel65 adclient[3543]: DEBUG <bg:ageBindings> base.adagent Finished ageBindings
+Aug 24 11:46:54 rhel65 adclient[3543]: DEBUG <bg:adntlmlist> daemon.ipcclient Starting ageADNtlm...
+Aug 24 11:46:54 rhel65 adclient[3543]: DEBUG <bg:adntlmlist> daemon.ipcclient current timestamp: 1472064414 timeout value: 30
+Aug 24 11:46:54 rhel65 adclient[3543]: DEBUG <bg:adntlmlist> daemon.ipcclient ADNtlmList size after refresh: 0
+Aug 24 11:46:54 rhel65 adclient[3543]: DEBUG <bg:adntlmlist> daemon.ipcclient Finished ageADNtlm.
+Aug 24 11:46:54 rhel65 adclient[3543]: DEBUG <fd:16 ping > daemon.ipclient1 executing request 'ping' in thread 140309157201664
+Aug 24 11:46:54 rhel65 adclient[3543]: DEBUG <fd:16 ping > daemon.ipclient1 Responding ping request now.
+Aug 24 11:46:54 rhel65 adclient[3543]: DEBUG <main> daemon.ipcserver lrpc client disconnected normally <fd:16>
