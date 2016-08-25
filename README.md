@@ -1,5 +1,6 @@
 # log-parser
 
-Log parser meant to provide an overview of events occurring in a provided log file. There will be command line arguments which serve the purpose of providing further datasets depending on where the user would like the scope to be narrowed down.
+Project intent: Parse a log and gain an "at-a-glance" overview of what's going on.
+Arguments are available to narrow things down or look at specific items from the overview more indepth/verbosely
 
-More details to come. Still in early development.
+More details to come. Development is still in its infancy
