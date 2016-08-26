@@ -50,7 +50,7 @@ colog = args.log_file.name  ## colloquial name for passed file (attribute of arg
 # All "relevant logs" should match a pattern in this array
 expr_strings = ['.*data.*', 
                 '.*red.*',
-                '.*CAPIValidate.*adagent.*',
+               # '.*CAPIValidate.*adagent.*',
                 '.*example.*']
 
 
@@ -72,23 +72,25 @@ def main(argv):
 
     ## Core parsing logic ##
     with open(colog) as f: 
-        for l in f: 
+        #for p in part(f):  # parse by chunk - temporarily disabled in favor of line-by-line for now
+        for p in f:
             for pat_list in expr_strings: 
-                finditer = (re.findall(pat_list, l, re.S))
+                finditer = (re.findall(pat_list, p, re.M))
 
             ## Print lines matching patterns provided in expr_strings[] ##
-                for i, m in enumerate(finditer): 
-                    m = m.rstrip("\n")
+                for i, m in enumerate(finditer, 1): 
                     l_count += 1
-                    print(l_count, m) 
+                    #m = m.rstrip("\n")
+                    #print(i, m) 
+   
 
             ## Fringe-case pattern matching - Currently demo for NSS/PAM count logic ##
                     if re.match(expr_comp, m): 
                         m_count += 1
-                   #     print(l_count, m)
+                  #      print(i, m)
                     if re.match(expr_pam, m):
                         m2_count += 1
-                   #     print(l_count, m)
+                        print(l_count, m)
         call_count()
  
 
@@ -111,6 +113,15 @@ def call_count():
 
 
 
+## Parse by chunk
+def part(fileinput, chunk=512):
+    while True:
+        result = fileinput.read(chunk)
+        if not result:
+            break
+        yield result
+
+
 
 
 
@@ -118,27 +129,16 @@ def call_count():
 
 ######################### in development
 
+
 def string_match(sm, lc):
     for i, m in enumerate(sm): 
         m = m.rstrip("\n")
         lc += 1
         print(lc, m)
     
-    
 
-
-#def call_count(count):
-# alt call_count - preserving until QA just to be safe
-    #with open(colog) as f: # open file and assign to 'f'
-        #expr_pam2 = re.compile(r"(.*)", re.M)
-        
-        #expr_nss = re.compile(r"(.*data.*)", re.M) 
-        #l = log.readline() # bane of existence. This needs to go into a for loop at some point. Reads line of file.
-        #pam_count = expr_pam2.match(l) 
-        #nss_count = expr_comp.match(l) 
-       # print(pam_count) #debug
-       # print(nss_count) #""
-     #   pass
+class demo(object):
+    pass
     
 def start():
     pass
@@ -155,42 +155,15 @@ def adinfo_support(): # still testing - not invoked
 
 
 def test(): # misc testing - not currently invoked
-    with open(args.log_file.name) as f:
-        #for i in range(4):
-        #    f.next()
-        for l in f:
-            for match in expr_comp.findall(f.readline()):
-                print(match)        #only matching starting at data3, why?
-            #print(l)
-
-
-def parse(argv): #testing alternate primary logic for main() - not currently in use or called anywhere
-    with open(colog) as f:
-        for line in f:
-            for match in expr_comp.findall(f.readline()):
-                print(match)        #only matching starting at data3, why?
-#    l = args.log_file.readline()                        ### use regular readline: consider argparse alt 
-#    m = []
-#    for l in prov_log:
-#        core_r = (re.findall(expr, l, re.S))
-#        m += core_r
-#        print(m)
-#    prov_log.close()
-                       # m1 = [] # testing - blank array
-                       # m1 += m # testing - add to array
-                       # m1 = ''.join(m1)
-                       # m1 = len(m1)
-                        #print(''.join(m1))
-
+    pass
+    
 
 
 
 
 if __name__ == "__main__":
     main(sys.argv[1:])
-    #call_count(pam)
-    #parse(sys.argv[1:])
-    #test()
+    
 
 
 ## DEBUG ##
