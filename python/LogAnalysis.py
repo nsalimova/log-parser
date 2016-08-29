@@ -9,8 +9,8 @@ parser = argparse.ArgumentParser(description='Log parser - For internal testing 
 
 parser.add_argument("log_file",
                         metavar="<log_file>",
-                        type=argparse.FileType('r'),
-                        default=sys.stdin,
+#                        type=argparse.FileType('r'),
+#                        default=sys.stdin,
                         help='Log file for parsing')
 parser.add_argument('-o',
                         '--out',
@@ -44,7 +44,7 @@ args = parser.parse_args()
 expr_comp = re.compile(r"(.*data.*)", re.M)
 expr_pam = re.compile(r"(.*red.*)", re.M)
 log = args.log_file ## TextIOWrapper - primary file fed in as passed file
-colog = args.log_file.name  ## colloquial name for passed file (attribute of args.log_file)
+colog = args.log_file  ## colloquial name for passed file (attribute of args.log_file)
 
 # Patterns for primary parsing logic
 # All "relevant logs" should match a pattern in this array
