@@ -15,8 +15,9 @@ parser.add_argument("log_file",
 parser.add_argument('-o',
                         '--out',
                         metavar='<file>',
-                        #type=argparse.FileType('w'),
-                        #default=sys.stdout,
+#                        nargs='?',
+#                        type=argparse.FileType('w'),
+#                        default=sys.stdout,
                         help='Output results to <file>')
 parser.add_argument('-s',
                         '--start',
@@ -43,8 +44,7 @@ args = parser.parse_args()
 ####################################
 expr_comp = re.compile(r"(.*data.*)", re.M)
 expr_pam = re.compile(r"(.*red.*)", re.M)
-log = args.log_file ## TextIOWrapper - primary file fed in as passed file
-colog = args.log_file  ## colloquial name for passed file (attribute of args.log_file)
+log = args.log_file 
 
 # Patterns for primary parsing logic
 # All "relevant logs" should match a pattern in this array
@@ -60,37 +60,47 @@ expr_strings = ['.*data.*',
 #----- Primary logic / parser -----#
 ####################################
 def main(argv):
-    global m_count, m2_count
-    m_count, m2_count, l_count = (0, 0, 0)
-    pam = 1 ## returns on -s invocation (just for testing the returns. s/e will be re-implemented later)
-    nss = 2 ## returns on -e invocation
 
     ## -o ##
     if args.out is not None:
         outtofile(args.out)
     ########
+    
+    if args.log_file: #primary - "overview output"
+        parse(log, expr_strings)
 
-    ## Core parsing logic ##
-    with open(colog) as f: 
+   ## Act on deeper requests ## - Unimplemented - Example
+   ## May not be reasonable. We want to avoid opening the file multiple times. 
+   ## The trick will be figuring out a clean way of passing args into parse() as an existing function.
+   ## Perhaps this is where our "map" comes into play.
+   # elif args.keys: 
+   #     pass
+   # elif "adinfo_support" in str(log): #not clean but checks for string in <log_file> arg name
+   #     adinfo_support()
+   # elif etc.. etc..
+        
+
+
+## Core parsing logic ##
+def parse(input_file, patterns): 
+    global M_COUNT, M2_COUNT    ##placeholder assignments. Hence the atrocious caps :)
+    M_COUNT, M2_COUNT, line_count = (0, 0, 0)
+    with open(input_file) as parse_target: 
         #for p in part(f):  # parse by chunk - temporarily disabled in favor of line-by-line for now
-        for p in f:
-            for pat_list in expr_strings: 
-                finditer = (re.findall(pat_list, p, re.M))
+        for line_count, line in enumerate(parse_target, 1):
+            for regex in patterns: 
+                finditer = (re.findall(regex, line, re.M))
 
             ## Print lines matching patterns provided in expr_strings[] ##
-                for i, m in enumerate(finditer, 1): 
-                    l_count += 1
-                    #m = m.rstrip("\n")
-                    #print(i, m) 
-   
+                for match in finditer: 
 
             ## Fringe-case pattern matching - Currently demo for NSS/PAM count logic ##
-                    if re.match(expr_comp, m): 
-                        m_count += 1
-                  #      print(i, m)
-                    if re.match(expr_pam, m):
-                        m2_count += 1
-                        print(l_count, m)
+                    if re.match(expr_comp, match): 
+                        M_COUNT += 1
+                        print(line_count, match)
+                    if re.match(expr_pam, match):
+                        M2_COUNT += 1
+                        print(line_count, match)
         call_count()
  
 
@@ -102,25 +112,14 @@ def main(argv):
 
 
 ## Output to file designated with -o/--out ##
-def outtofile(f):
-    sys.stdout = open(f, "w")
+def outtofile(output_file):
+    sys.stdout = open(output_file, "w")
 
 
 ## Count function for NSS/PAM calls ##
 def call_count():
-    print("NSS calls: '%s' in the file: %s" % (m_count, colog))
-    print("PAM calls: '%s' in the file: %s" % (m2_count, colog))
-
-
-
-## Parse by chunk
-def part(fileinput, chunk=512):
-    while True:
-        result = fileinput.read(chunk)
-        if not result:
-            break
-        yield result
-
+    print("NSS calls: '%s' in the file: %s" % (M_COUNT, log))
+    print("PAM calls: '%s' in the file: %s" % (M2_COUNT, log))
 
 
 
@@ -129,10 +128,17 @@ def part(fileinput, chunk=512):
 
 ######################### in development
 
+## Parse by chunk 
+def part(fileinput, chunk=512):
+    while True:
+        result = fileinput.read(chunk)
+        if not result:
+            break
+        yield result
 
 def string_match(sm, lc):
     for i, m in enumerate(sm): 
-        m = m.rstrip("\n")
+        #m = m.rstrip("\n")
         lc += 1
         print(lc, m)
     
