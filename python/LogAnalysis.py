@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-import re, argparse, sys, string #re for regex, argparse for options, sys for argv
+import re, argparse, sys, string, datetime #re for regex, argparse for options, sys for argv
 #import operator, fileinput  
 
 ####################################
@@ -59,15 +59,15 @@ expr_strings = ['.*data.*',
 ####################################
 #----- Primary logic / parser -----#
 ####################################
-def main(argv):
-
+def main(argv, input_file):
     ## -o ##
     if args.out is not None:
         outtofile(args.out)
     ########
     
     if args.log_file: #primary - "overview output"
-        parse(log, expr_strings)
+        with open(input_file) as parse_target: #maybe move this line to main()? then things below stay here? 
+            parse(parse_target, expr_strings)
 
    ## Act on deeper requests ## - Unimplemented - Example
    ## May not be reasonable. We want to avoid opening the file multiple times. 
@@ -82,27 +82,22 @@ def main(argv):
 
 
 ## Core parsing logic ##
-def parse(input_file, patterns): 
-    global M_COUNT, M2_COUNT    ##placeholder assignments. Hence the atrocious caps :)
-    M_COUNT, M2_COUNT, line_count = (0, 0, 0)
-    with open(input_file) as parse_target: 
+def parse(parse_target, patterns): 
+    timestamp = []
+    global nss_count, pam_count
+    nss_count, pam_count = (0, 0)
         #for p in part(f):  # parse by chunk - temporarily disabled in favor of line-by-line for now
-        for line_count, line in enumerate(parse_target, 1):
-            for regex in patterns: 
-                finditer = (re.findall(regex, line, re.M))
+    for line_count, line in enumerate(parse_target, 1):
+        for regex in patterns: 
+            finditer = (re.findall(regex, line, re.M))
 
-            ## Print lines matching patterns provided in expr_strings[] ##
-                for match in finditer: 
+        ## Iterate lines matching patterns provided in expr_strings[] ##
+            for match in finditer: 
 
-            ## Fringe-case pattern matching - Currently demo for NSS/PAM count logic ##
-                    if re.match(expr_comp, match): 
-                        M_COUNT += 1
-                        print(line_count, match)
-                    if re.match(expr_pam, match):
-                        M2_COUNT += 1
-                        print(line_count, match)
-        call_count()
- 
+        ## Fringe-case pattern matching - Currently demo for NSS/PAM count logic ##
+                call_count(match, line_count) 
+    print("NSS calls: '%s' in the file: %s" % (nss_count, log))
+    print("PAM calls: '%s' in the file: %s" % (pam_count, log))
 
 
         
@@ -117,9 +112,14 @@ def outtofile(output_file):
 
 
 ## Count function for NSS/PAM calls ##
-def call_count():
-    print("NSS calls: '%s' in the file: %s" % (M_COUNT, log))
-    print("PAM calls: '%s' in the file: %s" % (M2_COUNT, log))
+def call_count(m, line_count):
+    global nss_count, pam_count
+    if re.match(expr_comp, m): 
+        nss_count += 1
+#        print(line_count, m)
+    if re.match(expr_pam, m):
+        pam_count += 1
+#        print(line_count, m)
 
 
 
@@ -127,6 +127,16 @@ def call_count():
 
 
 ######################### in development
+
+
+def time_calc(m, time):
+    time.append(m[2].split(":"))
+    #print(int(time[-1][-1])-int(time[0][2]))
+    #print(time[0][0]) 
+    #print(time)
+    #time = ''.join(time)
+    #time = ''.join(m[2])
+    #print(time)
 
 ## Parse by chunk 
 def part(fileinput, chunk=512):
@@ -168,7 +178,7 @@ def test(): # misc testing - not currently invoked
 
 
 if __name__ == "__main__":
-    main(sys.argv[1:])
+    main(sys.argv[1:], log)
     
 
 
