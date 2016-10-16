@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 import re, argparse, sys, string, datetime #re for regex, argparse for options, sys for argv
-#import operator, fileinput  
+#import operator, fileinput
+from time import mktime, strftime, strptime, gmtime
 
 ####################################
 #-- Argument/other configuration --#
@@ -83,19 +84,22 @@ def main(argv, input_file):
 
 ## Core parsing logic ##
 def parse(parse_target, patterns): 
-    timestamp = []
+    times = []
     global nss_count, pam_count
     nss_count, pam_count = (0, 0)
+    i = 0
         #for p in part(f):  # parse by chunk - temporarily disabled in favor of line-by-line for now
     for line_count, line in enumerate(parse_target, 1):
+        i += 1
+        if i == 1: time_calc(i, line, times) 
         for regex in patterns: 
             finditer = (re.findall(regex, line, re.M))
 
         ## Iterate lines matching patterns provided in expr_strings[] ##
             for match in finditer: 
-
         ## Fringe-case pattern matching - Currently demo for NSS/PAM count logic ##
                 call_count(match, line_count) 
+    time_calc(i, line, times)
     print("NSS calls: '%s' in the file: %s" % (nss_count, log))
     print("PAM calls: '%s' in the file: %s" % (pam_count, log))
 
@@ -129,8 +133,20 @@ def call_count(m, line_count):
 ######################### in development
 
 
-def time_calc(m, time):
-    time.append(m[2].split(":"))
+def time_calc(i, line, times):
+    timestamp = line.strip()[0:15]
+    if i == 1: 
+        times += (mktime(strptime(timestamp, "%b %d %H:%M:%S")), )
+        print("Starting time: %s" % (timestamp))
+    else:
+        times += (mktime(strptime(timestamp, "%b %d %H:%M:%S")), )
+        seconds = (times[1]-times[0])
+        seconds_fmt = str(strftime("%H:%M:%S", gmtime(seconds)))
+        print("Ending time: %s" % (timestamp))
+        print("Elapsed: '%i' seconds or (H:M:S)" % (seconds),(seconds_fmt))
+    #print(i, line)
+    #begin_time = linecache.getline(parse_target, 
+    #time.append(m[2].split(":"))
     #print(int(time[-1][-1])-int(time[0][2]))
     #print(time[0][0]) 
     #print(time)
