@@ -51,20 +51,32 @@ expr_strings = ('.*data.*',
                # '.*CAPIValidate.*adagent.*',
                 '.*example.*')
 
-patterns = re.compile('|'.join(['(%s)' % i for i in expr_strings]))
+#pat_list = (l.rstrip(' #') for l in open("pat_file", 'r'))
+
+#patterns = re.compile('|'.join(['(%s)' % i for i in expr_strings]))
 
 ####################################
 #----- Primary logic / parser -----#
 ####################################
 def main(argv, input_file):
+    patterns = []
     ## -o ##
     if args.out is not None:
         outtofile(args.out)
     ########
     
     if args.log_file: #primary - "overview output"
-        with open(input_file) as parse_target: #maybe move this line to main()? then things below stay here? 
-            parse(parse_target, patterns)
+        try:
+            with open(input_file, 'r') as parse_target, open('pat_file', 'r') as pat_list: #maybe move this line to main()? then things below stay here? 
+                print(pat_list)
+                #patterns = re.compile('|'.join(['(%s)' % i for i in pat_list.rstrip(' #')]))
+                for l in pat_list:
+                    patterns += l.rstrip(' #\n')
+                    print(patterns)
+                parse(parse_target, patterns)
+        except IOError as err:
+            print("Operation failed: %s" % (err.strerror))
+            sys.exit()
 
    ## Act on deeper requests ## - Unimplemented - Example
    ## May not be reasonable. We want to avoid opening the file multiple times. 
@@ -108,6 +120,8 @@ def parse(parse_target, patterns):
     time_calc(i, line, times)
     print("NSS calls: '%s' in the file: %s" % (nss_count, log))
     print("PAM calls: '%s' in the file: %s" % (pam_count, log))
+    #print(pat_list)
+    #pat_list.close()
 
 
         
