@@ -80,24 +80,30 @@ def main(argv, input_file):
 
 ## Core parsing logic ##
 def parse(parse_target, patterns): 
-    global nss_count, pam_count
     nss_count, pam_count = (0, 0)
     times = []
     i = 0
     #for p in part(parse_target):  # parse by chunk - temporarily disabled in favor of line-by-line for now
     for line_count, line in enumerate(parse_target, 1):
         i += 1
-        if i == 1: time_calc(i, line, times) 
+        if i == 1: time_calc(i, line, times) #run on first line only
+
+        ## Primary matching from patterns contained in patterns tuple ##
         if re.match(patterns, line):
             #print(line_count, line.rstrip('\n'))        
-            call_count(line, line_count) 
+            pass
+        ## Fringe-case pattern matching - Currently demo for NSS/PAM count logic ##
+        if re.match(expr_comp, line): 
+            nss_count += 1
+#            print(line_count, line)
+        if re.match(expr_pam, line):
+            pam_count += 1
+#            print(line_count, line)
 
 #        for regex in patterns: 
 #            finditer = (re.findall(regex, line, re.M))
-
         ## Iterate lines matching patterns provided in expr_strings[] ##
 #            for match in finditer: 
-        ## Fringe-case pattern matching - Currently demo for NSS/PAM count logic ##
 #                call_count(match, line_count) 
     time_calc(i, line, times)
     print("NSS calls: '%s' in the file: %s" % (nss_count, log))
@@ -115,9 +121,9 @@ def outtofile(output_file):
     sys.stdout = open(output_file, "w")
 
 
-## Count function for NSS/PAM calls ##
+## Count function for NSS/PAM calls ## -- function out of use. may re-use later. logic moved to parse()
 def call_count(m, line_count):
-    global nss_count, pam_count
+    #global nss_count, pam_count
     if re.match(expr_comp, m): 
         nss_count += 1
 #        print(line_count, m)
