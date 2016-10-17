@@ -40,22 +40,18 @@ args = parser.parse_args()
 
 
 
-####################################
-#------- Globals declaraion -------#
-####################################
 expr_comp = re.compile(r"(.*data.*)", re.M)
 expr_pam = re.compile(r"(.*red.*)", re.M)
 log = args.log_file 
 
 # Patterns for primary parsing logic
-# All "relevant logs" should match a pattern in this array
-expr_strings = ['.*data.*', 
+# All "relevant logs" should match a pattern in this tuple
+expr_strings = ('.*data.*', 
                 '.*red.*',
                # '.*CAPIValidate.*adagent.*',
-                '.*example.*']
+                '.*example.*')
 
-
-
+patterns = re.compile('|'.join(['(%s)' % i for i in expr_strings]))
 
 ####################################
 #----- Primary logic / parser -----#
@@ -68,7 +64,7 @@ def main(argv, input_file):
     
     if args.log_file: #primary - "overview output"
         with open(input_file) as parse_target: #maybe move this line to main()? then things below stay here? 
-            parse(parse_target, expr_strings)
+            parse(parse_target, patterns)
 
    ## Act on deeper requests ## - Unimplemented - Example
    ## May not be reasonable. We want to avoid opening the file multiple times. 
@@ -84,21 +80,25 @@ def main(argv, input_file):
 
 ## Core parsing logic ##
 def parse(parse_target, patterns): 
-    times = []
     global nss_count, pam_count
     nss_count, pam_count = (0, 0)
+    times = []
     i = 0
-        #for p in part(f):  # parse by chunk - temporarily disabled in favor of line-by-line for now
+    #for p in part(parse_target):  # parse by chunk - temporarily disabled in favor of line-by-line for now
     for line_count, line in enumerate(parse_target, 1):
         i += 1
         if i == 1: time_calc(i, line, times) 
-        for regex in patterns: 
-            finditer = (re.findall(regex, line, re.M))
+        if re.match(patterns, line):
+            #print(line_count, line.rstrip('\n'))        
+            call_count(line, line_count) 
+
+#        for regex in patterns: 
+#            finditer = (re.findall(regex, line, re.M))
 
         ## Iterate lines matching patterns provided in expr_strings[] ##
-            for match in finditer: 
+#            for match in finditer: 
         ## Fringe-case pattern matching - Currently demo for NSS/PAM count logic ##
-                call_count(match, line_count) 
+#                call_count(match, line_count) 
     time_calc(i, line, times)
     print("NSS calls: '%s' in the file: %s" % (nss_count, log))
     print("PAM calls: '%s' in the file: %s" % (pam_count, log))
@@ -123,14 +123,8 @@ def call_count(m, line_count):
 #        print(line_count, m)
     if re.match(expr_pam, m):
         pam_count += 1
-#        print(line_count, m)
-
-
-
-
-
-
-######################### in development
+#        print(line_count, m
+    return pam_count, nss_count
 
 
 def time_calc(i, line, times):
@@ -140,19 +134,19 @@ def time_calc(i, line, times):
         print("Starting time: %s" % (timestamp))
     else:
         times += (mktime(strptime(timestamp, "%b %d %H:%M:%S")), )
-        seconds = (times[1]-times[0])
-        seconds_fmt = str(strftime("%H:%M:%S", gmtime(seconds)))
-        print("Ending time: %s" % (timestamp))
-        print("Elapsed: '%i' seconds or (H:M:S)" % (seconds),(seconds_fmt))
-    #print(i, line)
-    #begin_time = linecache.getline(parse_target, 
-    #time.append(m[2].split(":"))
-    #print(int(time[-1][-1])-int(time[0][2]))
-    #print(time[0][0]) 
-    #print(time)
-    #time = ''.join(time)
-    #time = ''.join(m[2])
-    #print(time)
+        seconds = int(times[1]-times[0])
+        minutes = int(seconds / 60)
+        hours = int(minutes / 60)
+        #elapsed = str(strftime("%d %H:%M:%S", gmtime(seconds))) #in dev - %d has min of 01 so calc is off
+        print("Ending time:   %s" % (timestamp))
+        print("Elapsed time:\n  In hours: %s\n  In minutes: %s\n  In seconds: %s " % (hours, minutes, seconds))
+
+
+
+
+######################### in development
+
+
 
 ## Parse by chunk 
 def part(fileinput, chunk=512):
