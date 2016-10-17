@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-import re, argparse, sys, string, datetime #re for regex, argparse for options, sys for argv
+import re, argparse, sys, datetime #re for regex, argparse for options, sys for argv
 #import operator, fileinput
 from time import mktime, strftime, strptime, gmtime
 
@@ -44,50 +44,39 @@ expr_comp = re.compile(r"(.*data.*)", re.M)
 expr_pam = re.compile(r"(.*red.*)", re.M)
 log = args.log_file 
 
-# Patterns for primary parsing logic
-# All "relevant logs" should match a pattern in this tuple
-expr_strings = ('.*data.*', 
-                '.*red.*',
-               # '.*CAPIValidate.*adagent.*',
-                '.*example.*')
 
-#pat_list = (l.rstrip(' #') for l in open("pat_file", 'r'))
+## REGEX PATTERNS FOUND IN 'pat_file'. STORED IN THE CURRENT WORKING DIRECTORY ##
+#eg.
+# $ cat pat_file
+# .*data.* # datatest
+# .*red.* # redtest
 
-#patterns = re.compile('|'.join(['(%s)' % i for i in expr_strings]))
 
 ####################################
 #----- Primary logic / parser -----#
 ####################################
 def main(argv, input_file):
-    patterns = []
+    pat_store = ()
     ## -o ##
     if args.out is not None:
-        outtofile(args.out)
+        sys.stdout = open(args.out, "w")
+        
     ########
     
     if args.log_file: #primary - "overview output"
         try:
-            with open(input_file, 'r') as parse_target, open('pat_file', 'r') as pat_list: #maybe move this line to main()? then things below stay here? 
-                print(pat_list)
-                #patterns = re.compile('|'.join(['(%s)' % i for i in pat_list.rstrip(' #')]))
-                for l in pat_list:
-                    patterns += l.rstrip(' #\n')
-                    print(patterns)
+            with open(input_file, 'r') as parse_target, open('pat_file', 'r') as pat_list: 
+                for line in pat_list:
+		    l = line[:line.index("#")].strip()
+		    if not l.startswith("#"):
+                        pat_store += (l,)
+		print("Matching against patterns in ./pat_file: %s" % (pat_store,))
+		patterns = re.compile('|'.join(['(%s)' % i for i in pat_store]))
                 parse(parse_target, patterns)
         except IOError as err:
             print("Operation failed: %s" % (err.strerror))
-            sys.exit()
+            sys.exit("Error: Script execution terminated unexpectedly. 	\nPlease verify command integrity and dependent pattern file './pat_file' exists and is readable")
 
-   ## Act on deeper requests ## - Unimplemented - Example
-   ## May not be reasonable. We want to avoid opening the file multiple times. 
-   ## The trick will be figuring out a clean way of passing args into parse() as an existing function.
-   ## Perhaps this is where our "map" comes into play.
-   # elif args.keys: 
-   #     pass
-   # elif "adinfo_support" in str(log): #not clean but checks for string in <log_file> arg name
-   #     adinfo_support()
-   # elif etc.. etc..
-        
 
 
 ## Core parsing logic ##
@@ -102,7 +91,7 @@ def parse(parse_target, patterns):
 
         ## Primary matching from patterns contained in patterns tuple ##
         if re.match(patterns, line):
-            #print(line_count, line.rstrip('\n'))        
+	    #print(line_count, line)
             pass
         ## Fringe-case pattern matching - Currently demo for NSS/PAM count logic ##
         if re.match(expr_comp, line): 
@@ -120,8 +109,6 @@ def parse(parse_target, patterns):
     time_calc(i, line, times)
     print("NSS calls: '%s' in the file: %s" % (nss_count, log))
     print("PAM calls: '%s' in the file: %s" % (pam_count, log))
-    #print(pat_list)
-    #pat_list.close()
 
 
         
@@ -129,22 +116,6 @@ def parse(parse_target, patterns):
 #----- Supplemental functions -----#
 ####################################
 
-
-## Output to file designated with -o/--out ##
-def outtofile(output_file):
-    sys.stdout = open(output_file, "w")
-
-
-## Count function for NSS/PAM calls ## -- function out of use. may re-use later. logic moved to parse()
-def call_count(m, line_count):
-    #global nss_count, pam_count
-    if re.match(expr_comp, m): 
-        nss_count += 1
-#        print(line_count, m)
-    if re.match(expr_pam, m):
-        pam_count += 1
-#        print(line_count, m
-    return pam_count, nss_count
 
 
 def time_calc(i, line, times):
@@ -164,11 +135,8 @@ def time_calc(i, line, times):
 
 
 
-######################### in development
+######################### testing / in development
 
-
-
-## Parse by chunk 
 def part(fileinput, chunk=512):
     while True:
         result = fileinput.read(chunk)
@@ -182,9 +150,6 @@ def string_match(sm, lc):
         lc += 1
         print(lc, m)
     
-
-class demo(object):
-    pass
     
 def start():
     pass
@@ -196,13 +161,10 @@ def end():
 def adinfo_support(): # still testing - not invoked
     if "adinfo_support" in str(args.log_file):
          print (args.log_file)
-        #do some special stuff for adinfo_support (environmental prettiness)
+        #do some special stuff for adinfo_support (aesthetic env details)
     pass
 
 
-def test(): # misc testing - not currently invoked
-    pass
-    
 
 
 
