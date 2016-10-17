@@ -81,35 +81,36 @@ def main(argv, input_file):
 
 ## Core parsing logic ##
 def parse(parse_target, patterns): 
-    nss_count, pam_count = (0, 0)
-    times = []
-    i = 0
+	nss_count, pam_count = (0, 0)
+	times = []
+	i = 0
     #for p in part(parse_target):  # parse by chunk - temporarily disabled in favor of line-by-line for now
-    for line_count, line in enumerate(parse_target, 1):
-        i += 1
-        if i == 1: time_calc(i, line, times) #run on first line only
+	for line_count, line in enumerate(parse_target, 1):
+		i += 1
+		if i == 0: time_calc(i, line, times) #run on first line only
 
-        ## Primary matching from patterns contained in patterns tuple ##
-        if re.match(patterns, line):
-	    #print(line_count, line)
-            pass
-        ## Fringe-case pattern matching - Currently demo for NSS/PAM count logic ##
-        if re.match(expr_comp, line): 
-            nss_count += 1
-#            print(line_count, line)
-        if re.match(expr_pam, line):
-            pam_count += 1
-#            print(line_count, line)
+		## Primary matching from patterns contained in patterns tuple ##
+		if patterns.match(line):
+		#print(line_count, line)
+			pass
+		## Fringe-case pattern matching - Currently demo for NSS/PAM count logic ##
+		if expr_comp.match(line): 
+			nss_count += 1
+		#            print(line_count, line)
+		if expr_pam.match(line):
+			pam_count += 1
+		#            print(line_count, line)
 
-#        for regex in patterns: 
-#            finditer = (re.findall(regex, line, re.M))
-        ## Iterate lines matching patterns provided in expr_strings[] ##
-#            for match in finditer: 
-#                call_count(match, line_count) 
-    time_calc(i, line, times)
-    print("NSS calls: '%s' in the file: %s" % (nss_count, log))
-    print("PAM calls: '%s' in the file: %s" % (pam_count, log))
+		#        for regex in patterns: 
+		#            finditer = (re.findall(regex, line, re.M))
+		## Iterate lines matching patterns provided in expr_strings[] ##
+		#            for match in finditer: 
+		#                call_count(match, line_count) 
 
+	time_calc(i, line, times)
+	print("NSS calls: '%s' in the file: %s" % (nss_count, log))
+	print("PAM calls: '%s' in the file: %s" % (pam_count, log))
+    
 
         
 ####################################
@@ -119,18 +120,21 @@ def parse(parse_target, patterns):
 
 
 def time_calc(i, line, times):
-    timestamp = line.strip()[0:15]
-    if i == 1: 
-        times += (mktime(strptime(timestamp, "%b %d %H:%M:%S")), )
-        print("Starting time: %s" % (timestamp))
-    else:
-        times += (mktime(strptime(timestamp, "%b %d %H:%M:%S")), )
-        seconds = int(times[1]-times[0])
-        minutes = int(seconds / 60)
-        hours = int(minutes / 60)
-        #elapsed = str(strftime("%d %H:%M:%S", gmtime(seconds))) #in dev - %d has min of 01 so calc is off
-        print("Ending time:   %s" % (timestamp))
-        print("Elapsed time:\n  In hours: %s\n  In minutes: %s\n  In seconds: %s " % (hours, minutes, seconds))
+	time_chk = re.compile(r'^([A-Za-z]{3} [0-9]{2} [0-9]{2}[:]?[0-9:]+)$')
+	timestamp = line.strip()[0:15]
+	print(i)
+	print(timestamp)
+	if i >=1: 
+		times += (mktime(strptime(timestamp, "%b %d %H:%M:%S")), )
+		print("Starting time: %s" % (timestamp))
+	if i >= 2 and time_chk.match(timestamp):
+		times += (mktime(strptime(timestamp, "%b %d %H:%M:%S")), )
+		seconds = int(times[1]-times[0])
+		minutes = int(seconds / 60)
+		hours = int(minutes / 60)
+#		elapsed = str(strftime("%d %H:%M:%S", gmtime(seconds))) #in dev - %d has min of 01 so calc is off
+		print("Ending time:   %s" % (timestamp))
+		print("Elapsed time:\n  In hours: %s\n  In minutes: %s\n  In seconds: %s " % (hours, minutes, seconds))
 
 
 
