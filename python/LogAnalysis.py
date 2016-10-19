@@ -83,11 +83,21 @@ def parse(parse_target, patterns):
     ranges = []
     nss_count, pam_count = (0, 0)
     time_chk = re.compile(r'^([A-Za-z]{3} [0-9]{2} [0-9]{2}[:]?[0-9:]+.*)$')
+    x = 0
     for line_count, line in enumerate(parse_target, 1):
         timestamp = line.strip()[0:15]
         if reg.match(time_chk, line):
-            times.append((mktime(strptime(timestamp, "%b %d %H:%M:%S")), ))
-            #times += (mktime(strptime(timestamp, "%b %d %H:%M:%S")), )
+            #times.append((mktime(strptime(timestamp, "%b %d %H:%M:%S")), ))
+            times += (mktime(strptime(timestamp, "%b %d %H:%M:%S")), )
+            last_time = times[-1]
+            if i == 0:
+                pass
+            else:
+                if x == last_time:
+                    print("equals %s" % (timestamp))
+                elif x < last_time and (last_time - x) > 4:
+                    print("greater %s" % (timestamp))
+                x = last_time
             #last_time = (mktime(strptime(timestamp, "%b %d %H:%M:%S")),)
             #time_ct.append(Counter(times)[times[-1]])
             #print(times)
@@ -111,25 +121,24 @@ def parse(parse_target, patterns):
     #    print(k)
     #    print(g)
     #time_calc(i, line, times) # last log entry, pull timestamp, subtract starting time for elapsed
-    seq2 = [1, 2, 4, 5, 6, 8, 9, 10]
-    list = []
-    for k, g in groupby(enumerate(seq2), lambda i,x:i-x):
-        list.append(map(itemgetter(1), g))
-    print(list)
+    print(timestamp)
     print("NSS calls: '%s' in the file: %s" % (nss_count, log))
     print("PAM calls: '%s' in the file: %s" % (pam_count, log))
 
 
 
 
-somehow...
-blah(timestamp)
-if not x:
-    pass
-else:
-    if x and x > timestamp + 60:
-        gap = x - timestamp
-    x = timestamp
+def time_test(i, last_time):
+    if i == 0: 
+        x = last_time
+    else:
+        print("hit else")
+        if last_time == last_time:
+            pass
+        if last_time > last_time:
+            #gap = x - times[-1]
+            print("gap: %s" % (gap))
+        x = times[-1]
 
         
 #### Supplemental
