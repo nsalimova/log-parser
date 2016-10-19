@@ -111,12 +111,25 @@ def parse(parse_target, patterns):
     #    print(k)
     #    print(g)
     #time_calc(i, line, times) # last log entry, pull timestamp, subtract starting time for elapsed
+    seq2 = [1, 2, 4, 5, 6, 8, 9, 10]
+    list = []
+    for k, g in groupby(enumerate(seq2), lambda i,x:i-x):
+        list.append(map(itemgetter(1), g))
+    print(list)
     print("NSS calls: '%s' in the file: %s" % (nss_count, log))
     print("PAM calls: '%s' in the file: %s" % (pam_count, log))
 
 
 
-    
+
+somehow...
+blah(timestamp)
+if not x:
+    pass
+else:
+    if x and x > timestamp + 60:
+        gap = x - timestamp
+    x = timestamp
 
         
 #### Supplemental
