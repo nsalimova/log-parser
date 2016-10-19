@@ -2,6 +2,9 @@
 import re, argparse, sys #re for regex, argparse for options, sys for argv
 #import operator, fileinput
 from time import mktime, strftime, strptime, gmtime
+from collections import Counter
+from operator import itemgetter
+from itertools import groupby, starmap
 
 #### Argument/other configuration
 parser = argparse.ArgumentParser(description='Log parser - For internal testing purposes only (for now)')
@@ -74,49 +77,63 @@ def main(argv, input_file):
 
 
 def parse(parse_target, patterns): 
-    nss_count, pam_count = (0, 0)
-    times = []
     i = 0
-    reg = Reg()
+    reg = Re()
+    times, time_ct = [], []
+    ranges = []
+    nss_count, pam_count = (0, 0)
     time_chk = re.compile(r'^([A-Za-z]{3} [0-9]{2} [0-9]{2}[:]?[0-9:]+.*)$')
     for line_count, line in enumerate(parse_target, 1):
         timestamp = line.strip()[0:15]
-        if i == 0 and reg.match(time_chk, line): # first log entry, pull timestamp
-            time_calc(i, timestamp, times)
+        if reg.match(time_chk, line):
+            times.append((mktime(strptime(timestamp, "%b %d %H:%M:%S")), ))
+            #times += (mktime(strptime(timestamp, "%b %d %H:%M:%S")), )
+            #last_time = (mktime(strptime(timestamp, "%b %d %H:%M:%S")),)
+            #time_ct.append(Counter(times)[times[-1]])
+            #print(times)
+            #print(time_ct)
+            if i == 0: # first log entry containing timestamp
+                #time_calc(i, line, times) #yank timestamp as "Log start"
+                i += 1
+            #time_calc(i, line, None)
             i += 1
             
         ## Primary matching from patterns contained in patterns tuple ##
         if reg.match(patterns, line):
-            ## Fringe-case pattern matching - Currently demo for NSS/PAM count logic ##
-            if 'data' in reg.last_match.group(0):
-                nss_count += 1
-            if 'red'  in reg.last_match.group(0):
-                pam_count += 1
             #print(line_count, reg.last_match.group(0))
-
-    time_calc(i, timestamp, times) # last log entry, pull timestamp
+            ## Fringe-case pattern matching - Currently demo for NSS/PAM count logic ##
+            if 'data' in reg.lmatch.group(0):
+                nss_count += 1
+            if 'red'  in reg.lmatch.group(0):
+                pam_count += 1
+    #print(Counter(times))
+    #for k, g in groupby(enumerate(*times), lambda i,x:i-x):
+    #    print(k)
+    #    print(g)
+    #time_calc(i, line, times) # last log entry, pull timestamp, subtract starting time for elapsed
     print("NSS calls: '%s' in the file: %s" % (nss_count, log))
     print("PAM calls: '%s' in the file: %s" % (pam_count, log))
+
+
+
     
 
         
 #### Supplemental
 
-class Reg(object):
+class Re(object):
     def __init__(self):
-        self.last_match = None
+        self.lmatch = None
     def match(self,pattern,line):
-        self.last_match = pattern.match(line)
-        return self.last_match
-    def search(self,pattern,line):
-        self.last_match = pattern.search(line)
-        return self.last_match
+        self.lmatch = pattern.match(line)
+        return self.lmatch
 
-def time_calc(i, timestamp, times):
-    if i == 0: 
+def time_calc(i, line, times):
+    timestamp = line.strip()[0:15]
+    if i == 0: #first line 
         times += (mktime(strptime(timestamp, "%b %d %H:%M:%S")), )
         print("Log start: %s" % (timestamp))
-    else:
+    elif i != 0 and times is not None:
         times += (mktime(strptime(timestamp, "%b %d %H:%M:%S")), )
         seconds = int(times[1]-times[0])
         minutes = int(seconds / 60)
@@ -124,8 +141,10 @@ def time_calc(i, timestamp, times):
 #       elapsed = str(strftime("%d %H:%M:%S", gmtime(seconds))) #%d has min of 01 - <1day = wrong return
         print("Log end:   %s" % (timestamp))
         print("Elapsed time:\n  In hours:   %s\n  In minutes: %s\n  In seconds: %s \n" % (hours, minutes, seconds))
-
-
+    else:
+       # timestamp = (mktime(strptime(timestamp, "%b %d %H:%M:%S")), )
+       # print(i, timestamp)
+        pass
 
 ######################### testing / not implemented
 
