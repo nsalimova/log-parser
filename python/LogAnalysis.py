@@ -66,8 +66,11 @@ def main(argv, input_file):
         try:
             with open(input_file, 'r') as parse_target, open('pat_file', 'r') as pat_list: 
                 for line in pat_list:
-                    l = line[:line.index("#")].strip()
-                    if not l.startswith("#"):
+                    if "#" in line:
+                        l = line[:line.index("#")].strip()
+                    else:
+                        l = line.strip()
+                    if not l.startswith("#") and len(l) != 0:
                         pat_store += (l,)
                 patterns = re.compile('|'.join(['(%s)' % i for i in pat_store]))
                 parse_out = parse(parse_target, patterns)
@@ -83,17 +86,17 @@ def main(argv, input_file):
     print("Elapsed:   %d days %d hr %d min %d sec\n" %(p['elapsed']))
     print("Lines: %d" % (p['lc'])) 
 
-    print("\n%s\nDebug information:\n%s\n" % (pretty, pretty))
+    print("\n%s\nDoebug information:\n%s\n" % (pretty, pretty))
     print("Irregular time gaps:")
-    for gap, l in zip(p['time_gap'], p['time_lc']):
-        print("Time gap: '%s seconds' on line: %s" % (gap, l))
+    #for gap, l in zip(p['time_gap'], p['time_lc']):
+    #    print("Time gap: '%s seconds' on line: %s" % (gap, l))
     print("\nNSS calls: '%s' in the file: %s" % (p['nss_count'], log))
     print("PAM calls: '%s' in the file: %s\n" % (p['pam_count'], log))
     print("\n%s\nPattern detection:\n%s\n" % (pretty, pretty))
     print("Matching against patterns in ./pat_file: \n {%s}\n" % ("}, {".join(pat_store,)))
-    print("Matches hidden: To display matches, please use the '-v' option.\n(Note: This may result in substantial output. Consider outputting results to a file via '-o')")
+    print("Matches hidden: To display matches, please use the '-v' option.\n(Note: This may result in substantial output. Consider outputting results to a file via '-o')\n")
     for l, m in zip(p['m_lc'], p['matches']):
-    #    print("%-*s %s" % (2, l, m))
+        print("%-*s %s" % (2, l, m))
         pass
 
 

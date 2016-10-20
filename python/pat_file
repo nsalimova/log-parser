@@ -1,2 +1,4 @@
-.*data.* # datatest
-.*red.* # redtest
+#.*data.* # datatest
+#.*red.* # redtest
+
+.*pam_sm_authenticate.*
