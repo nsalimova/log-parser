@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-import re, argparse, sys
+import re, argparse, sys, os
 from time import mktime, strftime, strptime, gmtime
 from datetime import datetime, timedelta
 #import operator, fileinput
@@ -58,6 +58,7 @@ pretty = ("-" * 50)
 
 def main(argv, input_file):
     pat_store = ()
+    file_size = sizeof_fmt(os.path.getsize(input_file)) #(os.path.getsize(input_file) >> 20)
     ## -o ##
     if args.out is not None:
         sys.stdout = open(args.out, "w")
@@ -81,12 +82,15 @@ def main(argv, input_file):
 
     p = parse_out
 
+    print("\n->Performing analysis of log: '%s'(%s)" % (input_file, file_size))
     print("\nLog start: %s" % (p['log_start']))
     print("Log end:   %s" % (p['log_end']))
     print("Elapsed:   %d days %d hr %d min %d sec\n" %(p['elapsed']))
-    print("Lines: %d" % (p['lc'])) 
+    print("Lines: %d\n" % (p['lc'])) 
 
     print("\n%s\nDoebug information:\n%s\n" % (pretty, pretty))
+    print("Authentication attempts made for the following users via sshd:\n%s\n" % (p['ssh_user']))
+    print("Authentication attempts made for the following users via dzdo:\n%s\n" % (p['dz_user']))
     print("Irregular time gaps:")
     #for gap, l in zip(p['time_gap'], p['time_lc']):
     #    print("Time gap: '%s seconds' on line: %s" % (gap, l))
@@ -96,7 +100,7 @@ def main(argv, input_file):
     print("Matching against patterns in ./pat_file: \n {%s}\n" % ("}, {".join(pat_store,)))
     print("Matches hidden: To display matches, please use the '-v' option.\n(Note: This may result in substantial output. Consider outputting results to a file via '-o')\n")
     for l, m in zip(p['m_lc'], p['matches']):
-        print("%-*s %s" % (2, l, m))
+    #    print("%-*s %s" % (2, l, m))
         pass
 
 
@@ -104,7 +108,7 @@ def parse(parse_target, patterns):
     reg = Re()
     nss_count, pam_count, i, x = (0, 0, 0, 0)
     time_chk = re.compile(r'^([A-Za-z]{3} [0-9]{2} [0-9]{2}[:]?[0-9:]+.*)$')
-    times, time_gap, time_lc, matches, m_lc = ([], [], [], [], [])
+    times, time_gap, time_lc, matches, m_lc, ssh_users, dz_users, s_users, f_users= ([], [], [], [], [], [], [], [], [])
     for line_count, line in enumerate(parse_target, 1):
         timestamp = line.strip()[0:15]
         try:
@@ -134,11 +138,22 @@ def parse(parse_target, patterns):
                 nss_count += 1
             if 'red'  in reg.m.group(0):
                 pam_count += 1
+            if reg.m.group(0).find("pam_sm_authenticate") >= 0:
+                fd = reg.m.group(0)[97-18:97-16] # returns fd #
+            if reg.m.group(0).find("Authentication for user ") >= 0:
+                user = reg.m.group(0)[94+25:].strip("'") # returns user name in this context...
+                if 'ssh' in reg.m.group(0):
+                    ssh_users.append(user)
+                if 'dzdo' in reg.m.group(0):
+                    dz_users.append(user)
+                
+            ## add success to s_users, fail to f_users. Conditional print based on matches in users -> f/s_users
     log_end = time_calc(i, timestamp, times)
     elapsed = (log_end[1].day-1, log_end[1].hour, log_end[1].minute, log_end[1].second)
     parse_out = {'time_gap':time_gap, 'time_lc':time_lc, 'elapsed':elapsed, \
                     'nss_count':nss_count, 'pam_count':pam_count, 'm_lc':m_lc, 'lc':line_count, \
-                    'matches':matches, 'log_start':log_start, 'log_end':log_end[0]}
+                    'matches':matches, 'log_start':log_start, 'log_end':log_end[0], 'ssh_user':ssh_users, \
+                    'dz_user':dz_users}
 
     return parse_out
     
@@ -168,6 +183,13 @@ def time_calc(i, timestamp, times):
             return timestamp, d
         except:
             pass
+
+def sizeof_fmt(num, suffix='B'):
+    for unit in ['','Ki','Mi','Gi','Ti','Pi','Ei','Zi']:
+        if abs(num) < 1024.0:
+            return "%3.1f%s%s" % (num, unit, suffix)
+        num /= 1024.0
+    return "%.1f%s%s" % (num, 'Yi', suffix)
 
 ######################### testing / not implemented
 

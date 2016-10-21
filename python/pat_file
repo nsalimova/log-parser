@@ -1,4 +1,10 @@
-#.*data.* # datatest
-#.*red.* # redtest
+.*data.* # datatest
+.*red.* # redtest
 
 .*pam_sm_authenticate.*
+.*AUDIT_TRAIL.*PAM authentication granted.*
+.*AUDIT_TRAIL.*PAM authentication denied.*
+.*PAM_AUTHTOK: '.* # CHECK FD
+.*PAM_AUTHTOK: PAM_SUCCESS.*
+.*sshd.*Authentication for user.* # CHECK FD
+.*dzdo.*Authentication for user.* # CHECK FD
