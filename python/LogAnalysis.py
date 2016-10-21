@@ -108,7 +108,8 @@ def parse(parse_target, patterns):
     reg = Re()
     nss_count, pam_count, i, x = (0, 0, 0, 0)
     time_chk = re.compile(r'^([A-Za-z]{3} [0-9]{2} [0-9]{2}[:]?[0-9:]+.*)$')
-    times, time_gap, time_lc, matches, m_lc, ssh_users, dz_users, s_users, f_users= ([], [], [], [], [], [], [], [], [])
+    v_store = [[] for li in range(9)]
+    times, time_gap, time_lc, matches, m_lc, ssh_users, dz_users, s_users, f_users = (v_store)
     for line_count, line in enumerate(parse_target, 1):
         timestamp = line.strip()[0:15]
         try:
@@ -133,18 +134,22 @@ def parse(parse_target, patterns):
         if reg.match(patterns, line):
             m_lc.append(line_count)
             matches.append(reg.m.group(0))
-            ## Fringe-case pattern matching / occurrence count - Currently demo for NSS/PAM count logic ##
+            ## Fringe-case pattern matching / occurrence count
             if 'data' in reg.m.group(0):
                 nss_count += 1
             if 'red'  in reg.m.group(0):
                 pam_count += 1
+            if reg.m.group(0).find("Accepted new lrpc2 client on <fd:") >= 0:
+                fd = reg.m.group(0).split(" ")[13].split(":")[1].rstrip(">'")
             if reg.m.group(0).find("pam_sm_authenticate") >= 0:
-                fd = reg.m.group(0)[97-18:97-16] # returns fd #
-            if reg.m.group(0).find("Authentication for user ") >= 0:
-                user = reg.m.group(0)[94+25:].strip("'") # returns user name in this context...
+                auth_fd = reg.m.group(0).split(" ")[6][4:] # returns auth thread fd
+                #fd = reg.m.group(0)[97-18:97-16] 
+            elif reg.m.group(0).find("Authentication for user ") >= 0:
+                user = reg.m.group(0).split(" ")[-1].strip("'") # returns user name in this context...
+                #user = reg.m.group(0)[94+25:].strip("'") 
                 if 'ssh' in reg.m.group(0):
                     ssh_users.append(user)
-                if 'dzdo' in reg.m.group(0):
+                elif 'dzdo' in reg.m.group(0):
                     dz_users.append(user)
                 
             ## add success to s_users, fail to f_users. Conditional print based on matches in users -> f/s_users
