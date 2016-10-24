@@ -96,6 +96,7 @@ def parse(parse_target,patterns,vs):
     #kw_pat  = re.compile( '|'.join( ['(%s)' % i for i in keys] ) )
     idx,opened_fd,closed_fd,kw_match= ( [], [], [], [] )
     sshd_lc, sshd_matches = [], []
+    active_fd = []
 
     for ( line_count, line ) in enumerate( parse_target, 1 ):
         timestamp      = line.strip()[0:15] #alt - split by fields
@@ -120,6 +121,15 @@ def parse(parse_target,patterns,vs):
         except:
             timestamp = None
 
+#ACTION    # count is super off. Move some test lines to testfile for smaller scope to test with
+        if ( line.find("Accepted new lrpc2 client on <fd:") ) >= 0:
+            fd_open         = line.split(" ")[13].lstrip("<fd:").rstrip(">'")
+            opened_fd.append( fd_open )
+            active_fd.append( fd_open )
+
+        if ( line.find("lrpc client disconnected normally ") ) >= 0:
+            fd_close    = line.split(" ")[12].lstrip("<fd:").rstrip(">'")
+            if fd_close in active_fd: active_fd.remove( fd_close )
         ## Primary matching from patterns contained in patterns tuple ##
         if ( vs.reg.match(patterns, line) ): # User-defined matches (./pat_file)
             m      = vs.reg.m.group(0)
@@ -129,7 +139,7 @@ def parse(parse_target,patterns,vs):
             #  ^ not reasonable for large files - pull index line-by-line instead
             ofd_list = []
 
-            for i in opened_fd:
+            for i in opened_fd: # same result as set(opened_fd), but in olist - necessary
                 if i not in ofd_list:
                     ofd_list.append(i)
             #for keyword in keys:
@@ -147,13 +157,6 @@ def parse(parse_target,patterns,vs):
             
             if ( 'data' in m ): vs.nss_count += 1
             if ( 'red'  in m ): vs.pam_count += 1
-                
-            if ( m.find("Accepted new lrpc2 client on <fd:") ) >= 0:
-                fd_open         = m.split(" ")[13].lstrip("<fd:").rstrip(">'")
-                opened_fd.append( fd_open )
-
-            if ( m.find("lrpc client disconnected normally ") ) >= 0:
-                fd_close    = m.split(" ")[12].lstrip("<fd:").rstrip(">'")
 
             if ( m.find("sshd(") ) >= 0:
                 sshd_fd = m.split(" ")[6].lstrip("<fd:")
@@ -176,9 +179,11 @@ def parse(parse_target,patterns,vs):
 
     z = 0
     # print lines containing 'sshd' keyword along the same FDs from list of opened FDs in file
-    for fd in ofd_list:
+
+#ACTION  # verify functionalty with fd logic moved
+    for ofd in ofd_list:
         for (lc,smatch) in zip(sshd_lc,sshd_matches):
-            if ("fd:"+fd) in smatch:
+            if ("fd:"+ofd) in smatch:
                 #print(lc,smatch)
                 pass
             #if fd and ssh and user  and sshd(xxxx) in smatch?:
@@ -208,9 +213,9 @@ def parse(parse_target,patterns,vs):
         
 #### Supplemental
 
-def t_dict(d, fd):
+def t_dict(d, item):
 
-    return {k:v[:fd] for k,v in d.iteritems()} 
+    return {k:v[:item] for k,v in d.iteritems()} 
     
 
 class VarStore:
@@ -237,11 +242,6 @@ class VarStore:
                     'nss_count':self.nss_count, 'pam_count':self.pam_count, 'm_lc':self.m_lc, 'lc':line_count, \
                     'matches':self.matches, 'log_start':log_start, 'log_end':log_end, 'ssh_user':self.ssh_users, \
                     'dz_user':self.dz_users }
-    #pnames    = ('time_gap','time_lc','elapsed','nss_count','pam_count','m_lc','lc','matches',
-    #             'log_start','log_end','ssh_user','dz_user')
-    #pvalues   = (time_gap,time_lc,elapsed,nss_count,pam_count,m_lc,line_count,matches,
-    #             log_start,log_end[0],ssh_users,dz_users,)
-    #returns   = (dict(zip(pnames,v)) for v in pvalues)
 
 class Re(object):
 
