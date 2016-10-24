@@ -9,3 +9,13 @@
 .*sshd.*Authentication for user.* # CHECK FD
 .*dzdo.*Authentication for user.* # CHECK FD
 .*Accepted new lrpc2 client on.*
+.*lrpc client disconnected.*
+.*AUDIT_TRAIL.*PAM auth.*user.*service=sshd.*
+.*AUDIT_TRAIL.*PAM acc.*user.*service=sshd.*
+.*AUDIT_TRAIL.*PAM set cred.*service=sshd.*
+.*AUDIT_TRAIL.*PAM open.*service=sshd.*
+.*AUDIT_TRAIL.*PAM auth.*user.*service=dzdo.*
+.*AUDIT_TRAIL.*PAM acc.*user.*service=dzdo.*
+.*AUDIT_TRAIL.*dzdo granted.*  # get 'command=/usr/bin/su'
+.*AUDIT_TRAIL.*user login to the system successfully.*
+.*sshd.*
