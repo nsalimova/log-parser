@@ -122,6 +122,7 @@ def parse(parse_target,patterns,vs):
             timestamp = None
 
 #ACTION    # count is super off. Move some test lines to testfile for smaller scope to test with
+            # something about looping through lists in a loop - need to "copy" via [:]
         if ( line.find("Accepted new lrpc2 client on <fd:") ) >= 0:
             fd_open         = line.split(" ")[13].lstrip("<fd:").rstrip(">'")
             opened_fd.append( fd_open )
