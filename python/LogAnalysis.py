@@ -47,10 +47,10 @@ args = parser.parse_args()
 
 
 
-## REGEX PATTERNS FOUND IN 'pat_file'. STORED IN THE CURRENT WORKING DIRECTORY ##
-## Add patterns that match *from string beginning* any lines to be returned    ##
-## Commented patterns are ignored. Comments acceptable at EOL                  ##
-#eg.
+## MUTABLE/USER-DEFINED REGEX PATTERNS FOUND IN 'pat_file'. STORED IN THE CURRENT WORKING DIRECTORY     ##
+## Add patterns that match *from string beginning* any lines to be returned                             ##
+## Commented patterns are ignored. Comments acceptable at EOL                                           ##
+## eg.
 '''
 $ cat pat_file
 .*data.* # datatest
@@ -96,10 +96,10 @@ def parse(parse_target,patterns,vs):
     #kw_pat  = re.compile( '|'.join( ['(%s)' % i for i in keys] ) )
     idx,opened_fd,closed_fd,kw_match= ( [], [], [], [] )
     sshd_lc, sshd_matches = [], []
-    active_fd = []
+    afd = {}
 
     for ( line_count, line ) in enumerate( parse_target, 1 ):
-        timestamp      = line.strip()[0:15] #alt - split by fields
+        if line.strip(): timestamp = line.strip()[0:15] #alt - split by fields
         try:
             vs.reg.match( vs.time_chk, line )
             vs.times   += ( mktime( strptime( timestamp, "%b %d %H:%M:%S" ) ), )
@@ -121,16 +121,16 @@ def parse(parse_target,patterns,vs):
         except:
             timestamp = None
 
-#ACTION    # count is super off. Move some test lines to testfile for smaller scope to test with
-            # something about looping through lists in a loop - need to "copy" via [:]
         if ( line.find("Accepted new lrpc2 client on <fd:") ) >= 0:
             fd_open         = line.split(" ")[13].lstrip("<fd:").rstrip(">'")
             opened_fd.append( fd_open )
-            active_fd.append( fd_open )
+            afd[fd_open] = "OPEN"
 
         if ( line.find("lrpc client disconnected normally ") ) >= 0:
-            fd_close    = line.split(" ")[12].lstrip("<fd:").rstrip(">'")
-            if fd_close in active_fd: active_fd.remove( fd_close )
+            fd_close    = line.split(" ")[12].lstrip("<fd:").rstrip(">\n'")
+            afd[fd_close] = "CLOSE"
+
+
         ## Primary matching from patterns contained in patterns tuple ##
         if ( vs.reg.match(patterns, line) ): # User-defined matches (./pat_file)
             m      = vs.reg.m.group(0)
@@ -151,7 +151,6 @@ def parse(parse_target,patterns,vs):
 
             for ofd in ofd_list:
                 if "sshd(" in m and ("fd:"+ofd) in m:
-            #        print(m)
                     sshd_lc.append( str(line_count) )
                     sshd_matches.append( m )
             
@@ -181,15 +180,13 @@ def parse(parse_target,patterns,vs):
     z = 0
     # print lines containing 'sshd' keyword along the same FDs from list of opened FDs in file
 
-#ACTION  # verify functionalty with fd logic moved
     for ofd in ofd_list:
         for (lc,smatch) in zip(sshd_lc,sshd_matches):
-            if ("fd:"+ofd) in smatch:
+            if ("fd:"+ofd) in smatch and afd[ofd] == "OPEN":
                 #print(lc,smatch)
                 pass
             #if fd and ssh and user  and sshd(xxxx) in smatch?:
             #    dictappend.('user':smatch, etc..)
-        #print("================")
            # if ofd_list[1] and ("fd:"+ofd_list[1]) in smatch:
            #     print(lc,smatch) 
            # if ofd_list[2] and ("fd:"+ofd_list[2]) in smatch:
@@ -200,7 +197,6 @@ def parse(parse_target,patterns,vs):
            #     print(lc,smatch) 
            # if ofd_list[5] and ("fd:"+ofd_list[5]) in smatch:
            #     print(lc,smatch) 
-
 
 
     log_end   = time_calc( vs.i, timestamp, vs.times )
@@ -304,7 +300,7 @@ def print_goodness( p, input_file, file_size, pretty, pat_store ):
     if p['dz_user']:  print ("Authentication attempts made for the following users via dzdo:\n%s\n" % (p['dz_user']))
     if p['time_gap']: 
         i = 0
-        print ("Irregular time gaps (Only first 10 are displayed. Use -v for all.)")
+        print ("Irregular time gaps (Only first 10 are displayed. Use -v for all):")
         for gap, l in zip(p['time_gap'], p['time_lc']):
             if i == 10: break
             print("%4s seconds on line: %s" % (gap, l))
@@ -329,7 +325,10 @@ def print_goodness( p, input_file, file_size, pretty, pat_store ):
         for ( l, m ) in zip( p['m_lc'], p['matches'] ):
             if i == 10:
                 break
-            print("%-*s %.90s..." % (5, l, m))
+            if len(m) > 90:
+                print("%-*s %.90s..." % (5, l, m))
+            else:
+                print("%-*s %s" % (5, l, m))
             i += 1
     
 
