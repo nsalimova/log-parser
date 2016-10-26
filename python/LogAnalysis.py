@@ -1,9 +1,10 @@
 #!/usr/bin/env python
-import re, argparse, sys, os, itertools
+import re, argparse, sys, os, itertools 
 from time import mktime, strftime, strptime
 from datetime import datetime, timedelta
+import timeit
 #import operator, fileinput
-#from collections import Counter, defaultdict
+from collections import Counter, defaultdict
 #from operator import itemgetter
 #from itertools import groupby, starmap
 
@@ -64,8 +65,6 @@ pretty  = ( "-" * 50 )
 def main(argv, input_file):
     vs = VarStore()
     file_size = sizeof_fmt(os.path.getsize(log)) 
-
-    ## -o ##
     if args.out is not None:
         sys.stdout = open(args.out, "w")
     
@@ -80,18 +79,20 @@ def main(argv, input_file):
                     else:           l = line.strip()
                     if not l.startswith("#") and len(l) != 0: vs.pat_store += (l,)
                 patterns  = re.compile( '|'.join( ['(%s)' % i for i in vs.pat_store] ) )
+                print("Loading user-defined patterns from ./pat_file...")
                 parse_out = parse( parse_target, patterns, vs )
 
         except IOError as err:
             print("Operation failed: %s" % (err.strerror))
             sys.exit( """Error: Script execution terminated unexpectedly. 	
-                \nPlease verify command integrity and dependent pattern file './pat_file' exists and is readable""" )
+            \nPlease verify command integrity and dependent pattern file './pat_file' exists and is readable""" )
 
     p = parse_out
     print_goodness( p, input_file, file_size, pretty, vs.pat_store )
 
 
 def parse(parse_target,patterns,vs): 
+    print("Analysis started...")
     keys = [ 'sshd', 'blah' ] 
     #kw_pat  = re.compile( '|'.join( ['(%s)' % i for i in keys] ) )
     idx,opened_fd,closed_fd,kw_match= ( [], [], [], [] )
@@ -102,6 +103,7 @@ def parse(parse_target,patterns,vs):
         if line.strip(): timestamp = line.strip()[0:15] #alt - split by fields
         try:
             vs.reg.match( vs.time_chk, line )
+            #print( timestamp.split(" ") ) 
             vs.times   += ( mktime( strptime( timestamp, "%b %d %H:%M:%S" ) ), )
             last_time   = vs.times[-1]
             gap         = ( last_time - vs.x )
@@ -112,7 +114,7 @@ def parse(parse_target,patterns,vs):
                 if   ( vs.x == last_time ):
                     #print("equals %s" % (timestamp))
                     pass
-                elif ( vs.x < last_time and gap > 60 ):
+                elif ( vs.x < last_time and gap > 4 ):
                     vs.time_gap.append( int(gap) )
                     vs.time_lc.append( line_count )
                 vs.x = last_time
@@ -158,11 +160,11 @@ def parse(parse_target,patterns,vs):
             if ( 'data' in m ): vs.nss_count += 1
             if ( 'red'  in m ): vs.pam_count += 1
 
-            if ( m.find("sshd(") ) >= 0:
-                sshd_fd = m.split(" ")[6].lstrip("<fd:")
+            #if ( m.find("sshd(") ) >= 0:
+            #    sshd_fd = m.split(" ")[6].lstrip("<fd:")
 
-            if ( m.find("pam_sm_authenticate") ) >= 0:
-                auth_fd    = m.split(" ")[6][4:] # returns auth thread fd
+            #if ( m.find("pam_sm_authenticate") ) >= 0:
+            #    auth_fd    = m.split(" ")[6][4:] # returns auth thread fd
 
             if ( m.find("Authentication for user ") ) >= 0: # improve or exapand NEED ACTION
                 user       = m.split(" ")[-1].strip("'") # returns user name in this context...
@@ -170,8 +172,10 @@ def parse(parse_target,patterns,vs):
            # elif m.find("Accepted gssapi-with-mic for ") >= 0:
            #     pass
 
-                if   ( 'ssh' in m ): vs.ssh_users.append( user )
-                elif ( 'dzdo' in m ): vs.dz_users.append( user )
+                if   ( 'ssh' in m ): 
+                    if user not in vs.ssh_users: vs.ssh_users.append( user )
+                elif ( 'dzdo' in m ): 
+                    if user not in vs.dz_users: vs.dz_users.append( user )
                     
                 
             ## add success to s_users, fail to f_users. Conditional print based on matches in users -> f/s_users
@@ -183,7 +187,7 @@ def parse(parse_target,patterns,vs):
     for ofd in ofd_list:
         for (lc,smatch) in zip(sshd_lc,sshd_matches):
             if ("fd:"+ofd) in smatch and afd[ofd] == "OPEN":
-                #print(lc,smatch)
+    #            print(lc,smatch)
                 pass
             #if fd and ssh and user  and sshd(xxxx) in smatch?:
             #    dictappend.('user':smatch, etc..)
@@ -210,11 +214,12 @@ def parse(parse_target,patterns,vs):
         
 #### Supplemental
 
+
+
 def t_dict(d, item):
 
     return {k:v[:item] for k,v in d.iteritems()} 
     
-
 class VarStore:
 
     def __init__(self):
@@ -239,7 +244,6 @@ class VarStore:
                     'nss_count':self.nss_count, 'pam_count':self.pam_count, 'm_lc':self.m_lc, 'lc':line_count, \
                     'matches':self.matches, 'log_start':log_start, 'log_end':log_end, 'ssh_user':self.ssh_users, \
                     'dz_user':self.dz_users }
-
 class Re(object):
 
     def __init__(self):
@@ -252,7 +256,6 @@ class Re(object):
     def search( self, pattern, line ):
         self.m = pattern.search(line)
         return self.m
-
 
 def time_calc( i, timestamp, times ):
 
@@ -298,14 +301,14 @@ def print_goodness( p, input_file, file_size, pretty, pat_store ):
     print ("\n%s\nDoebug information:\n%s\n" % ( pretty, pretty ))
     if p['ssh_user']: print ("Authentication attempts made for the following users via sshd:\n%s\n" % (p['ssh_user']))
     if p['dz_user']:  print ("Authentication attempts made for the following users via dzdo:\n%s\n" % (p['dz_user']))
-    if p['time_gap']: 
+    if p['time_gap'] and (v == "0"): 
         i = 0
         print ("Irregular time gaps (Only first 10 are displayed. Use -v for all):")
         for gap, l in zip(p['time_gap'], p['time_lc']):
             if i == 10: break
             print("%4s seconds on line: %s" % (gap, l))
             i += 1
-    elif p['time_gap'] and ( v == 1 ):
+    elif p['time_gap'] and ( v == "1" ):
         print ("Irregular time gaps:") 
         for gap, l in zip(p['time_gap'], p['time_lc']):
             print("%4s seconds on line: %s" % (gap, l))
@@ -317,30 +320,42 @@ def print_goodness( p, input_file, file_size, pretty, pat_store ):
     print ("Matched lines truncated: To display full matches, please use the '-v' option. \
             \n(Note: This may result in substantial output. Consider outputting results to a file via '-o')\n")
 
-    if ( v == "1" ):
-        for ( l, m ) in zip( p['m_lc'], p['matches'] ):
-            print("%-*s %s" % (2, l, m))
-    else:
-        i = 0
-        for ( l, m ) in zip( p['m_lc'], p['matches'] ):
-            if i == 10:
-                break
-            if len(m) > 90:
-                print("%-*s %.90s..." % (5, l, m))
-            else:
-                print("%-*s %s" % (5, l, m))
-            i += 1
-    
+#    if ( v == "1" ):
+#        for ( l, m ) in zip( p['m_lc'], p['matches'] ):
+#            print("%-*s %s" % (2, l, m))
+#    else:
+#        i = 0
+#        for ( l, m ) in zip( p['m_lc'], p['matches'] ):
+#            if i == 10:
+#                break
+#            if len(m) > 90:
+#                print("%-*s %.90s..." % (5, l, m))
+#            else:
+#                print("%-*s %s" % (5, l, m))
+#            i += 1
+#    
 
 
 ######################### testing / not implemented
 
-def part(fileinput, chunk=512):
+def part(fileinput, chunk=1024*1024):
     while True:
         result = fileinput.read(chunk)
         if not result:
             break
         yield result
+
+def process3(fileinput, pat, chunk):
+    f = open(fileinput)
+    f.seek(chunk[0])
+    d = defaultdict(int)
+    search = pat.search
+    for line in f.read(chunk[1]).splitlines():
+        if "GET /ongoing/When" in line:
+            m = search(line)
+            if m:
+                d[m.group(1)] += 1
+    return d
 
 def string_match(sm, lc):
     for i, m in enumerate(sm): 
@@ -359,7 +374,6 @@ def end():
 
 if __name__ == "__main__":
     main(sys.argv[1:], log)
-
 
 ## DEBUG ##
 print ("\n\n########### debugging\n") 
