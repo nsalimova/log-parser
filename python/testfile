@@ -1,0 +1,43 @@
+data1 
+
+data2 
+data3 
+
+data4 
+red1 
+red2
+
+red3
+red4
+blue1
+blue2
+blue3
+blue4
+test line with data5
+data6 in this other line
+symbols[test]: -> === null value data7
+Apr 27 15:00:38 kqlcmcon10 adclient[1533]: DEBUG <main> daemon.ipcserver lrpc client disconnected normally <fd:18>
+Apr 27 15:00:38 kqlcmcon10 adclient[1533]: DEBUG <main> daemon.ipcserver Accepted new lrpc2 client on <fd:18> with flags 0x00000802
+Apr 27 15:00:38 kqlcmcon10 adclient[1533]: DEBUG <fd:18 CAPIPing > daemon.ipcclient2 executing request 'CAPIPing' in thread 140078078637824
+Apr 27 15:00:38 kqlcmcon10 adclient[1533]: DEBUG <fd:18 CAPIPing > daemon.ipcclient2 doCAPIPing appMajorVersion=1 appMinorVersion=15
+Apr 27 15:00:38 kqlcmcon10 adclient[1533]: DEBUG <fd:18 CAPIPing > daemon.ipcclient2 request 'CAPIPing' complete
+Apr 27 15:00:38 kqlcmcon10 adclient[1533]: DEBUG <fd:18 CAPILdapPagedSearch > daemon.ipcclient2 executing request 'CAPILdapPagedSearch' in thread 140078070245120
+Apr 27 15:00:38 kqlcmcon10 adclient[1533]: DEBUG <fd:18 CAPILdapPagedSearch > daemon.ipcclient2 domain=$ filter=(&(keywords=Version:Centrify.Vegas.Installation.1)(keywords=InstallationName:DefaultInstallation)) root= scope=2 maxCount=0, pageSize=0 options=128
+Apr 27 15:00:38 kqlcmcon10 adclient[1533]: DEBUG <fd:18 CAPILdapPagedSearch > daemon.ipcclient2 attributes: keywords ServiceBindingInformation _dn
+Apr 27 15:00:38 kqlcmcon10 adclient[1533]: DEBUG <fd:18 CAPILdapPagedSearch > base.bind.cache pagedSearch :(&(keywords=Version:Centrify.Vegas.Installation.1)(keywords=InstallationName:DefaultInstallation)):S:0 attrs f402edda (useCache=1, GC=1)
+Apr 27 15:00:38 kqlcmcon10 adclient[1533]: DEBUG <fd:18 CAPILdapPagedSearch > base.bind.ldap init: Active searches 1
+Apr 27 15:00:38 kqlcmcon10 adclient[1533]: DEBUG <fd:18 CAPILdapPagedSearch > base.objecthelper age 570, expire age 3600, cutoff time 0, refresh 5, negative=true, cacheOps 407
+Apr 27 15:00:38 kqlcmcon10 adclient[1533]: DEBUG <fd:18 CAPILdapPagedSearch > daemon.ipcclient2 request 'CAPILdapPagedSearch' complete
+Apr 27 15:00:38 kqlcmcon10 adclient[1533]: DEBUG <fd:18 CAPILdapPagedSearchClose > daemon.ipcclient2 executing request 'CAPILdapPagedSearchClose' in thread 140078095423232
+Apr 27 15:00:38 kqlcmcon10 adclient[1533]: DEBUG <fd:18 CAPILdapPagedSearchClose > daemon.ipcclient2 doCAPILdapPagedSearchClose handle=0
+Apr 27 15:00:38 kqlcmcon10 adclient[1533]: DEBUG <fd:18 CAPILdapPagedSearchClose > base.bind.ldap destroy: Active searches 0
+Apr 27 15:00:38 kqlcmcon10 adclient[1533]: DEBUG <fd:18 CAPILdapPagedSearchClose > daemon.ipcclient2 request 'CAPILdapPagedSearchClose' complete
+Apr 27 15:00:38 kqlcmcon10 adclient[1533]: DEBUG <main> daemon.ipcserver lrpc client disconnected normally <fd:18>
+Apr 27 15:01:01 kqlcmcon10 adclient[1533]: DEBUG <main> daemon.ipcserver Accepted new lrpc2 client on <fd:26> with flags 0x00000802
+Apr 27 15:01:01 kqlcmcon10 adclient[1533]: DEBUG <fd:26 crond(6965)> -> pam_sm_acct_mgmt
+Apr 27 15:01:01 kqlcmcon10 adclient[1533]: DEBUG <fd:26 crond(6965)> PAM Options: deny
+Apr 27 15:01:01 kqlcmcon10 adclient[1533]: DEBUG <fd:26 crond(6965)> PAM Flags: SILENT
+Apr 27 15:01:01 kqlcmcon10 adclient[1533]: DEBUG <fd:26 crond(6965)> <- pam_sm_acct_mgmt, result=PAM_IGNORE(25)
+Apr 27 15:01:01 kqlcmcon10 adclient[1533]: DEBUG <main> daemon.ipcserver Accepted new lrpc2 client on <fd:18> with flags 0x00000802
+Apr 27 15:05:01 kqlcmcon10 adclient[1533]: DEBUG <main> daemon.ipcserver lrpc client disconnected normally <fd:26>
+

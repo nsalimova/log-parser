@@ -1,0 +1,436 @@
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <main> daemon.ipcserver Accepted new lrpc2 client on <fd:16> with flags 0x00000802
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:16 su(4663)> -> getpwnam_centrifydc_r  user="testuser"
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:16 su(4663)> User="testuser" str2ent=(nil) result=0x7f20ce1a0d60, buffer=0x7f20cf60f030
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:16 su(4663)> User 'testuser' is not an override user
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <main> daemon.ipcserver Accepted new lrpc2 client on <fd:25> with flags 0x00000802
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > daemon.ipcclient2 executing request 'NSSGetPasswdDataByName' in thread 140309188671232
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > daemon.ipcclient2 Getting passwd data for 'testuser'
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.bind.cache ADCB::search base CN=Users,CN=rhel65.alera.ath:zone,CN=Computers,CN=Legion,CN=Alera,CN=Zones,OU=Centrify,DC=alera,DC=ath, filter (&(uid=testuser)(displayName=$CimsUserVersion*)), attrs 1c (cacheOps=7, GC=0)
+Aug 24 11:47:28 rhel65 adclient[3543]: DIAG  <fd:25 NSSGetPasswdDataByName > base.bind.ldap 10.0.0.51:389 search base="CN=Users,CN=rhel65.alera.ath:zone,CN=Computers,CN=Legion,CN=Alera,CN=Zones,OU=Centrify,DC=alera,DC=ath" filter="(&(uid=testuser)(displayName=$CimsUserVersion*))"
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.bind.cache ADCB::search: refresh list returns 0 objects
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.cache Cache store <GUID=963798273770455c9ce50fb4a4472833>;CN=SearchMark,CN=CENTRIFY MARKER,DC=ALERA,DC=ATH : update indexes Yes
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.bind.cache ADCB::search base CN=Users,CN=Legion,CN=Alera,CN=Zones,OU=Centrify,DC=alera,DC=ath, filter (&(uid=testuser)(displayName=$CimsUserVersion*)), attrs 1c (cacheOps=7, GC=0)
+Aug 24 11:47:28 rhel65 adclient[3543]: DIAG  <fd:25 NSSGetPasswdDataByName > base.bind.ldap 10.0.0.51:389 search base="CN=Users,CN=Legion,CN=Alera,CN=Zones,OU=Centrify,DC=alera,DC=ath" filter="(&(uid=testuser)(displayName=$CimsUserVersion*))"
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.bind.cache ADCB::search: refresh list returns 0 objects
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.cache Cache store <GUID=2074551451214bfd89d940096e634de5>;CN=SearchMark,CN=CENTRIFY MARKER,DC=ALERA,DC=ATH : update indexes Yes
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.bind.cache ADCB::search base CN=Users,CN=Alera,CN=Zones,OU=Centrify,DC=alera,DC=ath, filter (&(uid=testuser)(displayName=$CimsUserVersion*)), attrs 1c (cacheOps=7, GC=0)
+Aug 24 11:47:28 rhel65 adclient[3543]: DIAG  <fd:25 NSSGetPasswdDataByName > base.bind.ldap 10.0.0.51:389 search base="CN=Users,CN=Alera,CN=Zones,OU=Centrify,DC=alera,DC=ath" filter="(&(uid=testuser)(displayName=$CimsUserVersion*))"
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.bind.cache ADCB::search: refresh list returns 0 objects
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.cache Cache store <GUID=097ff31b8ed249faa862142786621244>;CN=SearchMark,CN=CENTRIFY MARKER,DC=ALERA,DC=ATH : update indexes Yes
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.bind.cache making negative response for Person _UnixName="testuser" (GC=0)
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.cache Cache store <GUID=7e9df6ef347a4b52b86871bc52a20538>;CN=CENTRIFY NEGATIVE RESPONSE,CN=Person,DC=ALERA,DC=ATH : update indexes Yes
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.adagent findObject ADNames: testuser#012name: testuser type=SAM domain=ALERA.ATH#012
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.bind.cache ADCB::search base , filter (&(objectClass=User)(|(objectCategory=Person)(objectCategory=Computer))(sAMAccountName=testuser)), attrs 2 (cacheOps=7, GC=0)
+Aug 24 11:47:28 rhel65 adclient[3543]: DIAG  <fd:25 NSSGetPasswdDataByName > base.bind.ldap 10.0.0.51:389 search base="DC=alera,DC=ath" filter="(&(objectClass=User)(|(objectCategory=Person)(objectCategory=Computer))(sAMAccountName=testuser))"
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > lrpc.adobject new object: <GUID=c52114db316be34fa2e69be8d5d40013>;<SID=010500000000000515000000a09fc63116f9353f233f488e350c0000>;CN=test user,CN=Users,DC=alera,DC=ath
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.bind.cache ADCB::search: refresh list returns 1 objects
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.objecthelper.user prepare CN=test user,CN=Users,DC=alera,DC=ath, cacheOps 7, new usn , old usn none
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.zonehier fetchAndExtend: testuser
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.zonehier fetchAndExtend zone level 0
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.bind.cache ADCB::search base CN=Users,CN=rhel65.alera.ath:zone,CN=Computers,CN=Legion,CN=Alera,CN=Zones,OU=Centrify,DC=alera,DC=ath, filter (&(objectCategory=ServiceConnectionPoint)(keywords=parentLink:S-1-5-21-835100576-1060501782-2387099427-3125)), attrs 1c (cacheOps=7, GC=0)
+Aug 24 11:47:28 rhel65 adclient[3543]: DIAG  <fd:25 NSSGetPasswdDataByName > base.bind.ldap 10.0.0.51:389 search base="CN=Users,CN=rhel65.alera.ath:zone,CN=Computers,CN=Legion,CN=Alera,CN=Zones,OU=Centrify,DC=alera,DC=ath" filter="(&(objectCategory=ServiceConnectionPoint)(keywords=parentLink:S-1-5-21-835100576-1060501782-2387099427-3125))"
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.bind.cache ADCB::search: refresh list returns 0 objects
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.cache Cache store <GUID=dbaf8faf5a0049c5bb3b1fa66a0704e8>;CN=SearchMark,CN=CENTRIFY MARKER,DC=ALERA,DC=ATH : update indexes Yes
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.zonehier fetchAndExtend zone level 1
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.bind.cache ADCB::search base CN=Users,CN=Legion,CN=Alera,CN=Zones,OU=Centrify,DC=alera,DC=ath, filter (&(objectCategory=ServiceConnectionPoint)(keywords=parentLink:S-1-5-21-835100576-1060501782-2387099427-3125)), attrs 1c (cacheOps=7, GC=0)
+Aug 24 11:47:28 rhel65 adclient[3543]: DIAG  <fd:25 NSSGetPasswdDataByName > base.bind.ldap 10.0.0.51:389 search base="CN=Users,CN=Legion,CN=Alera,CN=Zones,OU=Centrify,DC=alera,DC=ath" filter="(&(objectCategory=ServiceConnectionPoint)(keywords=parentLink:S-1-5-21-835100576-1060501782-2387099427-3125))"
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.bind.cache ADCB::search: refresh list returns 0 objects
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.cache Cache store <GUID=aafcf53cde2b43c6a2e1b39037007ca3>;CN=SearchMark,CN=CENTRIFY MARKER,DC=ALERA,DC=ATH : update indexes Yes
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.zonehier fetchAndExtend zone level 2
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.bind.cache ADCB::search base CN=Users,CN=Alera,CN=Zones,OU=Centrify,DC=alera,DC=ath, filter (&(objectCategory=ServiceConnectionPoint)(keywords=parentLink:S-1-5-21-835100576-1060501782-2387099427-3125)), attrs 1c (cacheOps=7, GC=0)
+Aug 24 11:47:28 rhel65 adclient[3543]: DIAG  <fd:25 NSSGetPasswdDataByName > base.bind.ldap 10.0.0.51:389 search base="CN=Users,CN=Alera,CN=Zones,OU=Centrify,DC=alera,DC=ath" filter="(&(objectCategory=ServiceConnectionPoint)(keywords=parentLink:S-1-5-21-835100576-1060501782-2387099427-3125))"
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.bind.cache ADCB::search: refresh list returns 0 objects
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.cache Cache store <GUID=ad0e491cdbe54922aaa54263138d3228>;CN=SearchMark,CN=CENTRIFY MARKER,DC=ALERA,DC=ATH : update indexes Yes
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.zonehier Missing extension object for CN=test user,CN=Users,DC=alera,DC=ath
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.aduser getKerberosName: name=, uobj.isEmpty: false
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.aduser User  (origUPN: testuser@alera.ath) new UPN: testuser@ALERA.ATH
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.bind.cache fetch <GUID=301ef1431ef37a44b65b19ed772b3446> attrs = 3 (cacheOps=7, GC=0)
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.bind.cache fetch <GUID=301ef1431ef37a44b65b19ed772b3446> attrs = 3 (cacheOps=7, GC=0)
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.objecthelper age 166, expire age 1800, cutoff time 0, refresh 5, negative=false, cacheOps 7
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.schema.cdc get ext type 34 for CN=Legion,CN=Alera,CN=Zones,OU=Centrify,DC=alera,DC=ath
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.aduser min password age set to gp because we don't have other information
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.cache Cache store <GUID=c52114db316be34fa2e69be8d5d40013>;<SID=010500000000000515000000a09fc63116f9353f233f488e350c0000>;CN=test user,CN=Users,DC=alera,DC=ath : update indexes Yes
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.cache Cache store <GUID=4299ef3669da424a85b0bfd5191e5561>;CN=SearchMark,CN=CENTRIFY MARKER,DC=ALERA,DC=ATH : update indexes Yes
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.bind.cache Skipping testuser since the object is not enabled in the current zone
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.bind.cache ADCB::search base , filter (&(objectClass=User)(|(objectCategory=Person)(objectCategory=Computer))(sAMAccountName=testuser)), attrs 1e (cacheOps=7, GC=1)
+Aug 24 11:47:28 rhel65 adclient[3543]: DIAG  <fd:25 NSSGetPasswdDataByName > base.bind.ldap 10.0.0.51:3268 search base="" filter="(&(objectClass=User)(|(objectCategory=Person)(objectCategory=Computer))(sAMAccountName=testuser))"
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > lrpc.adobject new object: <GUID=c52114db316be34fa2e69be8d5d40013>;<SID=010500000000000515000000a09fc63116f9353f233f488e350c0000>;CN=test user,CN=Users,DC=alera,DC=ath
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.bind.cache ADCB::search: refresh list returns 1 objects
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.cache Cache store <GUID=c52114db316be34fa2e69be8d5d40013>;<SID=010500000000000515000000a09fc63116f9353f233f488e350c0000>;CN=test user,CN=Users,DC=alera,DC=ath : update indexes Yes
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.cache Cache store <GUID=c5fa3e69f4b9489f9253c4dc0a833c49>;CN=SearchMark,CN=CENTRIFY MARKER,DC=$ : update indexes Yes
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.adagent Find DN: CN=test user,CN=Users,DC=alera,DC=ath (7)
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.bind.cache fetch CN=test user,CN=Users,DC=alera,DC=ath attrs = 2 (cacheOps=7, GC=0)
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.bind.cache fetch CN=test user,CN=Users,DC=alera,DC=ath attrs = 2 (cacheOps=7, GC=0)
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.objecthelper age 0, expire age 3600, cutoff time 0, refresh 5, negative=false, cacheOps 7
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.bind.cache Skipping testuser since the object is not enabled in the current zone
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.adagent findByAttr: Not Found:testuser category:user attr=sAMAccountName
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.bind.cache ADCB::search base , filter (&(objectClass=User)(|(objectCategory=Person)(objectCategory=Computer))(displayName=testuser)), attrs 2 (cacheOps=7, GC=0)
+Aug 24 11:47:28 rhel65 adclient[3543]: DIAG  <fd:25 NSSGetPasswdDataByName > base.bind.ldap 10.0.0.51:389 search base="DC=alera,DC=ath" filter="(&(objectClass=User)(|(objectCategory=Person)(objectCategory=Computer))(displayName=testuser))"
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > lrpc.adobject new object: <GUID=c52114db316be34fa2e69be8d5d40013>;<SID=010500000000000515000000a09fc63116f9353f233f488e350c0000>;CN=test user,CN=Users,DC=alera,DC=ath
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.bind.cache ADCB::search: refresh list returns 1 objects
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.objecthelper.user prepare CN=test user,CN=Users,DC=alera,DC=ath, cacheOps 7, new usn , old usn 
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.zonehier fetchAndExtend: testuser
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.zonehier fetchAndExtend zone level 0
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.bind.cache ADCB::search base CN=Users,CN=rhel65.alera.ath:zone,CN=Computers,CN=Legion,CN=Alera,CN=Zones,OU=Centrify,DC=alera,DC=ath, filter (&(objectCategory=ServiceConnectionPoint)(keywords=parentLink:S-1-5-21-835100576-1060501782-2387099427-3125)), attrs 1c (cacheOps=7, GC=0)
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.objecthelper age 0, expire age 1800, cutoff time 0, refresh 5, negative=true, cacheOps 7
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.zonehier fetchAndExtend zone level 1
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.bind.cache ADCB::search base CN=Users,CN=Legion,CN=Alera,CN=Zones,OU=Centrify,DC=alera,DC=ath, filter (&(objectCategory=ServiceConnectionPoint)(keywords=parentLink:S-1-5-21-835100576-1060501782-2387099427-3125)), attrs 1c (cacheOps=7, GC=0)
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.objecthelper age 0, expire age 1800, cutoff time 0, refresh 5, negative=true, cacheOps 7
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.zonehier fetchAndExtend zone level 2
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.bind.cache ADCB::search base CN=Users,CN=Alera,CN=Zones,OU=Centrify,DC=alera,DC=ath, filter (&(objectCategory=ServiceConnectionPoint)(keywords=parentLink:S-1-5-21-835100576-1060501782-2387099427-3125)), attrs 1c (cacheOps=7, GC=0)
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.objecthelper age 0, expire age 1800, cutoff time 0, refresh 5, negative=true, cacheOps 7
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.zonehier Missing extension object for CN=test user,CN=Users,DC=alera,DC=ath
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.aduser getKerberosName: name=, uobj.isEmpty: false
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.aduser User  (origUPN: testuser@alera.ath) new UPN: testuser@ALERA.ATH
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.bind.cache fetch <GUID=301ef1431ef37a44b65b19ed772b3446> attrs = 3 (cacheOps=7, GC=0)
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.bind.cache fetch <GUID=301ef1431ef37a44b65b19ed772b3446> attrs = 3 (cacheOps=7, GC=0)
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.objecthelper age 166, expire age 1800, cutoff time 0, refresh 5, negative=false, cacheOps 7
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.schema.cdc get ext type 34 for CN=Legion,CN=Alera,CN=Zones,OU=Centrify,DC=alera,DC=ath
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.objecthelper.user Membership Update: Groups not present: CN=test user,CN=Users,DC=alera,DC=ath
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.objecthelper.user Cached obj for test user has expired, set flag to force update of user's group membership.
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.aduser min password age set to gp because we don't have other information
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.cache Cache store <GUID=c52114db316be34fa2e69be8d5d40013>;<SID=010500000000000515000000a09fc63116f9353f233f488e350c0000>;CN=test user,CN=Users,DC=alera,DC=ath : update indexes Yes
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.cache Cache store <GUID=2b16b68b35574bf897f70a2c0edbaceb>;CN=SearchMark,CN=CENTRIFY MARKER,DC=ALERA,DC=ATH : update indexes Yes
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.bind.cache Skipping testuser since the object is not enabled in the current zone
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.bind.cache ADCB::search base , filter (&(objectClass=User)(|(objectCategory=Person)(objectCategory=Computer))(displayName=testuser)), attrs 1e (cacheOps=7, GC=1)
+Aug 24 11:47:28 rhel65 adclient[3543]: DIAG  <fd:25 NSSGetPasswdDataByName > base.bind.ldap 10.0.0.51:3268 search base="" filter="(&(objectClass=User)(|(objectCategory=Person)(objectCategory=Computer))(displayName=testuser))"
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > lrpc.adobject new object: <GUID=c52114db316be34fa2e69be8d5d40013>;<SID=010500000000000515000000a09fc63116f9353f233f488e350c0000>;CN=test user,CN=Users,DC=alera,DC=ath
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.bind.cache ADCB::search: refresh list returns 1 objects
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.cache Cache store <GUID=c52114db316be34fa2e69be8d5d40013>;<SID=010500000000000515000000a09fc63116f9353f233f488e350c0000>;CN=test user,CN=Users,DC=alera,DC=ath : update indexes Yes
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.cache Cache store <GUID=46e76d3c5f3945ed962f741e7bd514ad>;CN=SearchMark,CN=CENTRIFY MARKER,DC=$ : update indexes Yes
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.adagent Find DN: CN=test user,CN=Users,DC=alera,DC=ath (7)
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.bind.cache fetch CN=test user,CN=Users,DC=alera,DC=ath attrs = 2 (cacheOps=7, GC=0)
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.bind.cache fetch CN=test user,CN=Users,DC=alera,DC=ath attrs = 2 (cacheOps=7, GC=0)
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.objecthelper age 0, expire age 3600, cutoff time 0, refresh 5, negative=false, cacheOps 7
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.bind.cache Skipping testuser since the object is not enabled in the current zone
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.adagent findByAttr: Not Found:testuser category:user attr=displayName
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.bind.cache ADCB::search base , filter (&(objectClass=User)(|(objectCategory=Person)(objectCategory=Computer))(cn=testuser)), attrs 2 (cacheOps=7, GC=0)
+Aug 24 11:47:28 rhel65 adclient[3543]: DIAG  <fd:25 NSSGetPasswdDataByName > base.bind.ldap 10.0.0.51:389 search base="DC=alera,DC=ath" filter="(&(objectClass=User)(|(objectCategory=Person)(objectCategory=Computer))(cn=testuser))"
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.bind.cache ADCB::search: refresh list returns 0 objects
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.cache Cache store <GUID=c5b9fe6a814c4733bd8e2a7eecb13e21>;CN=SearchMark,CN=CENTRIFY MARKER,DC=ALERA,DC=ATH : update indexes Yes
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.bind.cache ADCB::search base , filter (&(objectClass=User)(|(objectCategory=Person)(objectCategory=Computer))(cn=testuser)), attrs 1e (cacheOps=7, GC=1)
+Aug 24 11:47:28 rhel65 adclient[3543]: DIAG  <fd:25 NSSGetPasswdDataByName > base.bind.ldap 10.0.0.51:3268 search base="" filter="(&(objectClass=User)(|(objectCategory=Person)(objectCategory=Computer))(cn=testuser))"
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.bind.cache ADCB::search: refresh list returns 0 objects
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.cache Cache store <GUID=31f848c5545f4c86b3771b1ffa4adcf9>;CN=SearchMark,CN=CENTRIFY MARKER,DC=$ : update indexes Yes
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.adagent findByAttr: Not Found:testuser category:user attr=cn
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.adagent findObject: NotFound:testuser Category:user
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.objecthelper 'testuser' is not a canonical name
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > util.except (NotFound) : No such unix user 'testuser' (reference ipcclient2.cpp:931 rc: 0)
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > daemon.ipcclient2 No user data: No such unix user 'testuser'
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <main> util.threadpool Pool size 3/4, busy size 1/30
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:16 su(4663)> <- getpwnam_centrifydc_r, result=NSS_NOTFOUND(0)
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <main> daemon.ipcserver lrpc client disconnected normally <fd:16>
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > daemon.ipcclient2 request 'NSSGetPasswdDataByName' complete
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <main> daemon.ipcserver lrpc client disconnected normally <fd:25>
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <main> daemon.ipcserver Accepted new lrpc2 client on <fd:16> with flags 0x00000802
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:16 su(4663)> -> getpwnam_centrifydc_r  user="testuser"
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:16 su(4663)> User="testuser" str2ent=(nil) result=0x7f20cf623c60, buffer=0x7f20cf623c90
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:16 su(4663)> User 'testuser' is not an override user
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <main> daemon.ipcserver Accepted new lrpc2 client on <fd:25> with flags 0x00000802
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > daemon.ipcclient2 executing request 'NSSGetPasswdDataByName' in thread 140309167691520
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > daemon.ipcclient2 Getting passwd data for 'testuser'
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.adagent Find GUID: 7e9df6ef347a4b52b86871bc52a20538 (7)
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.objecthelper age 0, expire age 3600, cutoff time 0, refresh 5, negative=true, cacheOps 7
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.adagent findObject ADNames: testuser#012name: testuser type=SAM domain=ALERA.ATH#012
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.objecthelper age 0, expire age 3600, cutoff time 0, refresh 5, negative=false, cacheOps 7
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.bind.cache Skipping testuser from cache since the object is not enabled in the current zone
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.bind.cache ADCB::search base , filter (&(objectClass=User)(|(objectCategory=Person)(objectCategory=Computer))(sAMAccountName=testuser)), attrs 1e (cacheOps=7, GC=1)
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.objecthelper age 0, expire age 3600, cutoff time 0, refresh 5, negative=false, cacheOps 7
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.adagent Find DN: CN=test user,CN=Users,DC=alera,DC=ath (7)
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.bind.cache fetch CN=test user,CN=Users,DC=alera,DC=ath attrs = 2 (cacheOps=7, GC=0)
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.bind.cache fetch CN=test user,CN=Users,DC=alera,DC=ath attrs = 2 (cacheOps=7, GC=0)
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.objecthelper age 0, expire age 3600, cutoff time 0, refresh 5, negative=false, cacheOps 7
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.bind.cache Skipping testuser since the object is not enabled in the current zone
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.adagent findByAttr: Not Found:testuser category:user attr=sAMAccountName
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.bind.cache ADCB::search base , filter (&(objectClass=User)(|(objectCategory=Person)(objectCategory=Computer))(displayName=testuser)), attrs 2 (cacheOps=7, GC=0)
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.objecthelper age 0, expire age 1800, cutoff time 0, refresh 5, negative=false, cacheOps 7
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.bind.cache Skipping testuser since the object is not enabled in the current zone
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.bind.cache ADCB::search base , filter (&(objectClass=User)(|(objectCategory=Person)(objectCategory=Computer))(displayName=testuser)), attrs 1e (cacheOps=7, GC=1)
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.objecthelper age 0, expire age 3600, cutoff time 0, refresh 5, negative=false, cacheOps 7
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.adagent Find DN: CN=test user,CN=Users,DC=alera,DC=ath (7)
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.bind.cache fetch CN=test user,CN=Users,DC=alera,DC=ath attrs = 2 (cacheOps=7, GC=0)
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.bind.cache fetch CN=test user,CN=Users,DC=alera,DC=ath attrs = 2 (cacheOps=7, GC=0)
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.objecthelper age 0, expire age 3600, cutoff time 0, refresh 5, negative=false, cacheOps 7
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.bind.cache Skipping testuser since the object is not enabled in the current zone
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.adagent findByAttr: Not Found:testuser category:user attr=displayName
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.bind.cache ADCB::search base , filter (&(objectClass=User)(|(objectCategory=Person)(objectCategory=Computer))(cn=testuser)), attrs 2 (cacheOps=7, GC=0)
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.objecthelper age 0, expire age 1800, cutoff time 0, refresh 5, negative=true, cacheOps 7
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.bind.cache ADCB::search base , filter (&(objectClass=User)(|(objectCategory=Person)(objectCategory=Computer))(cn=testuser)), attrs 1e (cacheOps=7, GC=1)
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.objecthelper age 0, expire age 3600, cutoff time 0, refresh 5, negative=true, cacheOps 7
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.adagent findByAttr: Not Found:testuser category:user attr=cn
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.adagent findObject: NotFound:testuser Category:user
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.objecthelper 'testuser' is not a canonical name
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > util.except (NotFound) : No such unix user 'testuser' (reference ipcclient2.cpp:931 rc: 0)
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > daemon.ipcclient2 No user data: No such unix user 'testuser'
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > daemon.ipcclient2 request 'NSSGetPasswdDataByName' complete
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:16 su(4663)> <- getpwnam_centrifydc_r, result=NSS_NOTFOUND(0)
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <main> daemon.ipcserver lrpc client disconnected normally <fd:25>
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <main> daemon.ipcserver lrpc client disconnected normally <fd:16>
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <main> daemon.ipcserver Accepted new lrpc2 client on <fd:16> with flags 0x00000802
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:16 su(4663)> -> pam_sm_open_session
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:16 su(4663)> PAM Options: (none)
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:16 su(4663)> PAM Flags: (none)
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <main> daemon.ipcserver Accepted new lrpc2 client on <fd:25> with flags 0x00000802
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > daemon.ipcclient2 executing request 'PAMUserIsOurResponsibility' in thread 140309157201664
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > daemon.ipcclient2 Checking to see if 'testuser' is our responsibility.
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > adclient.pam.util Creating CimsContext
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > adclient.pam.util username testuser, presented: , effective: , unix: unknown
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.adagent Find GUID: 7e9df6ef347a4b52b86871bc52a20538 (f)
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.objecthelper age 0, expire age 3600, cutoff time 0, refresh 5, negative=true, cacheOps f
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.objecthelper.ad Cache expired 7e9df6ef347a4b52b86871bc52a20538, CN=CENTRIFY NEGATIVE RESPONSE,CN=Person,DC=ALERA,DC=ATH
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.bind.cache ADCB::search base CN=Users,CN=rhel65.alera.ath:zone,CN=Computers,CN=Legion,CN=Alera,CN=Zones,OU=Centrify,DC=alera,DC=ath, filter (&(uid=testuser)(displayName=$CimsUserVersion*)), attrs 1c (cacheOps=f, GC=0)
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.objecthelper age 0, expire age 1800, cutoff time 0, refresh 5, negative=true, cacheOps f
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.objecthelper.ad Cache expired 963798273770455c9ce50fb4a4472833, CN=SearchMark,CN=CENTRIFY MARKER,DC=ALERA,DC=ATH
+Aug 24 11:47:28 rhel65 adclient[3543]: DIAG  <fd:25 PAMUserIsOurResponsibility > base.bind.ldap 10.0.0.51:389 search base="CN=Users,CN=rhel65.alera.ath:zone,CN=Computers,CN=Legion,CN=Alera,CN=Zones,OU=Centrify,DC=alera,DC=ath" filter="(&(uid=testuser)(displayName=$CimsUserVersion*))"
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.bind.cache ADCB::search: refresh list returns 0 objects
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.cache Cache store <GUID=963798273770455c9ce50fb4a4472833>;CN=SearchMark,CN=CENTRIFY MARKER,DC=ALERA,DC=ATH : update indexes Yes
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.bind.cache ADCB::search base CN=Users,CN=Legion,CN=Alera,CN=Zones,OU=Centrify,DC=alera,DC=ath, filter (&(uid=testuser)(displayName=$CimsUserVersion*)), attrs 1c (cacheOps=f, GC=0)
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.objecthelper age 0, expire age 1800, cutoff time 0, refresh 5, negative=true, cacheOps f
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.objecthelper.ad Cache expired 2074551451214bfd89d940096e634de5, CN=SearchMark,CN=CENTRIFY MARKER,DC=ALERA,DC=ATH
+Aug 24 11:47:28 rhel65 adclient[3543]: DIAG  <fd:25 PAMUserIsOurResponsibility > base.bind.ldap 10.0.0.51:389 search base="CN=Users,CN=Legion,CN=Alera,CN=Zones,OU=Centrify,DC=alera,DC=ath" filter="(&(uid=testuser)(displayName=$CimsUserVersion*))"
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.bind.cache ADCB::search: refresh list returns 0 objects
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.cache Cache store <GUID=2074551451214bfd89d940096e634de5>;CN=SearchMark,CN=CENTRIFY MARKER,DC=ALERA,DC=ATH : update indexes Yes
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.bind.cache ADCB::search base CN=Users,CN=Alera,CN=Zones,OU=Centrify,DC=alera,DC=ath, filter (&(uid=testuser)(displayName=$CimsUserVersion*)), attrs 1c (cacheOps=f, GC=0)
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.objecthelper age 0, expire age 1800, cutoff time 0, refresh 5, negative=true, cacheOps f
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.objecthelper.ad Cache expired 097ff31b8ed249faa862142786621244, CN=SearchMark,CN=CENTRIFY MARKER,DC=ALERA,DC=ATH
+Aug 24 11:47:28 rhel65 adclient[3543]: DIAG  <fd:25 PAMUserIsOurResponsibility > base.bind.ldap 10.0.0.51:389 search base="CN=Users,CN=Alera,CN=Zones,OU=Centrify,DC=alera,DC=ath" filter="(&(uid=testuser)(displayName=$CimsUserVersion*))"
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.bind.cache ADCB::search: refresh list returns 0 objects
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.cache Cache store <GUID=097ff31b8ed249faa862142786621244>;CN=SearchMark,CN=CENTRIFY MARKER,DC=ALERA,DC=ATH : update indexes Yes
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.bind.cache making negative response for Person _UnixName="testuser" (GC=0)
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.cache Cache store <GUID=b2c7eeab3da84d9098b7bb0afc63a2da>;CN=CENTRIFY NEGATIVE RESPONSE,CN=Person,DC=ALERA,DC=ATH : update indexes Yes
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.adagent findObject ADNames: testuser#012name: testuser type=SAM domain=ALERA.ATH#012
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.objecthelper age 0, expire age 3600, cutoff time 0, refresh 5, negative=false, cacheOps f
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.bind.cache Skipping testuser from cache since the object is not enabled in the current zone
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.bind.cache ADCB::search base , filter (&(objectClass=User)(|(objectCategory=Person)(objectCategory=Computer))(sAMAccountName=testuser)), attrs 1e (cacheOps=f, GC=1)
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.objecthelper age 0, expire age 3600, cutoff time 0, refresh 5, negative=false, cacheOps f
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.adagent Find DN: CN=test user,CN=Users,DC=alera,DC=ath (f)
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.bind.cache fetch CN=test user,CN=Users,DC=alera,DC=ath attrs = 2 (cacheOps=f, GC=0)
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.bind.cache fetch CN=test user,CN=Users,DC=alera,DC=ath attrs = 2 (cacheOps=f, GC=0)
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.objecthelper age 0, expire age 3600, cutoff time 0, refresh 5, negative=false, cacheOps f
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.bind.cache Skipping testuser since the object is not enabled in the current zone
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.adagent findByAttr: Not Found:testuser category:user attr=sAMAccountName
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.bind.cache ADCB::search base , filter (&(objectClass=User)(|(objectCategory=Person)(objectCategory=Computer))(displayName=testuser)), attrs 2 (cacheOps=f, GC=0)
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.objecthelper age 0, expire age 1800, cutoff time 0, refresh 5, negative=false, cacheOps f
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.bind.cache Skipping testuser since the object is not enabled in the current zone
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.bind.cache ADCB::search base , filter (&(objectClass=User)(|(objectCategory=Person)(objectCategory=Computer))(displayName=testuser)), attrs 1e (cacheOps=f, GC=1)
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.objecthelper age 0, expire age 3600, cutoff time 0, refresh 5, negative=false, cacheOps f
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.adagent Find DN: CN=test user,CN=Users,DC=alera,DC=ath (f)
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.bind.cache fetch CN=test user,CN=Users,DC=alera,DC=ath attrs = 2 (cacheOps=f, GC=0)
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.bind.cache fetch CN=test user,CN=Users,DC=alera,DC=ath attrs = 2 (cacheOps=f, GC=0)
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.objecthelper age 0, expire age 3600, cutoff time 0, refresh 5, negative=false, cacheOps f
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.bind.cache Skipping testuser since the object is not enabled in the current zone
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.adagent findByAttr: Not Found:testuser category:user attr=displayName
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.bind.cache ADCB::search base , filter (&(objectClass=User)(|(objectCategory=Person)(objectCategory=Computer))(cn=testuser)), attrs 2 (cacheOps=f, GC=0)
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.objecthelper age 0, expire age 1800, cutoff time 0, refresh 5, negative=true, cacheOps f
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.objecthelper.ad Cache expired c5b9fe6a814c4733bd8e2a7eecb13e21, CN=SearchMark,CN=CENTRIFY MARKER,DC=ALERA,DC=ATH
+Aug 24 11:47:28 rhel65 adclient[3543]: DIAG  <fd:25 PAMUserIsOurResponsibility > base.bind.ldap 10.0.0.51:389 search base="DC=alera,DC=ath" filter="(&(objectClass=User)(|(objectCategory=Person)(objectCategory=Computer))(cn=testuser))"
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.bind.cache ADCB::search: refresh list returns 0 objects
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.cache Cache store <GUID=c5b9fe6a814c4733bd8e2a7eecb13e21>;CN=SearchMark,CN=CENTRIFY MARKER,DC=ALERA,DC=ATH : update indexes Yes
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.bind.cache ADCB::search base , filter (&(objectClass=User)(|(objectCategory=Person)(objectCategory=Computer))(cn=testuser)), attrs 1e (cacheOps=f, GC=1)
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.objecthelper age 0, expire age 3600, cutoff time 0, refresh 5, negative=true, cacheOps f
+Aug 24 11:47:28 rhel65 adclient[3543]: DIAG  <fd:25 PAMUserIsOurResponsibility > base.bind.ldap 10.0.0.51:3268 search base="" filter="(&(objectClass=User)(|(objectCategory=Person)(objectCategory=Computer))(cn=testuser))"
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.bind.cache ADCB::search: refresh list returns 0 objects
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.cache Cache store <GUID=31f848c5545f4c86b3771b1ffa4adcf9>;CN=SearchMark,CN=CENTRIFY MARKER,DC=$ : update indexes Yes
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.adagent findByAttr: Not Found:testuser category:user attr=cn
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.adagent findObject: NotFound:testuser Category:user
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.objecthelper 'testuser' is not a canonical name
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > adclient.pam.util User is not ours.
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > daemon.ipcclient2 request 'PAMUserIsOurResponsibility' complete
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:16 su(4663)> Open session for user 'testuser': skipping because user has no Active Directory account.
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:16 su(4663)> <- pam_sm_open_session, result=PAM_IGNORE(25)
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <main> daemon.ipcserver lrpc client disconnected normally <fd:25>
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <main> daemon.ipcserver lrpc client disconnected normally <fd:16>
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <main> daemon.ipcserver Accepted new lrpc2 client on <fd:16> with flags 0x00000802
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:16 su(4663)> -> getpwnam_centrifydc_r  user="testuser"
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:16 su(4663)> User="testuser" str2ent=(nil) result=0x7f20cf6247c0, buffer=0x7f20cf6247f0
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:16 su(4663)> User 'testuser' is not an override user
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <main> daemon.ipcserver Accepted new lrpc2 client on <fd:25> with flags 0x00000802
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > daemon.ipcclient2 executing request 'NSSGetPasswdDataByName' in thread 140309157201664
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > daemon.ipcclient2 Getting passwd data for 'testuser'
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.adagent Find GUID: b2c7eeab3da84d9098b7bb0afc63a2da (7)
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.objecthelper age 0, expire age 3600, cutoff time 0, refresh 5, negative=true, cacheOps 7
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.adagent findObject ADNames: testuser#012name: testuser type=SAM domain=ALERA.ATH#012
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.objecthelper age 0, expire age 3600, cutoff time 0, refresh 5, negative=false, cacheOps 7
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.bind.cache Skipping testuser from cache since the object is not enabled in the current zone
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.bind.cache ADCB::search base , filter (&(objectClass=User)(|(objectCategory=Person)(objectCategory=Computer))(sAMAccountName=testuser)), attrs 1e (cacheOps=7, GC=1)
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.objecthelper age 0, expire age 3600, cutoff time 0, refresh 5, negative=false, cacheOps 7
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.adagent Find DN: CN=test user,CN=Users,DC=alera,DC=ath (7)
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.bind.cache fetch CN=test user,CN=Users,DC=alera,DC=ath attrs = 2 (cacheOps=7, GC=0)
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.bind.cache fetch CN=test user,CN=Users,DC=alera,DC=ath attrs = 2 (cacheOps=7, GC=0)
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.objecthelper age 0, expire age 3600, cutoff time 0, refresh 5, negative=false, cacheOps 7
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.bind.cache Skipping testuser since the object is not enabled in the current zone
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.adagent findByAttr: Not Found:testuser category:user attr=sAMAccountName
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.bind.cache ADCB::search base , filter (&(objectClass=User)(|(objectCategory=Person)(objectCategory=Computer))(displayName=testuser)), attrs 2 (cacheOps=7, GC=0)
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.objecthelper age 0, expire age 1800, cutoff time 0, refresh 5, negative=false, cacheOps 7
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.bind.cache Skipping testuser since the object is not enabled in the current zone
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.bind.cache ADCB::search base , filter (&(objectClass=User)(|(objectCategory=Person)(objectCategory=Computer))(displayName=testuser)), attrs 1e (cacheOps=7, GC=1)
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.objecthelper age 0, expire age 3600, cutoff time 0, refresh 5, negative=false, cacheOps 7
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.adagent Find DN: CN=test user,CN=Users,DC=alera,DC=ath (7)
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.bind.cache fetch CN=test user,CN=Users,DC=alera,DC=ath attrs = 2 (cacheOps=7, GC=0)
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.bind.cache fetch CN=test user,CN=Users,DC=alera,DC=ath attrs = 2 (cacheOps=7, GC=0)
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.objecthelper age 0, expire age 3600, cutoff time 0, refresh 5, negative=false, cacheOps 7
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.bind.cache Skipping testuser since the object is not enabled in the current zone
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.adagent findByAttr: Not Found:testuser category:user attr=displayName
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.bind.cache ADCB::search base , filter (&(objectClass=User)(|(objectCategory=Person)(objectCategory=Computer))(cn=testuser)), attrs 2 (cacheOps=7, GC=0)
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.objecthelper age 0, expire age 1800, cutoff time 0, refresh 5, negative=true, cacheOps 7
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.bind.cache ADCB::search base , filter (&(objectClass=User)(|(objectCategory=Person)(objectCategory=Computer))(cn=testuser)), attrs 1e (cacheOps=7, GC=1)
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.objecthelper age 0, expire age 3600, cutoff time 0, refresh 5, negative=true, cacheOps 7
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.adagent findByAttr: Not Found:testuser category:user attr=cn
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.adagent findObject: NotFound:testuser Category:user
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.objecthelper 'testuser' is not a canonical name
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > util.except (NotFound) : No such unix user 'testuser' (reference ipcclient2.cpp:931 rc: 0)
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > daemon.ipcclient2 No user data: No such unix user 'testuser'
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > daemon.ipcclient2 request 'NSSGetPasswdDataByName' complete
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:16 su(4663)> <- getpwnam_centrifydc_r, result=NSS_NOTFOUND(0)
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <main> daemon.ipcserver lrpc client disconnected normally <fd:25>
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <main> daemon.ipcserver lrpc client disconnected normally <fd:16>
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <main> daemon.ipcserver Accepted new lrpc2 client on <fd:16> with flags 0x00000802
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:16 su(4664)> -> getgroups_centrifydc_r  user=testuser
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:16 su(4664)>   exclude group: 520
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:16 su(4664)>   GID array limit: 65536
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:16 su(4664)>   GID array count: 1   capacity: 64   GIDs: 520
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:16 su(4664)> User 'testuser' is not an override user
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <main> daemon.ipcserver Accepted new lrpc2 client on <fd:25> with flags 0x00000802
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetUserGroupIDs > daemon.ipcclient2 executing request 'NSSGetUserGroupIDs' in thread 140309188671232
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetUserGroupIDs > daemon.ipcclient2 Getting group ID's for user 'testuser' maxIDs=65537
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetUserGroupIDs > base.adagent Find GUID: b2c7eeab3da84d9098b7bb0afc63a2da (7)
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetUserGroupIDs > base.objecthelper age 0, expire age 3600, cutoff time 0, refresh 5, negative=true, cacheOps 7
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetUserGroupIDs > base.adagent findObject ADNames: testuser#012name: testuser type=SAM domain=ALERA.ATH#012
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetUserGroupIDs > base.objecthelper age 0, expire age 3600, cutoff time 0, refresh 5, negative=false, cacheOps 7
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetUserGroupIDs > base.bind.cache Skipping testuser from cache since the object is not enabled in the current zone
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetUserGroupIDs > base.bind.cache ADCB::search base , filter (&(objectClass=User)(|(objectCategory=Person)(objectCategory=Computer))(sAMAccountName=testuser)), attrs 1e (cacheOps=7, GC=1)
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetUserGroupIDs > base.objecthelper age 0, expire age 3600, cutoff time 0, refresh 5, negative=false, cacheOps 7
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetUserGroupIDs > base.adagent Find DN: CN=test user,CN=Users,DC=alera,DC=ath (7)
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetUserGroupIDs > base.bind.cache fetch CN=test user,CN=Users,DC=alera,DC=ath attrs = 2 (cacheOps=7, GC=0)
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetUserGroupIDs > base.bind.cache fetch CN=test user,CN=Users,DC=alera,DC=ath attrs = 2 (cacheOps=7, GC=0)
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetUserGroupIDs > base.objecthelper age 0, expire age 3600, cutoff time 0, refresh 5, negative=false, cacheOps 7
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetUserGroupIDs > base.bind.cache Skipping testuser since the object is not enabled in the current zone
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetUserGroupIDs > base.adagent findByAttr: Not Found:testuser category:user attr=sAMAccountName
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetUserGroupIDs > base.bind.cache ADCB::search base , filter (&(objectClass=User)(|(objectCategory=Person)(objectCategory=Computer))(displayName=testuser)), attrs 2 (cacheOps=7, GC=0)
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetUserGroupIDs > base.objecthelper age 0, expire age 1800, cutoff time 0, refresh 5, negative=false, cacheOps 7
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetUserGroupIDs > base.bind.cache Skipping testuser since the object is not enabled in the current zone
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetUserGroupIDs > base.bind.cache ADCB::search base , filter (&(objectClass=User)(|(objectCategory=Person)(objectCategory=Computer))(displayName=testuser)), attrs 1e (cacheOps=7, GC=1)
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetUserGroupIDs > base.objecthelper age 0, expire age 3600, cutoff time 0, refresh 5, negative=false, cacheOps 7
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetUserGroupIDs > base.adagent Find DN: CN=test user,CN=Users,DC=alera,DC=ath (7)
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetUserGroupIDs > base.bind.cache fetch CN=test user,CN=Users,DC=alera,DC=ath attrs = 2 (cacheOps=7, GC=0)
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetUserGroupIDs > base.bind.cache fetch CN=test user,CN=Users,DC=alera,DC=ath attrs = 2 (cacheOps=7, GC=0)
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetUserGroupIDs > base.objecthelper age 0, expire age 3600, cutoff time 0, refresh 5, negative=false, cacheOps 7
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetUserGroupIDs > base.bind.cache Skipping testuser since the object is not enabled in the current zone
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetUserGroupIDs > base.adagent findByAttr: Not Found:testuser category:user attr=displayName
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetUserGroupIDs > base.bind.cache ADCB::search base , filter (&(objectClass=User)(|(objectCategory=Person)(objectCategory=Computer))(cn=testuser)), attrs 2 (cacheOps=7, GC=0)
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetUserGroupIDs > base.objecthelper age 0, expire age 1800, cutoff time 0, refresh 5, negative=true, cacheOps 7
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetUserGroupIDs > base.bind.cache ADCB::search base , filter (&(objectClass=User)(|(objectCategory=Person)(objectCategory=Computer))(cn=testuser)), attrs 1e (cacheOps=7, GC=1)
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetUserGroupIDs > base.objecthelper age 0, expire age 3600, cutoff time 0, refresh 5, negative=true, cacheOps 7
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetUserGroupIDs > base.adagent findByAttr: Not Found:testuser category:user attr=cn
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetUserGroupIDs > base.adagent findObject: NotFound:testuser Category:user
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetUserGroupIDs > base.objecthelper 'testuser' is not a canonical name
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetUserGroupIDs > util.except (NotFound) : No such unix user 'testuser' (reference ipcclient2.cpp:931 rc: 0)
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetUserGroupIDs > daemon.ipcclient2 Problem finding groups for user 'testuser': No such unix user 'testuser'
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetUserGroupIDs > daemon.ipcclient2 request 'NSSGetUserGroupIDs' complete
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:16 su(4664)>   GID array count: 1   capacity: 64   GIDs: 520
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:16 su(4664)> <- getgroups_centrifydc_r, result=NSS_NOTFOUND(0)
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <main> daemon.ipcserver lrpc client disconnected normally <fd:25>
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <main> daemon.ipcserver lrpc client disconnected normally <fd:16>
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <main> daemon.ipcserver Accepted new lrpc2 client on <fd:16> with flags 0x00000802
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:16 bash(4664)> -> getpwuid_centrifydc_r  UID=518
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <main> daemon.ipcserver Accepted new lrpc2 client on <fd:25> with flags 0x00000802
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByUID > daemon.ipcclient2 executing request 'NSSGetPasswdDataByUID' in thread 140309188671232
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByUID > daemon.ipcclient2 Getting passwd data for uid 518
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByUID > base.bind.cache ADCB::search base CN=Users,CN=rhel65.alera.ath:zone,CN=Computers,CN=Legion,CN=Alera,CN=Zones,OU=Centrify,DC=alera,DC=ath, filter (&(uidNumber=518)(displayName=$CimsUserVersion*)), attrs 1c (cacheOps=7, GC=0)
+Aug 24 11:47:28 rhel65 adclient[3543]: DIAG  <fd:25 NSSGetPasswdDataByUID > base.bind.ldap 10.0.0.51:389 search base="CN=Users,CN=rhel65.alera.ath:zone,CN=Computers,CN=Legion,CN=Alera,CN=Zones,OU=Centrify,DC=alera,DC=ath" filter="(&(uidNumber=518)(displayName=$CimsUserVersion*))"
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByUID > base.bind.cache ADCB::search: refresh list returns 0 objects
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByUID > base.cache Cache store <GUID=a03adeb0a3644cd7b3ed2b4d5e621d86>;CN=SearchMark,CN=CENTRIFY MARKER,DC=ALERA,DC=ATH : update indexes Yes
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByUID > base.bind.cache ADCB::search base CN=Users,CN=Legion,CN=Alera,CN=Zones,OU=Centrify,DC=alera,DC=ath, filter (&(uidNumber=518)(displayName=$CimsUserVersion*)), attrs 1c (cacheOps=7, GC=0)
+Aug 24 11:47:28 rhel65 adclient[3543]: DIAG  <fd:25 NSSGetPasswdDataByUID > base.bind.ldap 10.0.0.51:389 search base="CN=Users,CN=Legion,CN=Alera,CN=Zones,OU=Centrify,DC=alera,DC=ath" filter="(&(uidNumber=518)(displayName=$CimsUserVersion*))"
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByUID > base.bind.cache ADCB::search: refresh list returns 0 objects
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByUID > base.cache Cache store <GUID=4ea3cc66a9424590be270cac8cc9ae43>;CN=SearchMark,CN=CENTRIFY MARKER,DC=ALERA,DC=ATH : update indexes Yes
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByUID > base.bind.cache ADCB::search base CN=Users,CN=Alera,CN=Zones,OU=Centrify,DC=alera,DC=ath, filter (&(uidNumber=518)(displayName=$CimsUserVersion*)), attrs 1c (cacheOps=7, GC=0)
+Aug 24 11:47:28 rhel65 adclient[3543]: DIAG  <fd:25 NSSGetPasswdDataByUID > base.bind.ldap 10.0.0.51:389 search base="CN=Users,CN=Alera,CN=Zones,OU=Centrify,DC=alera,DC=ath" filter="(&(uidNumber=518)(displayName=$CimsUserVersion*))"
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByUID > base.bind.cache ADCB::search: refresh list returns 0 objects
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByUID > base.cache Cache store <GUID=29a5c5027ac64d16836ec5022a3b8a62>;CN=SearchMark,CN=CENTRIFY MARKER,DC=ALERA,DC=ATH : update indexes Yes
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByUID > base.bind.cache making negative response for Person _Uid="518" (GC=0)
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByUID > base.cache Cache store <GUID=f6ea385b20ce42a48f01302ba77fe304>;CN=CENTRIFY NEGATIVE RESPONSE,CN=Person,DC=ALERA,DC=ATH : update indexes Yes
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByUID > util.except (NotFound) : No such unix user with uid=518 (reference ipcclient2.cpp:940 rc: 0)
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByUID > daemon.ipcclient2 No user data: No such unix user with uid=518
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByUID > daemon.ipcclient2 request 'NSSGetPasswdDataByUID' complete
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:16 bash(4664)> <- getpwuid_centrifydc_r, result=NSS_NOTFOUND(0)
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <main> daemon.ipcserver lrpc client disconnected normally <fd:25>
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <main> daemon.ipcserver lrpc client disconnected normally <fd:16>
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <main> daemon.ipcserver Accepted new lrpc2 client on <fd:16> with flags 0x00000802
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:16 id(4666)> -> getpwuid_centrifydc_r  UID=518
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <main> daemon.ipcserver Accepted new lrpc2 client on <fd:25> with flags 0x00000802
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByUID > daemon.ipcclient2 executing request 'NSSGetPasswdDataByUID' in thread 140309178181376
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByUID > daemon.ipcclient2 Getting passwd data for uid 518
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByUID > base.adagent Find GUID: f6ea385b20ce42a48f01302ba77fe304 (7)
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByUID > base.objecthelper age 0, expire age 3600, cutoff time 0, refresh 5, negative=true, cacheOps 7
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByUID > util.except (NotFound) : No such unix user with uid=518 (reference ipcclient2.cpp:940 rc: 0)
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByUID > daemon.ipcclient2 No user data: No such unix user with uid=518
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByUID > daemon.ipcclient2 request 'NSSGetPasswdDataByUID' complete
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:16 id(4666)> <- getpwuid_centrifydc_r, result=NSS_NOTFOUND(0)
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <main> daemon.ipcserver lrpc client disconnected normally <fd:25>
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <main> daemon.ipcserver lrpc client disconnected normally <fd:16>
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <main> daemon.ipcserver Accepted new lrpc2 client on <fd:16> with flags 0x00000802
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:16 id(4670)> -> getgrgid_centrifydc_r  GID=520
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <main> daemon.ipcserver Accepted new lrpc2 client on <fd:25> with flags 0x00000802
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetGroupDataByGID > daemon.ipcclient2 executing request 'NSSGetGroupDataByGID' in thread 140309167691520
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetGroupDataByGID > daemon.ipcclient2 Getting group data for 520, including members
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetGroupDataByGID > util.properties Config file [/etc/centrifydc/group.ovr] does not exist.
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetGroupDataByGID > base.bind.cache ADCB::search base CN=Groups,CN=rhel65.alera.ath:zone,CN=Computers,CN=Legion,CN=Alera,CN=Zones,OU=Centrify,DC=alera,DC=ath, filter (&(gidNumber=520)(displayName=$CimsGroupVersion*)), attrs 1c (cacheOps=7, GC=0)
+Aug 24 11:47:28 rhel65 adclient[3543]: DIAG  <fd:25 NSSGetGroupDataByGID > base.bind.ldap 10.0.0.51:389 search base="CN=Groups,CN=rhel65.alera.ath:zone,CN=Computers,CN=Legion,CN=Alera,CN=Zones,OU=Centrify,DC=alera,DC=ath" filter="(&(gidNumber=520)(displayName=$CimsGroupVersion*))"
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetGroupDataByGID > base.bind.cache ADCB::search: refresh list returns 0 objects
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetGroupDataByGID > base.cache Cache store <GUID=8de6dff566bd496cb54b7dcbfe08ed02>;CN=SearchMark,CN=CENTRIFY MARKER,DC=ALERA,DC=ATH : update indexes Yes
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetGroupDataByGID > base.bind.cache ADCB::search base CN=Groups,CN=Legion,CN=Alera,CN=Zones,OU=Centrify,DC=alera,DC=ath, filter (&(gidNumber=520)(displayName=$CimsGroupVersion*)), attrs 1c (cacheOps=7, GC=0)
+Aug 24 11:47:28 rhel65 adclient[3543]: DIAG  <fd:25 NSSGetGroupDataByGID > base.bind.ldap 10.0.0.51:389 search base="CN=Groups,CN=Legion,CN=Alera,CN=Zones,OU=Centrify,DC=alera,DC=ath" filter="(&(gidNumber=520)(displayName=$CimsGroupVersion*))"
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetGroupDataByGID > base.bind.cache ADCB::search: refresh list returns 0 objects
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetGroupDataByGID > base.cache Cache store <GUID=cea5fcf72a964278840c8958397bb5eb>;CN=SearchMark,CN=CENTRIFY MARKER,DC=ALERA,DC=ATH : update indexes Yes
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetGroupDataByGID > base.bind.cache ADCB::search base CN=Groups,CN=Alera,CN=Zones,OU=Centrify,DC=alera,DC=ath, filter (&(gidNumber=520)(displayName=$CimsGroupVersion*)), attrs 1c (cacheOps=7, GC=0)
+Aug 24 11:47:28 rhel65 adclient[3543]: DIAG  <fd:25 NSSGetGroupDataByGID > base.bind.ldap 10.0.0.51:389 search base="CN=Groups,CN=Alera,CN=Zones,OU=Centrify,DC=alera,DC=ath" filter="(&(gidNumber=520)(displayName=$CimsGroupVersion*))"
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetGroupDataByGID > base.bind.cache ADCB::search: refresh list returns 0 objects
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetGroupDataByGID > base.cache Cache store <GUID=3d1c1efaf08b42b2b89e06ba25fe47af>;CN=SearchMark,CN=CENTRIFY MARKER,DC=ALERA,DC=ATH : update indexes Yes
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetGroupDataByGID > base.bind.cache making negative response for Group _Gid="520" (GC=0)
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetGroupDataByGID > base.cache Cache store <GUID=68aab4c2dbc847818b5f8239efc20633>;CN=CENTRIFY NEGATIVE RESPONSE,CN=Group,DC=ALERA,DC=ATH : update indexes Yes
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetGroupDataByGID > util.except (NotFound) : No such unix group with gid 520 (reference ipcclient2.cpp:971 rc: 0)
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetGroupDataByGID > daemon.ipcclient2 No group data: No such unix group with gid 520
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <main> util.threadpool Pool size 3/4, busy size 1/30
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:16 id(4670)> <- getgrgid_centrifydc_r, result=NSS_NOTFOUND(0)
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <main> daemon.ipcserver lrpc client disconnected normally <fd:16>
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetGroupDataByGID > daemon.ipcclient2 request 'NSSGetGroupDataByGID' complete
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <main> daemon.ipcserver lrpc client disconnected normally <fd:25>
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <main> daemon.ipcserver Accepted new lrpc2 client on <fd:16> with flags 0x00000802
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:16 id(4672)> -> getpwuid_centrifydc_r  UID=518
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <main> daemon.ipcserver Accepted new lrpc2 client on <fd:25> with flags 0x00000802
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByUID > daemon.ipcclient2 executing request 'NSSGetPasswdDataByUID' in thread 140309157201664
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByUID > daemon.ipcclient2 Getting passwd data for uid 518
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByUID > base.adagent Find GUID: f6ea385b20ce42a48f01302ba77fe304 (7)
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByUID > base.objecthelper age 0, expire age 3600, cutoff time 0, refresh 5, negative=true, cacheOps 7
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByUID > util.except (NotFound) : No such unix user with uid=518 (reference ipcclient2.cpp:940 rc: 0)
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByUID > daemon.ipcclient2 No user data: No such unix user with uid=518
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByUID > daemon.ipcclient2 request 'NSSGetPasswdDataByUID' complete
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:16 id(4672)> <- getpwuid_centrifydc_r, result=NSS_NOTFOUND(0)
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <main> daemon.ipcserver lrpc client disconnected normally <fd:25>
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <main> daemon.ipcserver lrpc client disconnected normally <fd:16>
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <main> daemon.ipcserver Accepted new lrpc2 client on <fd:16> with flags 0x00000802
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:16 id(4694)> -> getpwuid_centrifydc_r  UID=518
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <main> daemon.ipcserver Accepted new lrpc2 client on <fd:25> with flags 0x00000802
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByUID > daemon.ipcclient2 executing request 'NSSGetPasswdDataByUID' in thread 140309188671232
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByUID > daemon.ipcclient2 Getting passwd data for uid 518
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByUID > base.adagent Find GUID: f6ea385b20ce42a48f01302ba77fe304 (7)
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByUID > base.objecthelper age 0, expire age 3600, cutoff time 0, refresh 5, negative=true, cacheOps 7
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByUID > util.except (NotFound) : No such unix user with uid=518 (reference ipcclient2.cpp:940 rc: 0)
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByUID > daemon.ipcclient2 No user data: No such unix user with uid=518
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByUID > daemon.ipcclient2 request 'NSSGetPasswdDataByUID' complete
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <fd:16 id(4694)> <- getpwuid_centrifydc_r, result=NSS_NOTFOUND(0)
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <main> daemon.ipcserver lrpc client disconnected normally <fd:25>
+Aug 24 11:47:28 rhel65 adclient[3543]: DEBUG <main> daemon.ipcserver lrpc client disconnected normally <fd:16>
+Aug 24 11:47:32 rhel65 adclient[3543]: DEBUG <main> daemon.ipcserver Accepted new lrpc2 client on <fd:16> with flags 0x00000802
+Aug 24 11:47:32 rhel65 adclient[3543]: DEBUG <fd:16 su(4663)> -> pam_sm_close_session
+Aug 24 11:47:32 rhel65 adclient[3543]: DEBUG <fd:16 su(4663)> PAM Options: (none)
+Aug 24 11:47:32 rhel65 adclient[3543]: DEBUG <fd:16 su(4663)> PAM Flags: (none)
+Aug 24 11:47:32 rhel65 adclient[3543]: DEBUG <main> daemon.ipcserver Accepted new lrpc2 client on <fd:25> with flags 0x00000802
+Aug 24 11:47:32 rhel65 adclient[3543]: DEBUG <fd:16 su(4663)> Close session for user 'testuser': skipping because user has no Active Directory account.
+Aug 24 11:47:32 rhel65 adclient[3543]: DEBUG <fd:16 su(4663)> <- pam_sm_close_session, result=PAM_IGNORE(25)
+Aug 24 11:47:32 rhel65 adclient[3543]: DEBUG <main> daemon.ipcserver lrpc client disconnected normally <fd:25>
+Aug 24 11:47:32 rhel65 adclient[3543]: DEBUG <main> daemon.ipcserver lrpc client disconnected normally <fd:16>
+Aug 24 11:47:34 rhel65 adclient[3543]: DEBUG <fd:16 ping > daemon.ipclient1 executing request 'ping' in thread 140309157201664
+Aug 24 11:47:34 rhel65 adclient[3543]: DEBUG <fd:16 ping > daemon.ipclient1 Responding ping request now.
+Aug 24 11:47:34 rhel65 adclient[3543]: DEBUG <main> daemon.ipcserver lrpc client disconnected normally <fd:16>
