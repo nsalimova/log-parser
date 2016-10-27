@@ -1,15 +1,16 @@
-.*data.* # datatest
-.*red.* # redtest
+#.*data.* # datatest
+#.*red.* # redtest
 
-.*pam_sm_authenticate.*
-.*AUDIT_TRAIL.*PAM authentication granted.*
-.*AUDIT_TRAIL.*PAM authentication denied.*
-.*PAM_AUTHTOK: '.* # CHECK FD
-.*PAM_AUTHTOK: PAM_SUCCESS.*
-.*sshd.*Authentication for user.* # CHECK FD
-.*dzdo.*Authentication for user.* # CHECK FD
-.*Accepted new lrpc2 client on.*
-.*lrpc client disconnected.*
+#.*pam_sm_authenticate.*
+#.*AUDIT_TRAIL.*PAM authentication granted.*
+#.*AUDIT_TRAIL.*PAM authentication denied.*
+#.*PAM_AUTHTOK: '.* # CHECK FD
+#.*PAM_AUTHTOK: PAM_SUCCESS.*
+.*DEBUG.*sshd.*Authentication for user '.* # CHECK FD
+.*DEBUG.*dzdo.*Authentication for user '.* # CHECK FD
+.*DEBUG <main> daemon.ipcserver Accepted new lrpc2 client on.*
+#^((Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec) ([0-9]{2} [0-9:]{8} [A-Za-z0-9-_\.]+) adclient\[[0-9]+\]:) (DEBUG|INFO) (<[a-z]+>) (daemon.ipcserver Accepted new lrpc2 client on) (<fd:[0-9]{2}>) with flags 0x[0-9]{8}$
+.*DEBUG <main> daemon.ipcserver lrpc client disconnected.*
 #.*AUDIT_TRAIL.*PAM auth.*user.*service=sshd.*
 #.*AUDIT_TRAIL.*PAM acc.*user.*service=sshd.*
 #.*AUDIT_TRAIL.*PAM set cred.*service=sshd.*
@@ -18,7 +19,7 @@
 #.*AUDIT_TRAIL.*PAM acc.*user.*service=dzdo.*
 #.*AUDIT_TRAIL.*dzdo granted.*  # get 'command=/usr/bin/su'
 #.*AUDIT_TRAIL.*user login to the system successfully.*
-.*sshd.*
+#.*sshd.*
 #PAM_AUTHTOK: ' # CHECK FD
 #PAM_AUTHTOK: PAM_SUCCESS
 #sshd.*Authentication for user # CHECK FD
