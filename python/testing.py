@@ -20,7 +20,50 @@ import time, sys
 #        yield data
 
 pat_store = ()
+idx,opened_fd,closed_fd,kw_match= ( [], [], [], [] )
+sshd_lc, sshd_matches = [], []
+afd = {}
 
+
+
+# ================ testing
+
+months = dict(jan=1,feb=2,mar=3,apr=4,may=5,jun=6,jul=7,aug=8,sep=9,oct=10,nov=11,dec=12)
+
+def convert_time2(string, year=None):
+    if year is None: year = time.gmtime()[0]
+    mon,d,t = string.split(" ")
+    h,m,s   = t.split(":")
+    mon     = months[mon.lower()]
+    tt      = [year, mon,d,h,m,s,0,0,0]
+    tt      = tuple([int(v) for v in tt])
+    ts      = int(time.mktime(tt))
+    tt      = time.gmtime(ts)
+    return (ts,tt,string)
+
+def time_calc( i, timestamp, times ):
+
+    if ( i == 0 ): #first line
+
+        #times                   += ( mktime( strptime( timestamp, "%b %d %H:%M:%S" ) ), )
+        times                   += ( mktime(convert_time2(timestamp)[1]), )
+
+        return timestamp
+
+    elif ( i != 0 ):
+        try:
+            times, timestamp
+
+            #times               += ( mktime( strptime( timestamp, "%b %d %H:%M:%S" ) ), )
+            times                   += ( mktime(convert_time2(timestamp)[1]), )
+            duration            = timedelta( seconds=( times[-1]-times[0] ) )
+            d                   = datetime( 1,1,1 ) + duration
+
+            return ( timestamp, d )
+        except:
+            pass
+
+# =======================
 
 
 with open('adinfo_support.txt', 'r+') as f, open('pat_file', 'r') as pat_list:
@@ -37,17 +80,52 @@ with open('adinfo_support.txt', 'r+') as f, open('pat_file', 'r') as pat_list:
 
 
 # ~1.5sec
-#    matches = []
-#    for line in f:
-#        if "adclient" in line:
-#            line = line.split("adclient")
-#            #fields = [line[i] for i in range(5, 20)] 
-#            fields = line[1]
-#            #print(fields)
-#            if re.match(patterns, fields):
-#                m = line
-#                matches.append( m )
-#                pass
+    matches = []
+    times = []
+    time_gap, time_lc = [], []
+    x = 0
+    i = 0
+    for (line_count, line) in enumerate(f):
+        if line.strip(): timestamp = line.strip()[0:15] 
+        try:
+            times += ( mktime(convert_time2(timestamp)[1]), )
+            last_time = times[-1]
+            gap = (last_time - x)
+            if ( i == 0 ):
+                log_start = time_calc( i, timestamp, times )
+            else:
+                if ( x == last_time ):
+                    pass
+                elif ( x < last_time and gap > 4 ):
+                    time_gap.append( int(gap) )
+                    time_lc.append( line_count )
+                x = last_time
+            i += 1
+     
+            
+        except:
+            timestamp = None
+
+
+        if ( line.find("Accepted new lrpc2 client on <fd:") ) >= 0:
+            fd_open         = line.split(" ")[13].lstrip("<fd:").rstrip(">'")
+            opened_fd.append( fd_open )
+            afd[fd_open] = "OPEN"
+
+        if ( line.find("lrpc client disconnected normally ") ) >= 0:
+            fd_close    = line.split(" ")[12].lstrip("<fd:").rstrip(">\n'")
+            afd[fd_close] = "CLOSE"
+
+
+        if "adclient" in line:
+            line = line.split("adclient")
+            #fields = [line[i] for i in range(5, 20)] 
+            fields = line[1]
+            #print(fields)
+            if re.match(patterns, fields):
+                m = line
+                matches.append( m )
+                pass
 
 ## ~1.8sec
 #    groups = (patterns.match(line) for line in f)

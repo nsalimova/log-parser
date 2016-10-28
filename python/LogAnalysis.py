@@ -88,23 +88,9 @@ def main(argv, input_file):
             \nPlease verify command integrity and dependent pattern file './pat_file' exists and is readable""" )
 
     p = parse_out
-    #print_goodness( p, input_file, file_size, pretty, vs.pat_store )
+    print_goodness( p, input_file, file_size, pretty, vs.pat_store )
 
-# ================ testing
 
-months = dict(jan=1,feb=2,mar=3,apr=4,may=5,jun=6,jul=7,aug=8,sep=9,oct=10,nov=11,dec=12)
-
-def convert_time2(string, year=None):
-    if year is None: year = time.gmtime()[0]
-    mon,d,t = string.split(" ")
-    h,m,s   = t.split(":")
-    mon     = months[mon.lower()]
-    tt      = [year, mon,d,h,m,s,0,0,0]
-    tt      = tuple([int(v) for v in tt])
-    ts      = int(time.mktime(tt))
-    tt      = time.gmtime(ts)
-    return (ts,tt,string)
-# =======================
 
 
 
@@ -112,44 +98,16 @@ def convert_time2(string, year=None):
 
 def parse(parse_target,patterns,vs): 
     print("Analysis started...")
-    keys = [ 'sshd', 'blah' ] 
+    #keys = [ 'sshd', 'blah' ] 
     #kw_pat  = re.compile( '|'.join( ['(%s)' % i for i in keys] ) )
     idx,opened_fd,closed_fd,kw_match= ( [], [], [], [] )
     sshd_lc, sshd_matches = [], []
     afd = {}
-    #matching    = (vs.reg.match(patterns, line) for line in parse_target if "data" in line)
-    #mapp        = (match.group(0) for match in matching if match)
-    #count = defaultdict(int)
-    #for page in mapp:
-    #    count[page] += 1
     for ( line_count, line ) in enumerate( parse_target, 1 ):
-        if line.strip(): timestamp = line.strip()[0:15] #alt - split by fields
-        try:
-            #if vs.reg.match( vs.time_chk, line ):
-                #print( mktime(convert_time2(timestamp)[1])) 
-                #print("---")
-                #print(mktime(strptime( timestamp, "%b %d %H:%M:%S" ))) 
-                #print(strptime(timestamp, "%b %d %H:%M:%S"))
-                #vs.times   += ( mktime( strptime( timestamp, "%b %d %H:%M:%S" ) ), )
-                vs.times   += ( mktime(convert_time2(timestamp)[1]), )  
-                last_time   = vs.times[-1]
-                gap         = ( last_time - vs.x )
-                
-
-                if ( vs.i == 0 ): #first log entry
-                    log_start = time_calc( vs.i, timestamp, vs.times ) #yank timestamp as "Log start"
-                else:
-                    if   ( vs.x == last_time ):
-                        #print("equals %s" % (timestamp))
-                        pass
-                    elif ( vs.x < last_time and gap > 4 ):
-                        vs.time_gap.append( int(gap) )
-                        vs.time_lc.append( line_count )
-                    vs.x = last_time
-                vs.i += 1
-        except:
-            timestamp = None
-        #print( datetime.date( int( timestamp ) ) )
+        if line.strip(): vs.timestamp = line.strip()[0:15] #alt - split by fields
+        if vs.reg.match( vs.time_chk, line ): 
+            time_calc( vs.i, vs.timestamp, vs, line_count, end=0 )
+            vs.i += 1
 
         if ( line.find("Accepted new lrpc2 client on <fd:") ) >= 0:
             fd_open         = line.split(" ")[13].lstrip("<fd:").rstrip(">'")
@@ -162,49 +120,23 @@ def parse(parse_target,patterns,vs):
 
 
         ## Primary matching from patterns contained in patterns tuple ##
-        if "adclient" in line:
-            if ( vs.reg.match(patterns, line) ): # User-defined matches (./pat_file)
-                m      = vs.reg.m.group(0)
-                vs.m_lc.append( line_count )
-                vs.matches.append( m ) 
-                #idxmatch_gen  = [index for ( index, data ) in enumerate( vs.matches ) if m in data]
-                #  ^ not reasonable for large files - pull index line-by-line instead
-                ofd_list = []
+        #if "adclient" in line:
+        if ( vs.reg.match(patterns, line) ): # User-defined matches (./pat_file)
+            m      = vs.reg.m.group(0)
+            vs.m_lc.append( line_count )
+            vs.matches.append( m ) 
+            ofd_list = []
 
-                for i in opened_fd: # slooooooow - same result as set(opened_fd), but in olist - necessary
-                    if i not in ofd_list:
-                        ofd_list.append(i)
-                #for keyword in keys:
-                #    if keyword in m:
-                #        for index in idxmatch_gen: 
-                #            idx.append( index )
-                #            kw_match.append( vs.matches[index] )
+            for i in opened_fd: # slooooooow - same result as set(opened_fd), but in olist - necessary
+                if i not in ofd_list:
+                    ofd_list.append(i)
 
-                for ofd in ofd_list: # sloooooow
-                    if "sshd(" in m and ("fd:"+ofd) in m:
-                        sshd_lc.append( str(line_count) )
-                        sshd_matches.append( m )
-                
-                
-                if ( 'data' in m ): vs.nss_count += 1
-                if ( 'red'  in m ): vs.pam_count += 1
-
-                #if ( m.find("sshd(") ) >= 0:
-                #    sshd_fd = m.split(" ")[6].lstrip("<fd:")
-
-                #if ( m.find("pam_sm_authenticate") ) >= 0:
-                #    auth_fd    = m.split(" ")[6][4:] # returns auth thread fd
-
-                if ( m.find("Authentication for user ") ) >= 0: # improve or exapand NEED ACTION
-                    user       = m.split(" ")[-1].strip("'") # returns user name in this context...
-
-               # elif m.find("Accepted gssapi-with-mic for ") >= 0:
-               #     pass
-
-                    if   ( 'ssh' in m ): 
-                        if user not in vs.ssh_users: vs.ssh_users.append( user )
-                    elif ( 'dzdo' in m ): 
-                        if user not in vs.dz_users: vs.dz_users.append( user )
+            for ofd in ofd_list: # sloooooow
+                if "sshd(" in m and ("fd:"+ofd) in m:
+                    sshd_lc.append( str(line_count) )
+                    sshd_matches.append( m )
+            
+            process(m, vs)
                         
                     
                 ## add success to s_users, fail to f_users. Conditional print based on matches in users -> f/s_users
@@ -214,13 +146,10 @@ def parse(parse_target,patterns,vs):
     # print lines containing 'sshd' keyword along the same FDs from list of opened FDs in file
 
     for ofd in ofd_list:
-        t0 = time.time()
         for (lc,smatch) in zip(sshd_lc,sshd_matches):
             if ("fd:"+ofd) in smatch and afd[ofd] == "OPEN":
     #            print(lc,smatch)
                 pass
-        t1 = time.time()
-        print(t1-t0)
             #if fd and ssh and user  and sshd(xxxx) in smatch?:
             #    dictappend.('user':smatch, etc..)
            # if ofd_list[1] and ("fd:"+ofd_list[1]) in smatch:
@@ -235,9 +164,9 @@ def parse(parse_target,patterns,vs):
            #     print(lc,smatch) 
 
 
-    log_end   = time_calc( vs.i, timestamp, vs.times )
+    log_end   = time_calc( vs.i, vs.timestamp, vs, line_count,  end=1 )
     elapsed   = ( log_end[1].day-1, log_end[1].hour, log_end[1].minute, log_end[1].second )
-    vs.parse_results( elapsed, line_count, log_start, log_end[0] )
+    vs.parse_results( elapsed, line_count, vs.log_start, log_end[0] )
 
 
     return vs.parse_out
@@ -245,6 +174,31 @@ def parse(parse_target,patterns,vs):
 
         
 #### Supplemental
+
+
+def process(m, vs):
+    if ( 'data' in m ): vs.nss_count += 1
+    if ( 'red'  in m ): vs.pam_count += 1
+
+    if ( m.find("sshd(") ) >= 0:
+        sshd_fd = m.split(" ")[6].lstrip("<fd:")
+
+    if ( m.find("pam_sm_authenticate") ) >= 0:
+        auth_fd    = m.split(" ")[6][4:] # returns auth thread fd
+
+    if ( m.find("Authentication for user ") ) >= 0: # improve or exapand NEED ACTION
+        user       = m.split(" ")[-1].strip("'") # returns user name in this context...
+    else:
+        user = None ## temp til better logic for users
+
+   # elif m.find("Accepted gssapi-with-mic for ") >= 0:
+   #     pass
+
+    if   ( 'ssh' in m ): 
+        if user not in vs.ssh_users: vs.ssh_users.append( user )
+    elif ( 'dzdo' in m ): 
+        if user not in vs.dz_users: vs.dz_users.append( user )
+
 
 
 
@@ -263,6 +217,8 @@ class VarStore:
         self.nss_count      = 0
         self.pam_count      = 0
         self.i              = 0
+        self.log_start      = None
+        self.timestamp      = None
         
 
         (self.times, self.time_gap, 
@@ -289,27 +245,58 @@ class Re(object):
         self.m = pattern.search(line)
         return self.m
 
-def time_calc( i, timestamp, times ):
+def time_calc( i, timestamp, vs, line_count, end=0 ):
+    if ( end == 0 ):
+        vs.times   += ( mktime(convert_time(timestamp)[1]), )  
+        last_time   = vs.times[-1]
+        gap         = ( last_time - vs.x )
+        if ( i == 0 ): #first line
 
-    if ( i == 0 ): #first line
+            #times                   += ( mktime( strptime( timestamp, "%b %d %H:%M:%S" ) ), )
+            vs.times                     += ( mktime(convert_time(timestamp)[1]), )  
+            vs.log_start               = timestamp #yank timestamp as "Log start"
+        else:
+            if ( vs.x == last_time ):
+                #print("equals %s" % (timestamp))
+                pass
+            elif ( vs.x < last_time and gap > 2 ):
+                vs.time_gap.append( int(gap) )
+                vs.time_lc.append( line_count )
+            vs.x = last_time
 
-        #times                   += ( mktime( strptime( timestamp, "%b %d %H:%M:%S" ) ), )
-        times                   += ( mktime(convert_time2(timestamp)[1]), )  
+    elif ( end == 1 ):
 
-        return timestamp
+        if ( i != 0 ):
+            try:
+                vs.times, timestamp
 
-    elif ( i != 0 ):
-        try:
-            times, timestamp
+                #times               += ( mktime( strptime( timestamp, "%b %d %H:%M:%S" ) ), )
+                vs.times                   += ( mktime(convert_time(timestamp)[1]), )  
+                duration            = timedelta( seconds=( vs.times[-1]-vs.times[0] ) )
+                d                   = datetime( 1,1,1 ) + duration
 
-            #times               += ( mktime( strptime( timestamp, "%b %d %H:%M:%S" ) ), )
-            times                   += ( mktime(convert_time2(timestamp)[1]), )  
-            duration            = timedelta( seconds=( times[-1]-times[0] ) )
-            d                   = datetime( 1,1,1 ) + duration
+                return ( timestamp, d )
+            except:
+                pass
+        else:
+            print("EPIC FAILURE IN TIME_CALC")
 
-            return ( timestamp, d )
-        except:
-            pass
+
+
+months = dict(jan=1,feb=2,mar=3,apr=4,may=5,jun=6,jul=7,aug=8,sep=9,oct=10,nov=11,dec=12)
+
+def convert_time(string, year=None):
+    if year is None: year = time.gmtime()[0]
+    mon,d,t = string.split(" ")
+    h,m,s   = t.split(":")
+    mon     = months[mon.lower()]
+    tt      = [year, mon,d,h,m,s,0,0,0]
+    tt      = tuple([int(v) for v in tt])
+    ts      = int(time.mktime(tt))
+    tt      = time.gmtime(ts)
+    return (ts, tt, string)
+
+
 
 def sizeof_fmt( num, suffix='B' ):
 
@@ -319,6 +306,8 @@ def sizeof_fmt( num, suffix='B' ):
         num /= 1024.0
 
     return ( "%.1f%s%s" % (num, 'Yi', suffix) )
+
+
 
 def print_goodness( p, input_file, file_size, pretty, pat_store ):
 
@@ -335,17 +324,17 @@ def print_goodness( p, input_file, file_size, pretty, pat_store ):
     print ("\n%s\nDoebug information:\n%s\n" % ( pretty, pretty ))
     if p['ssh_user']: print ("Authentication attempts made for the following users via sshd:\n%s\n" % (p['ssh_user']))
     if p['dz_user']:  print ("Authentication attempts made for the following users via dzdo:\n%s\n" % (p['dz_user']))
-    if p['time_gap'] and (v == "0"): 
+    if p['time_gap'] and ( v == "1" ):
+        print ("Irregular time gaps:") 
+        for gap, l in zip(p['time_gap'], p['time_lc']):
+            print("%4s seconds on line: %s" % (gap, l))
+    else:
         i = 0
         print ("Irregular time gaps (Only first 10 are displayed. Use -v for all):")
         for gap, l in zip(p['time_gap'], p['time_lc']):
             if i == 10: break
             print("%4s seconds on line: %s" % (gap, l))
             i += 1
-    elif p['time_gap'] and ( v == "1" ):
-        print ("Irregular time gaps:") 
-        for gap, l in zip(p['time_gap'], p['time_lc']):
-            print("%4s seconds on line: %s" % (gap, l))
         
     print ("\nNSS calls: '%s' in the file: %s" % ( p['nss_count'], log ))
     print ("PAM calls: '%s' in the file: %s\n" % ( p['pam_count'], log ))
@@ -354,20 +343,20 @@ def print_goodness( p, input_file, file_size, pretty, pat_store ):
     print ("Matched lines truncated: To display full matches, please use the '-v' option. \
             \n(Note: This may result in substantial output. Consider outputting results to a file via '-o')\n")
 
-#    if ( v == "1" ):
-#        for ( l, m ) in zip( p['m_lc'], p['matches'] ):
-#            print("%-*s %s" % (2, l, m))
-#    else:
-#        i = 0
-#        for ( l, m ) in zip( p['m_lc'], p['matches'] ):
-#            if i == 10:
-#                break
-#            if len(m) > 90:
-#                print("%-*s %.90s..." % (5, l, m))
-#            else:
-#                print("%-*s %s" % (5, l, m))
-#            i += 1
-#    
+    if ( v == "1" ):
+        for ( l, m ) in zip( p['m_lc'], p['matches'] ):
+            print("%-*s %s" % (2, l, m))
+    else:
+        i = 0
+        for ( l, m ) in zip( p['m_lc'], p['matches'] ):
+            if i == 10:
+                break
+            if len(m) > 90:
+                print("%-*s %.90s..." % (5, l, m))
+            else:
+                print("%-*s %s" % (5, l, m))
+            i += 1
+    
 
 
 ######################### testing / not implemented
