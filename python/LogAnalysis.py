@@ -100,43 +100,55 @@ def parse(parse_target,patterns,vs):
     print("Analysis started...")
     #keys = [ 'sshd', 'blah' ] 
     #kw_pat  = re.compile( '|'.join( ['(%s)' % i for i in keys] ) )
-    idx,opened_fd,closed_fd,kw_match= ( [], [], [], [] )
+    idx,valid_fd,closed_fd,kw_match= ( [], [], [], [] )
     sshd_lc, sshd_matches = [], []
     afd = {}
     for ( line_count, line ) in enumerate( parse_target, 1 ):
-        if line.strip(): vs.timestamp = line.strip()[0:15] #alt - split by fields
-        if vs.reg.match( vs.time_chk, line ): 
-            time_calc( vs.i, vs.timestamp, vs, line_count, end=0 )
-            vs.i += 1
+        line = line.strip("\n")
+        if line.strip():
+          #  if "adclient" in line: 
+          #      line = line.split("adclient")
+          #      meta, data = line[0], line[1]
+          #  else:
+          #      meta,data = line,line
+        #if line.strip(): 
+            vs.timestamp = line.strip()[0:15] #alt - split by fields
+            if vs.reg.match( vs.time_chk, line ): 
+                time_calc( vs.i, vs.timestamp, vs, line_count, end=0 )
+                vs.i += 1
+            if ( line.find("Accepted new lrpc2 client on <fd:") ) >= 0:
+                fd_open         = line.split(" ")[13].lstrip("<fd:").rstrip(">'")
+                if fd_open not in set(valid_fd):  valid_fd.append( fd_open )
+                afd[fd_open] = "OPEN"
+            
+           # if "Accepted new lrpc2 client on <fd:" in data:
+           #     fd_open         = data.split(" ")[9].lstrip("<fd:").rstrip(">'")
+           #     if fd_open not in set(valid_fd):  valid_fd.append( fd_open )
+           #     afd[fd_open] = "OPEN"
 
-        if ( line.find("Accepted new lrpc2 client on <fd:") ) >= 0:
-            fd_open         = line.split(" ")[13].lstrip("<fd:").rstrip(">'")
-            opened_fd.append( fd_open )
-            afd[fd_open] = "OPEN"
+            if ( line.find("lrpc client disconnected normally ") ) >= 0:
+                fd_close    = line.split(" ")[12].lstrip("<fd:").rstrip(">\n'")
+                afd[fd_close] = "CLOSE"
 
-        if ( line.find("lrpc client disconnected normally ") ) >= 0:
-            fd_close    = line.split(" ")[12].lstrip("<fd:").rstrip(">\n'")
-            afd[fd_close] = "CLOSE"
+           # if "lrpc client disconnected normally " in data:
+           #     fd_close    = data.split(" ")[8].lstrip("<fd:").rstrip(">\n'")
+           #     afd[fd_close] = "CLOSE"
 
+            ## Primary matching from patterns contained in patterns tuple ##
+            #if "adclient" in line:
+            #if ( vs.reg.match(patterns, line) ): # User-defined matches (./pat_file)
+            if ( vs.reg.match(patterns, line) ): # User-defined matches (./pat_file)
+                m      = vs.reg.m.group(0)
+                vs.m_lc.append( line_count )
+                vs.matches.append( m ) 
 
-        ## Primary matching from patterns contained in patterns tuple ##
-        #if "adclient" in line:
-        if ( vs.reg.match(patterns, line) ): # User-defined matches (./pat_file)
-            m      = vs.reg.m.group(0)
-            vs.m_lc.append( line_count )
-            vs.matches.append( m ) 
-            ofd_list = []
-
-            for i in opened_fd: # slooooooow - same result as set(opened_fd), but in olist - necessary
-                if i not in ofd_list:
-                    ofd_list.append(i)
-
-            for ofd in ofd_list: # sloooooow
-                if "sshd(" in m and ("fd:"+ofd) in m:
+                #for vfd in list(set(valid_fd)): # sloooooow
+                #    if "sshd(" in m and ("fd:"+vfd) in m: #if fd still ope
+                if "sshd(" in m:
                     sshd_lc.append( str(line_count) )
                     sshd_matches.append( m )
-            
-            process(m, vs)
+                
+                process(m, vs)
                         
                     
                 ## add success to s_users, fail to f_users. Conditional print based on matches in users -> f/s_users
@@ -145,11 +157,11 @@ def parse(parse_target,patterns,vs):
     z = 0
     # print lines containing 'sshd' keyword along the same FDs from list of opened FDs in file
 
-    for ofd in ofd_list:
-        for (lc,smatch) in zip(sshd_lc,sshd_matches):
-            if ("fd:"+ofd) in smatch and afd[ofd] == "OPEN":
+    #for vfd in list(set(valid_fd)):
+    #    for (lc,smatch) in zip(sshd_lc,sshd_matches):
+    #        if ("fd:"+vfd) in smatch and afd[vfd] == "OPEN": # if valid FD and if ACTIVE FD
     #            print(lc,smatch)
-                pass
+    #            pass
             #if fd and ssh and user  and sshd(xxxx) in smatch?:
             #    dictappend.('user':smatch, etc..)
            # if ofd_list[1] and ("fd:"+ofd_list[1]) in smatch:
@@ -232,7 +244,8 @@ class VarStore:
                     'nss_count':self.nss_count, 'pam_count':self.pam_count, 'm_lc':self.m_lc, 'lc':line_count, \
                     'matches':self.matches, 'log_start':log_start, 'log_end':log_end, 'ssh_user':self.ssh_users, \
                     'dz_user':self.dz_users }
-class Re(object):
+
+class Re(object): ## DO SOMETHING WITH THIS OR GET RID OF IT
 
     def __init__(self):
         self.m = None
