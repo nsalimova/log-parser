@@ -103,19 +103,33 @@ def parse(parse_target,patterns,vs):
     idx,valid_fd,closed_fd,kw_match= ( [], [], [], [] )
     sshd_lc, sshd_matches = [], []
     afd = {}
+    extra_time = [0]
     for ( line_count, line ) in enumerate( parse_target, 1 ):
-        line = line.strip("\n")
-        if line.strip():
+        #line = line.strip("\n")
+        #if line.strip():
           #  if "adclient" in line: 
           #      line = line.split("adclient")
           #      meta, data = line[0], line[1]
           #  else:
           #      meta,data = line,line
-        #if line.strip(): 
-            vs.timestamp = line.strip()[0:15] #alt - split by fields
-            if vs.reg.match( vs.time_chk, line ): 
+        chunkyank = line.strip()[0:15]
+        #if re.match( vs.time_chk, chunkyank): 
+        try: 
+            re.match( vs.time_chk, chunkyank)
+            vs.timestamp = chunkyank #alt - split by fields
+            if vs.i == 0: 
                 time_calc( vs.i, vs.timestamp, vs, line_count, end=0 )
                 vs.i += 1
+            if len(vs.timestamp.split()) == 3:
+                p_ts = line.split()[:3]
+                extra_time.append(int(p_ts[2].split(":")[2]))
+                if ( extra_time[-1]-extra_time[0] ) >= 5:
+                    time_calc( vs.i, vs.timestamp, vs, line_count, end=0 )
+                extra_time.remove(extra_time[0])
+
+        except:
+            pass
+        finally:
             if ( line.find("Accepted new lrpc2 client on <fd:") ) >= 0:
                 fd_open         = line.split(" ")[13].lstrip("<fd:").rstrip(">'")
                 if fd_open not in set(valid_fd):  valid_fd.append( fd_open )
@@ -135,8 +149,6 @@ def parse(parse_target,patterns,vs):
            #     afd[fd_close] = "CLOSE"
 
             ## Primary matching from patterns contained in patterns tuple ##
-            #if "adclient" in line:
-            #if ( vs.reg.match(patterns, line) ): # User-defined matches (./pat_file)
             if ( vs.reg.match(patterns, line) ): # User-defined matches (./pat_file)
                 m      = vs.reg.m.group(0)
                 vs.m_lc.append( line_count )
@@ -154,7 +166,7 @@ def parse(parse_target,patterns,vs):
                 ## add success to s_users, fail to f_users. Conditional print based on matches in users -> f/s_users
                 ## consider just doing context output for now. ie. just printing a user's login loop, rather than pretty output for the time being. Once we get this info, it will be easy enough to parse it further for pretty out.
 
-    z = 0
+    #z = 0
     # print lines containing 'sshd' keyword along the same FDs from list of opened FDs in file
 
     #for vfd in list(set(valid_fd)):
@@ -245,8 +257,9 @@ class VarStore:
                     'matches':self.matches, 'log_start':log_start, 'log_end':log_end, 'ssh_user':self.ssh_users, \
                     'dz_user':self.dz_users }
 
-class Re(object): ## DO SOMETHING WITH THIS OR GET RID OF IT
-
+## DO SOMETHING WITH THIS OR GET RID OF IT
+## http://stackoverflow.com/questions/597476/how-to-concisely-cascade-through-multiple-regex-statements-in-python/597493
+class Re(object): 
     def __init__(self):
         self.m = None
 
@@ -272,7 +285,7 @@ def time_calc( i, timestamp, vs, line_count, end=0 ):
             if ( vs.x == last_time ):
                 #print("equals %s" % (timestamp))
                 pass
-            elif ( vs.x < last_time and gap > 2 ):
+            elif ( vs.x < last_time and gap > 5 ):
                 vs.time_gap.append( int(gap) )
                 vs.time_lc.append( line_count )
             vs.x = last_time
@@ -334,7 +347,7 @@ def print_goodness( p, input_file, file_size, pretty, pat_store ):
     print ("Elapsed:   %d days %d hr %d min %d sec\n" %(p['elapsed']))
     print ("Lines: %d\n" % (p['lc'])) 
 
-    print ("\n%s\nDoebug information:\n%s\n" % ( pretty, pretty ))
+    print ("\n%s\nDebug information:\n%s\n" % ( pretty, pretty ))
     if p['ssh_user']: print ("Authentication attempts made for the following users via sshd:\n%s\n" % (p['ssh_user']))
     if p['dz_user']:  print ("Authentication attempts made for the following users via dzdo:\n%s\n" % (p['dz_user']))
     if p['time_gap'] and ( v == "1" ):
