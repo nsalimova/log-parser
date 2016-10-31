@@ -87,8 +87,9 @@ def main(argv, input_file):
             sys.exit( """Error: Script execution terminated unexpectedly. 	
             \nPlease verify command integrity and dependent pattern file './pat_file' exists and is readable""" )
 
-    p = parse_out
-    print_goodness( p, input_file, file_size, pretty, vs.pat_store )
+    p   = parse_out
+    p1  = vs.process_out
+    print_goodness( p, p1, input_file, file_size, pretty, vs.pat_store, vs.suserd )
 
 
 
@@ -104,6 +105,12 @@ def parse(parse_target,patterns,vs):
     sshd_lc, sshd_matches = [], []
     afd = {}
     extra_time = [0]
+    pr = Process()
+    ssh_success = 0
+    pam_auth_starts = []
+    pam_user_lines  = []
+    pam_auth_ends   = []
+    pam_loop        = []
     for ( line_count, line ) in enumerate( parse_target, 1 ):
         #line = line.strip("\n")
         #if line.strip():
@@ -115,8 +122,8 @@ def parse(parse_target,patterns,vs):
         chunkyank = line.strip()[0:15]
         #if re.match( vs.time_chk, chunkyank): 
         try: 
-            re.match( vs.time_chk, chunkyank)
-            vs.timestamp = chunkyank #alt - split by fields
+            if re.match( vs.time_chk, chunkyank):
+                vs.timestamp = chunkyank #alt - split by fields
             if vs.i == 0: 
                 time_calc( vs.i, vs.timestamp, vs, line_count, end=0 )
                 vs.i += 1
@@ -135,18 +142,26 @@ def parse(parse_target,patterns,vs):
                 if fd_open not in set(valid_fd):  valid_fd.append( fd_open )
                 afd[fd_open] = "OPEN"
             
-           # if "Accepted new lrpc2 client on <fd:" in data:
-           #     fd_open         = data.split(" ")[9].lstrip("<fd:").rstrip(">'")
-           #     if fd_open not in set(valid_fd):  valid_fd.append( fd_open )
-           #     afd[fd_open] = "OPEN"
 
             if ( line.find("lrpc client disconnected normally ") ) >= 0:
                 fd_close    = line.split(" ")[12].lstrip("<fd:").rstrip(">\n'")
                 afd[fd_close] = "CLOSE"
+            
+            if ( "sshd" in line and "pam_sm_authenticate" in line and "result" not in line ):
+                pam_auth_starts.append(line)
+                pam_loop.append(line)
+            if ( "Authentication for user" in line ):
+                pam_user_lines.append(line)
+                if line not in pam_loop: pam_loop.append(line)
+            if ( "sshd" in line and "pam_sm_open_session" in line and "PAM_SUCCESS" in line ):
+                pam_auth_ends.append(line)
+                pam_loop.append(line)
 
-           # if "lrpc client disconnected normally " in data:
-           #     fd_close    = data.split(" ")[8].lstrip("<fd:").rstrip(">\n'")
-           #     afd[fd_close] = "CLOSE"
+            if any(sk in line for sk in vs.sshd_keys):
+                if "PAM_SUCCESS" in line or "PAM open session granted" in line:
+                    ssh_success = 1
+                pr.sshd(line, vs.timestamp, vs, line_count, success=1)
+                
 
             ## Primary matching from patterns contained in patterns tuple ##
             if ( vs.reg.match(patterns, line) ): # User-defined matches (./pat_file)
@@ -160,7 +175,7 @@ def parse(parse_target,patterns,vs):
                     sshd_lc.append( str(line_count) )
                     sshd_matches.append( m )
                 
-                process(m, vs)
+                #process(m, vs)
                         
                     
                 ## add success to s_users, fail to f_users. Conditional print based on matches in users -> f/s_users
@@ -171,7 +186,7 @@ def parse(parse_target,patterns,vs):
 
     #for vfd in list(set(valid_fd)):
     #    for (lc,smatch) in zip(sshd_lc,sshd_matches):
-    #        if ("fd:"+vfd) in smatch and afd[vfd] == "OPEN": # if valid FD and if ACTIVE FD
+    #        if ("fd:"+vfd) in smatch and afd[vfd] == "OPEN": # if valid FD and if ACTIVE FD-only works lin-by-line
     #            print(lc,smatch)
     #            pass
             #if fd and ssh and user  and sshd(xxxx) in smatch?:
@@ -187,10 +202,83 @@ def parse(parse_target,patterns,vs):
            # if ofd_list[5] and ("fd:"+ofd_list[5]) in smatch:
            #     print(lc,smatch) 
 
-
+    
     log_end   = time_calc( vs.i, vs.timestamp, vs, line_count,  end=1 )
     elapsed   = ( log_end[1].day-1, log_end[1].hour, log_end[1].minute, log_end[1].second )
     vs.parse_results( elapsed, line_count, vs.log_start, log_end[0] )
+    for s_user in set(vs.s_users):
+        vs.s_usersc.append(str(vs.s_users.count(s_user)))
+    for f_user in set(vs.f_users):
+        vs.f_usersc.append(str(vs.f_users.count(f_user)))
+    s_tse,e_tse = [],[]
+
+
+
+
+
+    if len(pr.sloopstart) != len(pr.sloopend): pass
+    #print("pam_auth_starts",pam_auth_starts)
+    #print("pam_auth_ends",pam_auth_ends)
+    #print("pam_loop",pam_loop)
+    #for vfd in list(set(valid_fd)):
+    z = 0
+    start_fd    = None
+    user_fd     = None
+    end_fd      = None
+    sa_fd       = defaultdict(list)
+    #print("\n".join(s for s in pam_loop))
+    for vfd in list(set(valid_fd)):
+        sa_fd['1'].append(vfd)
+    for lm in pam_loop:
+        if "pam_sm_authenticate" in lm and "result" not in lm:
+            start_fd    = lm.split("fd:")[1][0:2]
+            if start_fd in sa_fd.get('1'): 
+                #start of active loop - do something with lm
+                pass
+            else:
+                sa_fd['1'].append(start_fd)
+        if "Authentication for user" in lm:
+            user_fd     = lm.split("fd:")[1][0:2]
+            if user_fd in sa_fd.get('1'):
+                #in active loop - do something with lm to pull user
+                pass
+            else:
+                pass
+        if "pam_sm_open_session" in lm and "result" in lm:
+            end_fd      = lm.split("fd:")[1][0:2]
+            if end_fd in sa_fd.get('1'):
+                #still in active loop - do something with lm
+                pass
+                sa_fd['1'].remove(end_fd)
+                sa_fd['0'].append(end_fd)
+            else:
+                pass
+    for vfd in list(set(valid_fd)):
+        #print("\n".join(s for s in pam_loop if "fd:"+vfd in s))
+        pass
+    #yank timestamp -> convert to epoch -> store value -> timedelta two values -> booya
+        #for (s,e) in zip(pr.sloopstart,pr.sloopend):
+        #    if ("fd:"+vfd) in s and ("fd:"+vfd) in e:
+        #        s_ts = s.strip()[0:15]
+        #        e_ts = e.strip()[0:15]
+        #        s_tse += time_calc( vs.i, s_ts, vs, line_count, oneoff=1 )
+        #        e_tse += time_calc( vs.i, e_ts, vs, line_count, oneoff=1 )
+    #print(s_tse)
+    #print(e_tse)
+
+    #print("sloopstart",len(pr.sloopstart))
+    #print("sloopend",len(pr.sloopend))
+    #print(pr.sloopstart)
+    #print(pr.sloopend)
+
+    #self.slooptime = time_calc( vs.i, ts, vs, line_count, oneoff=1 )    
+    #print(self.slooptime)
+    #sat = self.slooptime
+    #self.sat_e = (sat[1].minute/60 + sat[1].second)
+    #if self.sat_e  >= 10:
+    #    self.auth_gap = True
+    #    vs.a_gap.append(self.at_e)
+    
 
 
     return vs.parse_out
@@ -199,6 +287,46 @@ def parse(parse_target,patterns,vs):
         
 #### Supplemental
 
+class Process:
+    
+    def __init__(self):
+        self.slooptime  = None
+        self.sat_e       = None
+        self.i          = 0
+        self.auth_gap   = False
+        self.s_userc    = 0
+        self.ssh_userc  = {}
+        self.ssh_userl  = []
+        self.sloopstart = []
+        self.sloopend   = []
+
+    def sshd(self, line, ts, vs, line_count, success=1):
+        #self.auth_time = time_calc( vs.i, ts, vs, line_count, end=1 )
+        if success == 1:
+            if "pam_sm_authenticate" in line and "result" not in line:
+                self.sloopstart.append(line)
+            if "pam_sm_open_session" in line and "PAM_SUCCESS" in line:
+                self.sloopend.append(line)
+            if "service=sshd" in line and "PAM open session granted" in line:
+                s_user = (line.split("user")[1].split(")")[0].lstrip("=") + ")")
+                vs.s_users.append(s_user)
+            if "service=sshd" in line and "PAM authentication denied" in line:
+                f_user = (line.split("user")[1].split(")")[0].lstrip("=") + ")")
+                vs.f_users.append(f_user)
+            if "Getting unix name of" in line:
+                self.ssh_userl.append(line)
+                
+            
+
+            
+        vs.process_results()
+
+
+            #print("user: time: method: count:")
+            
+
+
+       
 
 def process(m, vs):
     if ( 'data' in m ): vs.nss_count += 1
@@ -223,6 +351,8 @@ def process(m, vs):
     elif ( 'dzdo' in m ): 
         if user not in vs.dz_users: vs.dz_users.append( user )
 
+        
+
 
 
 
@@ -243,19 +373,36 @@ class VarStore:
         self.i              = 0
         self.log_start      = None
         self.timestamp      = None
+        self.suserd         = defaultdict(list)
         
 
         (self.times, self.time_gap, 
          self.time_lc, self.matches, 
          self.m_lc,self.ssh_users, 
          self.dz_users, self.s_users, 
-         self.f_users)                   = [[] for li in range(9)]
+         self.f_users,self.at_times,
+         self.s_usersc,self.f_usersc,
+         self.a_gap,self.otimes)              = [[] for li in range(14)]
+
+        self.sshd_keys  = ['pam_sm_authenticate','PAMGetUnixName','AUDIT_TRAIL','PAM_AUTHTOK',
+                           'pam_sm_open_session']
+        self.sshd_dkeys = ['pam_sm_authenticate','PAMUserIsOurResponsibility','PAMGetUnixName','PAM_AUTHTOK',
+                          'PAMVerifyPassword','PAMIsMfaEnabled','PAMIsMfaRequired','UTF8STRING','AUDIT_TRAIL',
+                          'pam_sm_acct_mgmt','DAIIsUserAllowedAccessByAudit2','PAMIsUserAllowedAccess2',
+                          'PAMDoesLegacyConflictExist','Result: account=','GID array count:',
+                          'pam_sm_setcred','Set credentials for user','Open session: Set environment variable',
+                          'PAMCreateHomeDirectory','getpwnam_centrifydc_r','DAIReplacePasswdWithNoLoginShellByAudit',
+                          'pam_sm_open_session']
 
     def parse_results( self,elapsed,line_count,log_start,log_end ):
-        self.parse_out = { 'time_gap':self.time_gap, 'time_lc':self.time_lc, 'elapsed':elapsed, \
+        self.parse_out      = { 'time_gap':self.time_gap, 'time_lc':self.time_lc, 'elapsed':elapsed, \
                     'nss_count':self.nss_count, 'pam_count':self.pam_count, 'm_lc':self.m_lc, 'lc':line_count, \
                     'matches':self.matches, 'log_start':log_start, 'log_end':log_end, 'ssh_user':self.ssh_users, \
                     'dz_user':self.dz_users }
+
+    def process_results( self ):
+        self.process_out    = { 's_users':self.s_users,'s_usersc':self.s_usersc,'f_users':self.f_users, \
+                    'f_usersc':self.f_usersc,'a_gap':self.a_gap }
 
 ## DO SOMETHING WITH THIS OR GET RID OF IT
 ## http://stackoverflow.com/questions/597476/how-to-concisely-cascade-through-multiple-regex-statements-in-python/597493
@@ -271,41 +418,52 @@ class Re(object):
         self.m = pattern.search(line)
         return self.m
 
-def time_calc( i, timestamp, vs, line_count, end=0 ):
-    if ( end == 0 ):
-        vs.times   += ( mktime(convert_time(timestamp)[1]), )  
-        last_time   = vs.times[-1]
-        gap         = ( last_time - vs.x )
-        if ( i == 0 ): #first line
+def time_calc( i, timestamp, vs, line_count, end=0, oneoff=0 ):
+    if ( oneoff == 0 ):
+        if ( end == 0 ):
+            vs.times   += ( mktime(convert_time(timestamp)[1]), )  
+            last_time   = vs.times[-1]
+            gap         = ( last_time - vs.x )
+            if ( i == 0 ): #first line
 
-            #times                   += ( mktime( strptime( timestamp, "%b %d %H:%M:%S" ) ), )
-            vs.times                     += ( mktime(convert_time(timestamp)[1]), )  
-            vs.log_start               = timestamp #yank timestamp as "Log start"
-        else:
-            if ( vs.x == last_time ):
-                #print("equals %s" % (timestamp))
-                pass
-            elif ( vs.x < last_time and gap > 5 ):
-                vs.time_gap.append( int(gap) )
-                vs.time_lc.append( line_count )
-            vs.x = last_time
+                #times                   += ( mktime( strptime( timestamp, "%b %d %H:%M:%S" ) ), )
+                vs.times                     += ( mktime(convert_time(timestamp)[1]), )  
+                vs.log_start               = timestamp #yank timestamp as "Log start"
+            else:
+                if ( vs.x == last_time ):
+                    #print("equals %s" % (timestamp))
+                    pass
+                elif ( vs.x < last_time and gap > 5 and gap < 9000 ): #safe-guard; convert_time uses positive stamps 
+                    vs.time_gap.append( int(gap) )
+                    vs.time_lc.append( line_count )
+                vs.x = last_time
 
-    elif ( end == 1 ):
+        elif ( end == 1 ):
 
-        if ( i != 0 ):
-            try:
-                vs.times, timestamp
+            if ( i != 0 ):
+                try:
+                    vs.times, timestamp
 
-                #times               += ( mktime( strptime( timestamp, "%b %d %H:%M:%S" ) ), )
-                vs.times                   += ( mktime(convert_time(timestamp)[1]), )  
-                duration            = timedelta( seconds=( vs.times[-1]-vs.times[0] ) )
-                d                   = datetime( 1,1,1 ) + duration
+                    #times               += ( mktime( strptime( timestamp, "%b %d %H:%M:%S" ) ), )
+                    vs.times                   += ( mktime(convert_time(timestamp)[1]), )  
+                    duration            = timedelta( seconds=( vs.times[-1]-vs.times[0] ) )
+                    d                   = datetime( 1,1,1 ) + duration
 
-                return ( timestamp, d )
-            except:
-                pass
-        else:
-            print("EPIC FAILURE IN TIME_CALC")
+                    return ( timestamp, d )
+                except:
+                    pass
+            else:
+                print("EPIC FAILURE IN TIME_CALC")
+    elif ( oneoff == 1 ):
+        vs.otimes                   += ( mktime(convert_time(timestamp)[1]), )  
+        if len(vs.otimes) > 2: del vs.otimes[0]
+        #print(vs.otimes)
+        duration            = timedelta( seconds=( vs.otimes[-1]-vs.otimes[0] ) )
+        #print(duration)
+        d                   = datetime( 1,1,1 ) + duration
+
+        return ( timestamp, d )
+            
 
 
 
@@ -335,11 +493,12 @@ def sizeof_fmt( num, suffix='B' ):
 
 
 
-def print_goodness( p, input_file, file_size, pretty, pat_store ):
+def print_goodness( p, p1, input_file, file_size, pretty, pat_store, suserd ):
 
     # Look into replacing format operators with new versions. see:
     # https://docs.python.org/2/library/string.html#format-string-syntax
     v = args.verbose    
+    #print(p1['a_gap'])
 
     print ("\n-> Performing analysis of log: '{0}'({1})".format( input_file, file_size ))
     print ("\nLog start: %s" % (p['log_start']))
@@ -349,17 +508,25 @@ def print_goodness( p, input_file, file_size, pretty, pat_store ):
 
     print ("\n%s\nDebug information:\n%s\n" % ( pretty, pretty ))
     if p['ssh_user']: print ("Authentication attempts made for the following users via sshd:\n%s\n" % (p['ssh_user']))
-    if p['dz_user']:  print ("Authentication attempts made for the following users via dzdo:\n%s\n" % (p['dz_user']))
+    if p1['s_users']: 
+        print ("Authentication successful for the following users via sshd:\n")
+        for u,c in zip(set(p1['s_users']),p1['s_usersc']):
+            print ("user: {:50} count: {}".format(u, c))
+    if p1['f_users']: 
+        print ("Authentication failed for the following users via sshd:\n")
+        for u,c in zip(set(p1['f_users']),p1['f_usersc']):
+            print ("user: {:50} count: {}".format(u, c))
+    if p['dz_user']:  print ("\nAuthentication attempts made for the following users via dzdo:\n%s\n" % (p['dz_user']))
     if p['time_gap'] and ( v == "1" ):
-        print ("Irregular time gaps:") 
+        print ("\nIrregular time gaps:") 
         for gap, l in zip(p['time_gap'], p['time_lc']):
-            print("%4s seconds on line: %s" % (gap, l))
+            print ("%4s seconds on line: %s" % (gap, l))
     else:
         i = 0
-        print ("Irregular time gaps (Only first 10 are displayed. Use -v for all):")
+        print ("\nIrregular time gaps (Only first 10 are displayed. Use -v for all):")
         for gap, l in zip(p['time_gap'], p['time_lc']):
             if i == 10: break
-            print("%4s seconds on line: %s" % (gap, l))
+            print ("%4s seconds on line: %s" % (gap, l))
             i += 1
         
     print ("\nNSS calls: '%s' in the file: %s" % ( p['nss_count'], log ))
@@ -371,16 +538,16 @@ def print_goodness( p, input_file, file_size, pretty, pat_store ):
 
     if ( v == "1" ):
         for ( l, m ) in zip( p['m_lc'], p['matches'] ):
-            print("%-*s %s" % (2, l, m))
+            print ("%-*s %s" % (2, l, m))
     else:
         i = 0
         for ( l, m ) in zip( p['m_lc'], p['matches'] ):
             if i == 10:
                 break
             if len(m) > 90:
-                print("%-*s %.90s..." % (5, l, m))
+                print ("%-*s %.90s..." % (5, l, m))
             else:
-                print("%-*s %s" % (5, l, m))
+                print ("%-*s %s" % (5, l, m))
             i += 1
     
 
