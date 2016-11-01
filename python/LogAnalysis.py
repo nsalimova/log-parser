@@ -216,60 +216,15 @@ def parse(parse_target,patterns,vs):
 
 
 
-    if len(pr.sloopstart) != len(pr.sloopend): pass
-    #print("pam_auth_starts",pam_auth_starts)
-    #print("pam_auth_ends",pam_auth_ends)
-    #print("pam_loop",pam_loop)
-    #for vfd in list(set(valid_fd)):
-    z = 0
-    start_fd    = None
-    user_fd     = None
-    end_fd      = None
-    sa_fd       = defaultdict(list)
     #print("\n".join(s for s in pam_loop))
-    for vfd in list(set(valid_fd)):
-        sa_fd['1'].append(vfd)
-    for lm in pam_loop:
-        if "pam_sm_authenticate" in lm and "result" not in lm:
-            start_fd    = lm.split("fd:")[1][0:2]
-            if start_fd in sa_fd.get('1'): 
-                #start of active loop - do something with lm
-                pass
-            else:
-                sa_fd['1'].append(start_fd)
-        if "Authentication for user" in lm:
-            user_fd     = lm.split("fd:")[1][0:2]
-            if user_fd in sa_fd.get('1'):
-                #in active loop - do something with lm to pull user
-                pass
-            else:
-                pass
-        if "pam_sm_open_session" in lm and "result" in lm:
-            end_fd      = lm.split("fd:")[1][0:2]
-            if end_fd in sa_fd.get('1'):
-                #still in active loop - do something with lm
-                pass
-                sa_fd['1'].remove(end_fd)
-                sa_fd['0'].append(end_fd)
-            else:
-                pass
-    for vfd in list(set(valid_fd)):
+    #for vfd in list(set(valid_fd)):
         #print("\n".join(s for s in pam_loop if "fd:"+vfd in s))
-        pass
+    #    pass
     #yank timestamp -> convert to epoch -> store value -> timedelta two values -> booya
         #for (s,e) in zip(pr.sloopstart,pr.sloopend):
         #    if ("fd:"+vfd) in s and ("fd:"+vfd) in e:
-        #        s_ts = s.strip()[0:15]
-        #        e_ts = e.strip()[0:15]
-        #        s_tse += time_calc( vs.i, s_ts, vs, line_count, oneoff=1 )
-        #        e_tse += time_calc( vs.i, e_ts, vs, line_count, oneoff=1 )
     #print(s_tse)
     #print(e_tse)
-
-    #print("sloopstart",len(pr.sloopstart))
-    #print("sloopend",len(pr.sloopend))
-    #print(pr.sloopstart)
-    #print(pr.sloopend)
 
     #self.slooptime = time_calc( vs.i, ts, vs, line_count, oneoff=1 )    
     #print(self.slooptime)
@@ -291,32 +246,57 @@ class Process:
     
     def __init__(self):
         self.slooptime  = None
-        self.sat_e       = None
+        self.sat_e      = None
         self.i          = 0
-        self.auth_gap   = False
+        self.auth_time  = False
         self.s_userc    = 0
-        self.ssh_userc  = {}
         self.ssh_userl  = []
         self.sloopstart = []
         self.sloopend   = []
+        self.sloop     = defaultdict(list)
 
     def sshd(self, line, ts, vs, line_count, success=1):
         #self.auth_time = time_calc( vs.i, ts, vs, line_count, end=1 )
         if success == 1:
-            if "pam_sm_authenticate" in line and "result" not in line:
+            if "sshd(" in line and "Authentication for user" in line:
+                #self.sloopu = line.split("'")[1] #is user our responsibility
+                self.sloopu = line.split("'")[1]
                 self.sloopstart.append(line)
-            if "pam_sm_open_session" in line and "PAM_SUCCESS" in line:
-                self.sloopend.append(line)
+                self.sloop[self.sloopu].append(line)
+#todo: test against another log - test against sso
+
             if "service=sshd" in line and "PAM open session granted" in line:
-                s_user = (line.split("user")[1].split(")")[0].lstrip("=") + ")")
+                s_user = line.split("user=")[1].split("(")[0]
                 vs.s_users.append(s_user)
+                self.sloopend.append(line)
+                if self.sloop[s_user]:
+                    #print("pre_append",self.sloop[s_user])
+                    self.sloop[s_user].append(line)
+                    #print("post_append",self.sloop[s_user])
+                    print("start",self.sloop[s_user][0].strip()[0:15])
+                    print(self.sloop[s_user][0])
+                    print("end",self.sloop[s_user][-1].strip()[0:15])
+                    print(self.sloop[s_user][-1])
+                    # do time stuff with completed loop
+                    #s_ts = self.sloop[s_user][0].strip()[0:15]
+                    #e_ts = e.strip()[0:15]
+                    #s_tse += time_calc( vs.i, s_ts, vs, line_count, oneoff=1 )
+                    #e_tse += time_calc( vs.i, e_ts, vs, line_count, oneoff=1 )
+                    del self.sloop[s_user] #remove user loop so that next one can enter
+                   # print("post_del",self.sloop[s_user])
+                else:
+                    #unknown logic - broken login loop
+                    pass
+
+
             if "service=sshd" in line and "PAM authentication denied" in line:
                 f_user = (line.split("user")[1].split(")")[0].lstrip("=") + ")")
                 vs.f_users.append(f_user)
             if "Getting unix name of" in line:
                 self.ssh_userl.append(line)
-                
-            
+
+
+
 
             
         vs.process_results()
@@ -385,7 +365,7 @@ class VarStore:
          self.a_gap,self.otimes)              = [[] for li in range(14)]
 
         self.sshd_keys  = ['pam_sm_authenticate','PAMGetUnixName','AUDIT_TRAIL','PAM_AUTHTOK',
-                           'pam_sm_open_session']
+                           'Authentication for user']
         self.sshd_dkeys = ['pam_sm_authenticate','PAMUserIsOurResponsibility','PAMGetUnixName','PAM_AUTHTOK',
                           'PAMVerifyPassword','PAMIsMfaEnabled','PAMIsMfaRequired','UTF8STRING','AUDIT_TRAIL',
                           'pam_sm_acct_mgmt','DAIIsUserAllowedAccessByAudit2','PAMIsUserAllowedAccess2',
