@@ -1,0 +1,93 @@
+differences only (or close-to)
+
+
+Aug 24 11:45:32 rhel65 adclient[3543]: DEBUG <fd:16 sshd(4480)> Received PAM_AUTHTOK: PAM_SUCCESS(0)
+..
+Aug 24 11:45:32 rhel65 adclient[3543]: DEBUG <fd:25 PAMVerifyPassword > daemon.ipcclient2 executing request 'PAMVerifyPassword' in thread 140309178181376
+Aug 24 11:45:32 rhel65 adclient[3543]: DEBUG <fd:25 PAMVerifyPassword > daemon.ipcclient2 Verifying password for user 'rook', application is sshd, DZPamGate check is Disabled
+Aug 24 11:45:32 rhel65 adclient[3543]: DEBUG <fd:25 PAMVerifyPassword > adclient.pam.util Creating CimsContext
+Aug 24 11:45:32 rhel65 adclient[3543]: DEBUG <fd:25 PAMVerifyPassword > adclient.pam.util username rook, presented: , effective: , unix: unknown
+Aug 24 11:45:32 rhel65 adclient[3543]: DEBUG <fd:25 PAMVerifyPassword > base.adagent Find GUID: 878563520e8926489c59c323df48c785 (7)
+Aug 24 11:45:32 rhel65 adclient[3543]: DEBUG <fd:25 PAMVerifyPassword > base.objecthelper age 2, expire age 3600, cutoff time 0, refresh 5, negative=false, cacheOps 7
+Aug 24 11:45:32 rhel65 adclient[3543]: DEBUG <fd:25 PAMVerifyPassword > daemon.ipcclient validatePlainTextUser rook
+Aug 24 11:45:32 rhel65 adclient[3543]: DEBUG <fd:25 PAMVerifyPassword > base.adagent Find GUID: 878563520e8926489c59c323df48c785 (7)
+Aug 24 11:45:32 rhel65 adclient[3543]: DEBUG <fd:25 PAMVerifyPassword > base.objecthelper age 2, expire age 3600, cutoff time 0, refresh 5, negative=false, cacheOps 7
+Aug 24 11:45:32 rhel65 adclient[3543]: DIAG  <fd:25 PAMVerifyPassword > daemon.ipcclient validatePlainTextUser user=rook domain=ALERA.ATH
+Aug 24 11:45:32 rhel65 adclient[3543]: DIAG  <fd:25 PAMVerifyPassword > daemon.ipcclient Validating password for rook against KDC
+Aug 24 11:45:32 rhel65 adclient[3543]: DEBUG <fd:25 PAMVerifyPassword > base.aduser getKerberosName: name=rook, uobj.isEmpty: false
+Aug 24 11:45:32 rhel65 adclient[3543]: DEBUG <fd:25 PAMVerifyPassword > base.aduser Getting user (user & pw) rook@ALERA.ATH 
+Aug 24 11:45:32 rhel65 adclient[3543]: DIAG  <fd:25 PAMVerifyPassword > base.aduser getCredentials for rook@ALERA.ATH salt:ALERA.ATHrook
+Aug 24 11:45:32 rhel65 adclient[3543]: DEBUG <fd:25 PAMVerifyPassword > base.adagent Domain Level for 'ALERA.ATH' is not PreW2K8
+Aug 24 11:45:32 rhel65 adclient[3543]: DEBUG <fd:25 PAMVerifyPassword > dns.findkdc KDC locator for ALERA.ATH
+Aug 24 11:45:32 rhel65 adclient[3543]: DEBUG <fd:25 PAMVerifyPassword > network.state Got favorite dc:dc03.alera.ath from kset for serviceType:KDC
+Aug 24 11:45:32 rhel65 adclient[3543]: DEBUG <fd:25 PAMVerifyPassword > network.state NST: SniffList: postfailsort=dc03.alera.ath
+Aug 24 11:45:32 rhel65 adclient[3543]: DEBUG <fd:25 PAMVerifyPassword > network.state SaveDC: domain=alera.ath, server=dc03.alera.ath serviceType:KDC
+Aug 24 11:45:32 rhel65 adclient[3543]: DEBUG <fd:25 PAMVerifyPassword > dns.findkdc KDC locator for ALERA.ATH
+Aug 24 11:45:32 rhel65 adclient[3543]: DEBUG <fd:25 PAMVerifyPassword > network.state Got favorite dc:dc03.alera.ath from kset for serviceType:KDC
+Aug 24 11:45:32 rhel65 adclient[3543]: DEBUG <fd:25 PAMVerifyPassword > network.state NST: SniffList: postfailsort=dc03.alera.ath
+Aug 24 11:45:32 rhel65 adclient[3543]: DEBUG <fd:25 PAMVerifyPassword > network.state SaveDC: domain=alera.ath, server=dc03.alera.ath serviceType:KDC
+Aug 24 11:45:32 rhel65 adclient[3543]: DIAG  <fd:25 PAMVerifyPassword > base.aduser Pre-auth failed, checking salt
+Aug 24 11:45:32 rhel65 adclient[3543]: DEBUG <fd:25 PAMVerifyPassword > base.kerberos.keytab GetSaltFromKDC for rook@ALERA.ATH
+Aug 24 11:45:32 rhel65 adclient[3543]: DEBUG <fd:25 PAMVerifyPassword > dns.findkdc KDC locator for ALERA.ATH
+Aug 24 11:45:32 rhel65 adclient[3543]: DEBUG <fd:25 PAMVerifyPassword > network.state Got favorite dc:dc03.alera.ath from kset for serviceType:KDC
+Aug 24 11:45:32 rhel65 adclient[3543]: DEBUG <fd:25 PAMVerifyPassword > network.state NST: SniffList: postfailsort=dc03.alera.ath
+Aug 24 11:45:32 rhel65 adclient[3543]: DEBUG <fd:25 PAMVerifyPassword > network.state SaveDC: domain=alera.ath, server=dc03.alera.ath serviceType:KDC
+Aug 24 11:45:32 rhel65 adclient[3543]: DEBUG <fd:25 PAMVerifyPassword > dns.findkdc KDC locator for ALERA.ATH
+Aug 24 11:45:32 rhel65 adclient[3543]: DEBUG <fd:25 PAMVerifyPassword > network.state Got favorite dc:dc03.alera.ath from kset for serviceType:KDC
+Aug 24 11:45:32 rhel65 adclient[3543]: DEBUG <fd:25 PAMVerifyPassword > network.state NST: SniffList: postfailsort=dc03.alera.ath
+Aug 24 11:45:32 rhel65 adclient[3543]: DEBUG <fd:25 PAMVerifyPassword > network.state SaveDC: domain=alera.ath, server=dc03.alera.ath serviceType:KDC
+Aug 24 11:45:32 rhel65 adclient[3543]: DEBUG <fd:25 PAMVerifyPassword > base.kerberos.keytab GetSaltFromKDC returns: ALERA.ATHrook
+Aug 24 11:45:32 rhel65 adclient[3543]: DIAG  <fd:25 PAMVerifyPassword > base.aduser Salt was correct, bad password
+Aug 24 11:45:32 rhel65 adclient[3543]: DIAG  <fd:25 PAMVerifyPassword > base.aduser Error: get creds: Preauthentication failed for user rook@ALERA.ATH (enctype: AES-256 CTS mode with 96-bit SHA-1 HMAC)
+Aug 24 11:45:32 rhel65 adclient[3543]: DEBUG <fd:25 PAMVerifyPassword > base.osutil Module=Base : bad password (reference base/aduser.cpp:990 rc: 1030)
+Aug 24 11:45:32 rhel65 adclient[3543]: DIAG  <fd:25 PAMVerifyPassword > daemon.ipcclient validate password caught exception: bad password
+Aug 24 11:45:32 rhel65 adclient[3543]: WARN  <fd:25 PAMVerifyPassword > audit User 'rook' not authenticated: bad password
+Aug 24 11:45:32 rhel65 adclient[3543]: DEBUG <fd:25 PAMVerifyPassword > daemon.ipcclient2 doPAMVerifyPassword: user 'rook' not OK: 1030 (Base)
+Aug 24 11:45:32 rhel65 adclient[3543]: DEBUG <fd:25 PAMVerifyPassword > daemon.ipcclient2 Invalid password
+Aug 24 11:45:32 rhel65 adclient[3543]: DEBUG <fd:25 PAMVerifyPassword > daemon.ipcclient2 request 'PAMVerifyPassword' complete
+
+
+...
+
+Aug 24 11:45:32 rhel65 adclient[3543]: INFO  AUDIT_TRAIL|Centrify Suite|PAM|1.0|101|PAM authentication denied|5|user=rook(type:ad,rook@ALERA.ATH) pid=4480 utc=1472064332122 centrifyEventID=24101 status=DENIED service=sshd tty=ssh client=10.0.0.15 reason=Authentication failure
+..
+Aug 24 11:45:32 rhel65 adclient[3543]: DEBUG <fd:16 sshd(4480)> <- pam_sm_authenticate, result=PAM_AUTH_ERR(7)
+
+...
+# falls down to deny in the auth stack (re-prompt comes later - ** be sure to pull PAM options)
+Aug 24 11:45:32 rhel65 adclient[3543]: DEBUG <fd:27 sshd(4480)> -> pam_sm_authenticate
+Aug 24 11:45:32 rhel65 adclient[3543]: DEBUG <fd:27 sshd(4480)> PAM Options: deny
+
+
+...
+
+Aug 24 11:45:32 rhel65 adclient[3543]: DEBUG <fd:27 sshd(4480)> pam_sm_common() failed 7
+Aug 24 11:45:32 rhel65 adclient[3543]: DEBUG <main> util.threadpool Pool size 3/4, busy size 1/30
+Aug 24 11:45:32 rhel65 adclient[3543]: DEBUG <fd:27 sshd(4480)> <- pam_sm_authenticate, result=PAM_AUTH_ERR(7)
+
+...
+
+Aug 24 11:45:32 rhel65 adclient[3543]: DEBUG <fd:25 ATProxySetAuditTrailEvent > daemon.ipcclient2 UTF8STRING: ssh-connection
+Aug 24 11:45:32 rhel65 adclient[3543]: DEBUG <fd:25 ATProxySetAuditTrailEvent > daemon.ipcclient2 UTF8STRING: (no tty)
+Aug 24 11:45:32 rhel65 adclient[3543]: DEBUG <fd:25 ATProxySetAuditTrailEvent > daemon.ipcclient2 UTF8STRING: keyboard-interactive
+Aug 24 11:45:32 rhel65 adclient[3543]: DEBUG <fd:25 ATProxySetAuditTrailEvent > daemon.ipcclient2 UTF8STRING: 10.0.0.15
+Aug 24 11:45:32 rhel65 adclient[3543]: DEBUG <fd:25 ATProxySetAuditTrailEvent > daemon.ipcclient2 UTF8STRING: AUTH_FAIL_KBDINT(failed in keyboard interactive authentication.)
+..
+Aug 24 11:45:32 rhel65 adclient[3543]: DEBUG <fd:25 ATProxySetAuditTrailEvent > audittrail.plugin Escape the audit trail event to [ssh-connection]
+Aug 24 11:45:32 rhel65 adclient[3543]: DEBUG <fd:25 ATProxySetAuditTrailEvent > audittrail.plugin Escape the audit trail event to [(no tty)]
+Aug 24 11:45:32 rhel65 adclient[3543]: DEBUG <fd:25 ATProxySetAuditTrailEvent > audittrail.plugin Escape the audit trail event to [keyboard-interactive]
+Aug 24 11:45:32 rhel65 adclient[3543]: DEBUG <fd:25 ATProxySetAuditTrailEvent > audittrail.plugin Escape the audit trail event to [10.0.0.15]
+Aug 24 11:45:32 rhel65 adclient[3543]: DEBUG <fd:25 ATProxySetAuditTrailEvent > audittrail.plugin Escape the audit trail event to [AUTH_FAIL_KBDINT(failed in keyboard interactive authentication.)]
+Aug 24 11:45:32 rhel65 adclient[3543]: INFO  AUDIT_TRAIL|Centrify Suite|Centrify sshd|1.0|101|SSHD denied|5|user=rook(type:ad,rook@ALERA.ATH) pid=4478 utc=1472064332126 centrifyEventID=27101 status=DENIED service=ssh-connection tty=(no tty) authMechanism=keyboard-interactive client=10.0.0.15 reason=AUTH_FAIL_KBDINT(failed in keyboard interactive authentication.)
+
+...
+# re-prompt after bad pass
+Aug 24 11:45:32 rhel65 adclient[3543]: DEBUG <fd:16 sshd(4481)> -> pam_sm_authenticate
+Aug 24 11:45:32 rhel65 adclient[3543]: DEBUG <fd:16 sshd(4481)> PAM Options: (none)
+..
+Aug 24 11:45:32 rhel65 adclient[3543]: DEBUG <fd:16 sshd(4481)> Prompt user for PAM_AUTHTOK: 'Password: '
+..
+Aug 24 11:45:33 rhel65 adclient[3543]: DEBUG <fd:16 sshd(4481)> Received PAM_AUTHTOK: PAM_SUCCESS(0)     # again, normal - even on bad pass
+..
+Aug 24 11:45:44 rhel65 adclient[3543]: DEBUG <fd:16 sshd(4478)> UTF8STRING: LOGIN_EXCEED_MAXTRIES(maximum number of login attempts had been exceeded.)
+

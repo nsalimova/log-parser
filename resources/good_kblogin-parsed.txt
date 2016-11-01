@@ -1,0 +1,426 @@
+5.2.3?
+
+misc: pull zone, domain, computer name, bound DC, etc...
+# Can we just pull 'utf8string' for ssh?
+
+
+=== early integration: detection for lookup start & result
+Aug 24 11:45:02 rhel65 adclient[3543]: DEBUG <fd:30 su(4423)> -> getpwnam_centrifydc_r  user="max"
+..
+Aug 24 11:45:02 rhel65 adclient[3543]: DEBUG <fd:30 su(4423)> <- getpwnam_centrifydc_r, result=NSS_NOTFOUND(0)
+===
+
+
+Aug 24 11:44:59 rhel65 adclient[3543]: DEBUG <fd:16 sshd(4339)> -> getpwnam_centrifydc_r  user="rook"
+-- Seems to be universal start point - confirm*
+
+...
+# initial NSS loop kick-off
+Aug 24 11:44:59 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > daemon.ipcclient2 executing request 'NSSGetPasswdDataByName' in thread 140309167691520
+Aug 24 11:44:59 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > daemon.ipcclient2 Getting passwd data for 'rook'
+Aug 24 11:44:59 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > util.properties Config file [/etc/centrifydc/passwd.ovr] does not exist.
+-- If it does? - override/ignore detection
+
+...
+# Looking for user profile - found - added to cache
+Aug 24 11:44:59 rhel65 adclient[3543]: DIAG  <fd:25 NSSGetPasswdDataByName > base.bind.ldap 10.0.0.51:389 search base="CN=Users,CN=Legion,CN=Alera,CN=Zones,OU=Centrify,DC=alera,DC=ath" filter="(&(uid=rook)(displayName=$CimsUserVersion*))"
+Aug 24 11:44:59 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > lrpc.adobject new object: <GUID=bf4b35874481a04f96cc7474dd7c770d>;CN=rook@alera.ath,CN=Users,CN=Legion,CN=Alera,CN=Zones,OU=Centrify,DC=alera,DC=ath
+Aug 24 11:44:59 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.bind.cache ADCB::search: refresh list returns 1 objects
+..
+Aug 24 11:44:59 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.schema.cdc Extension object 'CN=rook@alera.ath,CN=Users,CN=Legion,CN=Alera,CN=Zones,OU=Centrify,DC=alera,DC=ath' found for search filter (&(uid=rook)(displayName=$CimsUserVersion*)) (extTypeFilter=0x0)
+
+...
+# Find real user based on parentlink(?) of user profile - return real user
+Aug 24 11:44:59 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.schema.cdc get ext type 1 for CN=rook@alera.ath,CN=Users,CN=Legion,CN=Alera,CN=Zones,OU=Centrify,DC=alera,DC=ath
+Aug 24 11:44:59 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.schema.cdc Extension object 'CN=rook@alera.ath,CN=Users,CN=Legion,CN=Alera,CN=Zones,OU=Centrify,DC=alera,DC=ath' found for search filter (&(uid=rook)(displayName=$CimsUserVersion*)) (extTypeFilter=0x0)
+Aug 24 11:44:59 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.adagent Find DN: <SID=010500000000000515000000a09fc63116f9353f233f488eba040000> (7)
+Aug 24 11:44:59 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.adagent Find SID: S-1-5-21-835100576-1060501782-2387099427-1210 (7)
+Aug 24 11:44:59 rhel65 adclient[3543]: DIAG  <fd:25 NSSGetPasswdDataByName > base.adagent SID: S-1-5-21-835100576-1060501782-2387099427-1210 maps to domain ALERA.ATH
+Aug 24 11:44:59 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.bind.cache fetch <SID=010500000000000515000000a09fc63116f9353f233f488eba040000> attrs = 0 (cacheOps=7, GC=0)
+Aug 24 11:44:59 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.bind.cache fetch <SID=010500000000000515000000a09fc63116f9353f233f488eba040000> attrs = 0 (cacheOps=7, GC=0)
+Aug 24 11:44:59 rhel65 adclient[3543]: DIAG  <fd:25 NSSGetPasswdDataByName > base.bind.ldap 10.0.0.51:389 fetch dn="<SID=010500000000000515000000a09fc63116f9353f233f488eba040000>" filter="(objectclass=*)" timeout=7
+Aug 24 11:44:59 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > lrpc.adobject new object: <GUID=878563520e8926489c59c323df48c785>;<SID=010500000000000515000000a09fc63116f9353f233f488eba040000>;CN=Rook,OU=Second,OU=Legion,DC=alera,DC=at
+
+...
+# Looking for user profile in computer zone if :zone exists(?) - none found
+Aug 24 11:44:59 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.bind.cache ADCB::search base CN=Users,CN=rhel65.alera.ath:zone,CN=Computers,CN=Legion,CN=Alera,CN=Zones,OU=Centrify,DC=alera,DC=ath, filter (|(&(uidNumber=1166017722)(displayName=$CimsUserVersion*))(&(uid=rook)(displayName=$CimsUserVersion*))), attrs 1c (cacheOps=7, GC=0)
+Aug 24 11:44:59 rhel65 adclient[3543]: DIAG  <fd:25 NSSGetPasswdDataByName > base.bind.ldap 10.0.0.51:389 search base="CN=Users,CN=rhel65.alera.ath:zone,CN=Computers,CN=Legion,CN=Alera,CN=Zones,OU=Centrify,DC=alera,DC=ath" filter="(|(&(uidNumber=1166017722)(displayName=$CimsUserVersion*))(&(uid=rook)(displayName=$CimsUserVersion*)))"
+Aug 24 11:44:59 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.bind.cache ADCB::search: refresh list returns 0 objects
+
+...
+
+Aug 24 11:44:59 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.zonehier isUserAllowedLogin rook 395(visible:1)
+Aug 24 11:44:59 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.objecthelper.user Membership Update: Groups not present: CN=Rook,OU=Second,OU=Legion,DC=alera,DC=ath
+
+...
+
+Aug 24 11:44:59 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > dz.interface Checking DirectAuthorize Enabled status
+
+...
+# check for dzsh
+Aug 24 11:44:59 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.objecthelper.user user rook is not forced into restricted environment
+
+...
+# completion return for function (getpwnam success later)
+Aug 24 11:44:59 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > daemon.ipcclient2 Returning user info: 'rook:(hidden):1166017722:4:Rook:/home/rook:/bin/bash'
+..
+Aug 24 11:44:59 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > daemon.ipcclient2 request 'NSSGetPasswdDataByName' complete
+
+
+=============================
+
+Aug 24 11:44:59 rhel65 adclient[3543]: DEBUG <fd:25 DAIReplacePasswdWithNoLoginShellByAudit > daemon.ipcclient2 executing request 'DAIReplacePasswdWithNoLoginShellByAudit' in thread 140309157201664
+Aug 24 11:44:59 rhel65 adclient[3543]: DEBUG <fd:25 DAIReplacePasswdWithNoLoginShellByAudit > daemon.ipcclient2 Checking if we need to replace with an no-login shell for user 'rook' 
+..
+Aug 24 11:44:59 rhel65 adclient[3543]: DEBUG <fd:25 DAIReplacePasswdWithNoLoginShellByAudit > daemon.ipcclient2 Audit level of user 'rook' is AuditIfPossible
+Aug 24 11:44:59 rhel65 adclient[3543]: DEBUG <fd:25 DAIReplacePasswdWithNoLoginShellByAudit > daemon.ipcclient2 Do not need to replace with an no-login shell for user 'rook' by audit. DA is not installed
+Aug 24 11:44:59 rhel65 adclient[3543]: DEBUG <fd:25 DAIReplacePasswdWithNoLoginShellByAudit > daemon.ipcclient2 request 'DAIReplacePasswdWithNoLoginShellByAudit' complete
+
+=============================
+## What determins whether we call getpwnam_centrifydc_r or something else?
+Aug 24 11:44:59 rhel65 adclient[3543]: DEBUG <fd:16 sshd(4339)> Result: account='rook' password=(hidden) UID='1166017722' GID='4' gecos='Rook' homedir='/home/rook' shell='/bin/bash' (returnlen=33)
+..
+Aug 24 11:44:59 rhel65 adclient[3543]: DEBUG <fd:16 sshd(4339)> <- getpwnam_centrifydc_r, result=NSS_SUCCESS(1)
+
+=============================
+# calling getpwname_centrifydc_r again... this is to setup authctxt & init pam (sshd[4339]: debug2: input_userauth_request: setting up authctxt for rook [preauth])
+# we call this a bunch of times and do a 'NSSGetPasswdDataByName and DAIReplacePasswdWithNoLoginShellByAudit run-through.
+# Just add a quick check to make sure the returns are good
+Aug 24 11:44:59 rhel65 adclient[3543]: DEBUG <fd:16 sshd(4339)> -> getpwnam_centrifydc_r  user="rook"
+Aug 24 11:44:59 rhel65 adclient[3543]: DEBUG <fd:16 sshd(4339)> User="rook" str2ent=(nil) result=0x7f0a581b9d60, buffer=0x7f0a5b13edc0
+Aug 24 11:44:59 rhel65 adclient[3543]: DEBUG <fd:16 sshd(4339)> User 'rook' is not an override user
+Aug 24 11:44:59 rhel65 adclient[3543]: DEBUG <main> daemon.ipcserver Accepted new lrpc2 client on <fd:25> with flags 0x00000802
+Aug 24 11:44:59 rhel65 adclient[3543]: DEBUG <main> util.threadpool Pool size 3/4, busy size 1/30
+Aug 24 11:44:59 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > daemon.ipcclient2 executing request 'NSSGetPasswdDataByName' in thread 140309188671232
+Aug 24 11:44:59 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > daemon.ipcclient2 Getting passwd data for 'rook'
+Aug 24 11:44:59 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.adagent Find GUID: 878563520e8926489c59c323df48c785 (7)
+Aug 24 11:44:59 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > base.objecthelper age 0, expire age 3600, cutoff time 0, refresh 5, negative=false, cacheOps 7
+Aug 24 11:44:59 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > daemon.ipcclient2 Returning user info: 'rook:(hidden):1166017722:4:Rook:/home/rook:/bin/bash'
+Aug 24 11:44:59 rhel65 adclient[3543]: DEBUG <fd:25 NSSGetPasswdDataByName > daemon.ipcclient2 request 'NSSGetPasswdDataByName' complete
+..
+Aug 24 11:44:59 rhel65 adclient[3543]: DEBUG <fd:16 sshd(4339)> Result: account='rook' password=(hidden) UID='1166017722' GID='4' gecos='Rook' homedir='/home/rook' shell='/bin/bash' (returnlen=33)
+Aug 24 11:44:59 rhel65 adclient[3543]: DEBUG <main> util.threadpool Pool size 3/4, busy size 1/30
+Aug 24 11:44:59 rhel65 adclient[3543]: DEBUG <fd:16 sshd(4339)> <- getpwnam_centrifydc_r, result=NSS_SUCCESS(1)
+
+=============================
+
+Aug 24 11:44:59 rhel65 adclient[3543]: DEBUG <fd:16 sshd(4341)> -> pam_sm_authenticate
+..
+Aug 24 11:44:59 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > daemon.ipcclient2 executing request 'PAMUserIsOurResponsibility' in thread 140309167691520
+Aug 24 11:44:59 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > daemon.ipcclient2 Checking to see if 'rook' is our responsibility.
+Aug 24 11:44:59 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > adclient.pam.util Creating CimsContext
+Aug 24 11:44:59 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > adclient.pam.util username rook, presented: , effective: , unix: unknown
+Aug 24 11:44:59 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.adagent Find GUID: 878563520e8926489c59c323df48c785 (f)
+Aug 24 11:44:59 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > base.objecthelper age 0, expire age 3600, cutoff time 0, refresh 5, negative=false, cacheOps f
+Aug 24 11:44:59 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > adclient.pam.util User is ours.
+Aug 24 11:44:59 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserIsOurResponsibility > daemon.ipcclient2 request 'PAMUserIsOurResponsibility' complete
+..
+## detect different unix name here, maybe?
+Aug 24 11:44:59 rhel65 adclient[3543]: DEBUG <fd:25 PAMGetUnixName > daemon.ipcclient2 executing request 'PAMGetUnixName' in thread 140309157201664
+Aug 24 11:44:59 rhel65 adclient[3543]: DEBUG <fd:25 PAMGetUnixName > daemon.ipcclient2 Getting unix name of 'rook'
+Aug 24 11:44:59 rhel65 adclient[3543]: DEBUG <fd:25 PAMGetUnixName > adclient.pam.util Creating CimsContext
+Aug 24 11:44:59 rhel65 adclient[3543]: DEBUG <fd:25 PAMGetUnixName > adclient.pam.util username rook, presented: , effective: , unix: unknown
+Aug 24 11:44:59 rhel65 adclient[3543]: DEBUG <fd:25 PAMGetUnixName > base.adagent Find GUID: 878563520e8926489c59c323df48c785 (7)
+Aug 24 11:44:59 rhel65 adclient[3543]: DEBUG <fd:25 PAMGetUnixName > base.objecthelper age 0, expire age 3600, cutoff time 0, refresh 5, negative=false, cacheOps 7
+Aug 24 11:44:59 rhel65 adclient[3543]: DEBUG <fd:25 PAMGetUnixName > daemon.ipcclient2 Unix name for 'rook' is 'rook'
+Aug 24 11:44:59 rhel65 adclient[3543]: DEBUG <fd:25 PAMGetUnixName > daemon.ipcclient2 request 'PAMGetUnixName' complete
+..
+Aug 24 11:44:59 rhel65 adclient[3543]: DEBUG <fd:16 sshd(4341)> Authentication for user 'rook'
+Aug 24 11:44:59 rhel65 adclient[3543]: DEBUG <fd:16 sshd(4341)> mfa_auth_type: Will do 'normal login' auth for user 'rook' by service 'sshd' 
+..
+Aug 24 11:44:59 rhel65 adclient[3543]: DEBUG <fd:16 sshd(4341)> rhel.smartcard.login.force is set to 0.
+Aug 24 11:44:59 rhel65 adclient[3543]: DEBUG <fd:16 sshd(4341)> smartcard.name.mapping is set to 0.
+
+
+...
+## subtract (or note) time between authtok prompt and authtok_success
+Aug 24 11:44:59 rhel65 adclient[3543]: DEBUG <fd:16 sshd(4341)> Prompt user for PAM_AUTHTOK: 'Password: ' 
+    # returns success regardless of validity or not. This is merely the action of the prompt and input.
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:25 PAMVerifyPassword > daemon.ipcclient2 executing request 'PAMVerifyPassword' in thread 140309157201664
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:25 PAMVerifyPassword > daemon.ipcclient2 Verifying password for user 'rook', application is sshd, DZPamGate check is Disabled
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:25 PAMVerifyPassword > adclient.pam.util Creating CimsContext
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:25 PAMVerifyPassword > adclient.pam.util username rook, presented: , effective: , unix: unknown
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:25 PAMVerifyPassword > base.adagent Find GUID: 878563520e8926489c59c323df48c785 (7)
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:25 PAMVerifyPassword > base.objecthelper age 2, expire age 3600, cutoff time 0, refresh 5, negative=false, cacheOps 7
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:25 PAMVerifyPassword > daemon.ipcclient validatePlainTextUser rook
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:25 PAMVerifyPassword > base.adagent Find GUID: 878563520e8926489c59c323df48c785 (7)
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:25 PAMVerifyPassword > base.objecthelper age 2, expire age 3600, cutoff time 0, refresh 5, negative=false, cacheOps 7
+Aug 24 11:45:01 rhel65 adclient[3543]: DIAG  <fd:25 PAMVerifyPassword > daemon.ipcclient validatePlainTextUser user=rook domain=ALERA.ATH
+Aug 24 11:45:01 rhel65 adclient[3543]: DIAG  <fd:25 PAMVerifyPassword > daemon.ipcclient Validating password for rook against KDC
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:25 PAMVerifyPassword > base.aduser getKerberosName: name=rook, uobj.isEmpty: false
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:25 PAMVerifyPassword > base.aduser Getting user (user & pw) rook@ALERA.ATH 
+Aug 24 11:45:01 rhel65 adclient[3543]: DIAG  <fd:25 PAMVerifyPassword > base.aduser getCredentials for rook@ALERA.ATH salt:
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:25 PAMVerifyPassword > base.adagent Domain Level for 'ALERA.ATH' is not PreW2K8
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:25 PAMVerifyPassword > base.kerberos.keytab GetSaltFromKDC for rook@ALERA.ATH
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:25 PAMVerifyPassword > dns.findkdc KDC locator for ALERA.ATH
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:25 PAMVerifyPassword > network.state Got favorite dc:dc03.alera.ath from kset for serviceType:KDC
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:25 PAMVerifyPassword > network.state NST: SniffList: postfailsort=dc03.alera.ath
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:25 PAMVerifyPassword > base.bind.udp UDPBinding::search :(&(NtVer=\06\00\00\00))
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:25 PAMVerifyPassword > base.bind.udp UDPBinding::connectToServer - 10.0.0.51
+Aug 24 11:45:01 rhel65 adclient[3543]: DIAG  <fd:25 PAMVerifyPassword > base.bind.ldap 10.0.0.51:389 search base="" filter="(&(NtVer=\06\00\00\00))"
+..
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:25 PAMVerifyPassword > daemon.ipcclient2 Password verification succeeded for user 'rook'
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:25 PAMVerifyPassword > daemon.ipcclient2 Stored credentials for user 'rook', uid 1166017722
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:25 PAMVerifyPassword > daemon.ipcclient2 request 'PAMVerifyPassword' complete
+
+...
+
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:25 PAMIsMfaRequired > daemon.ipcclient2 Check if MFA is required for 'rook'
+..
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:25 PAMIsMfaRequired > daemon.ipcclient2 MFA is not required for 'rook'
+
+...
+
+Aug 24 11:45:01 rhel65 adclient[3543]: INFO  AUDIT_TRAIL|Centrify Suite|PAM|1.0|100|PAM authentication granted|5|user=rook(type:ad,rook@ALERA.ATH) pid=4341 utc=1472064301765 centrifyEventID=24100 status=GRANTED service=sshd tty=ssh client=10.0.0.15
+..
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:16 sshd(4341)> <- pam_sm_authenticate, result=PAM_SUCCESS(0)
+
+
+============================================
+
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:27 sshd(4341)> -> pam_sm_acct_mgmt
+..
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:16 PAMIsUserAllowedAccess2 > daemon.ipcclient2 executing request 'PAMIsUserAllowedAccess2' in thread 140309178181376
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:16 PAMIsUserAllowedAccess2 > daemon.ipcclient2 Checking to see if user 'rook' is allowed access to sshd from callerUID 0
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:16 PAMIsUserAllowedAccess2 > adclient.pam.util Creating CimsContext
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:16 PAMIsUserAllowedAccess2 > adclient.pam.util username rook, presented: , effective: , unix: unknown
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:16 PAMIsUserAllowedAccess2 > base.adagent Find GUID: 878563520e8926489c59c323df48c785 (7)
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:16 PAMIsUserAllowedAccess2 > base.objecthelper age 2, expire age 3600, cutoff time 0, refresh 5, negative=false, cacheOps 7
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:16 PAMIsUserAllowedAccess2 > base.adagent Find GUID: 878563520e8926489c59c323df48c785 (7)
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:16 PAMIsUserAllowedAccess2 > base.objecthelper age 2, expire age 3600, cutoff time 0, refresh 5, negative=false, cacheOps 7
+Aug 24 11:45:01 rhel65 adclient[3543]: DIAG  <fd:16 PAMIsUserAllowedAccess2 > base.aduser CN=Rook,OU=Second,OU=Legion,DC=alera,DC=ath logonHours restricted: No
+Aug 24 11:45:01 rhel65 adclient[3543]: DIAG  <fd:16 PAMIsUserAllowedAccess2 > base.aduser CN=Rook,OU=Second,OU=Legion,DC=alera,DC=ath: AccountLocked: false
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:16 PAMIsUserAllowedAccess2 > dz.interface Checking DirectAuthorize Enabled status
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:16 PAMIsUserAllowedAccess2 > daemon.ipcclient2 Checking whether user rook@ALERA.ATH is allowed access via Dz
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:16 PAMIsUserAllowedAccess2 > dz.interface Checking DirectAuthorize Enabled status
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:16 PAMIsUserAllowedAccess2 > dz.interface SAM, is user cn=rook,ou=second,ou=legion,dc=alera,dc=ath allowed to use PAM sshd?
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:16 PAMIsUserAllowedAccess2 > dz.interface /etc/group is newer than dz.cache, need to read from LAH
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:16 PAMIsUserAllowedAccess2 > base.lah No need to reload local accounts into memory: m_localUserMap.size():42, m_localGroupMap.size():69
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:16 PAMIsUserAllowedAccess2 > dz.interface SAM, is user cn=rook,ou=second,ou=legion,dc=alera,dc=ath allowed to use PAM sshd? Y
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:16 PAMIsUserAllowedAccess2 > audit User 'rook' is authorized
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:16 PAMIsUserAllowedAccess2 > daemon.ipcclient2 User 'rook' is allowed access
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:16 PAMIsUserAllowedAccess2 > daemon.ipcclient2 request 'PAMIsUserAllowedAccess2' complete
+
+...
+
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:16 PAMDoesLegacyConflictExist > daemon.ipcclient2 executing request 'PAMDoesLegacyConflictExist' in thread 140309167691520
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:16 PAMDoesLegacyConflictExist > daemon.ipcclient2 Checking to see whether a legacy conflict exists for user 'rook'
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:16 PAMDoesLegacyConflictExist > adclient.pam.util Creating CimsContext
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:16 PAMDoesLegacyConflictExist > adclient.pam.util username rook, presented: , effective: , unix: unknown
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:16 PAMDoesLegacyConflictExist > base.adagent Find GUID: 878563520e8926489c59c323df48c785 (7)
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:16 PAMDoesLegacyConflictExist > base.objecthelper age 2, expire age 3600, cutoff time 0, refresh 5, negative=false, cacheOps 7
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:16 PAMDoesLegacyConflictExist > adclient.pam.util Checked for local account 'rook', UID=1166017722: not found
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:16 PAMDoesLegacyConflictExist > daemon.ipcclient2 No legacy conflict for user 'rook'
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:16 PAMDoesLegacyConflictExist > daemon.ipcclient2 request 'PAMDoesLegacyConflictExist' complete
+
+...
+
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:16 PAMTimeUntilPasswordChange > daemon.ipcclient2 executing request 'PAMTimeUntilPasswordChange' in thread 140309188671232
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:16 PAMTimeUntilPasswordChange > daemon.ipcclient2 Checking to see how long before a password change is required for user 'rook'
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:16 PAMTimeUntilPasswordChange > adclient.pam.util Creating CimsContext
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:16 PAMTimeUntilPasswordChange > adclient.pam.util username rook, presented: , effective: , unix: unknown
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:16 PAMTimeUntilPasswordChange > base.adagent Find GUID: 878563520e8926489c59c323df48c785 (7)
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:16 PAMTimeUntilPasswordChange > base.objecthelper age 2, expire age 3600, cutoff time 0, refresh 5, negative=false, cacheOps 7
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:16 PAMTimeUntilPasswordChange > daemon.ipcclient2 User 'rook' must change their password in -1312400968 seconds
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:16 PAMTimeUntilPasswordChange > daemon.ipcclient2 Time until next password change is 2147483647 seconds
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:16 PAMTimeUntilPasswordChange > daemon.ipcclient2 request 'PAMTimeUntilPasswordChange' complete
+
+...
+
+Aug 24 11:45:01 rhel65 adclient[3543]: INFO  AUDIT_TRAIL|Centrify Suite|PAM|1.0|300|PAM account management granted|5|user=rook(type:ad,rook@ALERA.ATH) pid=4341 utc=1472064301769 centrifyEventID=24300 status=GRANTED service=sshd tty=ssh client=10.0.0.15
+..
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:27 sshd(4341)> <- pam_sm_acct_mgmt, result=PAM_SUCCESS(0)
+
+...
+
+Aug 24 11:45:01 rhel65 sshd[4339]: Accepted keyboard-interactive/pam for rook from 10.0.0.15 port 36001 ssh2
+
+======================================
+## getting groups
+
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:16 sshd(4339)> -> getgroups_centrifydc_r  user=rook
+..
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:27 NSSGetUserGroupIDs > base.objecthelper.user Membership Update: Up-to-date: CN=Rook,OU=Second,OU=Legion,DC=alera,DC=ath (21 groups)
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:27 NSSGetUserGroupIDs > base.objecthelper.user Refreshing Unix group membership for user rook
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:27 NSSGetUserGroupIDs > util.properties Config file [/etc/centrifydc/group.ovr] does not exist.
+
+...
+# Maybe include a switch (or -vvv) to display *discovered* group memberships
+Aug 24 11:45:01 rhel65 adclient[3543]: DIAG  <fd:27 NSSGetUserGroupIDs > base.bind.ldap 10.0.0.51:389 search base="CN=Groups,CN=Alera,CN=Zones,OU=Centrify,DC=alera,DC=ath" filter="(&(gidNumber=4)(displayName=$CimsGroupVersion*))"
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:27 NSSGetUserGroupIDs > lrpc.adobject new object: <GUID=cf75b54b107b444a90e46074f58ef567>;CN=cfyG_adm@alera.ath,CN=Groups,CN=Alera,CN=Zones,OU=Centrify,DC=alera,DC=ath
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:27 NSSGetUserGroupIDs > base.bind.cache ADCB::search: refresh list returns 1 objects
+
+...
+# group additions to cache
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:27 NSSGetUserGroupIDs > lrpc.adobject new object: <GUID=65a43dd7bd0b044786c512847c291b77>;CN=Security MS@alera.ath,CN=Groups,CN=Alera,CN=Zones,OU=Centrify,DC=alera,DC=ath
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:27 NSSGetUserGroupIDs > lrpc.adobject new object: <GUID=492c24824edbba4a919f33b2793335cf>;CN=Logistics@alera.ath,CN=Groups,CN=Alera,CN=Zones,OU=Centrify,DC=alera,DC=ath
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:27 NSSGetUserGroupIDs > lrpc.adobject new object: <GUID=5d1d5efafaaff142a780b24724ea6845>;CN=Security UX@alera.ath,CN=Groups,CN=Alera,CN=Zones,OU=Centrify,DC=alera,DC=ath
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:27 NSSGetUserGroupIDs > lrpc.adobject new object: <GUID=bed6e9df4c78234abb401d335a7b631c>;CN=develop@alera.ath,CN=Groups,CN=Alera,CN=Zones,OU=Centrify,DC=alera,DC=ath
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:27 NSSGetUserGroupIDs > lrpc.adobject new object: <GUID=020e8c62cadb4747a026e5192362b97a>;CN=develop1@alera.ath,CN=Groups,CN=Alera,CN=Zones,OU=Centrify,DC=alera,DC=ath
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:27 NSSGetUserGroupIDs > lrpc.adobject new object: <GUID=c1c66b6ba6e16444aede206ac42b3b76>;CN=develop3@alera.ath,CN=Groups,CN=Alera,CN=Zones,OU=Centrify,DC=alera,DC=ath
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:27 NSSGetUserGroupIDs > lrpc.adobject new object: <GUID=cf75b54b107b444a90e46074f58ef567>;CN=cfyG_adm@alera.ath,CN=Groups,CN=Alera,CN=Zones,OU=Centrify,DC=alera,DC=ath
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:27 NSSGetUserGroupIDs > lrpc.adobject new object: <GUID=6535199e94227e40a284d7308697ddf3>;CN=cfyG_wheel@alera.ath,CN=Groups,CN=Alera,CN=Zones,OU=Centrify,DC=alera,DC=ath
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:27 NSSGetUserGroupIDs > lrpc.adobject new object: <GUID=d80ce8441e922a489c2a605690c90ff9>;CN=Domain Users@alera.ath,CN=Groups,CN=Alera,CN=Zones,OU=Centrify,DC=alera,DC=ath
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:27 NSSGetUserGroupIDs > base.bind.cache ADCB::search: refresh list returns 9 objects
+
+..
+#may be able/better to query off of this instead of above..
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:27 NSSGetUserGroupIDs > lrpc.adobject new object: <GUID=dd491f1768404b44a02b6401f9c96aca>;<SID=010500000000000515000000a09fc63116f9353f233f488ef8040000>;CN=develop,OU=Groups,DC=alera,DC=ath
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:27 NSSGetUserGroupIDs > base.objecthelper.group prepare CN=develop,OU=Groups,DC=alera,DC=ath, cacheOps 7, new usn 27182, old usn none
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:27 NSSGetUserGroupIDs > base.zonehier fetchAndExtend: develop
+
+or (probably ideal)
+
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:27 NSSGetUserGroupIDs > base.cache Cache store <GUID=44321dc1ecc68a4d9fe138b1d22cb5f7>;<SID=010500000000000515000000a09fc63116f9353f233f488efa040000>;CN=develop3,OU=Groups,DC=alera,DC=ath : update indexes Yes
+
+...
+
+**great one
+
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:27 NSSGetUserGroupIDs > base.objecthelper.user getUserGroupsByUser: rook is a member of 7 zone groups vs 21 AD groups
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:27 NSSGetUserGroupIDs > daemon.ipcclient O:getUnixGroups for rook
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:27 NSSGetUserGroupIDs > daemon.ipcclient2 Failed to open: /home/rook/.setgrpsrc errno = 2
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:27 NSSGetUserGroupIDs > daemon.ipcclient2 Found group 8 IDs for user 'rook' (ID's are not logged)
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <main> util.threadpool Pool size 3/4, busy size 1/30
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:16 sshd(4339)>   GID array count: 8   capacity: 64   GIDs: 4,1166017784,1166017785,1166017786,1166017025,1166017729,1166017713,1166017730
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <main> util.threadpool Pool size 3/4, busy size 1/30
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:16 sshd(4339)> <- getgroups_centrifydc_r, result=NSS_SUCCESS(1)
+
+
+============================================
+
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:25 sshd(4339)> -> pam_sm_setcred
+..
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:16 PAMUserIsOurResponsibility > daemon.ipcclient2 executing request 'PAMUserIsOurResponsibility' in thread 140309178181376
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:16 PAMUserIsOurResponsibility > daemon.ipcclient2 Checking to see if 'rook' is our responsibility.
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:16 PAMUserIsOurResponsibility > adclient.pam.util Creating CimsContext
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:16 PAMUserIsOurResponsibility > adclient.pam.util username rook, presented: , effective: , unix: unknown
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:16 PAMUserIsOurResponsibility > base.adagent Find GUID: 878563520e8926489c59c323df48c785 (f)
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:16 PAMUserIsOurResponsibility > base.objecthelper age 2, expire age 3600, cutoff time 0, refresh 5, negative=false, cacheOps f
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:16 PAMUserIsOurResponsibility > adclient.pam.util User is ours.
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:16 PAMUserIsOurResponsibility > daemon.ipcclient2 request 'PAMUserIsOurResponsibility' complete
+..
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:16 PAMGetUnixName > daemon.ipcclient2 executing request 'PAMGetUnixName' in thread 140309188671232
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:16 PAMGetUnixName > daemon.ipcclient2 Getting unix name of 'rook'
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:16 PAMGetUnixName > adclient.pam.util Creating CimsContext
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:16 PAMGetUnixName > adclient.pam.util username rook, presented: , effective: , unix: unknown
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:16 PAMGetUnixName > base.adagent Find GUID: 878563520e8926489c59c323df48c785 (7)
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:16 PAMGetUnixName > base.objecthelper age 2, expire age 3600, cutoff time 0, refresh 5, negative=false, cacheOps 7
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:16 PAMGetUnixName > daemon.ipcclient2 Unix name for 'rook' is 'rook'
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:16 PAMGetUnixName > daemon.ipcclient2 request 'PAMGetUnixName' complete
+
+...
+# compare with SSO
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:25 sshd(4339)> Set credentials for user 'rook'
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <main> util.threadpool Pool size 3/4, busy size 1/30
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:25 sshd(4339)> Setting credentials for user 'rook'
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <main> util.threadpool Pool size 3/4, busy size 1/30
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:25 sshd(4339)> No pam_getenv(KRB5CCNAME) 
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <main> util.threadpool Pool size 3/4, busy size 1/30
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:25 sshd(4339)> No getenv(KRB5CCNAME) 
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <main> util.threadpool Pool size 3/4, busy size 1/30
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:25 sshd(4339)> Creating credentials for user 'rook'
+
+...
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:16 PAMCreateKrb5Creds > daemon.ipcclient2 executing request 'PAMCreateKrb5Creds' in thread 140309188671232
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:16 PAMCreateKrb5Creds > daemon.ipcclient2 Creating krb5 credentials cache for user 'rook'
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:16 PAMCreateKrb5Creds > adclient.pam.util Creating CimsContext
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:16 PAMCreateKrb5Creds > adclient.pam.util username rook, presented: , effective: , unix: unknown
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:16 PAMCreateKrb5Creds > base.adagent Find GUID: 878563520e8926489c59c323df48c785 (7)
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:16 PAMCreateKrb5Creds > base.objecthelper age 2, expire age 3600, cutoff time 0, refresh 5, negative=false, cacheOps 7
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:16 PAMCreateKrb5Creds > base.aduser getKerberosName: name=rook, uobj.isEmpty: false
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:16 PAMCreateKrb5Creds > base.aduser Checking if ccache 'FILE:/tmp/krb5cc_1166017722' has any credential in it .....
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:16 PAMCreateKrb5Creds > base.kerberos.krb5cacheops Generated unique FILE based ccache name: 'FILE:/tmp/krb5cc_cdc1166017722_atwexv'
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:16 PAMCreateKrb5Creds > base.aduser Storing credentials for rook@ALERA.ATH in FILE:/tmp/krb5cc_cdc1166017722_atwexv
+
+...
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:25 sshd(4339)> Set credentials for user 'rook': Credentials file created in 'FILE:/tmp/krb5cc_cdc1166017722_atwexv'
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <main> util.threadpool Pool size 3/4, busy size 1/30
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:25 sshd(4339)> Set credentials: Set environment variable "KRB5CCNAME=FILE:/tmp/krb5cc_cdc1166017722_atwexv" via pam_putenv
+..
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:25 sshd(4339)> <- pam_sm_setcred, result=PAM_SUCCESS(0)
+..
+Aug 24 11:45:01 rhel65 adclient[3543]: INFO  AUDIT_TRAIL|Centrify Suite|PAM|1.0|200|PAM set credentials granted|5|user=rook(type:ad,rook@ALERA.ATH) pid=4339 utc=1472064301855 centrifyEventID=24200 status=GRANTED service=sshd tty=ssh client=10.0.0.15
+
+============================
+
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:16 sshd(4339)> -> pam_sm_open_session
+..
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:25 PAMGetUnixName > daemon.ipcclient2 executing request 'PAMGetUnixName' in thread 140309167691520
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:25 PAMGetUnixName > daemon.ipcclient2 Getting unix name of 'rook'
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:25 PAMGetUnixName > adclient.pam.util Creating CimsContext
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:25 PAMGetUnixName > adclient.pam.util username rook, presented: , effective: , unix: unknown
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:25 PAMGetUnixName > base.adagent Find GUID: 878563520e8926489c59c323df48c785 (7)
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:25 PAMGetUnixName > base.objecthelper age 2, expire age 3600, cutoff time 0, refresh 5, negative=false, cacheOps 7
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:25 PAMGetUnixName > daemon.ipcclient2 Unix name for 'rook' is 'rook'
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:25 PAMGetUnixName > daemon.ipcclient2 request 'PAMGetUnixName' complete
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:16 sshd(4339)> Open session for user 'rook'
+..
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:25 PAMGetSessionEnv > daemon.ipcclient2 executing request 'PAMGetSessionEnv' in thread 140309188671232
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:25 PAMGetSessionEnv > daemon.ipcclient2 Getting environment variables for user 'rook'
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:25 PAMGetSessionEnv > daemon.ipcclient2 Generate GUID for PAM: ded5ff4c-4ceb-794d-8656-ce438a1be499
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:25 PAMGetSessionEnv > network.state Got favorite dc:dc03.alera.ath from kset for serviceType:LDAP
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:25 PAMGetSessionEnv > base.adagent Find GUID: 878563520e8926489c59c323df48c785 (7)
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:25 PAMGetSessionEnv > base.objecthelper age 2, expire age 3600, cutoff time 0, refresh 5, negative=false, cacheOps 7
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:25 PAMGetSessionEnv > base.aduser Windows Kerberos name for CN=Rook,OU=Second,OU=Legion,DC=alera,DC=ath: rook@ALERA.ATH
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:25 PAMGetSessionEnv > daemon.ipcclient2 Completed request for environment variables for user 'rook'
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:25 PAMGetSessionEnv > daemon.ipcclient2 CDC_JOINED_ZONE = 'CN=Legion,CN=Alera,CN=Zones,OU=Centrify,DC=alera,DC=ath'
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:25 PAMGetSessionEnv > daemon.ipcclient2 CDC_LOCALHOST = 'rhel65.alera.ath'
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:25 PAMGetSessionEnv > daemon.ipcclient2 CDC_PREW2KHOST = 'rhel65'
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:25 PAMGetSessionEnv > daemon.ipcclient2 CDC_JOINED_SITE = 'Default-First-Site-Name'
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:25 PAMGetSessionEnv > daemon.ipcclient2 CDC_JOINED_DOMAIN = 'alera.ath'
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:25 PAMGetSessionEnv > daemon.ipcclient2 CDC_JOINED_DC = 'dc03.alera.ath'
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:25 PAMGetSessionEnv > daemon.ipcclient2 USER_PRINCIPAL_NAME = 'rook@ALERA.ATH'
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:25 PAMGetSessionEnv > daemon.ipcclient2 DA_SESSION_ID_AUTH = 'ded5ff4c-4ceb-794d-8656-ce438a1be499'
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:25 PAMGetSessionEnv > daemon.ipcclient2 request 'PAMGetSessionEnv' complete
+..
+
+...
+
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:16 sshd(4339)> Open session: Set environment variable "CDC_JOINED_ZONE=CN=Legion,CN=Alera,CN=Zones,OU=Centrify,DC=alera,DC=ath" via pam_putenv
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:16 sshd(4339)> Open session: Set environment variable "CDC_LOCALHOST=rhel65.alera.ath" via pam_putenv
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:16 sshd(4339)> Open session: Set environment variable "CDC_PREW2KHOST=rhel65" via pam_putenv
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:16 sshd(4339)> Open session: Set environment variable "CDC_JOINED_SITE=Default-First-Site-Name" via pam_putenv
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:16 sshd(4339)> Open session: Set environment variable "CDC_JOINED_DOMAIN=alera.ath" via pam_putenv
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:16 sshd(4339)> Open session: Set environment variable "CDC_JOINED_DC=dc03.alera.ath" via pam_putenv
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:16 sshd(4339)> Open session: Set environment variable "USER_PRINCIPAL_NAME=rook@ALERA.ATH" via pam_putenv
+..
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:25 PAMCreateHomeDirectory > daemon.ipcclient2 executing request 'PAMCreateHomeDirectory' in thread 140309188671232
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:25 PAMCreateHomeDirectory > daemon.ipcclient2 Creating home directory for user 'rook'
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:25 PAMCreateHomeDirectory > adclient.pam.util Creating CimsContext
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:25 PAMCreateHomeDirectory > adclient.pam.util username rook, presented: , effective: , unix: unknown
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:25 PAMCreateHomeDirectory > base.adagent Find GUID: 878563520e8926489c59c323df48c785 (7)
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:25 PAMCreateHomeDirectory > base.objecthelper age 2, expire age 3600, cutoff time 0, refresh 5, negative=false, cacheOps 7
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:25 PAMCreateHomeDirectory > base.aduser Windows Kerberos name for CN=Rook,OU=Second,OU=Legion,DC=alera,DC=ath: rook@ALERA.ATH
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:25 PAMCreateHomeDirectory > pam.util Directory /home/rook for user rook: already exists.
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:25 PAMCreateHomeDirectory > pam.util /home/rook/.k5login already exists. Skip creating.
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:25 PAMCreateHomeDirectory > daemon.ipcclient2 request 'PAMCreateHomeDirectory' complete
+..
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:16 sshd(4339)> Open session for user 'rook': directory already exists. 
+
+...
+
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > daemon.ipcclient2 executing request 'PAMUserLoggedIn' in thread 140309157201664
+Aug 24 11:45:01 rhel65 adclient[3543]: DEBUG <fd:25 PAMUserLoggedIn > daemon.ipcclient2 User 'rook' has logged in
+..
+
+...
+
+Aug 24 11:45:03 rhel65 adclient[3543]: DEBUG <fd:16 NSSGetPasswdDataByName > daemon.ipcclient2 executing request 'NSSGetPasswdDataByName' in thread 140309167691520
+Aug 24 11:45:03 rhel65 adclient[3543]: DEBUG <fd:16 NSSGetPasswdDataByName > daemon.ipcclient2 Getting passwd data for 'rook'
+Aug 24 11:45:03 rhel65 adclient[3543]: DEBUG <fd:16 NSSGetPasswdDataByName > base.adagent Find GUID: 878563520e8926489c59c323df48c785 (7)
+Aug 24 11:45:03 rhel65 adclient[3543]: DEBUG <fd:16 NSSGetPasswdDataByName > base.objecthelper age 4, expire age 3600, cutoff time 0, refresh 5, negative=false, cacheOps 7
+Aug 24 11:45:03 rhel65 adclient[3543]: DEBUG <fd:16 NSSGetPasswdDataByName > daemon.ipcclient2 Returning user info: 'rook:(hidden):1166017722:4:Rook:/home/rook:/bin/bash'
+Aug 24 11:45:03 rhel65 adclient[3543]: DEBUG <fd:16 NSSGetPasswdDataByName > daemon.ipcclient2 request 'NSSGetPasswdDataByName' complete
+
+...
+
+Aug 24 11:45:03 rhel65 adclient[3543]: DEBUG <fd:16 sshd(4339)> <- pam_sm_open_session, result=PAM_SUCCESS(0)
+..
+Aug 24 11:45:03 rhel65 adclient[3543]: INFO  AUDIT_TRAIL|Centrify Suite|PAM|1.0|500|PAM open session granted|5|user=rook(type:ad,rook@ALERA.ATH) pid=4339 utc=1472064303056 centrifyEventID=24500 status=GRANTED service=sshd tty=ssh client=10.0.0.15
+..
+Aug 24 11:45:03 rhel65 adclient[3543]: INFO  AUDIT_TRAIL|Centrify Suite|Centrify sshd|1.0|100|SSHD granted|5|user=rook(type:ad,rook@ALERA.ATH) pid=4339 utc=1472064303132 centrifyEventID=27100 status=GRANTED service=ssh-connection tty=/dev/pts/1 authMechanism=keyboard-interactive client=10.0.0.15 sshRights=shell command=(none)
+
+
+
+
