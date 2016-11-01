@@ -88,8 +88,8 @@ def main(argv, input_file):
             \nPlease verify command integrity and dependent pattern file './pat_file' exists and is readable""" )
 
     p   = parse_out
-    p1  = vs.process_out
-    print_goodness( p, p1, input_file, file_size, pretty, vs.pat_store, vs.suserd )
+    #p1  = vs.process_out
+    #print_goodness( p, p1, input_file, file_size, pretty, vs.pat_store, vs.suserd )
 
 
 
@@ -124,17 +124,19 @@ def parse(parse_target,patterns,vs):
         try: 
             if re.match( vs.time_chk, chunkyank):
                 vs.timestamp = chunkyank #alt - split by fields
-            if vs.i == 0: 
-                time_calc( vs.i, vs.timestamp, vs, line_count, end=0 )
-                vs.i += 1
-            if len(vs.timestamp.split()) == 3:
-                p_ts = line.split()[:3]
-                extra_time.append(int(p_ts[2].split(":")[2]))
-                if ( extra_time[-1]-extra_time[0] ) >= 5:
+                if vs.i == 0: 
                     time_calc( vs.i, vs.timestamp, vs, line_count, end=0 )
-                extra_time.remove(extra_time[0])
+                    vs.i += 1
+                if len(vs.timestamp.split()) == 3:
+                    p_ts = line.split()[:3]
+                    extra_time.append(int(p_ts[2].split(":")[2]))
+                    if ( extra_time[-1]-extra_time[0] ) >= 5:
+                        time_calc( vs.i, vs.timestamp, vs, line_count, end=0 )
+                    extra_time.remove(extra_time[0])
 
-        except:
+        except RuntimeError:
+            print("timestamp fail")
+            
             pass
         finally:
             if ( line.find("Accepted new lrpc2 client on <fd:") ) >= 0:
@@ -210,8 +212,8 @@ def parse(parse_target,patterns,vs):
         vs.s_usersc.append(str(vs.s_users.count(s_user)))
     for f_user in set(vs.f_users):
         vs.f_usersc.append(str(vs.f_users.count(f_user)))
-    s_tse,e_tse = [],[]
 
+    print(pr.slooptse)
 
 
 
@@ -253,7 +255,8 @@ class Process:
         self.ssh_userl  = []
         self.sloopstart = []
         self.sloopend   = []
-        self.sloop     = defaultdict(list)
+        self.sloop      = defaultdict(list)
+        self.slooptse   = defaultdict(list)
 
     def sshd(self, line, ts, vs, line_count, success=1):
         #self.auth_time = time_calc( vs.i, ts, vs, line_count, end=1 )
@@ -270,20 +273,19 @@ class Process:
                 vs.s_users.append(s_user)
                 self.sloopend.append(line)
                 if self.sloop[s_user]:
-                    #print("pre_append",self.sloop[s_user])
                     self.sloop[s_user].append(line)
-                    #print("post_append",self.sloop[s_user])
                     print("start",self.sloop[s_user][0].strip()[0:15])
                     print(self.sloop[s_user][0])
                     print("end",self.sloop[s_user][-1].strip()[0:15])
                     print(self.sloop[s_user][-1])
                     # do time stuff with completed loop
-                    #s_ts = self.sloop[s_user][0].strip()[0:15]
-                    #e_ts = e.strip()[0:15]
-                    #s_tse += time_calc( vs.i, s_ts, vs, line_count, oneoff=1 )
-                    #e_tse += time_calc( vs.i, e_ts, vs, line_count, oneoff=1 )
+                    sts = self.sloop[s_user][0].strip()[0:15]
+                    ets = self.sloop[s_user][-1].strip()[0:15]
+                    s_ts = time_calc( vs.i, sts, vs, line_count, oneoff=1 )
+                    e_ts = time_calc( vs.i, ets, vs, line_count, oneoff=1 )
+                    self.slooptse[s_user].append(e_ts)
+                    print(self.slooptse)
                     del self.sloop[s_user] #remove user loop so that next one can enter
-                   # print("post_del",self.sloop[s_user])
                 else:
                     #unknown logic - broken login loop
                     pass
@@ -345,7 +347,7 @@ class VarStore:
     def __init__(self):
         self.pat_store = ()
 
-        self.time_chk       = re.compile(r'^([A-Za-z]{3} [0-9]{2} [0-9]{2}[:]?[0-9:]+.*)$')
+        self.time_chk       = re.compile(r'^([A-Za-z]{3}  ?[0-9]{1,2} [0-9]{2}[:]?[0-9:]+.*)$')
         self.reg            = Re()
         self.x              = 0
         self.nss_count      = 0
@@ -438,11 +440,16 @@ def time_calc( i, timestamp, vs, line_count, end=0, oneoff=0 ):
         vs.otimes                   += ( mktime(convert_time(timestamp)[1]), )  
         if len(vs.otimes) > 2: del vs.otimes[0]
         #print(vs.otimes)
-        duration            = timedelta( seconds=( vs.otimes[-1]-vs.otimes[0] ) )
-        #print(duration)
-        d                   = datetime( 1,1,1 ) + duration
+        if len(vs.otimes) == 2:
+            duration            = timedelta( seconds=( vs.otimes[-1]-vs.otimes[0] ) )
+            #print(duration)
+            d                   = datetime( 1,1,1 ) + duration
+            return ( timestamp, d )
+            del vs.otimesi[:]
+        else:
+            pass
 
-        return ( timestamp, d )
+        #return ( timestamp, d )
             
 
 
@@ -451,7 +458,7 @@ months = dict(jan=1,feb=2,mar=3,apr=4,may=5,jun=6,jul=7,aug=8,sep=9,oct=10,nov=1
 
 def convert_time(string, year=None):
     if year is None: year = time.gmtime()[0]
-    mon,d,t = string.split(" ")
+    mon,d,t = filter(None, string.split(" "))
     h,m,s   = t.split(":")
     mon     = months[mon.lower()]
     tt      = [year, mon,d,h,m,s,0,0,0]
