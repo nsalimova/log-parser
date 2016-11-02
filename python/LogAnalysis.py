@@ -88,8 +88,8 @@ def main(argv, input_file):
             \nPlease verify command integrity and dependent pattern file './pat_file' exists and is readable""" )
 
     p   = parse_out
-    #p1  = vs.process_out
-    #print_goodness( p, p1, input_file, file_size, pretty, vs.pat_store, vs.suserd )
+    p1  = vs.process_out
+    print_goodness( p, p1, input_file, file_size, pretty, vs.pat_store, vs.suserd )
 
 
 
@@ -213,8 +213,24 @@ def parse(parse_target,patterns,vs):
     for f_user in set(vs.f_users):
         vs.f_usersc.append(str(vs.f_users.count(f_user)))
 
-    print(pr.slooptse)
 
+    test = []
+    print(vs.slooptse.items())
+    for u in vs.s_users:
+        for k,v in vs.slooptse.items():
+            if k in vs.s_users:
+                #print(u, *tepoch, sep=",")
+                for t in v:
+                    tepoch = (t.minute/60 + t.second)
+    for u in set(vs.s_users):
+        if u in vs.slooptse:
+            #for t in vs.slooptse[u]:
+            print(u, *vs.slooptse[u], sep=", ")
+
+    print(test)
+            
+
+    
 
 
 
@@ -251,12 +267,11 @@ class Process:
         self.sat_e      = None
         self.i          = 0
         self.auth_time  = False
-        self.s_userc    = 0
+        #self.s_userc    = 0
         self.ssh_userl  = []
         self.sloopstart = []
         self.sloopend   = []
         self.sloop      = defaultdict(list)
-        self.slooptse   = defaultdict(list)
 
     def sshd(self, line, ts, vs, line_count, success=1):
         #self.auth_time = time_calc( vs.i, ts, vs, line_count, end=1 )
@@ -283,8 +298,7 @@ class Process:
                     ets = self.sloop[s_user][-1].strip()[0:15]
                     s_ts = time_calc( vs.i, sts, vs, line_count, oneoff=1 )
                     e_ts = time_calc( vs.i, ets, vs, line_count, oneoff=1 )
-                    self.slooptse[s_user].append(e_ts)
-                    print(self.slooptse)
+                    vs.slooptse[s_user].append(e_ts)
                     del self.sloop[s_user] #remove user loop so that next one can enter
                 else:
                     #unknown logic - broken login loop
@@ -355,7 +369,8 @@ class VarStore:
         self.i              = 0
         self.log_start      = None
         self.timestamp      = None
-        self.suserd         = defaultdict(list)
+        self.suserd         = None#defaultdict(list)
+        self.slooptse       = defaultdict(list)
         
 
         (self.times, self.time_gap, 
@@ -364,7 +379,7 @@ class VarStore:
          self.dz_users, self.s_users, 
          self.f_users,self.at_times,
          self.s_usersc,self.f_usersc,
-         self.a_gap,self.otimes)              = [[] for li in range(14)]
+         self.a_gap,self.otimes,self.slepoch)        = [[] for li in range(15)]
 
         self.sshd_keys  = ['pam_sm_authenticate','PAMGetUnixName','AUDIT_TRAIL','PAM_AUTHTOK',
                            'Authentication for user']
@@ -384,7 +399,7 @@ class VarStore:
 
     def process_results( self ):
         self.process_out    = { 's_users':self.s_users,'s_usersc':self.s_usersc,'f_users':self.f_users, \
-                    'f_usersc':self.f_usersc,'a_gap':self.a_gap }
+                    'f_usersc':self.f_usersc,'a_gap':self.a_gap, 'slepoch':self.slepoch }
 
 ## DO SOMETHING WITH THIS OR GET RID OF IT
 ## http://stackoverflow.com/questions/597476/how-to-concisely-cascade-through-multiple-regex-statements-in-python/597493
@@ -444,7 +459,7 @@ def time_calc( i, timestamp, vs, line_count, end=0, oneoff=0 ):
             duration            = timedelta( seconds=( vs.otimes[-1]-vs.otimes[0] ) )
             #print(duration)
             d                   = datetime( 1,1,1 ) + duration
-            return ( timestamp, d )
+            return ( d )
             del vs.otimesi[:]
         else:
             pass
@@ -496,11 +511,15 @@ def print_goodness( p, p1, input_file, file_size, pretty, pat_store, suserd ):
     print ("\n%s\nDebug information:\n%s\n" % ( pretty, pretty ))
     if p['ssh_user']: print ("Authentication attempts made for the following users via sshd:\n%s\n" % (p['ssh_user']))
     if p1['s_users']: 
+        print(p1['slooptse'].items())
         print ("Authentication successful for the following users via sshd:\n")
-        for u,c in zip(set(p1['s_users']),p1['s_usersc']):
-            print ("user: {:50} count: {}".format(u, c))
+        for k,v in p1['slooptse'].items():
+            for e in v:
+                t = (e.minute/60 + e.second)
+            for u,c in zip(set(p1['s_users']),p1['s_usersc']):
+                print ("user: {:20} count: {} time: {}".format(u, c, v))
     if p1['f_users']: 
-        print ("Authentication failed for the following users via sshd:\n")
+        print ("\nAuthentication failed for the following users via sshd:\n")
         for u,c in zip(set(p1['f_users']),p1['f_usersc']):
             print ("user: {:50} count: {}".format(u, c))
     if p['dz_user']:  print ("\nAuthentication attempts made for the following users via dzdo:\n%s\n" % (p['dz_user']))
