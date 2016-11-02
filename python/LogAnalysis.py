@@ -127,7 +127,7 @@ def parse(parse_target,patterns,vs):
                 if vs.i == 0: 
                     time_calc( vs.i, vs.timestamp, vs, line_count, end=0 )
                     vs.i += 1
-                if len(vs.timestamp.split()) == 3:
+                if len(vs.timestamp.split()) == 3: 
                     p_ts = line.split()[:3]
                     extra_time.append(int(p_ts[2].split(":")[2]))
                     if ( extra_time[-1]-extra_time[0] ) >= 5:
@@ -227,7 +227,8 @@ def parse(parse_target,patterns,vs):
             #for t in vs.slooptse[u]:
             print(u, *vs.slooptse[u], sep=", ")
 
-    print(test)
+    #just dump vs.slooptse[s_user] items as the return. This means changing stored values to the elapsed times.
+   
             
 
     
@@ -289,10 +290,10 @@ class Process:
                 self.sloopend.append(line)
                 if self.sloop[s_user]:
                     self.sloop[s_user].append(line)
-                    print("start",self.sloop[s_user][0].strip()[0:15])
-                    print(self.sloop[s_user][0])
-                    print("end",self.sloop[s_user][-1].strip()[0:15])
-                    print(self.sloop[s_user][-1])
+                    #print("start",self.sloop[s_user][0].strip()[0:15])
+                    #print(self.sloop[s_user][0])
+                    #print("end",self.sloop[s_user][-1].strip()[0:15])
+                    #print(self.sloop[s_user][-1])
                     # do time stuff with completed loop
                     sts = self.sloop[s_user][0].strip()[0:15]
                     ets = self.sloop[s_user][-1].strip()[0:15]
@@ -511,17 +512,17 @@ def print_goodness( p, p1, input_file, file_size, pretty, pat_store, suserd ):
     print ("\n%s\nDebug information:\n%s\n" % ( pretty, pretty ))
     if p['ssh_user']: print ("Authentication attempts made for the following users via sshd:\n%s\n" % (p['ssh_user']))
     if p1['s_users']: 
-        print(p1['slooptse'].items())
+        #print(p1['slooptse'].items())
         print ("Authentication successful for the following users via sshd:\n")
-        for k,v in p1['slooptse'].items():
-            for e in v:
-                t = (e.minute/60 + e.second)
-            for u,c in zip(set(p1['s_users']),p1['s_usersc']):
-                print ("user: {:20} count: {} time: {}".format(u, c, v))
+        #for k,v in p1['slooptse'].items():
+        #    for e in v:
+        #        t = (e.minute/60 + e.second)
+        for u,c in zip(set(p1['s_users']),p1['s_usersc']):
+            print ("uid: {:10} count: {} | time: {}".format(u, c, v))
     if p1['f_users']: 
         print ("\nAuthentication failed for the following users via sshd:\n")
         for u,c in zip(set(p1['f_users']),p1['f_usersc']):
-            print ("user: {:50} count: {}".format(u, c))
+            print ("user: {:30} count: {}".format(u, c))
     if p['dz_user']:  print ("\nAuthentication attempts made for the following users via dzdo:\n%s\n" % (p['dz_user']))
     if p['time_gap'] and ( v == "1" ):
         print ("\nIrregular time gaps:") 
