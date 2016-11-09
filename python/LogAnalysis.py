@@ -6,7 +6,7 @@ from datetime import datetime, timedelta
 #import operator, fileinput
 from collections import Counter, defaultdict
 #from operator import itemgetter
-#from itertools import groupby, starmap
+#from itertools import groupby, starmap, izip
 
 #### Argument/other configuration
 parser = argparse.ArgumentParser(description='Log parser - For internal testing purposes only (for now)')
@@ -101,26 +101,13 @@ def parse(parse_target,patterns,vs):
     print("Analysis started...")
     #keys = [ 'sshd', 'blah' ] 
     #kw_pat  = re.compile( '|'.join( ['(%s)' % i for i in keys] ) )
-    idx,valid_fd,closed_fd,kw_match= ( [], [], [], [] )
-    sshd_lc, sshd_matches = [], []
+    valid_fd = []
     afd = {}
     extra_time = [0]
     pr = Process()
-    ssh_success = 0
-    pam_auth_starts = []
-    pam_user_lines  = []
-    pam_auth_ends   = []
-    pam_loop        = []
+    pr.control(vs)
     for ( line_count, line ) in enumerate( parse_target, 1 ):
-        #line = line.strip("\n")
-        #if line.strip():
-          #  if "adclient" in line: 
-          #      line = line.split("adclient")
-          #      meta, data = line[0], line[1]
-          #  else:
-          #      meta,data = line,line
         chunkyank = line.strip()[0:15]
-        #if re.match( vs.time_chk, chunkyank): 
         try: 
             if re.match( vs.time_chk, chunkyank):
                 vs.timestamp = chunkyank #alt - split by fields
@@ -134,7 +121,7 @@ def parse(parse_target,patterns,vs):
                         time_calc( vs.i, vs.timestamp, vs, line_count, end=0 )
                     extra_time.remove(extra_time[0])
 
-        except RuntimeError:
+        except:
             print("timestamp fail")
             
             pass
@@ -149,17 +136,8 @@ def parse(parse_target,patterns,vs):
                 fd_close    = line.split(" ")[12].lstrip("<fd:").rstrip(">\n'")
                 afd[fd_close] = "CLOSE"
             
-            if ( "sshd" in line and "pam_sm_authenticate" in line and "result" not in line ):
-                pam_auth_starts.append(line)
-                pam_loop.append(line)
-            if ( "Authentication for user" in line ):
-                pam_user_lines.append(line)
-                if line not in pam_loop: pam_loop.append(line)
-            if ( "sshd" in line and "pam_sm_open_session" in line and "PAM_SUCCESS" in line ):
-                pam_auth_ends.append(line)
-                pam_loop.append(line)
 
-            if any(sk in line for sk in vs.sshd_keys):
+            if any(sk in line for sk in vs.sshd_keys): #move under match context when keys implemented
                 if "PAM_SUCCESS" in line or "PAM open session granted" in line:
                     ssh_success = 1
                 pr.sshd(line, vs.timestamp, vs, line_count, success=1)
@@ -171,13 +149,10 @@ def parse(parse_target,patterns,vs):
                 vs.m_lc.append( line_count )
                 vs.matches.append( m ) 
 
-                #for vfd in list(set(valid_fd)): # sloooooow
-                #    if "sshd(" in m and ("fd:"+vfd) in m: #if fd still ope
-                if "sshd(" in m:
-                    sshd_lc.append( str(line_count) )
-                    sshd_matches.append( m )
+
+                if 'data' in m or 'red' in m:
+                    pr.count(m, vs)
                 
-                #process(m, vs)
                         
                     
                 ## add success to s_users, fail to f_users. Conditional print based on matches in users -> f/s_users
@@ -214,45 +189,7 @@ def parse(parse_target,patterns,vs):
         vs.f_usersc.append(str(vs.f_users.count(f_user)))
 
 
-    test = []
-    print(vs.slooptse.items())
-    for u in vs.s_users:
-        for k,v in vs.slooptse.items():
-            if k in vs.s_users:
-                #print(u, *tepoch, sep=",")
-                for t in v:
-                    tepoch = (t.minute/60 + t.second)
-    for u in set(vs.s_users):
-        if u in vs.slooptse:
-            #for t in vs.slooptse[u]:
-            print(u, *vs.slooptse[u], sep=", ")
-
-    #just dump vs.slooptse[s_user] items as the return. This means changing stored values to the elapsed times.
    
-            
-
-    
-
-
-
-    #print("\n".join(s for s in pam_loop))
-    #for vfd in list(set(valid_fd)):
-        #print("\n".join(s for s in pam_loop if "fd:"+vfd in s))
-    #    pass
-    #yank timestamp -> convert to epoch -> store value -> timedelta two values -> booya
-        #for (s,e) in zip(pr.sloopstart,pr.sloopend):
-        #    if ("fd:"+vfd) in s and ("fd:"+vfd) in e:
-    #print(s_tse)
-    #print(e_tse)
-
-    #self.slooptime = time_calc( vs.i, ts, vs, line_count, oneoff=1 )    
-    #print(self.slooptime)
-    #sat = self.slooptime
-    #self.sat_e = (sat[1].minute/60 + sat[1].second)
-    #if self.sat_e  >= 10:
-    #    self.auth_gap = True
-    #    vs.a_gap.append(self.at_e)
-    
 
 
     return vs.parse_out
@@ -264,30 +201,30 @@ def parse(parse_target,patterns,vs):
 class Process:
     
     def __init__(self):
-        self.slooptime  = None
-        self.sat_e      = None
-        self.i          = 0
-        self.auth_time  = False
-        #self.s_userc    = 0
+        #self.slooptime  = None
+        #self.sat_e      = None
+        #self.i          = 0
+        #self.auth_time  = False
         self.ssh_userl  = []
-        self.sloopstart = []
-        self.sloopend   = []
         self.sloop      = defaultdict(list)
+
+    def control(self,vs):
+        vs.process_results()
 
     def sshd(self, line, ts, vs, line_count, success=1):
         #self.auth_time = time_calc( vs.i, ts, vs, line_count, end=1 )
         if success == 1:
             if "sshd(" in line and "Authentication for user" in line:
-                #self.sloopu = line.split("'")[1] #is user our responsibility
-                self.sloopu = line.split("'")[1]
-                self.sloopstart.append(line)
-                self.sloop[self.sloopu].append(line)
+                self.loopu = line.split("'")[1]
+                self.sloop[self.loopu].append(line)
 #todo: test against another log - test against sso
 
             if "service=sshd" in line and "PAM open session granted" in line:
                 s_user = line.split("user=")[1].split("(")[0]
-                vs.s_users.append(s_user)
-                self.sloopend.append(line)
+                s_user2 = (line.split("user")[1].split(")")[0].lstrip("=") + ")")
+                #vs.s_users.append(s_user)
+                vs.s_users.append(s_user2)
+                #print(s_user.split("(")[0])
                 if self.sloop[s_user]:
                     self.sloop[s_user].append(line)
                     #print("start",self.sloop[s_user][0].strip()[0:15])
@@ -299,7 +236,8 @@ class Process:
                     ets = self.sloop[s_user][-1].strip()[0:15]
                     s_ts = time_calc( vs.i, sts, vs, line_count, oneoff=1 )
                     e_ts = time_calc( vs.i, ets, vs, line_count, oneoff=1 )
-                    vs.slooptse[s_user].append(e_ts)
+                    s_tse = (int(e_ts.minute/60) + int(e_ts.second))
+                    vs.slooptse[s_user].append(s_tse)
                     del self.sloop[s_user] #remove user loop so that next one can enter
                 else:
                     #unknown logic - broken login loop
@@ -311,12 +249,19 @@ class Process:
                 vs.f_users.append(f_user)
             if "Getting unix name of" in line:
                 self.ssh_userl.append(line)
+        
+        vs.process_results()
+    
+    def count(self, m, vs):
+        if ( 'data' in m ): vs.nss_count += 1
+        if ( 'red'  in m ): vs.pam_count += 1
+        vs.process_results()
+    
 
 
 
 
             
-        vs.process_results()
 
 
             #print("user: time: method: count:")
@@ -326,19 +271,11 @@ class Process:
        
 
 def process(m, vs):
-    if ( 'data' in m ): vs.nss_count += 1
-    if ( 'red'  in m ): vs.pam_count += 1
-
     if ( m.find("sshd(") ) >= 0:
         sshd_fd = m.split(" ")[6].lstrip("<fd:")
 
     if ( m.find("pam_sm_authenticate") ) >= 0:
         auth_fd    = m.split(" ")[6][4:] # returns auth thread fd
-
-    if ( m.find("Authentication for user ") ) >= 0: # improve or exapand NEED ACTION
-        user       = m.split(" ")[-1].strip("'") # returns user name in this context...
-    else:
-        user = None ## temp til better logic for users
 
    # elif m.find("Accepted gssapi-with-mic for ") >= 0:
    #     pass
@@ -400,7 +337,8 @@ class VarStore:
 
     def process_results( self ):
         self.process_out    = { 's_users':self.s_users,'s_usersc':self.s_usersc,'f_users':self.f_users, \
-                    'f_usersc':self.f_usersc,'a_gap':self.a_gap, 'slepoch':self.slepoch }
+                    'f_usersc':self.f_usersc,'a_gap':self.a_gap, 'slooptse':self.slooptse, 'nss_count':self.nss_count,
+                    'pam_count':self.pam_count }
 
 ## DO SOMETHING WITH THIS OR GET RID OF IT
 ## http://stackoverflow.com/questions/597476/how-to-concisely-cascade-through-multiple-regex-statements-in-python/597493
@@ -501,7 +439,6 @@ def print_goodness( p, p1, input_file, file_size, pretty, pat_store, suserd ):
     # Look into replacing format operators with new versions. see:
     # https://docs.python.org/2/library/string.html#format-string-syntax
     v = args.verbose    
-    #print(p1['a_gap'])
 
     print ("\n-> Performing analysis of log: '{0}'({1})".format( input_file, file_size ))
     print ("\nLog start: %s" % (p['log_start']))
@@ -512,13 +449,13 @@ def print_goodness( p, p1, input_file, file_size, pretty, pat_store, suserd ):
     print ("\n%s\nDebug information:\n%s\n" % ( pretty, pretty ))
     if p['ssh_user']: print ("Authentication attempts made for the following users via sshd:\n%s\n" % (p['ssh_user']))
     if p1['s_users']: 
-        #print(p1['slooptse'].items())
         print ("Authentication successful for the following users via sshd:\n")
-        #for k,v in p1['slooptse'].items():
-        #    for e in v:
-        #        t = (e.minute/60 + e.second)
         for u,c in zip(set(p1['s_users']),p1['s_usersc']):
-            print ("uid: {:10} count: {} | time: {}".format(u, c, v))
+            print("user: ",u,)
+            print("  # of logins: ",c)
+            print("  elapsed times:")
+            for t in p1['slooptse'][u.split("(")[0]]:
+                print("    ", t, "seconds")
     if p1['f_users']: 
         print ("\nAuthentication failed for the following users via sshd:\n")
         for u,c in zip(set(p1['f_users']),p1['f_usersc']):
@@ -536,8 +473,8 @@ def print_goodness( p, p1, input_file, file_size, pretty, pat_store, suserd ):
             print ("%4s seconds on line: %s" % (gap, l))
             i += 1
         
-    print ("\nNSS calls: '%s' in the file: %s" % ( p['nss_count'], log ))
-    print ("PAM calls: '%s' in the file: %s\n" % ( p['pam_count'], log ))
+    print ("\nNSS calls: '%s' in the file: %s" % ( p1['nss_count'], log ))
+    print ("PAM calls: '%s' in the file: %s\n" % ( p1['pam_count'], log ))
     print ("\n%s\nPattern detection:\n%s\n" % ( pretty, pretty ))
     print ("Matching against patterns in ./pat_file: \n {%s}\n" % ( "}, {".join(pat_store,) ))
     print ("Matched lines truncated: To display full matches, please use the '-v' option. \

@@ -1,5 +1,5 @@
-#.*data.* # datatest
-#.*red.* # redtest
+.*data.* # datatest
+.*red.* # redtest
 
 #.*pam_sm_authenticate.*
 #.*AUDIT_TRAIL.*PAM authentication granted.*
