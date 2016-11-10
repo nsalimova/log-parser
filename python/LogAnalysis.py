@@ -276,6 +276,8 @@ def t_dict(d, item):
 
     return {k:v[:item] for k,v in d.iteritems()} 
     
+
+## temporary for organization purposes until full scope of var requirements worked out. Terrible practice and should not remain outside of early testing.
 class VarStore:
 
     def __init__(self):
