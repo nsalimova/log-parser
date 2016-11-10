@@ -11,37 +11,19 @@ from collections import Counter, defaultdict
 #### Argument/other configuration
 parser = argparse.ArgumentParser(description='Log parser - For internal testing purposes only (for now)')
 
-parser.add_argument("log_file",
-                        metavar="<log_file>",
+parser.add_argument("log_file",metavar="<log_file>",
 #                        type=argparse.FileType('r'),
 #                        default=sys.stdin,
                         help='Log file for parsing')
-parser.add_argument('-o',
-                        '--out',
-                        metavar='<file>',
+parser.add_argument('-o','--out',metavar='<file>',
 #                        nargs='?',
 #                        type=argparse.FileType('w'),
 #                        default=sys.stdout,
                         help='Output results to <file>')
-parser.add_argument('-s',
-                        '--start',
-                        metavar="NUM",
-                        help='Line to begin parsing (integer) - NOT IMPLEMENTED',
-                        required=False)
-parser.add_argument('-e',
-                        '--end',
-                        metavar="NUM",
-                        help='Line to stop parsing; if not EOF (integer) - NOT IMPLEMENTED',
-                        required=False)
-parser.add_argument('-t',
-                        '--keys',
-                        help='Keywords to exclude. _____ delimiter - NOT IMPLEMENTED',
-                        required=False)
-parser.add_argument('-v',
-                        '--verbose',
-                        metavar="NUM",
-                        help='Increase output verbosity',
-                        required=False)
+parser.add_argument('-s','--start',metavar="NUM",help='Line to begin parsing (integer) - NOT IMPLEMENTED',required=False)
+parser.add_argument('-e','--end',metavar="NUM",help='Line to stop parsing; if not EOF (integer) - NOT IMPLEMENTED',required=False)
+parser.add_argument('-t','--keys',help='Keywords to exclude. _____ delimiter - NOT IMPLEMENTED',required=False)
+parser.add_argument('-v','--verbose',metavar="NUM",help='Increase output verbosity',required=False)
 
 args = parser.parse_args()
 
